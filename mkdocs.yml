@@ -1,0 +1,79 @@
+site_name: System Administrator Guide
+repo_url: https://github.com/civicrm/civicrm-sysadmin-guide
+site_description: A guide for CiviCRM system administrators.
+site_author: The CiviCRM community
+theme: material
+
+pages:
+- Home: index.md
+- Planning your site:
+  - Identifying your needs: planning/index.md
+  - Trying a demo: planning/demo.md
+  - Hosting: planning/hosting.md
+  - Choosing a CMS: planning/cms.md
+  - Transitioning to CiviCRM: planning/transition.md
+- Requirements: requirments.md
+- Installation:
+  - Install in Drupal 8: install/drupal8.md
+  - Install in Drupal 7: install/drupal7.md
+  - Install in Drupal 6: install/drupal6.md
+  - Install in WordPress: install/wordpress.md
+  - Install in Joomla: install/joomla.md
+  - Install in Backdrop: install/backdrop.md
+  - Multi-site installation: install/multi-site.md
+- Setup:
+  - Setup: setup/index.md
+  - Backups: setup/backups.md
+  - Monitoring: setup/monitoring.md
+  - Securing your site: setup/security.md
+  - Data migration: setup/migration.md
+  - Sync users and contacts: setup/users-contacts.md
+  - Scheduled jobs: setup/jobs.md
+  - CiviMail setup: setup/civimail.md
+  - SMS setup: setup/sms.md
+  - Payment processors: setup/payment-processors.md
+  - Detailed logging: setup/logging.md
+  - Troubleshooting: setup/troubleshooting.md
+- Upgrades:
+  - Upgrades overview: upgrade/index.md
+  - Upgrade in Drupal 8: upgrade/drupal8.md
+  - Upgrade in Drupal 7: upgrade/drupal7.md
+  - Upgrade in Drupal 6: upgrade/drupal6.md
+  - Upgrade in WordPress: upgrade/wordpress.md
+  - Upgrade in Joomla: upgrade/joomla.md
+  - Upgrade in Backdrop: upgrade/backdrop.md
+  - Upgrade troubleshooting: upgrade/troubleshooting.md
+- Customization:
+  - Basic customization: customize/index.md
+  - Extensions: customize/extensions.md
+  - Other languages: customize/i18n.md
+  - Drupal integration: customize/drupal.md
+  - Wordpress integration: customize/wordpress.md
+  - Joomla integration: customize/joomla.md
+  - Custom development: customize/develop.md
+- Special situations:
+  - Switching servers: misc/switch-servers.md
+  - Switching CMS platforms: misc/switch-cms.md
+  - Data redaction: misc/redaction.md
+
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      guess_lang: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences:
+      css_class: codehilite
+  - pymdownx.inlinehilite:
+      css_class: codehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
