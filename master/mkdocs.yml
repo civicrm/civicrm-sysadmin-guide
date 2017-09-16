@@ -48,10 +48,13 @@ pages:
   - Extensions: customize/extensions.md
   - Other languages: customize/i18n.md
   - Drupal integration: customize/drupal.md
+  - Backdrop integration:
   - Wordpress integration: customize/wordpress.md
   - Joomla integration: customize/joomla.md
   - Custom development: customize/develop.md
 - Special situations:
+  - Switching installation directories: misc/directories.md
+  - Switching domain names: misc/domain-names.md
   - Switching servers: misc/switch-servers.md
   - Switching CMS platforms: misc/switch-cms.md
   - Data redaction: misc/redaction.md
