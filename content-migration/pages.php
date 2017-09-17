@@ -518,15 +518,17 @@ $pages = [
   ],
 ];
 
-foreach ($pages as $page) {
-  $page['fileName'] = preg_replace('/ /g', '+', $page['name']);
+foreach ($pages as &$page) {
+  $page['urlTail'] = preg_replace('/ /', '+', $page['name']);
+  $page['fileName'] = $page['urlTail'];
+  $page['fileName'] = preg_replace('@/@', '_', $page['fileName']);
   if ($page['space'] == 'CRMDOC') {
-    $prefix = 'https://wiki.civicrm.org/confluence/display/';
+    $prefix = 'https://wiki.civicrm.org/confluence/display/' . $page['space'] . '/';
   }
   else {
     $prefix = 'https://raw.githubusercontent.com/civicrm/civicrm-user-guide/master/docs/';
   }
-  $page['url'] = $prefix . $page['fileName'];
+  $page['url'] = $prefix . $page['urlTail'];
 }
 
 return $pages;

@@ -16,6 +16,7 @@ foreach ($pages as $page) {
   }
   else {
     echo "DOWNLOADING: $file" . PHP_EOL;
+    echo "$url";
     system("curl '$url' > '$file'");
   }
   echo PHP_EOL;
