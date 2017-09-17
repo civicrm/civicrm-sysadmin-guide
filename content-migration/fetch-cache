@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+$pages = include __DIR__ . '/pages.php';
+
+
+$cacheDir = __DIR__ . '/cache';
+
+chdir($cacheDir);
+
+foreach ($pages as $page) {
+  $file = $page['fileName'];
+  $url = $page['url'];
+  if ( file_exists($file) ) {
+    echo "SKIPPING: $file (already cached)";
+  }
+  else {
+    echo "DOWNLOADING: $file" . PHP_EOL;
+    system("curl '$url' > '$file'");
+  }
+  echo PHP_EOL;
+}
+
+echo "DONE" . PHP_EOL;
