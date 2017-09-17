@@ -3,7 +3,7 @@
 
 $pages = include __DIR__ . '/pages.php';
 
-$cacheDir = __DIR__ . '/wiki_cache';
+$cacheDir = __DIR__ . '/cache';
 $rootDir = dirname(dirname(__DIR__));
 $destinationDir = "$rootDir/docs";
 
@@ -29,33 +29,33 @@ if ( !is_dir($destinationDir) ) {
   mkdir($destinationDir);
 }
 chdir($destinationDir);
-foreach ($hooks_by_category as $category => $hooks) {
-  foreach ($hooks as $hook) {
-    $hook_name = $hook['name'];
-    $markdown_file = "$hook_name.md";
-    $html = "$cacheDir/$hook_name";
-    if ( file_exists($html) && !file_exists($markdown_file) ) {
-      echo "converting $hook_name ... ";
-      $conv_output_array = array();
-      $conv_status = 1;
-      exec("webpage2md $html", $conv_output_array, $conv_status);
-      if( $conv_status == 0 ) {
-        $conv_output = implode("\n",$conv_output_array);
-        $conv_output = clean_markdown($conv_output);
-        file_put_contents($markdown_file, $conv_output);
-        echo "done" . PHP_EOL;
-      }
-      else {
-        echo "ERROR CONVERTING $hook_name" . PHP_EOL;
-        echo "$conv_output";
-      }
+
+foreach ($pages as $page) {
+  $name = $page['name'];
+  $markdown_file = "$name.md";
+  $html = "$cacheDir/$name";
+  if ( file_exists($html) && !file_exists($markdown_file) ) {
+    echo "converting $name ... ";
+    $outputArray = array();
+    $status = 1;
+    $output = '';
+    exec("webpage2md $html", $outputArray, $status);
+    if( $status == 0 ) {
+      $output = implode("\n", $outputArray);
+      $output = clean_markdown($output);
+      file_put_contents($markdown_file, $output);
+      echo "done" . PHP_EOL;
     }
-    else if ( !file_exists($html) ) {
-      echo "WARNING: $hook_name not yet fetched" . PHP_EOL;
+    else {
+      echo "ERROR CONVERTING $name" . PHP_EOL;
+      echo "$output";
     }
-    else if ( file_exists($markdown_file) ) {
-      echo "ignoring $hook_name (markdown file already exists)" . PHP_EOL;
-    }
+  }
+  else if ( !file_exists($html) ) {
+    echo "WARNING: $name not yet fetched" . PHP_EOL;
+  }
+  else if ( file_exists($markdown_file) ) {
+    echo "ignoring $name (markdown file already exists)" . PHP_EOL;
   }
 }
 
