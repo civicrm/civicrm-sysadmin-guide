@@ -12,9 +12,9 @@ pages:
   - Hosting: planning/hosting.md
   - Choosing a CMS: planning/cms.md
   - Transitioning to CiviCRM: planning/transition.md
-- Requirements: requirments.md
+- Requirements: requirements.md
 - Installation:
-  - Install in Drupal 8: install/drupal8.md
+  #- Install in Drupal 8: install/drupal8.md
   - Install in Drupal 7: install/drupal7.md
   - Install in Drupal 6: install/drupal6.md
   - Install in WordPress: install/wordpress.md
@@ -24,14 +24,14 @@ pages:
 - Setup:
   - Setup: setup/index.md
   - Backups: setup/backups.md
-  - Monitoring: setup/monitoring.md
+  #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   - Access control:
     - Access control: setup/access/index.md
     - CMS permissions: setup/access/permissions.md
     - ACLs: setup/access/acl.md
     - Multi-level ACLs: setup/access/multi-level-acl.md
-  - Data migration: setup/migration.md
+  #- Data migration: setup/migration.md
   - Sync users and contacts: setup/users-contacts.md
   - Scheduled jobs: setup/jobs.md
   - CiviMail setup:
@@ -61,21 +61,21 @@ pages:
   - Error handling: config/error-handling.md
   - Resource URLs: config/resource-urls.md
 - Upgrades:
-  - Upgrades overview: upgrade/index.md
-  - Upgrade in Drupal 8: upgrade/drupal8.md
+  #- Upgrades overview: upgrade/index.md
+  #- Upgrade in Drupal 8: upgrade/drupal8.md
   - Upgrade in Drupal 7: upgrade/drupal7.md
   - Upgrade in Drupal 6: upgrade/drupal6.md
   - Upgrade in WordPress: upgrade/wordpress.md
   - Upgrade in Joomla: upgrade/joomla.md
-  - Upgrade in Backdrop: upgrade/backdrop.md
+  #- Upgrade in Backdrop: upgrade/backdrop.md
   - Special upgrade tasks: upgrade/misc.md
 - Troubleshooting: troubleshooting.md
 - Customization:
-  - Basic customization: customize/index.md
+  #- Basic customization: customize/index.md
   - Extensions: customize/extensions.md
-  - Other languages: customize/i18n.md
+  #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
-  - Custom development: customize/develop.md
+  #- Custom development: customize/develop.md
 - Integration:
   - Drupal integration:
     - Drupal integration: integration/drupal/index.md
@@ -87,8 +87,8 @@ pages:
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md
     - Incompatible modules: integration/drupal/incompatibilities.md
-  - Backdrop integration:
-    - Backdrop integration: integration/backdrop/index.md
+  #- Backdrop integration:
+    #- Backdrop integration: integration/backdrop/index.md
   - WordPress integration:
     - Wordpress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
@@ -99,11 +99,11 @@ pages:
     - Forms in Joomla: integration/joomla/forms.md
 - Special situations:
   - Staging and production: misc/staging-production.md
-  - Switching installation directories: misc/directories.md
-  - Switching domain names: misc/domain-names.md
+  #- Switching installation directories: misc/directories.md
+  #- Switching domain names: misc/domain-names.md
   - Switching servers: misc/switch-servers.md
   - Switching CMS platforms: misc/switch-cms.md
-  - Data redaction: misc/redaction.md
+  #- Data redaction: misc/redaction.md
 
 markdown_extensions:
   - attr_list

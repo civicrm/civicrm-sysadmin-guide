@@ -91,7 +91,6 @@ function processPage($page) {
 
   // Write
   try {
-    echo "$outputFilePath\n";
     file_put_contents($outputFilePath, $markdownContent, FILE_APPEND);
   } catch (Exception $e) {
     echo "ERROR WRITING $outputFilePath" . PHP_EOL;
