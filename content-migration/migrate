@@ -1,64 +1,119 @@
 #!/usr/bin/env php
 <?php
 
-$pages = include __DIR__ . '/pages.php';
-
-$cacheDir = __DIR__ . '/cache';
-$rootDir = dirname(dirname(__DIR__));
-$destinationDir = "$rootDir/docs";
-
-
+/**
+ * Cleans small errors in markdown content
+ *
+ * @param string $markdown
+ *   dirty markdown content
+ *
+ * @return string
+ *   cleaned up markdown content
+ */
 function clean_markdown($markdown) {
   // add domain name to all hyperlinks that point to the wiki
   $pattern = '@\]\((/confluence[^)]*)\)@';
   $replace = '](https://wiki.civicrm.org$1)';
   $markdown = preg_replace($pattern, $replace, $markdown);
-
-  // set all headings of level 3 and above to level 2
-  $pattern = '@^(##)(#+) (.*)$@m';
-  $replace = '## $3';
-  $markdown = preg_replace($pattern, $replace, $markdown);
-
   return $markdown;
 }
 
-
-
-# create hooks directory if needed
-if ( !is_dir($destinationDir) ) {
-  mkdir($destinationDir);
-}
-chdir($destinationDir);
-
-foreach ($pages as $page) {
-  $name = $page['name'];
-  $markdown_file = "$name.md";
-  $html = "$cacheDir/$name";
-  if ( file_exists($html) && !file_exists($markdown_file) ) {
-    echo "converting $name ... ";
-    $outputArray = array();
-    $status = 1;
-    $output = '';
-    exec("webpage2md $html", $outputArray, $status);
-    if( $status == 0 ) {
-      $output = implode("\n", $outputArray);
-      $output = clean_markdown($output);
-      file_put_contents($markdown_file, $output);
-      echo "done" . PHP_EOL;
-    }
-    else {
-      echo "ERROR CONVERTING $name" . PHP_EOL;
-      echo "$output";
-    }
+/**
+ * Convert an HTML file to markdown
+ *
+ * @param string $htmlFilePath
+ *   path to HTML file
+ *
+ * @return string
+ *   markdown content
+ * @throws \Exception
+ *   if any errors encountered during conversion
+ */
+function convert($htmlFilePath) {
+  $outputArray = array();
+  $status = 1;
+  exec("webpage2md '$htmlFilePath'", $outputArray, $status);
+  $output = implode("\n", $outputArray);
+  if ($status == 1) {
+    throw new Exception("ERROR CONVERTING $htmlFilePath\n" . $output);
   }
-  else if ( !file_exists($html) ) {
-    echo "WARNING: $name not yet fetched" . PHP_EOL;
-  }
-  else if ( file_exists($markdown_file) ) {
-    echo "ignoring $name (markdown file already exists)" . PHP_EOL;
-  }
+  return $output;
 }
 
+/**
+ * Gets the markdown contents of a page, as a string
+ *
+ * @param array $page
+ *
+ * @return string
+ */
+function getMarkdown($page) {
+  if ($page['action'] == 'convert') {
+    echo "converting {$page['moniker']} ... ";
+    $markdown = convert($page['cacheFile']);
+  }
+  else {
+    echo "copying {$page['moniker']} ... ";
+    $markdown = file_get_contents($page['cacheFile']);
+  }
+  return $markdown;
+}
 
+/**
+ * Process a single page. Read the input file, convert, write the output file.
+ *
+ * @param array $page
+ */
+function processPage($page) {
 
+  $inputFilePath = $page['cacheFile'];
+  $outputFilePath = $page['destinationFile'];
+
+  // Verify that input file exists. Skip if missing.
+  if (!file_exists($inputFilePath)) {
+    echo "WARNING: Skipping because input file does not exist:\n"
+      .  "         $inputFilePath\n";
+    return;
+  }
+
+  $outputFileDir = dirname($outputFilePath);
+  if (!is_dir($outputFileDir)) {
+    mkdir($outputFileDir, 0777, TRUE);
+  }
+
+  // Get markdown
+  try {
+    $markdownContent = getMarkdown($page);
+  } catch (Exception $e) {
+    echo $e->getMessage();
+    return;
+  }
+
+  // Write
+  try {
+    echo "$outputFilePath\n";
+    file_put_contents($outputFilePath, $markdownContent, FILE_APPEND);
+  } catch (Exception $e) {
+    echo "ERROR WRITING $outputFilePath" . PHP_EOL;
+    echo $e->getMessage();
+  }
+
+  echo "done" . PHP_EOL;
+}
+
+/**
+ * Process all pages by reading input files, converting, and writing output
+ * files.
+ *
+ * @param array $pages
+ */
+function processPages($pages) {
+  foreach ($pages as $page) {
+    processPage($page);
+  }
+}
+
+$pages = include __DIR__ . '/pages.php';
+
+processPages($pages);
 

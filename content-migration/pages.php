@@ -535,6 +535,8 @@ $pages = [
 
 $cacheDir = __DIR__ . '/cache';
 $newContentDir = __DIR__ . '/new-content';
+$rootDir = dirname(__DIR__);
+$destinationDir = "$rootDir/docs";
 
 $spaces = [
   'CRMDOC' => [
@@ -558,6 +560,8 @@ foreach ($pages as &$page) {
   $cacheFileName = preg_replace('@/@', '_', $urlTail);
   $page['cacheFile'] = "$cacheDir/{$page['space']}/$cacheFileName";
   $page['url'] = "{$space['url']}/$urlTail";
+  $page['destinationFile'] = "$destinationDir/{$page['destination']}";
+  $page['action'] = $space['action'];
 }
 unset($page);
 
