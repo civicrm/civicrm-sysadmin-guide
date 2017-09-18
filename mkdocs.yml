@@ -35,6 +35,7 @@ pages:
   - Sync users and contacts: setup/users-contacts.md
   - Scheduled jobs: setup/jobs.md
   - CiviMail setup:
+    - CiviMail setup: setup/civimail/index.md
     - Outbound mail: setup/civimail/outbound.md
     - Inbound mail: setup/civimail/inbound.md
     - Deliverability: setup/civimail/deliverability.md
