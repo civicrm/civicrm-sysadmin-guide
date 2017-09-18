@@ -3,21 +3,21 @@
 
 $pages = include __DIR__ . '/pages.php';
 
-
-$cacheDir = __DIR__ . '/cache';
-
-chdir($cacheDir);
-
 foreach ($pages as $page) {
-  $file = $page['fileName'];
+  $file = $page['cacheFile'];
+  $moniker = $page['moniker'];
   $url = $page['url'];
   if ( file_exists($file) ) {
-    echo "SKIPPING: $file (already cached)";
+    echo "SKIPPING: $moniker (already cached)";
   }
   else {
-    echo "DOWNLOADING: $file" . PHP_EOL;
-    echo "$url";
-    system("curl '$url' > '$file'");
+    echo "FETCHING: $moniker";
+    if (isset(parse_url($url)['scheme'])) { // URL is remote
+      system("curl '$url' > '$file'");
+    }
+    else { // URL is local
+      copy($url, $file);
+    }
   }
   echo PHP_EOL;
 }

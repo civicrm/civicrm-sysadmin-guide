@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This array is generated from a spreadsheet here:
+ * https://docs.google.com/spreadsheets/d/1kAuXQs6DatSj9Cr6q6DYquuEUNivK9_DvIztVZ_4_3c/edit#gid=0
+ */
+
 $pages = [
   [
     'space' => 'CRMDOC',
@@ -516,19 +521,44 @@ $pages = [
     'name' => 'sms-text-messaging/set-up.md',
     'destination' => 'setup/sms.md'
   ],
+  [
+    'space' => 'NEW',
+    'name' => 'index.md',
+    'destination' => 'index.md'
+  ],
+  [
+    'space' => 'NEW',
+    'name' => 'requirements.md',
+    'destination' => 'requirements.md'
+  ],
+];
+
+$cacheDir = __DIR__ . '/cache';
+$newContentDir = __DIR__ . '/new-content';
+
+$spaces = [
+  'CRMDOC' => [
+    'action' => 'convert',
+    'url' => 'https://wiki.civicrm.org/confluence/display/CRMDOC',
+  ],
+  'USER' => [
+    'action' => 'copy',
+    'url' => 'https://raw.githubusercontent.com/civicrm/civicrm-user-guide/master/docs/',
+  ],
+  'NEW' => [
+    'action' => 'copy',
+    'url' => $newContentDir,
+  ],
 ];
 
 foreach ($pages as &$page) {
-  $page['urlTail'] = preg_replace('/ /', '+', $page['name']);
-  $page['fileName'] = $page['urlTail'];
-  $page['fileName'] = preg_replace('@/@', '_', $page['fileName']);
-  if ($page['space'] == 'CRMDOC') {
-    $prefix = 'https://wiki.civicrm.org/confluence/display/' . $page['space'] . '/';
-  }
-  else {
-    $prefix = 'https://raw.githubusercontent.com/civicrm/civicrm-user-guide/master/docs/';
-  }
-  $page['url'] = $prefix . $page['urlTail'];
+  $page['moniker'] = "{$page['space']}/{$page['name']}";
+  $space = $spaces[$page['space']];
+  $urlTail = preg_replace('/ /', '+', $page['name']);
+  $cacheFileName = preg_replace('@/@', '_', $urlTail);
+  $page['cacheFile'] = "$cacheDir/{$page['space']}/$cacheFileName";
+  $page['url'] = "{$space['url']}/$urlTail";
 }
+unset($page);
 
 return $pages;
