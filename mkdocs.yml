@@ -16,7 +16,6 @@ pages:
 - Installation:
   #- Install in Drupal 8: install/drupal8.md
   - Install in Drupal 7: install/drupal7.md
-  - Install in Drupal 6: install/drupal6.md
   - Install in WordPress: install/wordpress.md
   - Install in Joomla: install/joomla.md
   - Install in Backdrop: install/backdrop.md
@@ -64,7 +63,6 @@ pages:
   #- Upgrades overview: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
   - Upgrade in Drupal 7: upgrade/drupal7.md
-  - Upgrade in Drupal 6: upgrade/drupal6.md
   - Upgrade in WordPress: upgrade/wordpress.md
   - Upgrade in Joomla: upgrade/joomla.md
   #- Upgrade in Backdrop: upgrade/backdrop.md
