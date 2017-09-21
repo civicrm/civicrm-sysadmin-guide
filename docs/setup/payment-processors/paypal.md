@@ -131,35 +131,10 @@ Nov 04 10:12:57 [info] Amount values dont match between database and IPN request
 
 The solution is to turn off the PayPal Sales Tax option.
 
-Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax extension available. Feel free to contact Joe (dot) Murray (at) JMAConsulting (dot) biz for advice on how to create an extension for your jurisdiction if need be.# PayPal Website Payments Pro and Express Configuration
+Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax extension available. Feel free to contact Joe (dot) Murray (at) JMAConsulting (dot) biz for advice on how to create an extension for your jurisdiction if need be.
 
- **Table of Contents**
 
-* Overview
-
-* Overview of Paypal Pro
-* Overview of Paypal Express
-
-* Configuration
-
-* PHP Configuration Requirements
-* Create a Developer Central Account
-* Create a Business (Merchant) Account on the PayPal Sandbox
-* Enable Website Payments Pro for Your Sandbox Account
-* Configure API Access
-
-* Generate API Signature Credential
-* Configure CiviContribute Using API Signature
-
-* Configure Drupal Error Reporting
-* Assign this Processor to your Contribution or Event Registration Page(s)
-* Test-drive a CiviContribute Online Contribution Page
-* Recurring Contributions
-* Apply for and Configure Your LIVE Account
-
-* Troubleshooting
-
-* Turning on Taxes in PayPal causes payments to remain pending
+# PayPal Website Payments Pro and Express Configuration
 
 !!! note "Scope and Audience"
 

@@ -17,21 +17,6 @@
     * MAMP XCache in-compatibility* - Several people have reported "white screen of death" trying to run CiviCRM 4 with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
     * eAccelerator - Several people have reported problems with this performance optimiser ([http://eaccelerator.net](http://eaccelerator/)) - "white screen of death" and "snippet type is unrecognised".
 
-**Table of Contents**
-
-* 1. Drupal Installed
-
-* Verify Drupal Database Settings
-
-* 2. Tell Drupal where to find the CiviCRM 4.7 Module
-* 3. If using CiviCRM in another language than English, install the localization files
-* 4. Run the Installer
-* 5. Review Permissions
-* 6. Create CiviCRM Contacts for Existing Drupal Users
-* 7. Review the Configuration Checklist
-* 8. Test-drive CiviCRM
-* Trouble-shooting Resources
-
 ## Drupal Installed
 
 The automated installer requires Drupal 7.x.. If you do not have the required version of Drupal installed, refer to:

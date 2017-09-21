@@ -1,56 +1,5 @@
 # Webform CiviCRM Integration
 
- **Table of Contents**
-
-* Introduction
-
-* Getting Started
-* Features
-* Compared to CiviCRM Profiles
-* Compared to CiviCRM Contribution Pages
-* Usage Notes
-
-* Working with Existing Contacts
-
-* Contact References
-* Current Employer
-
-* A few variations
-
-* Creating new Contacts
-* Autofilling Forms from URL Arguments
-
-* Notes about url arguments:
-* Generating URL Arguments
-
-* From CiviMail
-* From Views
-* From Other Webforms
-
-* Webform Submitting tokens
-* Option Lists
-* Groups and Tags
-* Custom Data
-* Event Registration
-* Editing webform submissions
-* Memberships
-* Payments
-
-* Unsupported payment processors
-* Accepting payments through a webform
-
-* State/Province and Country Fields
-* About the _"Not You"_ Message
-* Cloning a Contact
-* Retrofitting an Existing Webform
-
-* Will Contacts, Activities, etc. be Created Retroactively if I Enable CiviCRM Processing on an Existing Form?
-
-* Will Webform Submissions be Updated if a Contact is Modified in CiviCRM?
-* Changing a Webform Component Type
-* Anatomy of a Form Key (for geeks only)
-* Recipes
-
 ## Introduction
 
 [

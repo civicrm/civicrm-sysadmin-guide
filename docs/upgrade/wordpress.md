@@ -18,26 +18,6 @@
      Configuration variable thread_stack >= 192k.
     * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html)).
 
-**Table of Contents**
-
-* Step-by-step Upgrade Procedures
-
-* 1. Download the most recent CiviCRM Package
-* 2. Backup your CiviCRM database and settings file/s
-* 3. Unpack the latest package and relocate settings file/s
-* 4. Install Localization Files (Optional)
-* 5. Run the Upgrade script
-* 6. Verify and Update Resource URL Settings
-* 7. Update System Workflow Message Templates as Needed
-* Upgrade Trouble-shooting
-
-* You do not have sufficient permissions to access this page.
-* Reset Your User Session
-* Verify and Update Base Directory and Base URL Settings in the Database
-* Foreign Key Errors or Warnings During the Database Upgrade
-* Upgrade script fails with fatal database-related errors OR reports "Database check failed"
-* The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
-
 !!! danger "Upgrade a Copy of Your Site First and Make a Complete Backup"
 
     We strongly recommend that you create a copy of your existing site (directories and database) - and upgrade that copy first in order to make sure you can complete the upgrade successfully. In any case, you should create a full backup of the installed civicrm directory tree and civicrm database before beginning the upgrade process. Note that not all versions of mysql or phpmyadmin export triggers or stored procedures by default.

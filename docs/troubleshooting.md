@@ -23,23 +23,9 @@ If Drupal Language detection is set to "By URL" and the "Language Domain" settin
 
 #### Domain Access
 
-You may need a bit of code in civicrm.settings.php to get the correct CIVICRM_UF_BASEURL to work on front end pages exposed on various domains. See [Forum Post on Domain Access and Drupal](http://forum.civicrm.org/index.php/topic,24657.msg104529.html#msg104529).# Installation and Configuration Troubleshooting
+You may need a bit of code in civicrm.settings.php to get the correct CIVICRM_UF_BASEURL to work on front end pages exposed on various domains. See [Forum Post on Domain Access and Drupal](http://forum.civicrm.org/index.php/topic,24657.msg104529.html#msg104529).
 
- **Table of Contents**
-
-* "DB_DataObject Error: DB Error: connect failed"
-* "Could not find valid Key"
-* "Failed to initialize storage module: user" fatal error message (new installs)
-* Using the Built-in Debugging Tools
-
-* Debug Commands
-
-* Resolving RELAY-DENIED Errors When Trying to Send Emails to Contacts
-* Configuring PHP to Handle Import Files from/on Macintosh Computers
-* Database version inconsistencies / upgrade problems
-* Windows XP SP3: Problem setting the /sites/default/files directory permissions so it is writable
-* civicrm_strip_non_numeric does not exist error
-* Firewall with NAT
+# Installation and Configuration Troubleshooting
 
 !!! tip "Troubleshooting Resources"
 

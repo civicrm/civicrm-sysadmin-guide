@@ -17,15 +17,6 @@
 
     If you are **upgrading from v3.3, v3.4, v4.1, v4.2 , v4.3, v4.5 or an earlier version of 4.6 -** **[use these instructions](https://wiki.civicrm.org/confluence/display/CRMDOC45/Upgrade+Joomla+Sites+to+4.6)**.
 
-
-**Table of Contents**
-
-* 1. Joomla Installed
-* 2. Download and Un-tar CiviCRM Code
-* 3. Run the Installer
-* 4. Create CiviCRM Contacts for Existing Joomla Users
-* 5. Trouble-shooting Resources
-
 !!! danger
 
     CiviCRM is a resource heavy module and does not work well on GoDaddy or Site5 shared hosting. The install process typically does not complete successfully. The forums have a lot of posts on this topic.

@@ -18,27 +18,6 @@
 
 The steps below assume you are already running Joomla 3.x. If you have not yet upgraded to 3.x, you must do that before installing CiviCRM v4.x. Also note that if you used the jUpgrade extension to manage your Joomla upgrade, it would have created your upgraded site in a subdirectory (jupgrade/ by default). If you use that subdirectory site to upgrade CiviCRM you will need to alter your civicrm.settings.php file prior to the upgrade (to reflect the subdirectory) and after you complete the upgrade and move your site to a root directory (to again reflect the correct directory location).
 
-**Table of Contents**
-
-* 1. Download and Un-tar CiviCRM Code
-* 2. Backup your CiviCRM database and settings file
-
-* Customizations
-
-* 3. Install the Extension
-* 4. Run the Database Upgrade script
-* 5. Verify and Update Configuration Settings
-* 6. Restore settings file changes
-* 7. Update System Workflow Message Templates as Needed
-* Troubleshooting
-
-* Reset Session
-* Upgrade script fails with fatal database-related errors OR reports "Database check failed"
-* Remove cached copies of old templates
-* Out of Date Joomla! Version
-* Cron Job Reconfiguration Necessary when upgrading from < CiviCRM 4.2
-* Need More Help?
-
 ## Download and Un-tar CiviCRM Code
 
 All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:

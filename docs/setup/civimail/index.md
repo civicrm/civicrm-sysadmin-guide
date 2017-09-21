@@ -428,33 +428,8 @@ processed.
     site's domain, such as **-sexample.org**.
 2.  The user login account (**-umailprocess**).
 3.  The password you defined (**-pseol-lzprm42amv-psyc**).
-# CiviMail Installation
 
- **Table of Contents**
-
-* Introduction
-* Setting Up CiviMail
-
-* CMS User and Role
-* Setting Up the SMTP Configuration
-* Setting Up the Cron Job
-
-* **From a Control Panel**
-* From a CLI Command Line
-
-* Using the shell (CLI PHP) via Crontab
-* Using wget via Crontab
-
-* wget with GET method
-* wget with POST method
-* Having trouble with cron sending automatically?
-
-* Setting Up the Return Channel
-
-* Do You Need the Return Channel?
-* Possible Solutions for the Return Channel
-
-* Troubleshooting
+## CiviMail Installation
 
 # Introduction
 

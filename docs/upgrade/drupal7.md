@@ -23,49 +23,6 @@
      Configuration variable thread_stack >= 192k.
     * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html)).
 
-**Table of Contents**
-
-* Step-by-step Upgrade Procedures
-
-* 1. Download the most recent CiviCRM Package
-* 2. If Using Localization download the latest version of the localization files
-* 3. Take the Site Offline (for production site upgrades)
-* 4. Ensure that CiviCRM is not your Drupal homepage
-* 5. Disable all CiviCRM integration modules (NOT CiviCRM itself)
-* 6. Backup your CiviCRM database
-* 7. Backup and then delete all previous version code files
-* 8. Unpack the latest package and verify permissions
-* 9. Update the civicrm.settings.php file
-* 10. Clear Cache
-* 11. Run the Upgrade script
-* 12. Verify and Update Resource URL Settings
-* 13. Re-enable compatible CiviCRM integration modules
-* 14. Review and Update Drupal Permissions Settings
-* 15. Clear Views' cache (for sites using Views 3 integration)
-* 16. Restore CiviCRM as the Drupal homepage if appropriate
-* 17. Update System Workflow Message Templates as Needed
-* 18. Put the Site Online (for production site upgrades)
-* Upgrade Trouble-shooting
-
-* Version information missing in civicrm database
-* Non-recoverable error: Unknown column 'is_deleted' in 'field list', 1054
-* Page Not Found error
-* Reset Your User Session
-* Verify and Update Base Directory and Base URL Settings in the Database
-* Verify and Update Configuration Settings File
-* A fatal error appears when I try to load a CiviCRM page.
-* Foreign Key Errors or Warnings During the Database Upgrade
-* Upgrade script fails with fatal database-related errors OR reports "Database check failed"
-* Calendar widget doesn't work (throws a Javascript error), and/or CiviMail scripts for open tracking, SOAP authentication, etc. don't function.
-* Access Forbidden (403) Error After Upgrade
-* Screen grays out and a camera icon appears whenever you click any link in CiviCRM
-* Reset config_backend
-* UpdateMembershipRecord.php won't run after upgrading from prior versions
-* The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
-* Version information missing in civicrm database error
-* **Upgrade script failed to modify civicrm.settings.php**
-* **Rolling back to previous/backed-up version of CiviCRM**
-* After clicking "Upgrade Now", upgrade freezes with "[]" message (Firefox)
 
 !!! danger "Upgrade a Copy of Your Site First and Make a Complete Backup"
 

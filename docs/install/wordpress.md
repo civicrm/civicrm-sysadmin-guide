@@ -16,23 +16,6 @@
     * MAMP XCache in-compatibility* - Several people have reported "white screen of death" trying to run CiviCRM 4 with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
     * eAccelerator - Several people have reported problems with this performance optimiser ([http://eaccelerator.net](http://eAccelerator)) - "white screen of death" and "snippet type is unrecognised".
 
-**Table of Contents**
-
-* 1. Server Requirements
-
-* Plugin Issues
-
-* 2. WordPress Installed
-* 3. Download and Un-zip CiviCRM Code
-* 4. If Using Localization, Download and Un-tar the Localization Files
-* 5. Enable CiviCRM plugin and run installer
-* 6. Locate and Backup the CiviCRM settings file
-* 7. Create CiviCRM Contacts for Existing WordPress Users
-* 8. Review the Configuration Checklist
-* 9. Test-drive CiviCRM
-* 10. Upgrade CiviCRM
-* Trouble-shooting Resources
-
 ## Server Requirements
 
 ### Plugin Issues
