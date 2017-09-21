@@ -1,30 +1,9 @@
 # Installing CiviCRM for Joomla
 
-!!! note "Install CiviCRM 4.7 on Joomla"
+## Before installing
 
-    **IMPORTANT: 4.7 requires Joomla 2.5.x or 3.x.x**
-     **Joomla 2.5 has reached _End of Life_ (EOL) and is no longer supported by the Joomla Project.
-     It is strongly recommended by the J! Project that 2.5 users upgrade to the most current version of 3.x .**
-
-    **Before beginning the install process, please verify that your server meets the requirements for CiviCRM 4.7.**
-
-    * **Joomla 2.5.x or 3.x.x** : CiviCRM 4.7 is built to run under Joomla 2.5x/3.x.x and **is not compatible with Joomla 1.0.x and Joomla 1.5.x sites**
-    * **PHP:** See [CiviCRM PHP Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+PHP+Requirements)
-    * **PHP memory_limit** set to between 256 and 512 megabytes.
-    * **MySQL 5.1.x or higher with INNODB support** : CiviCRM is compatible the current [generally available MySQL release](http://dev.mysql.com/downloads/mysql). Trigger permission is required. SUPER privileges are required in MySQL 5.1 if binary logging is enabled. See the [CiviCRM MySQL Permission Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+MySQL+Permission+Requirements) page.
-     Configuration variable thread_stack >= 192k.
-    * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html)).
-
-    If you are **upgrading from v3.3, v3.4, v4.1, v4.2 , v4.3, v4.5 or an earlier version of 4.6 -** **[use these instructions](https://wiki.civicrm.org/confluence/display/CRMDOC45/Upgrade+Joomla+Sites+to+4.6)**.
-
-!!! danger
-
-    CiviCRM is a resource heavy module and does not work well on GoDaddy or Site5 shared hosting. The install process typically does not complete successfully. The forums have a lot of posts on this topic.
-
-
-## Joomla Installed
-
-The automated installer requires Joomla 2.5.x or 3.x.x. If you do not have the required version of Joomla installed, refer to the [Joomla Installation Guide](https://docs.joomla.org/J3.x:Installing_Joomla).
+1. Ensure that your system meets the [requirements](/requirements.md).
+1. Install Joomla by referring to the [Joomla Installation Guide](https://docs.joomla.org/J3.x:Installing_Joomla) if needed.
 
 !!! note "Path for Joomla"
     The rest of these instructions assume that you have Joomla installed in `/var/www/JOOMLA_ROOT`. Adjust paths as needed.

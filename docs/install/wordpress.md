@@ -1,30 +1,9 @@
 # WordPress Installation Guide for CiviCRM
 
-!!! note "Install process for CiviCRM 4.5 on WordPress"
+## Before installing
 
-    **IMPORTANT: CiviCRM 4.7 requires WordPress 3.4.x or higher. It is recommended to use a current version of WordPress. The current release (at 19 February 2017) is WP 4.7.2**
-     This page provides instructions for installing CiviCRM as a plugin for WordPress. This is the recommended installation method.
-
-    **If you are upgrading from CiviCRM v4.2, v4.3, 4.5, 4.6 or a prior version of v4.7 - [use these instructions](https://wiki.civicrm.org/confluence/display/CRMDOC/Upgrade+WordPress+Sites+to+4.7)**
-
-    **Before beginning the install process, please verify that your server meets all the requirements for CiviCRM 4.5.**
-
-    * **WordPress 3.4.x or newer** : CiviCRM 4.5 is built to run under WordPress 3.4.x or higher and **is not compatible with earlier WordPress versions**.
-    * **PHP 5.3.3+** (more info...).
-    * **MySQL 5.1.x or higher with INNODB support** : CiviCRM is compatible with the current [generally available MySQL release](http://dev.mysql.com/downloads/mysql). Trigger permission is required. SUPER privileges are required in MySQL 5.1 if binary logging is enabled. See the [CiviCRM MySQL Permission Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+MySQL+Permission+Requirements) page.
-    * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html "CentOS, CiviCRM and PCRE Unicode Properties")).
-    * MAMP XCache in-compatibility* - Several people have reported "white screen of death" trying to run CiviCRM 4 with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
-    * eAccelerator - Several people have reported problems with this performance optimiser ([http://eaccelerator.net](http://eAccelerator)) - "white screen of death" and "snippet type is unrecognised".
-
-## Server Requirements
-
-### Plugin Issues
-
-Because of the huge number and ever-changing nature of community contributed Wordpress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. A list of know incompatibilities can be found at [WordPress plugins and themes incompatible with CiviCRM](https://wiki.civicrm.org/confluence/display/CRMDOC/WordPress+plugins+and+themes+incompatible+with+CiviCRM).
-
-## WordPress Installed
-
-Before installing CiviCRM you need to have a working site with WordPress 3.4.x. If you do not have the required version of WordPress installed, refer to the [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress).
+1. Ensure that your system meets the [requirements](/requirements.md).
+1. Install WordPress by referring to the [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress) if needed.
 
 !!! note "Path for WordPress"
      The rest of these instructions assume that you have WordPress installed in `/var/www/wordpress`. Adjust paths as needed.

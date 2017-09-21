@@ -1,25 +1,9 @@
 # Installing CiviCRM for Drupal 7
 
-!!! note "Automated Installer for CiviCRM 4.7 on Drupal 7.x"
+## Before installing
 
-    This page provides instructions for using the web-based **Automated Installer**. This is the recommended installation method.
-
-    If you are **upgrading CiviCRM, including from a prior version of v4.7 -** **[use these instructions](https://wiki.civicrm.org/confluence/display/CRMDOC/Upgrading+CiviCRM+for+Drupal+7)**.
-
-    **Before beginning the install process, please verify that your server meets all the requirements for CiviCRM 4.7.**
-
-    * **Drupal 7.x** : CiviCRM 4.7 is built to run under Drupal 7 (or [Drupal 6](https://wiki.civicrm.org/confluence/display/CRMDOC/Installing+CiviCRM+for+Drupal+6)).
-    * **PHP:** See [CiviCRM PHP Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+PHP+Requirements)
-    * **PHP memory_limit** set to between 256 and 512 megabytes.
-    * **MySQL 5.1.x or higher with INNODB support** : CiviCRM is compatible with the current [generally available MySQL release](http://dev.mysql.com/downloads/mysql). Trigger permission is required. SUPER privileges are required in MySQL 5.1 if binary logging is enabled. See the [CiviCRM MySQL Permission Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+MySQL+Permission+Requirements) page.
-     Configuration variable thread_stack >=192k.
-    * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html "CentOS, CiviCRM and PCRE Unicode Properties")).
-    * MAMP XCache in-compatibility - Several people have reported "white screen of death" trying to run CiviCRM 4 with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
-    * eAccelerator - Several people have reported problems with this performance optimiser ([http://eaccelerator.net](http://eaccelerator/)) - "white screen of death" and "snippet type is unrecognised".
-
-## Drupal Installed {:#drupal-installed}
-
-The automated installer requires Drupal 7.x. If you do not have the required version of Drupal installed, refer to the [Drupal Installation Guide](http://drupal.org/getting-started).
+1. Ensure that your system meets the [requirements](/requirements.md).
+1. Install Drupal by referring to the [Drupal Installation Guide](http://drupal.org/getting-started) if needed.
 
 ## Determine Drupal Database Settings {:#db-settings}
 

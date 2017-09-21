@@ -1,24 +1,9 @@
 # Installing CiviCRM for Backdrop
 
-!!! note "Automated Installer for CiviCRM 4.7 on Backdrop"
+## Before installing
 
-    This page provides instructions for using the web-based **Automated Installer**. This is the recommended installation method.
-
-    **Before beginning the install process, please verify that your server meets all the requirements for CiviCRM 4.7.**
-
-    * **Backdrop:** 1.3.7+
-    * **CiviCRM** : 4.7.9+
-    * **PHP:** see [CiviCRM PHP Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+PHP+Requirements)
-    * **PHP memory_limit** set to between 256 and 512 megabytes.
-    * **MySQL 5.1.x or higher with INNODB support** : CiviCRM is compatible with the current [generally available MySQL release](http://dev.mysql.com/downloads/mysql). Trigger permission is required. SUPER privileges are required in MySQL 5.1 if binary logging is enabled. See the [CiviCRM MySQL Permission Requirements](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+MySQL+Permission+Requirements) page.
-     Configuration variable thread_stack >=192k.
-    * **PCRE with Unicode properties support** ([more info](http://forum.civicrm.org/index.php/topic,9316.0.html "CentOS, CiviCRM and PCRE Unicode Properties")).
-    * MAMP XCache in-compatibility - Several people have reported "white screen of death" trying to run CiviCRM 4 with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
-    * eAccelerator - Several people have reported problems with this performance optimiser ([http://eaccelerator.net](http://eaccelerator/)) - "white screen of death" and "snippet type is unrecognised".
-
-## Backdrop Installed {:#backdrop-installed}
-
-The automated installer requires Backdrop 1.4.x. If you do not have the required version of Backdrop installed, refer to the [Backdrop Installation Guide](http://backdropcms.org/getting-started).
+1. Ensure that your system meets the [requirements](/requirements.md).
+1. Install Backdrop by referring to the [Backdrop Installation Guide](http://backdropcms.org/getting-started) if needed.
 
 ## Determine Backdrop Database Settings {:#db-settings}
 
