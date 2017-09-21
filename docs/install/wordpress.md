@@ -24,51 +24,50 @@ Because of the huge number and ever-changing nature of community contributed Wor
 
 ## WordPress Installed
 
-Before installing CiviCRM you need to have a working site with WordPress 3.4.x. If you do not have the required version of WordPress installed, refer to:
-
-* [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress)
+Before installing CiviCRM you need to have a working site with WordPress 3.4.x. If you do not have the required version of WordPress installed, refer to the [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress).
 
 !!! note "Path for WordPress"
-     The rest of these instructions assume that you have WordPress installed in _/var/www/wordpress_. Adjust paths as needed. |
+     The rest of these instructions assume that you have WordPress installed in `/var/www/wordpress`. Adjust paths as needed.
 
-    ## 3. Download and Un-zip CiviCRM Code
+## Download and Un-zip CiviCRM Code
 
-    All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
+All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
 
-    * Download the appropriate tarball file from [here](https://civicrm.org/download) with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-4.7.x-wordpress.zip.**
+* Download the appropriate tarball file from [here](https://civicrm.org/download) with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-4.7.x-wordpress.zip.**
 
-    * Copy or ftp the tarball file to your WordPress installation's _/wp-content/plugins_ directory. You may have to change the "File Permissions" setting of _/wp-content/plugins/civicrm_ directory to allow for "Write" Access. Just remember to change it back to default when done.
-    * You can upload the zip file that was downloaded via your WordPress admin panel at
-    ```
-    wp-admin/plugin-install.php
-    ```
+* Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins/civicrm` directory to allow for "Write" Access. Just remember to change it back to default when done.
+* You can upload the zip file that was downloaded via your WordPress admin panel at `wp-admin/plugin-install.php`
 
-    * **Create the <wordpress path>/wp-content/plugins/files/ directory and ensure it is writable.** CiviCRM for versions 4.6 and prioruses this directory for temporary and uploaded files.
+* Create the `<wordpress path>/wp-content/plugins/files/` directory and ensure it is writable. CiviCRM for versions 4.6 and prior uses this directory for temporary and uploaded files.
 
     !!! information "Downloading Directly to Your Server with wget"
-
-    If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
-
-    ```
-    // Move into WordPress's plugin directory
-    cd /var/www/wordpress/wp-content/plugins
-
-    // wget the file (modify this line to use the current tarball file name for the version you want)
-    wget https://download.civicrm.org/civicrm-4.7.xx-wordpress.zip
-    ```
+    
+        If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
+        
+        1. Move into WordPress's plugin directory
+            ```
+            $ cd /var/www/wordpress/wp-content/plugins
+            ```
+        
+        1. wget the file (modify this line to use the current tarball file name for the version you want)
+            ```
+            wget https://download.civicrm.org/civicrm-4.7.xx-wordpress.zip
+            ```
 
 
 * Extract (aka: unzip, unpack) the codebase into the wordpress/wp-content/plugins directory.
 
-```
-// Move to the wordpress/wp-content/plugins directory (if not already there)
-cd /var/www/wordpress/wp-content/plugins
+    1. Move to the wordpress/wp-content/plugins directory (if not already there)
+        ```
+        $ cd /var/www/wordpress/wp-content/plugins
+        ```
+    
+    1. Un-zip the file (modify this line with the actual downloaded filename)
+        ```
+        unzip civicrm_download_file.zip
+        ```
 
-// Un-zip the file (modify this line with the actual downloaded filename)
-unzip civicrm_download_file.zip
-```
-
-* You should now have a /var/www/wordpress/wp-content/plugins/civicrm directory containing civicrm.php, README.txt and another civicrm directory (which in turn contains bin, CRM, sql, templates, etc.).
+* You should now have a `/var/www/wordpress/wp-content/plugins/civicrm` directory containing `civicrm.php`, `README.txt` and another civicrm directory (which in turn contains bin, CRM, sql, templates, etc.).
 
 ## If Using Localization, Download and Un-tar the Localization Files
 
@@ -76,56 +75,61 @@ Follow these steps to download and install the files that contain strings for la
 
 * Download the appropriate tarball file from [here](http://sourceforge.net/projects/civicrm/files/civicrm-stable/4.4.5/) with your browser. Tarball file-names include the CiviCRM version, and l10n (that's lower case ell-ten-en). For example, **civicrm-4.5.x-l10n.tar.gz.**.
 
-* Copy or ftp the tarball file to your WordPress installation's _/wp-content/plugins_ directory. You may have to change the "File Permissions" setting of _/wp-content/plugins_ directory to allow for "Write" Access. Just remember to change it back to default when done.
+* Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins` directory to allow for "Write" Access. Just remember to change it back to default when done.
 
-!!! note "Downloading Directly to Your Server with wget"
-
-    If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
-
-    ```
-    // Move into WordPress's modules directory and then into the civicrm subdirectory
-    cd /var/www/wordpress/wp-content/plugins/civicrm
-
-    // wget the file (modify this line to use the current tarball file name for the version you want)
-    wget http://sourceforge.net/projects/civicrm/files/civicrm-latest/4.5.x/civicrm-4.5.x-l10n.tar.gz
-    ```
+    !!! note "Downloading Directly to Your Server with wget"
+    
+        If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
+    
+        1. Move into WordPress's modules directory and then into the civicrm subdirectory
+            ```
+            $ cd /var/www/wordpress/wp-content/plugins/civicrm
+            ```
+    
+        1. wget the file (modify this line to use the current tarball file name for the version you want)
+            ```
+            $ wget http://sourceforge.net/projects/civicrm/files/civicrm-latest/4.5.x/civicrm-4.5.x-l10n.tar.gz
+            ```
 
 
 * Un-tar (unpack) the language files into the wordpress/wp-content/plugins directory.
 
-```
-// Move to the wordpress/wp-content/plugins/civicrm directory (if not already there)
-cd /var/www/wordpress/wp-content/plugins/civicrm
+    1. Move to the wordpress/wp-content/plugins/civicrm directory (if not already there)
+        ```
+        $ cd /var/www/wordpress/wp-content/plugins/civicrm
+        ```
+    
+    1. Un-tar the file (modify this line with the actual downloaded filename)
+        ```
+        $ tar -zxvf civicrm_download_file.tgz
+        ```
 
-// Un-tar the file (modify this line with the actual downloaded filename)
-tar -zxvf civicrm_download_file.tgz
-```
-
-* You should now have a wordpress/wp-content/plugins/civicrm/civicrm/l10n directory with a number of directories below it (including bin, CRM, sql and templates).
+* You should now have a `wordpress/wp-content/plugins/civicrm/civicrm/l10n` directory with a number of directories below it (including bin, CRM, sql and templates).
 
 ## Enable CiviCRM plugin and run installer
 
-The installer will verify that you've downloaded the correct version of CiviCRM, and will check your server environment to make sure it meets CiviCRM requirements. It will then create and populate a database for CiviCRM as well as create your CiviCRM settings file (civicrm.settings.php).
+The installer will verify that you've downloaded the correct version of CiviCRM, and will check your server environment to make sure it meets CiviCRM requirements. It will then create and populate a database for CiviCRM as well as create your CiviCRM settings file `civicrm.settings.php`.
 
 * Login to your WordPress site with Administrator level permissions.
-* Go to plugins page: http://<your_wordpress_home>/wp-admin/plugins.php.
-* Click the 'Activate' link to activate the CiviCRM plugin.
-* Then go to Settings > CiviCRM Installer: http://<your_wordpress_home>/wp-admin/options-general.php?page=civicrm-install
+* Go to plugins page: `http://<your_wordpress_home>/wp-admin/plugins.php`.
+* Click the **Activate** link to activate the CiviCRM plugin.
+* Then go to Settings > CiviCRM Installer: `http://<your_wordpress_home>/wp-admin/options-general.php?page=civicrm-install`
     * In version 4.7 you will see a link on the wp-admin page to the Installer screen
 
 * You should see the **CiviCRM Installer** screen.
 
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.
     * If you see other errors, check the **Requirements** details at the bottom of the page for more information. You will need to correct any issues before continuing.
+
 * Fill in the CiviCRM Database Settings.
 
-!!! tip "Where Should I Store CiviCRM Data?"
- CiviCRM may be configured to use your existing WordPress database, or a separate (new) database. Using a separate database is generally preferred - as it makes backups and upgrades easier. The installer will create a new database for CiviCRM automatically if you enter a database name that doesn't already exist on your database server AND the database user you enter has permission to create databases. In case the installer does not automatically create a new database, simply create a new one following the same process as creating a new database for WordPress. |
+    !!! tip "Where Should I Store CiviCRM Data?"
+        CiviCRM may be configured to use your existing WordPress database, or a separate (new) database. Using a separate database is generally preferred - as it makes backups and upgrades easier. The installer will create a new database for CiviCRM automatically if you enter a database name that doesn't already exist on your database server AND the database user you enter has permission to create databases. In case the installer does not automatically create a new database, simply create a new one following the same process as creating a new database for WordPress. |
 
 * Fill in the WordPress Database Settings for your existing WordPress database (as noted in step 2 above). In version 4.7.x CiviCRM will fill in the WP database settings, you can change these if you want to use a separate database.
 
-!!! tip "Loading Sample Data"
- The Installer includes an option to load a set of sample contact, group, and relationship data by default. Sample data can provide a useful head-start in learning to use CiviCRM. However, if you do NOT want the sample data to be loaded, just uncheck **Load sample data** under **Other Settings**. |
+    !!! tip "Loading Sample Data"
+        The Installer includes an option to load a set of sample contact, group, and relationship data by default. Sample data can provide a useful head-start in learning to use CiviCRM. However, if you do NOT want the sample data to be loaded, just uncheck **Load sample data** under **Other Settings**. |
 
 * Select the appropriate language for the base installation. You will be able to add other languages after the installation for multi-lingual sites.
 * Click the **Check Requirements and Install CiviCRM** button.
@@ -138,7 +142,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 
 ## Locate and Backup the CiviCRM settings file
 
-After installation, a configuration file will have been created by CiviCRM at: <wordpress>/wp-content/uploads/civicrm/civicrm.settings.php
+After installation, a configuration file will have been created by CiviCRM at: `<wordpress>/wp-content/uploads/civicrm/civicrm.settings.php`
 
 It is critical you make a copy of this file and save as a backup in a safe location. This file contains passwords and other critical information, take precautions to secure the copy from prying eyes.
 
@@ -164,21 +168,21 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear.
 
-You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options. Tips for creating CiviCRM Profiles (forms), custom data fields and programming custom data manipulation are included in the [**Drupal installation and configuration example**](https://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+installation+and+configuration+example) document.
+You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options. Tips for creating CiviCRM Profiles (forms), custom data fields and programming custom data manipulation are included in the [Drupal installation and configuration example](https://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+installation+and+configuration+example) document.
 
 ## Upgrade CiviCRM
 
 When a new, stable version of CiviCRM is released it is recommended you upgrade if the release contains security patches, bug fixes or new features you desire.
 
-1. Backup your existing <wordpress>/wp-content/plugins/civicrm directory by creating an archive or FTPing it to your local computer
+1. Backup your existing `<wordpress>/wp-content/plugins/civicrm directory` by creating an archive or FTPing it to your local computer
   1. Backup your existing database through Control Panel or PHPMyAdmin
   1. Download the latest CiviCRM .zip package from the download link at CiviCRM.org
-  1. Upload the .zip file to: <wordpress>/wp-content/plugins
+  1. Upload the .zip file to: `<wordpress>/wp-content/plugins`
   1. Use your Control Panel to "extract" or "unzip" the file careful to:
  a. make sure you have a backup of your civicrm.settings.php file (see above at heading #6)
  b. you overwrite existing civicrm directory during the extraction/unzip
  c. do NOT create an additional subdirectory for the extraction
-  1. Delete all files in <wordpress>/wp-content/plugins/files/civicrm/templates_c/ and clear browser cache
+  1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
   1. Run the Upgrade script at:[http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1](http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1)
 
 ## Trouble-shooting Resources
