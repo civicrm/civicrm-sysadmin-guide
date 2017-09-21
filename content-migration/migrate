@@ -37,6 +37,7 @@ function convert($htmlFilePath) {
   if ($status == 1) {
     throw new Exception("ERROR CONVERTING $htmlFilePath\n" . $output);
   }
+  $output = clean_markdown($output);
   return $output;
 }
 

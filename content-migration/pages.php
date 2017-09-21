@@ -64,11 +64,6 @@ $pages = [
   ],
   [
     'space' => 'CRMDOC',
-    'name' => 'Installing CiviCRM for Drupal 6',
-    'destination' => 'install/drupal6.md'
-  ],
-  [
-    'space' => 'CRMDOC',
     'name' => 'Installing CiviCRM for Drupal 7',
     'destination' => 'install/drupal7.md'
   ],
@@ -506,11 +501,6 @@ $pages = [
     'space' => 'CRMDOC',
     'name' => 'Ensuring Schema Integrity on Upgrades',
     'destination' => 'troubleshooting.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Upgrading CiviCRM for Drupal 6',
-    'destination' => 'upgrade/drupal6.md'
   ],
   [
     'space' => 'CRMDOC',
