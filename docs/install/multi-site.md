@@ -1,95 +1,84 @@
 # Multi Site Installation
 
-* Background explanation
-* N sites with 1 CiviCRM Database
+This page explains how to use one CiviCRM database with multiple sites.
 
-* 1. Single / First site installation
-* 2.a Create a new contact to be the domain contact for the new domain (note steps 2 & 3 can now be done with the MultisiteDomain.create api which is part of the extension)
-* 2.b Insert a new domain record in civicrm db. For example if your new contact is 555
-* 3. Build navigation links for new domain/site
-* 4. Locate sites directory
-* 5. Locate civicrm settings file for site2
+## Install the first site
 
-* A. Manual CiviCRM installation for site2.example.com.
-* B. Auto + Manual CiviCRM installation for site2.example.com
-* C. WordPress multi-sites
-* D. Drupal with the Domain Access module
+Say `site1.example.com` which would be same as any other normal civicrm installation.
 
-* 6. Register new domain / site
-* 7. Register domain/site group
-* 8. Associate an organization with the master group
-* 9. Configure Access Control to restrict users on Site N to contacts in Site N's Site Group
+It is not necessary to for the top level site to be multisite aware but if you want it to be then enable multisite by visiting `civicrm/admin/setting/preferences/multisite?reset=1`. If you do this you should also grant the associated permission in Drupal: "CiviCRM: administer Multiple Organizations" to your developers or website administrators.
 
-### Background explanation
+Create a new contact to be the domain contact for the new domain (note steps 2 & 3 can now be done with the `MultisiteDomain.create` api which is part of the extension)
 
-[Multisites, Multidomain, and Multilevel ACLs](https://wiki.civicrm.org/confluence/display/CRMDOC/Multisites%2C+Multidomain%2C+and+Multilevel+ACLs)
+## Create the domain record
 
-### N sites with 1 CiviCRM Database
+Insert a new domain record into the CiviCRM database. For example if your new contact is 555
 
-##### Single / First site installation
-
-Say site1.example.com which would be same as any other normal civicrm installation.
-
-It is not necessary to for the top level site to be multisite aware but if you want it to be then enable multisite by visiting civicrm/admin/setting/preferences/multisite?reset=1. If you do this you should also grant the associated permission in Drupal: "CiviCRM: administer Multiple Organizations" to your developers or website administrators.
-
-##### 2.a Create a new contact to be the domain contact for the new domain (note steps 2 & 3 can now be done with the MultisiteDomain.create api which is part of the extension)
-
-##### 2.b Insert a new domain record in civicrm db. For example if your new contact is 555
-
-```
-INSERT INTO `civicrm_domain` (`name`, `description`, `version`, contact_id)
-SELECT 'site 2', 'second test site', cd.version, 555 FROM civicrm_domain cd WHERE cd.id = 1;
+```sql
+INSERT INTO `civicrm_domain` (
+  `name`,
+  `description`,
+  `version`,
+  contact_id)
+SELECT 
+  'site 2',
+  'second test site',
+  cd.version,
+  555
+FROM civicrm_domain cd
+WHERE cd.id = 1;
 ```
 
-##### Build navigation links for new domain/site
+## Build the navigation links for new domain
 
-Modify civicrm_codebase/sql/civicrm_navigation.mysql file and specify new domain, e.g
+Modify `civicrm_codebase/sql/civicrm_navigation.mysql` file and specify new domain, e.g
 
-```
-SELECT @domainID := id FROM civicrm_domain where name = 'Default Domain Name';
+```sql
+SELECT @domainID := id
+FROM civicrm_domain
+WHERE `name` = 'Default Domain Name';
 ```
 
 To
 
-```
-SELECT @domainID := id FROM civicrm_domain where name = 'site 2';
+```sql
+SELECT @domainID := id
+FROM civicrm_domain
+WHERE `name` = 'site 2';
 ```
 
 OR
 
-```
+```sql
 SET @domainID = 2;
 ```
 
 And import this file to your civicrm db
 
-##### Locate sites directory
+## Locate the sites directory
 
 Setup another site on drupal say site2.example.com. This will create sites/site2.example.com/ directory in drupal.
 
-##### Locate civicrm settings file for site2
+## Locate the settings file for the second site
 
 Depending on how you would like to install civicrm for site 2, proceed to one of the following steps:
 
-A): Manual installation for site 2
- B): Semi-automatic installation for site 2
- C): Multisite for Wordpress
- D): Multisite using Drupal's domain access module
-
-###### Manual CiviCRM installation for site2.example.com.
+#### Manual CiviCRM installation for site2.example.com.
 
 * Copy civicrm settings file from previous site (site1) to the new site (site2).
-```
-cp sites/site1.example.com/civicrm.settings.php sites/site2.example.com/
-```
- Note sites/site2.example.com/civicrm.settings.php is your new settings file which needs to be modified.
+
+    ```
+    cp sites/site1.example.com/civicrm.settings.php sites/site2.example.com/
+    ```
+
+    Note `sites/site2.example.com/civicrm.settings.php` is your new settings file which needs to be modified.
 
 * The sites can share a single instance of the civicrm code in sites/all/modules/ directory if they are using the same CMS.
 
-* Modify sites/site2.example.com/civicrm.settings.php file to adjust settings like CIVICRM_TEMPLATE_COMPILEDIR, CIVICRM_UF_BASEURL as per new site.
-* Enable the CiviCRM module through Drupal, at Site building -> Modules ( /admin/build/modules ).
+* Modify `sites/site2.example.com/civicrm.settings.php` file to adjust settings like `CIVICRM_TEMPLATE_COMPILEDIR`, `CIVICRM_UF_BASEURL` as per new site.
+* Enable the CiviCRM module through Drupal, at Site building -> Modules ( `/admin/build/modules` ).
 
-###### Auto + Manual CiviCRM installation for site2.example.com
+#### Auto + manual installation for site2.example.com
 
 * Use civicrm installer for installing civicrm for site2.example.com. Specify a new civicrm db which can be dropped later.
  Note sites/site2.example.com/civicrm.settings.php is your new settings file which needs to be modified.
@@ -98,87 +87,87 @@ cp sites/site1.example.com/civicrm.settings.php sites/site2.example.com/
 
 * The sites can share a single instance of the civicrm code in sites/all/modules/ directory.
 
-###### WordPress multi-sites
+#### WordPress multi-sites
 
 WordPress multi-sites do not offer multiple codebases for plugins. There is only one that is shared among all sites. Therefore it is necessary to use the single civicrm.settings.php file and add a conditional statement.
 
-* You will find the file at /wp-content/plugins/CiviCRM/civicrmsettings.php
+* You will find the file at `/wp-content/plugins/CiviCRM/civicrmsettings.php`
 * The existing default code is this:
-```
-echo "you need to configure site : " . home_url();
-```
 
-```
-}
-```
+    ```php
+    echo "you need to configure site : " . home_url();
+    define('CIVICRM_UF_BASEURL' , home_url());
+    ```
 
-```
-}
-```
-
-```
-define( 'CIVICRM_UF_BASEURL' , home_url() );
-```
 * The code you replace it with could look something like this:
-*
-```
-if(function_exists('is_multisite') && function_exists('home_url')) {
-  $url = home_url();
-}
-else {
-  $protocol = strstr('HTTPS', $_SERVER['SERVER_PROTOCOL']) ? 'https://' : 'http://';
-  $url = $protocol . $_SERVER['SERVER_NAME'];
-}
 
-/**
- * CiviCRM Configuration File
- */
-  //this if statement covers running from CLI (e.g. bin/csv/import.php)
-  if(empty($_SERVER['SERVER_NAME'])) {
-    define( 'CIVICRM_DOMAIN_ID', 1 );
-  }
+    ```php
+    if(function_exists('is_multisite') && function_exists('home_url')) {
+      $url = home_url();
+    }
+    else {
+      $protocol = strstr('HTTPS', $_SERVER['SERVER_PROTOCOL']) ? 'https://' : 'http://';
+      $url = $protocol . $_SERVER['SERVER_NAME'];
+    }
+    
+    /**
+     * CiviCRM Configuration File
+     */
+      //this if statement covers running from CLI (e.g. bin/csv/import.php)
+      if(empty($_SERVER['SERVER_NAME'])) {
+        define( 'CIVICRM_DOMAIN_ID', 1 );
+      }
+    
+      switch ($url) {
+        case 'http://site1.org':
+          define( 'CIVICRM_DOMAIN_ID', 1 );
+          break;
+        case 'http://site2.org' :
+          define( 'CIVICRM_DOMAIN_ID', 2 );
+          break;
+        case 'http://site3.org':
+          define( 'CIVICRM_DOMAIN_ID', 4 );
+          break;
+        case 'http://site4.org':
+          define( 'CIVICRM_DOMAIN_ID', 5 );
+          break;
+        default:
+          echo "you need to configure site : " . home_url();
+       }
+    
+       define( 'CIVICRM_UF_BASEURL', $url );
+    ```
 
-  switch ($url) {
-    case 'http://site1.org':
-      define( 'CIVICRM_DOMAIN_ID', 1 );
-      break;
-    case 'http://site2.org' :
-      define( 'CIVICRM_DOMAIN_ID', 2 );
-      break;
-    case 'http://site3.org':
-      define( 'CIVICRM_DOMAIN_ID', 4 );
-      break;
-    case 'http://site4.org':
-      define( 'CIVICRM_DOMAIN_ID', 5 );
-      break;
-    default:
-      echo "you need to configure site : " . home_url();
-   }
+#### Drupal with the Domain Access module
 
-   define( 'CIVICRM_UF_BASEURL', $url );
-```
-
-###### Drupal with the Domain Access module
-
-**Note:** If you're using Drupal with Domain Access, consider installing the [Domain Access CiviCRM](https://civicrm.org/extensions/domain-access-civicrm) module if users might be creating new Drupal accounts via CiviCRM profiles.
+!!! note
+    If you're using Drupal with Domain Access, consider installing the [Domain Access CiviCRM](https://civicrm.org/extensions/domain-access-civicrm) module if users might be creating new Drupal accounts via CiviCRM profiles.
 
 Similar to Wordpress, with Domain Access module there is only one copy of the codebase, and one copy of civicrm.settings.php.
 
 The easiest is to assign the same domain_id's in Drupal and CiviCRM, then you can just replace this line:
 
-```
+```php
 define( 'CIVICRM_DOMAIN_ID' , 1 );
 ```
 
 With:
 
-```
-if (!function_exists('domain_get_domain')) { // The Domain Access module is not enabled define('CIVICRM_DOMAIN_ID', 1);} else { // Get domain_id from the Drupal setup - Drupal and CiviCRM domain IDs MUST match! $domain = domain_get_domain(); define('CIVICRM_DOMAIN_ID', $domain['domain_id']);}
+```php
+if (!function_exists('domain_get_domain')) {
+  // The Domain Access module is not enabled
+  define('CIVICRM_DOMAIN_ID', 1);
+}
+else {
+  // Get domain_id from the Drupal setup - Drupal and CiviCRM domain IDs MUST match!
+  $domain = domain_get_domain();
+  define('CIVICRM_DOMAIN_ID', $domain['domain_id']);
+}
 ```
 
 Otherwise you must replace the above line with a conditional similar to:
 
-```
+```php
 //define the per-domain settings here first in case we're running from CLI (e.g. bin/csv/import.php)
 if(empty($_SERVER['SERVER_NAME'])) {
   define( 'CIVICRM_DOMAIN_ID', 1 );
@@ -186,36 +175,51 @@ if(empty($_SERVER['SERVER_NAME'])) {
 }
 ```
 
-```
-switch ($_SERVER['SERVER_NAME']) {case 'example.local': define( 'CIVICRM_DOMAIN_ID', 1 ); define( 'CIVICRM_UF_BASEURL' , 'http://example.local/' ); break;case 'cdp.example.local' : define( 'CIVICRM_DOMAIN_ID', 2 ); define( 'CIVICRM_UF_BASEURL' , 'http://cdp.example.local/' ); break;case 'svp.example.local': define( 'CIVICRM_DOMAIN_ID', 3 ); define( 'CIVICRM_UF_BASEURL' , 'http://svp.example.local/' ); break;
+```php
+switch ($_SERVER['SERVER_NAME']) {
+  case 'example.local':
+    define( 'CIVICRM_DOMAIN_ID', 1 );
+    define( 'CIVICRM_UF_BASEURL' , 'http://example.local/' );
+    break;
+  case 'cdp.example.local':
+    define( 'CIVICRM_DOMAIN_ID', 2 );
+    define( 'CIVICRM_UF_BASEURL' , 'http://cdp.example.local/' );
+    break;
+  case 'svp.example.local':
+    define( 'CIVICRM_DOMAIN_ID', 3 );
+    define( 'CIVICRM_UF_BASEURL' , 'http://svp.example.local/' );
+    break;
+}
 ```
 
 With either of the above, skip step 6.
 
-##### Register new domain / site
+## Register a new domain
 
 Modify located civicrm.settings.php file (for site2) to change following line -
 
-```
+```php
 define( 'CIVICRM_DOMAIN_ID' , 1 );
 ```
 
 to reflect the id of inserted domain record in step2. Assuming id is 2 for newly inserted record, the line would change to -
 
-```
+```php
 define( 'CIVICRM_DOMAIN_ID' , 2 );
 ```
 
-##### Register domain/site group
+## Register a domain group
 
-In multi-org installation, you can configure a group for each multi-site aware domain (not necessarily including the top level domain). When you login to the site and go to "manage groups" screen, you will notice a group with the name as that of domain. System requires you to register this master group responsible for holding sub-groups/contacts. Contacts using the site will be automatically added to the site. You need to set a different group for each site at civicrm/admin/setting/preferences/multisite?reset=1
+In multi-org installation, you can configure a group for each multi-site aware domain (not necessarily including the top level domain). When you login to the site and go to "manage groups" screen, you will notice a group with the name as that of domain. System requires you to register this master group responsible for holding sub-groups/contacts. Contacts using the site will be automatically added to the site. You need to set a different group for each site at `civicrm/admin/setting/preferences/multisite?reset=1`
 
 Note that it is valid not to enable multisite on the top level domain (which is unaware of the subdomains). This improves performance by not creating such a deep hierarchy of groups
 
-##### Associate an organization with the master group
+## Associate an organization with the master group
 
 To represent a multi-org hierarchy, an organization could be connected to the master group (one-to-one relationship). Add a record in the civicrm_group_organization table to represent this (or use the MultisiteDomain.create api to create your domain). This record only has value if the multisite extension is enabled.
 
-##### Configure Access Control to restrict users on Site N to contacts in Site N's Site Group
+## Configure Access Control
+
+Here we restrict users on Site N to contacts in Site N's Site Group.
 
 There is a separate extension called **multisite** that automatically implements CiviCRM access control for multi-site installations, such that normal users on Site N are restricted to contacts in Site N's Site Group. Note that users with permission to view or edit all contacts bypass this access control.
