@@ -62,6 +62,8 @@ To install these extensions, you will typically install a separate package withi
 * [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (In turn needed for the popular CiviSMTP service)
 * [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
+* [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add Mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
+* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
 
 ### PHP configuration
 
