@@ -32,68 +32,61 @@ line 65: if ((include_once 'Services/mpgClasses.php') === false )# Setting up Mo
 
 This document serves as a brief description of how you go about setting up Moneris Hosted to work with CiviCRM 4.x
 
-1. **The first thing is configure and Install Moneris extension in CiviCRM extensions.** ([http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin](http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin))
-1. **You should now be able to view the following screen when you set up extension for Moneris Hosted Payment Processor.**
- ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A21.png?version=1&modificationDate=1372586539000&api=v2)
+1. The first thing is configure and Install Moneris extension in CiviCRM extensions. ([http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin](http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin))
+1. You should now be able to view the following screen when you set up extension for Moneris Hosted Payment Processor.
+    ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A21.png?version=1&modificationDate=1372586539000&api=v2)
 
-1. **The next thing is to configure Moneris eSELECT Plus Hosted Paypage .**
- The following configuration steps are required under your Moneris eSELECT Plus merchant account.Please ensure you have your merchant account set up on moneris before continuing.
+1. The next thing is to configure Moneris eSELECT Plus Hosted Paypage . The following configuration steps are required under your Moneris eSELECT Plus merchant account.Please ensure you have your merchant account set up on moneris before continuing.
 
-**A. Log into the Merchant Resource Center :**
- Developement : [https://esqa.moneris.com/mpg/index.php](https://esqa.moneris.com/mpg/index.php)
- Production : [https://www3.moneris.com/mpg](https://www3.moneris.com/mpg)
 
-Before you can send a transaction to the Hosted Paypage you will need to configure several settings through the eSELECTplus Merchant Resource Centre (MRC).
- To log into the MRC test environment go to [https://esqa.moneris.com/mpg](https://esqa.moneris.com/mpg) and use one of the following login IDs.
 
-| **Store ID** | **Username** | **Password** |
-| --- | --- | --- |
-| store1 | demouser | password |
-| store2 | demouser | password |
-| store3 | demouser | password |
 
-**B. Navigate to Admin -> Hosted Config**
+1. Log into the Merchant Resource Center: [Developement](https://esqa.moneris.com/mpg/index.php) [Production](https://www3.moneris.com/mpg)
 
-Once you have successfully logged in, click on the “ADMIN” menu item on the left and then in the submenu that appears click on “HOSTED CONFIG”.
+    Before you can send a transaction to the Hosted Paypage you will need to configure several settings through the eSELECTplus Merchant Resource Centre (MRC).
+     To log into the MRC test environment go to [https://esqa.moneris.com/mpg](https://esqa.moneris.com/mpg) and use one of the following login IDs.
+    
+    | Store ID | Username | Password |
+    | --- | --- | --- |
+    | store1 | demouser | password |
+    | store2 | demouser | password |
+    | store3 | demouser | password |
 
-To create a new Hosted Paypage configuration, click on “Generate a New Configuration”. You will be assigned a Hosted Paypage ID (ps_store_id). This is the identifier for this unique configuration. You will also be assigned a Hosted Paypage Token (hpp_key). The Hosted Paypage ID and Token are sent as part of the transaction request to securely identify your store and the specific configuration.
+    1. Navigate to Admin -> Hosted Config
+    
+        Once you have successfully logged in, click on the “ADMIN” menu item on the left and then in the submenu that appears click on “HOSTED CONFIG”.
+        
+        To create a new Hosted Paypage configuration, click on “Generate a New Configuration”. You will be assigned a Hosted Paypage ID (ps_store_id). This is the identifier for this unique configuration. You will also be assigned a Hosted Paypage Token (hpp_key). The Hosted Paypage ID and Token are sent as part of the transaction request to securely identify your store and the specific configuration.
+    
+        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2014%3A10%3A39.png?version=1&modificationDate=1372586539000&api=v2)
+    
+    1. Set Transaction Type to Purchase (default).
+    1. Under Payment Methods, ensure Credit Cards is enabled, all others disabled.
+    1. Set Response Method to Sent to your server as a POST.
+    1. Set Approved URL and Declined URL to: https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
+    
+        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A26.png?version=1&modificationDate=1372586539000&api=v2)
+    
+    1. Choose "Use Enhanced Cancel"  if you want to return a full response to decline url.
+    
+    1. Click the Save Changes button.
+    1. Click the Configuration Appearance button under Paypage Appearance.
+    1. Set Cancel Button Text:
+    
+        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A41.png?version=1&modificationDate=1372586539000&api=v2)
+    
+    1. Click the Save Appearance Settings button then Return to main configuration.
+    1. Enable Return the txn_number. This field is used to perform follow-ons and leave all others disabled.
+    1. Click the Save Response Settings button then Return to main configuration.
+    1. Click the Configuration Security button under Security Features.
+    1. Check Enable Transaction Verification and select Displayed as xml on our server.
+    
+        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2016%3A14%3A31.png?version=1&modificationDate=1372586539000&api=v2)
+    
+        Response URL : https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
+    
+    1. Click the Save Verification Settings button then Return to main configuration.
 
-![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2014%3A10%3A39.png?version=1&modificationDate=1372586539000&api=v2)
+1. The Site URLs namely [Production](https://www3.moneris.com/) [Test](https://esqa.moneris.com/) serve as a means of communication between CiviCRM and Moneris Hosted. Your CiviCRM Payment Processor screen should look something like this:
 
-**C. Set Transaction Type to Purchase (default).**
- **D. Under Payment Methods, ensure Credit Cards is enabled, all others disabled.**
- **E. Set Response Method to Sent to your server as a POST.**
- **F. Set Approved URL and Declined URL to:** https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
-
-![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A26.png?version=1&modificationDate=1372586539000&api=v2)
-
-**H. Choose "Use Enhanced Cancel"**  **if you want to return a full response to decline url.**
-
-**I. Click the Save Changes button.**
-**J. Click the Configuration Appearance button under Paypage Appearance.**
-**K. Set Cancel Button Text:**
-
-![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A41.png?version=1&modificationDate=1372586539000&api=v2)
-
-**L. Click the Save Appearance Settings button then Return to main configuration.**
-
-**M. Enable Return the txn_number. This field is used to perform follow-ons and leave all others disabled.**
-
-**N. Click the Save Response Settings button then Return to main configuration.**
-
-**O. Click the Configuration Security button under Security Features.**
-
-**P. Check Enable Transaction Verification and select Displayed as xml on our server.**
-
-![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2016%3A14%3A31.png?version=1&modificationDate=1372586539000&api=v2)
-
-**Response URL :** https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
-
-**Q****. Click the Save Verification Settings button then Return to main configuration.**
-
-**4. The Site URLs namely**
- **Production:** [https://www3.moneris.com/](https://www3.moneris.com/)
- **Test:** [https://esqa.moneris.com/](https://esqa.moneris.com/)
- serve as a means of communication between CiviCRM and Moneris Hosted. Your CiviCRM Payment Processor screen should look something like this:
-
-![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A53.png?version=1&modificationDate=1372586539000&api=v2)
+    ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A53.png?version=1&modificationDate=1372586539000&api=v2)

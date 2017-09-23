@@ -1,12 +1,5 @@
 # Multisites, Multidomain, and Multilevel ACLs
 
-* What is multi-site/ multi-domain?
-* Multisite versus Settings Management
-* Multilevel permissioning behaviour
-* Components of multisite functionality
-* Functional Separation in Multisite
-* Permissioned Relationships for multilevel ACLs
-
 ## What is multi-site/ multi-domain?
 
 CiviCRM has built in support for multisite access - several separate sites accessing the same CiviCRM database. (this is different to the Drupal concept which means shared codebase). In most cases a site will be defined by a distinct URL
@@ -42,13 +35,9 @@ Since 4.1 it has been possible to manage having different urls & other settings 
 **Use different domains if you want**
 
 * domain specific membership types
-
 * domain specific payment processors
-
 * domain specific different from addresses from CiviMails
-
 * domain specific link back URLS in CiviMails
-
 * domain specific domain contact details
 
 ## Multilevel permissioning behaviour
@@ -89,7 +78,7 @@ If the multilevel permissioning module is enabled:
 | Parent group is optional IF group organisation is set | Multisite dev version of extension introduces this [https://github.com/eileenmcnaughton/org.civicrm.multisite](https://github.com/eileenmcnaughton/org.civicrm.multisite) | | | |
 | Contacts without ‘view all contacts’ permission but with ‘view all contacts in site’ are allowed to see all contacts in the domain group | CiviCRM multisite extension | Domain_id set in civicrm.settings.php multisite is_enabled is set to 1 multisite domain group is specified ACL_is_enabled is set to 1 | Permission is based on hard-adds to the domain group. WRT the 3 scenarios above 1) The addition of contacts to both parent and child groups is redundant 2) Hard adds to child groups extend the parent group and are useful where this is the intention (e.g. a child group that represents a sub-site. 3) Smart groups. Smart groups are cached in their entirety, both for the smart group and any parents it may have. This creates a lot of work. However, on their way out they are filtered according to the previous 2 items. | From a contact viewing permissioning point of view this suggests that only where #2 applies the group nesting is useful. As an aside - the multisite extension currently works on an either or basis with other ACL hooks. Hence a contact can either view all contacts in domain OR have other code based ACLs applied. Some thought should go into desired behaviour when both are in use |
 | **Contacts without ‘view all contacts’ permission but with ‘view all contacts in site’ are allowed to see all groups within the site**
- | CiviCRM multisite extension | Domain_id set in civicrm.settings.php multisite domain group is specified multisite is_enabled is set to 1 ACL_is_enabled is set to 1 | This is currently tied with the group nesting & those groups that are children of the site group are visible. However, as seen above the nesting mechanism should only be used for child groups where it is desirable for hard-adds to that group that are not otherwise part of the domain be included in the parent group – ie. it should be used carefully & deliberately Potential replacement mechanisms are group_organization & group_type. Either of these could be used to designate which domains a group should be visible on & either from a schema point of view support many to one, from a UI group_organization only supports one-to-one Potentially people with ‘administer multiple organisations’ could create global smart groups & specify which sites they appear on. Those on sub-sites with administer civicrm could specify if the group is available on child sites. | See [Proposed changes to multisite](https://wiki.civicrm.org/confluence/display/CRMDOC/Proposed+changes+to+multisite) There is a general problem in that the civicm ACLGroup hook is inconsistently applied in core – see [http://issues.civicrm.org/jira/browse/CRM-12209](http://issues.civicrm.org/jira/browse/CRM-12209) |
+| CiviCRM multisite extension | Domain_id set in civicrm.settings.php multisite domain group is specified multisite is_enabled is set to 1 ACL_is_enabled is set to 1 | This is currently tied with the group nesting & those groups that are children of the site group are visible. However, as seen above the nesting mechanism should only be used for child groups where it is desirable for hard-adds to that group that are not otherwise part of the domain be included in the parent group – ie. it should be used carefully & deliberately Potential replacement mechanisms are group_organization & group_type. Either of these could be used to designate which domains a group should be visible on & either from a schema point of view support many to one, from a UI group_organization only supports one-to-one Potentially people with ‘administer multiple organisations’ could create global smart groups & specify which sites they appear on. Those on sub-sites with administer civicrm could specify if the group is available on child sites. | See [Proposed changes to multisite](https://wiki.civicrm.org/confluence/display/CRMDOC/Proposed+changes+to+multisite) There is a general problem in that the civicm ACLGroup hook is inconsistently applied in core – see [http://issues.civicrm.org/jira/browse/CRM-12209](http://issues.civicrm.org/jira/browse/CRM-12209) |
 | Shared User Table handling | Multisite extension | Extension enabled | UF_matches are updated where the user name name is the same on multiple domains. The multisite extension will manage this when enabled even when multisite & acls are turned off | |
 
 ## Functional Separation in Multisite
@@ -101,8 +90,7 @@ If the multilevel permissioning module is enabled:
 | contact related entities- activities address, phone etc contribution pledge participants case personal contribution page relationship | No | The multisite concept only limits access to this data by ACLs - one implementation is the 'multisite' Multilevel module. |
 | grant | Possibly | see notes with option value |
 | membership type | yes | **Options for Membership types** not owned by a given org appear on the membership search page. However the user will not find any members while searching using these options if they don't belong to their organisation **Contribution form will allow a membership type** belonging to another org to be included. But if someone signs up they are not automatically added to the other org L2 site manager can see memberships from other organisations and 'appears' have permission to change which site a membership type belongs to (although this fails per item above) |
-| membership | no |
- |
+| membership | no | |
 | membership status | no | it would be more generally useful for this to be by membership type than by domain per se |
 | payment processor | yes | |
 | | | |
@@ -169,33 +157,30 @@ The NZ Green Party worked with the core CiviCRM team to develop this functionali
 ## Defining Sub-Organizational Units
 
 1. First, we create the three kinds of groups:
-
     1. Click on Administer >> Customize >> Custom Data.
     1. Click on Create New Group of Custom Fields.
     1. Enter **Regions** (or some other appropriate name) for Group Name.
     1. Select Contacts for Used For.
     1. Save.
     1. Add one or more fields based on the type of organizational unit that needs specific ACL support. If it is possible, it would be good to make at least one of these fields required, to ensure that some Role is made responsible for them. One way to make it easier to do that is to allow a value of 'Not known' for the Electorate and Province. In the NZ Green case, we do the following:
-
         1. Add an **Electorate** field of type Integer Select.
         1. Add a **Province** field of type Integer Select.
         1. Add a **Branch** field of type Integer Select.
         1. Other types of fields are supported by this recipe, notably String and Radio. But it's likely a bad idea to use a type that is not constrained to a list, like Text. And the sample code used later does not support Multi-Select values, though it could be modified to so if desired, for example if contacts could be simultaneously managed by more than one branch.
+
 1. The data for these fields should be populated, particularly for required fields for existing records.
 1. Next, we create the corresponding permission groups:
-
     1. Click on Administer >> Customize >> Custom Data.
     1. Click on Create New Group of Custom Fields.
     1. Enter **Permissions** (or some other appropriate name) for Group Name.
     1. Select Individuals for Used For (assuming that only individuals are provided with access control, which may not be true).
     1. Save.
     1. Add fields **_with the same name and data type_** as in 1.f. above, though the input type will in most cases need to be changed to Multi-Select in order to allow some CiviCRM users to be permissioned to access contacts in more than one electorate, province, or branch. In our case that means:
-
         1. Add an **Electorate** field of type Integer Multi-Select.
         1. Add a **Province** field of type Integer Multi-Select.
         1. Add a **Branch** field of type Integer Multi-Select.
+        
 1. The next step is to create the custom code that will let CiviCRM decide whether a user's permissions defined in their permissions field allow them to access contacts who are in specific electorate, province and branch Regions.
-
     1. You will need to put a function into a file that will have be examined for the hook function below. In Drupal installations, the best thing is to put it in a custom module, for example, one containing miscellaneous custom code for your site. (For an introduction to creating and installing a custom Drupal module, see [http://drupal.org/node/231276](http://drupal.org/node/231276).)
     1. TBC
 

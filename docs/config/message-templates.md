@@ -1,21 +1,19 @@
 # Message Templates
 
-##### Return to [Administrator's Guide (supplement)](https://wiki.civicrm.org/confluence/pages/viewpage.action?pageId=47710554)
-
-### Message Templates Overview
+## Message Templates Overview
 
 MESSAGE TEMPLATES allow you to create and edit re-usable email and letter messages. There are two categories of Message Templates in CiviCRM:
 
 * **User-driven Messages** - These are messages created by your staff to communicate with constituents that you want to be able to re-use. Examples include thank-you letters, meeting announcements, etc.
 * **System Workflow Messages** - These are pre-configured messages used by CiviCRM "features". Examples include contribution receipts, event registration confirmations.
 
-### Modifying System Workflow Message Templates
+## Modifying System Workflow Message Templates
 
 The content and layout of these messages are pre-configured and include program logic to display all the data being sent to your constituents (e.g. contribution amount, payment method, event fees, etc.). Navigate to Administer > Communication > Message Templates (shown in the following screenshot) and click the System Workflow Message tab to see the list of messages you can modify.
 
 Both HTML and Text formats are provided. Your organization may want to modify or add text to these emails, or add branding such as a logo to the HTML versions. Use caution when editing so as not to modify the program logic. Be sure to test the workflow and review the emails sent after making any changes. In most cases, you can restrict your changes to the the top row in the HTML layout. If you find that your changes have caused problems, errors or missing information, you can always revert to the system default for that workflow.
 
-### Upgrades and Customized System Workflow Templates
+## Upgrades and Customized System Workflow Templates
 
 When your site is upgraded to a new version of CiviCRM there may be changes needed in the message template program logic to support new features. You will be notified during the upgrade that changes are required. **However, you will need to apply these changes manually for any workflow templates which you have modified previously**. Follow these steps:
 
@@ -29,7 +27,7 @@ When your site is upgraded to a new version of CiviCRM there may be changes need
 * Copy / paste your customized changes from your text editor copies back into the new version in the CiviCRM screen. If you've only made changes to the header / introductory section of the message - this should be pretty straightforward. Otherwise you may need to use a command line tool like 'diff' to make sure you've caught all the changes needed.
 * Save your newly customized version of the messages.
 
-### Working with User-driven Messages
+## Working with User-driven Messages
 
 You can personalize your messages by including "tokens" to represent fields (like a contact's "first name") in your message's subject and body. These "tokens" will be replaced with the actual value of the corresponding field in your message (EXAMPLE: Dear{contact.first_name} = Dear Jose, Dear Vanessa, etc.)
 
@@ -40,7 +38,7 @@ If you are using the CiviMember component, you can also use a message template t
     If you need to add custom logic to a system message template, [you can do so using "Smarty" coding](https://wiki.civicrm.org/confluence/display/CRMDOC41/Smarty+in+mail+templates).
 
 
-### Configure Message Templates
+## Configure Message Templates
 
 To configure message templates, begin at the **Administer CiviCRM** page.
 
@@ -54,7 +52,7 @@ Click **add one** to create a new template.
 
 You can create NEW message templates or **Edit** , **Preview** , **Disable** or **Delete** EXISTING message templates using the links to the right of each template.
 
-#### NEW
+### NEW
 
 To create a NEW message template, choose **>>New Message Template**
 
@@ -77,11 +75,12 @@ Click **Save** to save the template or **Cancel** to cancel.
 If successful, you will see the message:
 
 > "The Message Template "Membership Renewal Initial Message" has been saved."
-#### EXISTING
+
+### EXISTING
 
 For EXISTING templates you can **Edit** , **Disable** or **Delete** each template using the links to the right of each template.
 
-#### EDIT
+### EDIT
 
 Select **Edit** to view the Edit Template page where you can change the values for each option. Here you can also enable/disable the template by checking or unchecking the box labeled **Enabled?** at the bottom of the page.
  Click **Save** to save the template.
@@ -89,7 +88,8 @@ Select **Edit** to view the Edit Template page where you can change the values f
 If successful, you will see the message:
 
 > The Message Template "Membership Renewal Initial Message" has been saved.
-#### DISABLE
+
+### DISABLE
 
 Select **Disable** to temporarily disable an Existing Template. You will see the warning:
 
@@ -99,13 +99,15 @@ Click **OK** to continue or **Cancel** to cancel disabling the template.
 
 To re-enable the template, simply click on **Enable**.
 
-#### DELETE
+### DELETE
 
 Select **Delete** to delete the template. You will be given this warning:
 
 > Do you want to delete this message template?
 
-Click **Delete** to continue or **Cancel** to cancel the deletion.# Smarty in mail templates
+Click **Delete** to continue or **Cancel** to cancel the deletion.
+
+## Smarty in mail templates
 
 Mail templates use Smarty to include variables, tokens & functions. A more thorough tutorial can be found at [http://www.smarty.net/manual](http://www.smarty.net/manual).
 
@@ -122,7 +124,7 @@ Place the following below the line define( 'CIVICRM_MEMCACHE_PREFIX', '' ); Or i
 define( 'CIVICRM_MAIL_SMARTY', 1 );
 ```
 
-## Tips
+### Tips
 
 To make CiviCRM tokens available to Smarty functions, one must use the `{capture}` function:
 

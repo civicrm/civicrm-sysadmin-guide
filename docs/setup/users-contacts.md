@@ -1,9 +1,6 @@
-# How are Drupal or Joomla Users Linked to CiviCRM Contact
-              Records
+# How are Drupal or Joomla Users Linked to CiviCRM Contact Records
 
-## When Does CiviCRM Create a Contact Record for a User? When is a User Linked to an Existing Contact?
-
-### Drupal behavior:
+## Drupal behavior:
 
 Whenever a new user **registers** , CiviCRM checks for an existing contact with the same email address.
 
@@ -12,7 +9,7 @@ Whenever a new user **registers** , CiviCRM checks for an existing contact with 
 
 Whenever an existing user **logs in** , CiviCRM checks for a linked contact record. If none exists, the same logic applies - either link the user to an existing contact or create a new contact. This case applies when CiviCRM is installed or enabled for an existing Drupal site. However, we recommend that you run the batch synchronization utility (next section) in this situation.
 
-### Joomla behavior:
+## Joomla behavior:
 
 CiviCRM does not natively use the hooks and APIs of Joomla to facilitate hooking into the user registration and login pages. As a result, in com_user neither a new user registration nor an existing user login alone will trigger the above check for a corresponding CiviCRM contact. Instead, this check is made whenever a logged in Joomla user engages in a transaction with the CiviCRM system, such as editing a CiviCRM **Profile** form, making a **Contribution** or registering a **Membership**. You can, however, replace the Joomla registration form with a form that using a CiviCRM profile that has registration enabled.
 
@@ -27,27 +24,28 @@ CiviCRM does not natively use the hooks and APIs of Joomla to facilitate hooking
 
 However, you can create a user plugin that responds to one or more of the user events. In Joomla 1.5 those are:
 
-*onBeforeStoreUser
- *onAfterStoreUser
- *onBeforeDeleteUser
- *onAfterDeleteUse
- *onLoginUser
- *onLogouUser
+* onBeforeStoreUser
+* onAfterStoreUser
+* onBeforeDeleteUser
+* onAfterDeleteUse
+* onLoginUser
+* onLogouUser
 
 In 1.6 those are
 
-*onUserAfterDelete
- *onUserAfterSave
- *onUserBeforeDelete
- *onUserBeforeSave
- *onUserLogin
- *onUserLogout
+* onUserAfterDelete
+* onUserAfterSave
+* onUserBeforeDelete
+* onUserBeforeSave
+* onUserLogin
+* onUserLogout
 
 ## WordPress Behavior
 
-CiviCRM used the add_action function to listen to the wordpress functions: 'user_register' and 'profile_update'. In both cases CiviCRM synchronizes the WP user account with the CiviCRM contact. Currently CiviCRM only sync the WP email field with the CiviCRM contact.# Synchronize Users-to-Contacts
+CiviCRM used the add_action function to listen to the wordpress functions: 'user_register' and 'profile_update'. In both cases CiviCRM synchronizes the WP user account with the CiviCRM contact. Currently CiviCRM only sync the WP email field with the CiviCRM contact.
 
-##### Return to [Administrator's Guide (supplement)](https://wiki.civicrm.org/confluence/pages/viewpage.action?pageId=47710554)
+
+## Synchronize Users-to-Contacts
 
 ### Synchronize Users-to-Contacts Overview
 

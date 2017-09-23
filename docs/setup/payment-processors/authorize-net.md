@@ -5,7 +5,7 @@
     You can select Authorize.net AIM (Advanced Integration Method) as the Payment Processor for your CiviCRM online contributions, membership sign-up and event registration as of version 1.7. This page describes the configuration requirements and steps.
 
 
-### PHP Configuration Requirements
+## PHP Configuration Requirements
 
 The following PHP extensions must be enabled in order for CiviCRM to interface with Authorize.Net's payment services:
 
@@ -13,14 +13,6 @@ The following PHP extensions must be enabled in order for CiviCRM to interface w
 * PHP cURL extension for PHP 4.3.0+ and higher with SSL support
 
 Use phpInfo() to check for these extensions. The easiest way to do this is to create info.php in the doc root. (The doc root is the primary directory for your website.) The text for the info.php file is:
-
- <?php
-
- // Show all information, defaults to INFO_ALL
-
- phpinfo();
-
- ?>
 
 Go to [your_website_url]/info.php. The phpinfo function returns **a lot** of information. Use your browser's search function to look for:
 
@@ -39,7 +31,7 @@ CURL support =&gt; enabled
 
 The MHash extension is also recommended, although not required.
 
-### Live vs Test
+## Live vs Test
 
 Authorize.Net has a test server on which you can sign up for a Developer Test Account (see [https://developer.authorize.net/testaccount/](https://developer.authorize.net/testaccount/)). A developer test account behaves like a regular merchant account but processes no live credit card transactions and, in fact, will accept certain "fake" credit cards that you can use for test transactions. A developer test account has its own URL and login credentials, separate from those of your merchant account.
 
@@ -55,7 +47,7 @@ CiviCRM's default behavior is to set x_test_request to TRUE for all "test-drive"
 
 Further details about the different test settings in Authorize.net may be found at [http://developer.authorize.net/guides/DPM/Test_transactions.html](http://developer.authorize.net/guides/DPM/Test_transactions.html).
 
-### Advanced Integration Method vs Simple Integration Method
+## Advanced Integration Method vs Simple Integration Method
 
 For Authorize.Net **Advanced Integration Method (AIM)**, card information is submitted to the server. The server then takes all submitted information, and submits it to Authorize.Net as an HTTP Post form. A reply is then received, which consists of a single CSV line. This reply is parsed to determine success or failure, and if failure, the reason for failure.
 
@@ -63,7 +55,7 @@ For **Simple Integration Method (SIM)**, the client submits the form to Authoriz
 
 **At this time, CiviCRM only supports the Advanced Integration Method.**
 
-### Configure API Access
+## Configure API Access
 
 **NOTE:** The following assumes that you already have an Authorize.Net merchant account. If you don't, you can go to [http://www.authorize.net](http://www.authorize.net) to sign up.
 
@@ -100,7 +92,7 @@ If you would like to use an Authorize.net Developer Test Account, you can sign u
     Remember that credit card information is being transmitted to the server. **Unless the site is specifically being used for testing, and no live transactions will take place, it is highly recommended that Force Secure URLs be set**
 
 
-#### Automated Recurring Billing
+### Automated Recurring Billing
 
 Authorize.net offers a recurring payment system called Automated Recurring Billing (ARB) for an additional fee. Your **Settings - Payment Processor** page will automatically populate with the standard Recurring Payments URL, but you will need to enable the ARB service in order for recurring contributions to work.
 
@@ -118,18 +110,18 @@ If you fail to do this, one-time contributions will succeed normally, and recurr
 
 Important: if you are using a different domain for sandbox/staging or a local installation, you can create test transactions from your local that will be handled by Auth.net (hopefully you're doing this under one of the various test configurations described above), but note that Auth.net will attempt to use the above URL (your production site) to notify CiviCRM, so your staging/local installation will never hear back from CiviCRM unless you change the URL in Auth.net (which you probably don't want to do if you have a live site running).
 
-### Other Authorize.Net settings
+## Other Authorize.Net settings
 
 * **Card Code Verification (CCV)** and **Address Verification Service** are free and part of your account. They do need to be configured to be used. If used, they will help prevent credit card fraud.
 * **Email Receipt** : The emailCustomer AuthorizeNet parameter is hard-coded in CRM/Core/Payment/AuthorizeNet.php to TRUE, so anyone who pays will get an email notification.
 
-### Accepted Credit Cards
+## Accepted Credit Cards
 
 * To see the list of credit cards that Authorize.Net will process, select **Merchant Profile** in the Authorize.Net **Account Settings** screen.
 * In the **Administer CiviCRM** screen, select **Accepted Credit Cards**
 * Disable any cards which are not accepted. If there are any cards accepted which are not listed, add them.
 
-### Testing
+## Testing
 
 The following card numbers can be used for testing:
 
@@ -141,23 +133,25 @@ The following card numbers can be used for testing:
 
 These numbers will always succeed in test mode as long as the expiration date is in the future. You can enter any value for the Security Code (CVV) when testing.
 
-### Testing of recurring transactions
+## Testing of recurring transactions
 
 Testing recurring transactions is problematic because of the long delay between entering transactions and the time (usually about 3AM mountain standard time daily) that Authorize.net actually processes the transactions and calls back to civicrm with the results.
 
-#### Shell script testing method
+### Shell script testing method
 
 Developers can use a shell script like the one below to call the authorizeIPN.php script to simulate a callback for a recurring transaction from authorize.net and test that recurring transactions are handled properly by civicrm.
 
 Note that you must modify the URL to match your own web site and various other parameters to match an actual existing recurring transaction on your site:
 
-> #!/bin/sh
->
-> curl http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test (etc. - see list of needed codes below)
+```bash
+#!/bin/sh
+
+curl http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test
+```
 
 _Note that the script above has not been tested and will need some work to determine the exact parameters needed. See alternate testing method below for an idea of what the parameters should look like._
 
-#### Online form testing method
+### Online form testing method
 
 Another way to test the authorize.net IPN system for recurring transactions is to create a web page with a form as in the code below. Edit the input fields to match a recurring transaction that has been submitted and that is in your database. Then upload the form to a website and click the submit button to similate an authorize.net IPN response. Note that you'll need to change the x_trans_id each time you submit the form, and each time you submit the form CiviCRM will create a new contribution.
 
@@ -170,56 +164,60 @@ Another way to test the authorize.net IPN system for recurring transactions is t
 
 One common problem with IPN responses is that your web host may accept connections internally but not from an external host. So the form may work when hosted on your own web site, but not when hosted externally (or called from authorize.net's servers). You can post the form on a site like [http://jsfiddle.net](http://jsfiddle.net) to test IPN calls from an outside host.
 
-> <form action="http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php" method="post">
->
-> <input type="hidden" name="x_response_code" value="1"/>
-> <input type="hidden" name="x_response_subcode" value="1"/>
-> <input type="hidden" name="x_response_reason_code" value="1"/>
-> <input type="hidden" name="x_response_reason_text" value="This
-> transaction has been approved."/>
-> <input type="hidden" name="x_auth_code" value=""/>
-> <input type="hidden" name="x_avs_code" value="P"/>
-> <input type="hidden" name="x_trans_id" value="6456235754test"/>
-> <input type="hidden" name="x_invoice_num" value="13514"/>
-> <input type="hidden" name="x_description" value=""/>
-> <input type="hidden" name="x_amount" value="1.00"/>
-> <input type="hidden" name="x_method" value="CC"/>
-> <input type="hidden" name="x_type" value="auth_capture"/>
-> <input type="hidden" name="x_cust_id" value="102"/>
-> <input type="hidden" name="x_first_name" value="John"/>
-> <input type="hidden" name="x_last_name" value="Smith"/>
-> <input type="hidden" name="x_company" value=""/>
-> <input type="hidden" name="x_address" value=""/>
-> <input type="hidden" name="x_city" value=""/>
-> <input type="hidden" name="x_state" value=""/>
-> <input type="hidden" name="x_zip" value=""/>
-> <input type="hidden" name="x_country" value=""/>
-> <input type="hidden" name="x_phone" value=""/>
-> <input type="hidden" name="x_fax" value=""/>
-> <input type="hidden" name="x_email" value=""/>
-> <input type="hidden" name="x_ship_to_first_name" value=""/>
-> <input type="hidden" name="x_ship_to_last_name" value=""/>
-> <input type="hidden" name="x_ship_to_company" value=""/>
-> <input type="hidden" name="x_ship_to_address" value=""/>
-> <input type="hidden" name="x_ship_to_city" value=""/>
-> <input type="hidden" name="x_ship_to_state" value=""/>
-> <input type="hidden" name="x_ship_to_zip" value=""/>
-> <input type="hidden" name="x_ship_to_country" value=""/>
-> <input type="hidden" name="x_tax" value="0.0000"/>
-> <input type="hidden" name="x_duty" value="0.0000"/>
-> <input type="hidden" name="x_freight" value="0.0000"/>
-> <input type="hidden" name="x_tax_exempt" value="FALSE"/>
-> <input type="hidden" name="x_po_num" value=""/>
-> <input type="hidden" name="x_MD5_Hash" value="A375D35004547A91EE3B7AFA40B1E727"/>
-> <input type="hidden" name="x_cavv_response" value=""/>
-> <input type="hidden" name="x_test_request" value="false"/>
-> <input type="hidden" name="x_subscription_id" value="21930455"/>
-> <input type="hidden" name="x_subscription_paynum" value="1"/>
-> <input type="submit"/>
-> </form>
-### Additional Documentation
+```html
+<form action="http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php" method="post">
+  <input type="hidden" name="x_response_code" value="1"/>
+  <input type="hidden" name="x_response_subcode" value="1"/>
+  <input type="hidden" name="x_response_reason_code" value="1"/>
+  <input type="hidden" name="x_response_reason_text" value="This transaction has been approved."/>
+  <input type="hidden" name="x_auth_code" value=""/>
+  <input type="hidden" name="x_avs_code" value="P"/>
+  <input type="hidden" name="x_trans_id" value="6456235754test"/>
+  <input type="hidden" name="x_invoice_num" value="13514"/>
+  <input type="hidden" name="x_description" value=""/>
+  <input type="hidden" name="x_amount" value="1.00"/>
+  <input type="hidden" name="x_method" value="CC"/>
+  <input type="hidden" name="x_type" value="auth_capture"/>
+  <input type="hidden" name="x_cust_id" value="102"/>
+  <input type="hidden" name="x_first_name" value="John"/>
+  <input type="hidden" name="x_last_name" value="Smith"/>
+  <input type="hidden" name="x_company" value=""/>
+  <input type="hidden" name="x_address" value=""/>
+  <input type="hidden" name="x_city" value=""/>
+  <input type="hidden" name="x_state" value=""/>
+  <input type="hidden" name="x_zip" value=""/>
+  <input type="hidden" name="x_country" value=""/>
+  <input type="hidden" name="x_phone" value=""/>
+  <input type="hidden" name="x_fax" value=""/>
+  <input type="hidden" name="x_email" value=""/>
+  <input type="hidden" name="x_ship_to_first_name" value=""/>
+  <input type="hidden" name="x_ship_to_last_name" value=""/>
+  <input type="hidden" name="x_ship_to_company" value=""/>
+  <input type="hidden" name="x_ship_to_address" value=""/>
+  <input type="hidden" name="x_ship_to_city" value=""/>
+  <input type="hidden" name="x_ship_to_state" value=""/>
+  <input type="hidden" name="x_ship_to_zip" value=""/>
+  <input type="hidden" name="x_ship_to_country" value=""/>
+  <input type="hidden" name="x_tax" value="0.0000"/>
+  <input type="hidden" name="x_duty" value="0.0000"/>
+  <input type="hidden" name="x_freight" value="0.0000"/>
+  <input type="hidden" name="x_tax_exempt" value="FALSE"/>
+  <input type="hidden" name="x_po_num" value=""/>
+  <input type="hidden" name="x_MD5_Hash" value="A375D35004547A91EE3B7AFA40B1E727"/>
+  <input type="hidden" name="x_cavv_response" value=""/>
+  <input type="hidden" name="x_test_request" value="false"/>
+  <input type="hidden" name="x_subscription_id" value="21930455"/>
+  <input type="hidden" name="x_subscription_paynum" value="1"/>
+  <input type="submit"/>
+</form>
+```
 
-For more information on the Authorize.Net Advanced Integration Method, see the AIM guide: [http://www.authorize.net/support/AIM_guide.pdf](http://www.authorize.net/support/AIM_guide.pdf)# eProcessing Network Configuration (via Authorize.net Emulation)
+## Additional Documentation
+
+For more information on the Authorize.Net Advanced Integration Method, see the AIM guide: [http://www.authorize.net/support/AIM_guide.pdf](http://www.authorize.net/support/AIM_guide.pdf)
+
+
+## eProcessing Network Configuration (via Authorize.net Emulation)
 
 !!! note
 

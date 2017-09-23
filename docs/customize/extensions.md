@@ -1,20 +1,5 @@
 # Extensions
 
-* Enabling extensions
-
-* Drupal
-* Joomla
-* WordPress
-
-* Installing a new extension
-
-* Disable automatic installations of extension
-* Enabling and disabling extensions
-
-* Upgrading extensions
-* Uninstalling extensions
-* How to use extensions
-
 !!! tip "See Comparison of Add-On Formats"
 
     There are many ways to extend CiviCRM with benefits and drawbacks for each. See [Add-on Formats](https://wiki.civicrm.org/confluence/display/CRMDOC/Add-on+Formats) to help decide which is appropriate for your current needs. This page covers "native" CiviCRM extensions - which are NOT restricted to use with a specific CMS. CiviCRM can also be "extended and customized" using CMS-specific extensions - e.g Drupal modules, Joomla components, and WordPress plugins. Refer to the [add-on formats page](https://wiki.civicrm.org/confluence/display/CRMDOC/Add-on+Formats) on this wiki and to each CMS's documentation for more information.
@@ -25,7 +10,7 @@
     To find out more about developing CiviCRM Extensions, please visit [Create an Extension](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+an+Extension) page.
 
 
-# Enabling extensions
+## Enabling extensions
 
 CiviCRM extensions allow you to install additional features for your site. They can provide new functionality in many areas including: Custom Searches, Report Templates and Payment Processors. CiviCRM "native" extensions which have been shared using the [Extensions Directory on CiviCRM.org](http://civicrm.org/extensions) and which have a stable release compatible with your version of CiviCRM can be installed automatically from Administer >> System Settings >> Manage Extensions.
 
@@ -40,25 +25,25 @@ Configure the extensions directory:
     It's important to put your extensions directory outside of the $civicrm_home directory (the one where your codebase is installed) in order to avoid problems during upgrade. The extensions directory must be readable (so it can execute the extension code) and write-able (so it can download initial and updated versions of extensions) by your web server.
 
 
-!!! tip "Suggested directory location"
+### Suggested directory location
 
-    ##### Drupal
+#### Drupal
 
-    Remembering that mysite == default for most single site installs:
+Remembering that mysite == default for most single site installs:
 
-    <docroot>/sites/mysite/files/civicrm/custom_ext
+<docroot>/sites/mysite/files/civicrm/custom_ext
 
-    This puts it beside the custom_php and custom_tpl directories that many people place in <docroot>/sites/mysite/files/civicrm/. The benefit of being under the files directory here is that it is the standard place for a writeable directory. However, it might be good to move the custom_php and custom_tpl directories out of the files subdirectory and put all of three them beside the files directory in order to prevent things like file uploader extensions from overwriting files in these directories. In other words:
+This puts it beside the custom_php and custom_tpl directories that many people place in <docroot>/sites/mysite/files/civicrm/. The benefit of being under the files directory here is that it is the standard place for a writeable directory. However, it might be good to move the custom_php and custom_tpl directories out of the files subdirectory and put all of three them beside the files directory in order to prevent things like file uploader extensions from overwriting files in these directories. In other words:
 
-    <docroot>/sites/mysite/custom_ext
+<docroot>/sites/mysite/custom_ext
 
-    ##### Joomla
+#### Joomla
 
-    <docroot>/media/civicrm/custom_ext
+<docroot>/media/civicrm/custom_ext
 
-    ##### WordPress
+#### WordPress
 
-    <docroot>/wp-content/plugins/files/civicrm/custom_ext
+<docroot>/wp-content/plugins/files/civicrm/custom_ext
 
 
 Configure the extensions resource url:
@@ -113,7 +98,7 @@ This list is automatically downloaded from available and compatible native exten
     ```
 
 
-# Installing a new extension
+## Installing a new extension
 
 In order to install a listed extension all you need to do is to click "Install" link next to given extension. The extensions package will be downloaded and set up for use in your system. Extensions may update your database and affect how your CiviCRM site functions. Best practice is to install any new extension on a test copy of your site first and verify that it functions as expected.
 
@@ -141,7 +126,7 @@ As a result of disabling the automatic installations of extensions, on the New E
 
 If you installed an extension, but don't want functionality provided by it to be available in the system, you can click the "Disable" link next to the installed extension.
 
-# Upgrading extensions
+## Upgrading extensions
 
 If new version of an extension installed in your system becomes available, you will see an "Upgrade" link next to it – clicking it will upgrade the extension's source code. If there are also database changes, then a new alert will prompt you to apply them as well.
 
@@ -152,13 +137,6 @@ If new version of an extension installed in your system becomes available, you w
     * If the extension is a 3.x-style specialized extension (i.e. "Payment Processor Extension", "Custom Search Extension", or "Report Extension"), then both the _source code_ and the _metadata_ will be uninstalled and reinstalled. (3.x-style extensions should not have other data.)
     * If the extension is a 4.2+-style module extension, then the _source code_ will be uninstalled and reinstalled, but the _metadata_ will be modified in-place, and (if applicable and if approved by the admin) the database will be upgraded using [hook_civicrm_upgrade](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade) (or, more specifically, using an [Upgrader](http://wiki.civicrm.org/confluence/display/CRMDOC43/Create+a+Module+Extension#CreateaModuleExtension-Addadatabaseupgrader) class).
 
-# Uninstalling extensions
+## Uninstalling extensions
 
 In order to uninstall extension, you need to disable it first - once disabled, you will see the "Uninstall" link. Click it in order to completely remove the extension from your system, including permanent deletion all of its custom data. To preserve the data, take a backup before uninstalling.
-
-# How to use extensions
-
-Some of the extensions available for CiviCRM include:
-
-* [CiviDiscount Extension Module](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviDiscount+Extension+Module)
-* [Extended Reports Module](https://wiki.civicrm.org/confluence/display/CRMDOC/Extended+Reports+Extension)

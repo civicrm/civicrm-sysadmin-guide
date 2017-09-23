@@ -32,8 +32,6 @@
 
     * **Upgrades from 4.2.x** : If you are running scheduled jobs using CLI.php, you will need to reconfigure cron to include a password. Scheduled jobs will no longer run if the password is not provided ([learn more](http://wiki.civicrm.org/confluence/display/CRMDOC43/Managing+Scheduled+Jobs)).
 
-# Step-by-step Upgrade Procedures
-
 ## Download the most recent CiviCRM Package
 
 * The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
@@ -47,9 +45,9 @@ Refer to the [MySQL reference manual](http://dev.mysql.com/doc/refman/5.1/en/mys
 **Make a backup/copy of civicrm settings file** :
 
 1. For Versions installed prior to 4.7 - <wordpress_root>/wp-content/plugins/civicrm/civicrm.settings.php. (This will be useful for relocating.)
-
     1. For Versions installed 4.7+ - /wordpress_root/content-dir/uploads/civicrm/civicrm.settings.php
         1. The installer in 4.7 does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed here [https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
+
 1. If you are using the <wordpress_root>/wp-content/plugins/civicrm/civicrm/settings_location.php file in your implementation, make a copy of this as well.
 
 **CiviCRM will not run properly if files from previous version are present after the upgrade.** Make sure you have a good backup of your complete previous version installation and then delete /_wp-content/plugins_/civicrm.
@@ -62,20 +60,21 @@ Refer to the [MySQL reference manual](http://dev.mysql.com/doc/refman/5.1/en/mys
 ## Unpack the latest package and relocate settings file/s
 
 * Unpack the files into <wordpress home>/wp-content/plugins/.
-```
-// Modify this line to use your real WordPress root folder and the exact name of your content-dir (typically wp-content)
-cd <wordpress home>/<content-dir>/plugins
-// Modify this line with the actual downloaded package file name
-unzip civicrm_download_file.zip
-```
+    ```
+    // Modify this line to use your real WordPress root folder and the exact name of your content-dir (typically wp-content)
+    cd <wordpress home>/<content-dir>/plugins
+    // Modify this line with the actual downloaded package file name
+    unzip civicrm_download_file.zip
+    ```
+    
 * For Versions installed prior to 4.7 - Relocate (paste) the backed-up civicrm.settings.php file(in step 2) inside <wordpress home>/wp-content/plugins/civicrm/
 
 * If you have upgraded from a CiviCRM 4.1 version, check the contents of civicrm.settings.php. Make sure at the very end of the file these 2 lines exist, and if not, add them.
 
-```
-require_once 'CRM/Core/ClassLoader.php';
-CRM_Core_ClassLoader::singleton()->register();
-```
+    ```
+    require_once 'CRM/Core/ClassLoader.php';
+    CRM_Core_ClassLoader::singleton()->register();
+    ```
 
 * If you are using the <wordpress_root>/<content-dir>/plugins/civicrm/civicrm/settings_location.php file in your implementation, relocate this file from your back-up.
 
@@ -122,14 +121,15 @@ If you don't have SSH access and your IP panel does not recognize tar files, you
 
 * Point your web browser to the following URL (you should already be logged in to Wordpress with administrator-level permissions):
 
-```
-http://<your_wordpress_home>/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1
-```
+    ```
+    http://<your_wordpress_home>/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1
+    ```
 
 * You should see the Upgrade screen.
 * If you are ready to upgrade, click the **Upgrade Now** button.
 * You should see the message **Upgrade successful** when the upgrade completes.
     * If you receive any errors during the process, please note down the exact error message, and check for solutions on the [community support forum](http://forum.civicrm.org/).
+    
 * Now click the **Return to CiviCRM home page** link. This will rebuild CiviCRM menus automatically and return you to the CiviCRM home dashboard.
 
 ## Verify and Update Resource URL Settings
@@ -147,41 +147,43 @@ If your organization has modified the default versions of System Workflow messag
 
 Check this section for answers to upgrade problems. If your problem isn't addressed here, check out the **[Installation and Configuration Trouble-shooting](https://wiki.civicrm.org/confluence/display/CRMDOC41/Installation+and+Configuration+Trouble-shooting)** page for additional resources.
 
-#### You do not have sufficient permissions to access this page.
+### You do not have sufficient permissions to access this page.
 
 If you get this error when trying to run the upgrade script(step 4), you most likely deactivated CiviCRM plugin during the upgrade process. You just have to visit <wordpress_home>/wp-admin/plugins.php and activate the plugin, and then proceed with step 4 .
 
-#### Reset Your User Session
+### Reset Your User Session
 
 If you are getting foreign key constraint errors when trying to add or modify records, you may need to reset your user session.
 
 * Temporarily enable CiviCRM debug features:
     * Go to **Administer CiviCRM** » **System Settings** » **Debugging and Error Handling**
     * Set **Enable Debugging** to Yes and click Save.
+    
 * Click the Administer CiviCRM menu (or any other CiviCRM menu item). After the page is loaded, add an additional query string value (sessionReset=2) to the URL in your browser's location bar, and reload the page.
-```
-// Example URL
-http://...../?q=civicrm/admin&sessionReset=2
-```
+    ```
+    // Example URL
+    http://...../?q=civicrm/admin&sessionReset=2
+    ```
+    
 * Now reset **Enable Debugging** to No and click Save.
 
 !!! danger "Do Not Leave Debug Features Enabled for a Public Site"
- Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information. |
+    Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information. |
 
-#### Verify and Update Base Directory and Base URL Settings in the Database
+### Verify and Update Base Directory and Base URL Settings in the Database
 
 If you are seeing problems with missing images or page styling, you may need to adjust the Base Directory and Base URL Settings in the database. You can do this from:
 **Administer CiviCRM** » **System Settings** » **Cleanup Caches and Update Paths**
 
-#### Foreign Key Errors or Warnings During the Database Upgrade
+### Foreign Key Errors or Warnings During the Database Upgrade
 
 Foreign keys may have been assigned different names on some installations. Also, different versions of MySQL handle the dropping and adding of constraint checks differently. Try [this procedure](https://wiki.civicrm.org/confluence/display/CRMDOC41/Ensuring+Schema+Integrity+on+Upgrades) or [this procedure (on the forum)](http://forum.civicrm.org/index.php/topic,4259.msg21599.html#msg21599) to reload your data into a new 4.0 database structure if you are having this type of issue with upgrading your database.
 
-#### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
+### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
 
 Download and run [Database Troubleshooting Tools](https://wiki.civicrm.org/confluence/display/CRMDOC41/Database+Troubleshooting+Tools) to test the current state of the database and provides a diagnosis. The tools suite also includes a repair facility.
 
-#### The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
+### The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
 
 You can re-build the menu/admin dashboard by visiting the following url -
 

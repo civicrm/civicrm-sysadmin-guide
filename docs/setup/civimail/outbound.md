@@ -1,8 +1,8 @@
-# Outbound Email (SMTP)
+# Outbound Email
 
-##### Return to [System Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/System+Settings) Main Page
+## SMTP
 
-### Outbound Email (SMTP) - SMTP server, port and authentication settings for outbound email.
+Outbound Email (SMTP) - SMTP server, port and authentication settings for outbound email.
 
 SMTP Server - Enter the name of the SMTP server (machine) in the form: smtp.example.com
 
@@ -45,9 +45,8 @@ If successful you will see the message "Your changes have been saved."
 
     Note: Could this be because the ssl:// was left out of the host name field (see above)?# CiviMail Mailer Settings
 
-##### Return to [CiviMail Admin](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Admin) Main Page
 
-### Mailer Settings for the optional CiviMail component.
+## Mailer Settings for the optional CiviMail component.
 
 These settings are used to configure mailer properties for the optional CiviMail component. They are NOT used for the built-in "Send Email to Contacts" feature. Refer to the CiviMail Guide for more information.
 
@@ -66,7 +65,7 @@ Click **Save** to save your action or **Cancel** to cancel it.
 
 If successful you will see the message "Your changes have been saved."
 
-#### Tips for determining a Mailer Batch Limit
+### Tips for determining a Mailer Batch Limit
 
 Assumptions: The scheduled task "Mailings scheduler" is set to run "always" and runs every time cron runs. If not then adjust accordingly.
 

@@ -1,4 +1,4 @@
-# Set-up
+# SMS Set-up
 
 In this chapter, the steps required to set up an SMS gateway will be
 explored. Once configured, you will be able to send text messages to
@@ -221,16 +221,14 @@ Once you have upgraded, your rented phone number will be available for full use,
 and charged against your Twilio credit. 
 
 You will now be able to send SMS to any phone number.
-# Setting up a SMS Provider for CiviSMSClickatellTwilio
+
+## Setting up a SMS Provider for CiviSMSClickatellTwilio
 
 This document serves to provide a description on how to Configure/Add a SMS Provider for the CiviSMS feature of CiviCRM.
 
 !!! danger "Mass SMS is broken on CiviCRM 4.6."
 
     Please see [CRM-17331](https://issues.civicrm.org/jira/browse/CRM-17331) for details. To fix this problem, either upgrade to CiviCRM 4.7 or backport the patch listed on CRM-17331.
-
-
-# Configure Clickatell or Twilio
 
 ## **Configure Clickatell**
 
@@ -360,9 +358,12 @@ If you want the incoming SMS to be recorded in CiviCRM, follow the steps:
 1. In Twilio account settings, go to Numbers and click on the number you want CiviCRM to "listen to". That will open configuration settings for that phone number. Under Messaging, change **Request URL** to [http://yoursiteurl/civicrm/sms/callback?provider=org.civicrm.sms.twilio](http://yoursiteurl/civicrm/sms/callback?provider=org.civicrm.sms.twilio) with **HTTP POST**
 1. In CiviCRM, under SMS Providers, edit your Twilio settings and add to API Parameters: mo=1 so that in API Parameters there is:
  From=+14165678901
- mo=1# Adding Sender ID(s) to your SMS messages (clickatell only)
+ mo=1
+ 
+ 
+## Adding Sender ID(s) to your SMS messages (clickatell only)
 
-## Register Sender ID
+### Register Sender ID
 
 First you need to register your new Sender ID(s) on the clickatell site:
 
@@ -378,7 +379,7 @@ After completing these steps, the online interface will guide you through the pr
 
 [Full documentation of Clickatell Sender ID](http://www.clickatell.com/downloads/Clickatell_Sender_ID_User_Guide.pdf)
 
-## Add to CiviSMS
+### Add to CiviSMS
 
 Once approved you can add the sender ID to your default account simply by adding the line:
 

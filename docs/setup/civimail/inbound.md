@@ -1,4 +1,6 @@
-# Bounce Handling
+# Handling inbound mail
+
+## Bounce Handling
 
 ### Mechanics of CiviCRM "bounce" handling
 
@@ -24,10 +26,8 @@ When the recipient's email server responds with a "bounce" email it could be for
 
 Here is a list from the database of the different types of bounces, and how many times each bounce must occur before CiviCRM deems **on hold** appropriate.
 
-```
-+----+----------+-----------------------------------------------+----------------+
-| id | name | description | hold_threshold |
-+----+----------+-----------------------------------------------+----------------+
+| id | name | description | `hold_threshold` |
+| -- | -- | -- | -- |
 | 1 | AOL | AOL Terms of Service complaint | 1 |
 | 2 | Away | Recipient is on vacation | 3 |
 | 3 | DNS | Unable to resolve recipient domain | 3 |
@@ -39,18 +39,12 @@ Here is a list from the database of the different types of bounces, and how many
 | 9 | Relay | Unable to reach destination mail server | 3 |
 | 10 | Spam | Message caught by a content filter | 1 |
 | 11 | Syntax | Error in SMTP transaction | 3 |
-+----+----------+-----------------------------------------------+----------------+
-```
+
 
 ### Removing Hold
 
-#### Version 3.2 and later
 
-**In version 3.2 and later** , Advanced Search has an option for finding "Email On Hold" contacts. By selecting some or all of the results and choosing "Unhold Emails", you can remove the hold from certain Contacts. Be careful removing Hold status from a Contact, as Hold status could exist for a very good reason.
-
-#### Version 3.1 and earlier
-
-**In version 3.1 and earlier,** the user could use the Search Builder function to find those contacts with an email **on hold.** The user could also look at the bounce report of a CiviMail sent message. However, once **on hold** a Contact may only be removed from this status by a CiviCRM user manually by editing a Contact's record page.
+The user could use the Search Builder function to find those contacts with an email **on hold.** The user could also look at the bounce report of a CiviMail sent message. However, once **on hold** a Contact may only be removed from this status by a CiviCRM user manually by editing a Contact's record page.
 
 ![](https://wiki.civicrm.org/confluence/download/attachments/86213661/on-hold-searchbuilder.png?version=1&modificationDate=1372586659000&api=v2)
 
@@ -58,8 +52,8 @@ As CiviCRM administrator, you could execute a series of queries aimed at searchi
 
 Hold status is recorded in the _civicrm_email_ table as column _on_hold_. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
 
-```
-update civicrm_email set on_hold = 0;
+```sql
+UPDATE civicrm_email SET on_hold = 0;
 ```
 
 **Warning:** backup your database before running any direct queries.
@@ -67,7 +61,7 @@ update civicrm_email set on_hold = 0;
 
 A more nuanced query might be something like:
 
-```
+```sql
 UPDATE civicrm_email ce
 INNER JOIN civicrm_contact c ON ( c.id = ce.contact_id )
 LEFT JOIN civicrm_group_contact gc ON ( gc.contact_id = c.id and gc.status = 'Added' )
@@ -86,9 +80,11 @@ If you cannot setup a catch all email and your server does not support VERP you 
 //if (!empty($headers['Return-Path'])) {
        // $from = $headers['Return-Path'];
        //}
-```# Step-by-step Return Channel on Drupal - Google Apps
+```
 
-## Steps to configure Return Channel with Drupal and Google Apps
+## Step-by-step Return Channel on Drupal - Google Apps
+
+### Steps to configure Return Channel with Drupal and Google Apps
 
 1. Set up Google Apps account: return@example.com
 1. Add the Google Apps return@example.com to CiviCRM
@@ -98,7 +94,7 @@ If you cannot setup a catch all email and your server does not support VERP you 
 1. Check the report
 1. Configure SPF
 
-## Set up Google Apps account: [return@example.com](mailto:return@example.com)
+### Set up Google Apps account: [return@example.com](mailto:return@example.com)
 
 The purpose of this step is to create an email account in your Google Apps that will be used for sending emails from CiviCRM and for bounce processing
 
@@ -119,7 +115,7 @@ The purpose of this step is to create an email account in your Google Apps that 
  (You may wish to also do Step 5 - Set up Spam Filter - at this point)
 1. Google has tightened down secure access to their systems. To get CiviCRM bounce processing to work you need to loosen security for the email account. To do this, make sure you are logged into this bounce email account and go to [https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps) and change the setting to **allow less restrictive access** , otherwise you will receive the following error when testing the bounce processing email in CiviCRM: (code: 534, response: 5.7.14 Please log in via your web browser and 5.7.14 then try again. 5.7.14 Learn more at 5.7.14 which means that Gmail blocked access from "a less secure app" (as per[https://support.google.com/accounts/answer/6010255)](https://support.google.com/accounts/answer/6010255))
 
-## Configure CiviCRM bounce processing email account
+### Configure CiviCRM bounce processing email account
 
 1. Log in to CiviCRM
 1. Administer -> CiviMail -> Mail Accounts
@@ -137,7 +133,7 @@ The purpose of this step is to create an email account in your Google Apps that 
     * Default Option?: Bounce Processing
 1. Save
 
-## Configure CiviCRM outbound email account
+### Configure CiviCRM outbound email account
 
 1. You are still logged in to CiviCRM
 1. Set CiviCRM's default FROM address
@@ -156,12 +152,12 @@ The purpose of this step is to create an email account in your Google Apps that 
         1. Contacts -> New Email
     1. Log in to Google Apps as return@example.com and confirm the email arrived
 
-## Enable Corresponding Scheduled Job
+### Enable Corresponding Scheduled Job
 
 1. This assumes you have already configured your scheduled jobs cron job according to: [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs).
 1. Enable the 'Fetch Bounces' job to run with the frequency setting set to 'Every time cron job is run'.
 
-## Set filters on return@example.com
+### Set filters on return@example.com
 
 1. Go to your return@example.com Google Apps account Spam folder
 1. Go to email
@@ -174,7 +170,7 @@ The purpose of this step is to create an email account in your Google Apps that 
 1. Click 'Create Filter'
 1. You may need to create other filters, as Google Mail has a tendency to send Mailer Daemon and Postmaster emails to the spam, and bounces can have a variety of 'from' sources. See example below for suggestions ![](https://wiki.civicrm.org/confluence/download/attachments/86213592/filters.png?version=1&modificationDate=1372586558000&api=v2)
 
-## Check the report
+### Check the report
 
 1. Send another test mailing
 1. Rerun your con jobs manually
@@ -183,15 +179,18 @@ The purpose of this step is to create an email account in your Google Apps that 
 1. Your bounce should show in the report
 1. If you open an email, it should show in the report
 
-## Configuring Sender Policy Framework (SPF)
+### Configuring Sender Policy Framework (SPF)
 
-* You can read more about SPF at [http://www.openspf.org](http://www.openspf.org)# Autofiling email activities via EmailProcessor
+* You can read more about SPF at [http://www.openspf.org](http://www.openspf.org)
 
-## Intro
+
+## Autofiling email activities via EmailProcessor
+
+### Intro
 
 The email processor is a function and scheduled job that will attempt to parse emails in an email account (e.g. a POP3/IMAP inbox) and record a copy as an activity in the contact records that correspond to the To:, Cc:, Bcc:, and From: fields. If no matching contact record is found, a new contact will be created and the email filed under that record.
 
-## Setup
+### Setup
 
 1. If you don't already have it enabled, enable CiviMail under Administer >> Configure >> Global Settings >> Enable CiviCRM Components. You don't need to fully configure or use CiviMail functionality, but it must be enabled in your system in order to activate the email autofiling tool. If you are using Drupal, set permissions to give you access to CiviMail.
 1. Under Administer CiviCRM >> CiviMail >> Mail Accounts, configure one or more email accounts. In the "Used For" field select Email-to-Activity Processing.
@@ -200,11 +199,9 @@ The email processor is a function and scheduled job that will attempt to parse e
 1. Optionally set it up to run regularly via [scheduled jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs).
 
 !!! note "Important note on bounce processing and processing incoming emails"
-
     Because the [Bounce Handling](https://wiki.civicrm.org/confluence/display/CRMDOC/Bounce+Handling) and [EmailProcessor](https://wiki.civicrm.org/confluence/display/CRMDOC41/Autofiling+email+activities+via+EmailProcessor) routines both process emails and then file them under "processed" and "ignored" emails, they cannot be used on the same email account. That is, you cannot use one email account for both bounce processing and email-to-activity processing. You need to set two separate accounts, one for bounce processing, and one for email-to-activity processing.
 
-
-| **Tip #2**
+#### Tip #2
 
 In the typical implementation you will create a single email account that is used solely for the purpose of autofiling as activities. As you interact with constituents using your email client, you may cc or bcc this account in order to have the email processed for the contact. While you may choose to process your normal incoming email accounts using this tool, doing so may unnecessarily clutter your system, as many inbound emails are not important enough to attach to a contact record in this way.
 
@@ -214,48 +211,44 @@ Another possible implementation to consider if your mail server supports IMAP is
 1. In step 2) above, in the Source field, enter the path to this folder. Note it will typically be "INBOX.civicrm", not just "civicrm".
 1. If you want an email in your inbox to be autofiled, move it into this folder. If your mail client supports it, make a copy of the email rather than simply move it, as you likely will want the email to remain in your Inbox or be filed in your primary folder structure.
 1. The processor will create subfolders INBOX.civicrm.CiviMail.processed and INBOX.civicrm.CiviMail.ignored, and will move the email into one of those when done.
- |
 
-| **Tip #3**
+#### Tip #3
 
 If you are using Thunderbird as your email program, there is a Bounce plugin that allows you to send a copy of the email to another address (in this case the single email address set up in Tip 2) with the headers intact the same as when it was sent to you. This is different from forwarding where you lose the original From, To, and Cc information, and so will allow the email processor to file it correctly.
 
- |
 
-| **Tip #4**
+#### Tip #4
 
 Another possibility if you are having trouble configuring a mail account to work with your specific server, is to use an intermediary. For example you could write a script to use a program like getmail to pull from the account into a local unix maildir, and then configure the CiviMail account to use the maildir protocol.
 
- |
+#### Tip #5
 
-| **Tip #5**
- If you’re using Gmail or Email via Google Apps, there is no built-in automatic cc or bcc function, but you can set up an automatic bcc by using a Greasemonkey script on Firefox browsers, or a Tampermonkey script on Google Chrome.
+If you’re using Gmail or Email via Google Apps, there is no built-in automatic cc or bcc function, but you can set up an automatic bcc by using a Greasemonkey script on Firefox browsers, or a Tampermonkey script on Google Chrome.
 
-**_Using Firefox:_**
+### Using Firefox:
 
- Install the Greasemonkey add-on for Firefox[https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
+####  Install the Greasemonkey add-on for Firefox[https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
 
- Install the "automatic bcc" Greasmonkey script: [http://userscripts.org/scripts/show/2255](http://userscripts.org/scripts/show/2255)
+Install the "automatic bcc" Greasmonkey script: [http://userscripts.org/scripts/show/2255](http://userscripts.org/scripts/show/2255)
 
- Restart Firefox.
+Restart Firefox.
 
- Login to your Gmail account using the Firefox browser and hit "Compose" for creating a new email. When the compose window opens up, you should see a dialog box from the "automatic bcc" Greasemonkey script that will prompt you to add a destination bcc email address. You may enter more than one email address separated by commas.
- As long as you use the Firefox browser and the Greasemonkey add-on is enabled, your emails will be automatically bcc’d to the email address(es) you specified in the dialog box.
+Login to your Gmail account using the Firefox browser and hit "Compose" for creating a new email. When the compose window opens up, you should see a dialog box from the "automatic bcc" Greasemonkey script that will prompt you to add a destination bcc email address. You may enter more than one email address separated by commas.
+As long as you use the Firefox browser and the Greasemonkey add-on is enabled, your emails will be automatically bcc’d to the email address(es) you specified in the dialog box.
 
- You can test that the script is working correctly by expanding the bcc section of your email compose screen. The bcc field should contain your automatic bcc addresses you entered in the dialog.
+You can test that the script is working correctly by expanding the bcc section of your email compose screen. The bcc field should contain your automatic bcc addresses you entered in the dialog.
 
 
-**_Using Google Chrome:_**
+### Using Google Chrome:
 
- Install the Tampermonkey add-on for Chrome:
-[https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+Install the Tampermonkey add-on for Chrome: [https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
- Install this “automatic bcc” script: [http://userscripts.org/scripts/show/2255](http://userscripts.org/scripts/show/2255)
+Install this “automatic bcc” script: [http://userscripts.org/scripts/show/2255](http://userscripts.org/scripts/show/2255)
 
- Restart Google Chrome.
+Restart Google Chrome.
 
- Login to your Gmail account using the Google Chrome browser and hit "Compose" for creating a new email. When the Compose window opens up, click on “add bcc” and a dialog box from the Tampermonkey script will prompt you to add a destination bcc email address. You may enter more than one email address separated by commas.
+Login to your Gmail account using the Google Chrome browser and hit "Compose" for creating a new email. When the Compose window opens up, click on “add bcc” and a dialog box from the Tampermonkey script will prompt you to add a destination bcc email address. You may enter more than one email address separated by commas.
 
- As long as you use the Google Chrome browser and the Tampermonkey add-on is enabled, your emails will be automatically bcc’d to the email address(es) you specified in the dialog box.
+As long as you use the Google Chrome browser and the Tampermonkey add-on is enabled, your emails will be automatically bcc’d to the email address(es) you specified in the dialog box.
 
- You can test that the script is working correctly by expanding the bcc section of your email compose screen. The bcc field should contain your automatic bcc addresses you entered in the dialog. |
+You can test that the script is working correctly by expanding the bcc section of your email compose screen. The bcc field should contain your automatic bcc addresses you entered in the dialog.

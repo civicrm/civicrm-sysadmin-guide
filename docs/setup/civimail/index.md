@@ -195,7 +195,7 @@ can be found in the civicrm_mailing_bounce_pattern and
 civicrm_mailing_bounce_type. Multiple different bounce reply patterns
 are linked to a given type and threshold.
 
-#### VERP support
+### VERP support
 
 If your mail delivery system does not support sending via VERP addresses, you
 may see an "Invalid address" error when sending mails. Either switch to a mail
@@ -207,7 +207,7 @@ provider which does support this, or disable VERP.
     header** at **Administer > CiviMail > CiviMail Component Settings**. This
     will reduce CiviCRM's ability to correctly match bounced messages.
 
-### **Email-to-Activity processing**
+### Email-to-Activity processing
 
 CiviCRM can automatically retrieve email from a specified inbox and file
 it as an email activity against contacts of type Individual corresponding to
@@ -305,7 +305,8 @@ Once you have verified that CiviCRM can properly handle the bounce, you
 can set it up to automatically process the replies and bounces on a
 regular basis.
 
-##Scheduling inbound and outbound mail processing
+
+## Scheduling inbound and outbound mail processing
 
 As discussed in the earlier chapter, mail processing and other jobs may
 be automated through the Scheduled Jobs administrative page, cron or a
@@ -409,7 +410,6 @@ PARAMSBOUNCE= -j -sdefault -umailprocess -pseol-lzprm42amv-psyc -e Job
 # m h dom mon dow command
 */5 * * * * cd $CIVI_ROOT; $PHP bin/cli.php $PARAMS
 */15 * * * * cd $CIVI_ROOT; $PHP bin/cli.php $PARAMSBOUNCE
-
 ```
 
 The user that run the scripts (*www-data* in this example) needs to be
@@ -429,15 +429,14 @@ processed.
 2.  The user login account (**-umailprocess**).
 3.  The password you defined (**-pseol-lzprm42amv-psyc**).
 
-## CiviMail Installation
 
-# Introduction
+## CiviMail Installation
 
 CiviMail installation consists of four parts: enabling the CiviMail component, setting up the SMTP configuration options, defining a cron job that will actually send the scheduled mailing, and choosing and setting up the return email channel.
 
 If you want to have an email system that works properly we **strongly recommend you read this entire chapter.** Skipping over any of these steps can result in high bounce rates, which can get your domain blacklisted. If after following these instructions your email system does not work, please read this chapter again. An older, yet more detailed version of these instructions, can be found at [http://en.flossmanuals.net/CiviCRM/SystemConfiguration](http://en.flossmanuals.net/CiviCRM/SystemConfiguration)[http://en.flossmanuals.net/civicrm/ch042_system-configuration/](http://en.flossmanuals.net/civicrm/ch042_system-configuration/)
 
-# Setting Up CiviMail
+### Setting Up CiviMail
 
 If the CiviMail component is not enabled, go to CiviCRM > Administer > System Settings > Enable CiviCRM Components and enable CiviMail.
 
@@ -445,7 +444,7 @@ Make sure your Organization Address and Contact info is set under CiviCRM > Admi
 
 Go to CiviCRM > Contacts > Manage Groups and click the "settings" link for the group you want to make available to CiviMail. Check the box that says "Mailing List". Save your settings and repeat for each additional group you would like to send mailings. If you do not complete this step, you will not see any groups when you try to send a mailing.
 
-## CMS User and Role
+### CMS User and Role
 
 For CiviMail to work in your environment you must create a CMS user with permissions to
 
@@ -455,7 +454,7 @@ For CiviMail to work in your environment you must create a CMS user with permiss
 
 You can use an existing CMS user and role however we recommend that you use a dedicated user and role (name them something like 'mailsender')
 
-## Setting Up the SMTP Configuration
+### Setting Up the SMTP Configuration
 
 Outbound email setting are configured at: Administer > System Settings > Outbound Email (SMTP/Sendmail). The choices here are:
 
@@ -464,7 +463,7 @@ Outbound email setting are configured at: Administer > System Settings > Outboun
 * Sendmail. This option is kept for compatibility with older CiviCRM versions.
 * Disable Outbound Email. Works as expected.
 
-## Setting Up the Cron Job
+### Setting Up the Cron Job
 
 To have your mailing actually send, set up a cron job that will periodically poke CiviMail to send all of the mailings that are past their scheduled date. **See [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) for more details**.
 
@@ -481,7 +480,7 @@ There are two methods to run the cron: From a Control Panel or from a command li
 1. Simply login and type: _crontab -e_ which will usually load the crontab for the current user using the vi or vim text editor
 1. If you prefer nano as an editor, you can type _env EDITOR=nano crontab -e_ on servers where nano is installed
 
-### Using the shell (CLI PHP) via Crontab
+#### Using the shell (CLI PHP) via Crontab
 
 Make sure php-cli is installed by running the following command in the shell:
 
@@ -543,7 +542,7 @@ You don't have to run both scripts at the same frequency. The preceding crontab 
 1. The password you defined ( **-p password** ).
 1. [The scheduled job](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) (-a)
 
-### Using wget via Crontab
+#### Using wget via Crontab
 
 **wget** will process an external URL (like CiviCRM's cron.php) and therefore will send CiviMail messages. You can run this script using either "GET" or "POST" methods. However, using "POST" with the authentication values stored in a file on your server is generally considered to be better security practice, especially on shared hosting. [Learn more ...](https://wiki.civicrm.org/confluence/display/CRMDOC/Running+Command-line+Scripts+via+URL)
 
@@ -614,9 +613,9 @@ Joomla: http://<site>/administrator/index.php?option=com_civicrm&task=civicrm/ma
 WordPress: http://<site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/mailing/queue&reset=1
 ```
 
-# Setting Up the Return Channel
+## Setting Up the Return Channel
 
-## Do You Need the Return Channel?
+### Do You Need the Return Channel?
 
 If you send emails and don't manage the bounce, you will be flagged as a spammer at one point or another. If you don't want that, you do want a return channel.
 
@@ -626,7 +625,7 @@ First, the return channel is required to track bounces and have the bouncing ema
 
 Second, the return channel is required if you want to handle SMTP (i.e., email-based) actions such as (un-, re-)subscribes and opt-outs - note that these actions have their HTTP (i.e., link-based) equivalents.
 
-## Possible Solutions for the Return Channel
+### Possible Solutions for the Return Channel
 
 There are four possible solutions for handling of the return channel.
 
@@ -640,12 +639,15 @@ There are four possible solutions for handling of the return channel.
     For Google Apps, however, see [http://wiki.civicrm.org/confluence/display/CRMDOC40/Step-by-step+Return+Channel+on+Drupal+-+Google+Apps+-+CentOS](http://wiki.civicrm.org/confluence/display/CRMDOC40/Step-by-step+Return+Channel+on+Drupal+-+Google+Apps+-+CentOS) for directions how to setup the return channel
 
 
-# Troubleshooting
+## Troubleshooting
 
 * The wiki article on [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) has a troubleshooting section with solutions for common problems that arise.
-* Not receiving the test email? Make sure your FROM address (Administer>CiviMail>From Email Addresses) matches your domain or is recognized as an email account by your ISP.# Domain Information
+* Not receiving the test email? Make sure your FROM address (Administer>CiviMail>From Email Addresses) matches your domain or is recognized as an email account by your ISP.
 
-##### Return to [Administrator's Guide (supplement)](https://wiki.civicrm.org/confluence/pages/viewpage.action?pageId=47710554)
+
+
+## Domain Information
+
 
 ### Edit Domain Information Overview
 
@@ -677,7 +679,10 @@ If successful, you will see the message
 
 > The Domain "Domain Name" has been saved.
 
-The Domain information will be listed. You can use the **Edit Domain Information >>** link at the bottom of the page for further edits.# CiviMail in a multisite
+The Domain information will be listed. You can use the **Edit Domain Information >>** link at the bottom of the page for further edits.
+
+
+## CiviMail in a multisite
 
 When setting up CiviMail for a multisite you should set up a Cron for each site. The reason for this is that the URL that is in any links in the mailing should point to the correct site. Some time ago it used to affect who received the mail too but an MIH for multisite mailings around 4.0 fixed this so that the mailing recipient list is generated when the CiviMail is generated - so that the creator's permissions are applied.
 

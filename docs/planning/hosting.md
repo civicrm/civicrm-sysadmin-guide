@@ -66,7 +66,7 @@ If you are already using a website host, contact your provider to
 determine whether they support the packages and libraries required by
 CiviCRM. If they do not, there are two options available to you:
 
-### **Migrate to another host**.
+### Migrate to another host
 
 Depending on the CMS you are using, the process of moving from one host
 to another may be fairly straightforward. You are in a good position to
@@ -78,7 +78,7 @@ transfer to another host if you can:
 3.  **edit your DNS records** to switch the 'pointers' to your
     website from the old host to the new host
 
-### **Run the website and CiviCRM in parallel, on different servers**.
+### Run the website and CiviCRM in parallel, on different servers
 
 If you cannot move your website to a different host, you could purchase
 a second account on a host capable of running CiviCRM, and run the two

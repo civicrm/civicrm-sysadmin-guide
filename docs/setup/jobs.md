@@ -29,7 +29,6 @@ There are two ways of configuring scheduled jobs:
 
 These methods are discussed below.
 
-
 ## What is cron?
 
 Cron (think "**cron**ology" or "**cron**ograph") is a time-based
@@ -44,7 +43,6 @@ work you will need to configure a web server CRON job. There are CRON
 configuration examples found in the [Running Command-line Scripts via
 URL](http://wiki.civicrm.org/confluence/display/CRMDOC/Running+Command-line+Scripts+via+URL) wiki
 page.
-
 
 ## Configuring Scheduled Jobs via the user interface
 
@@ -73,8 +71,6 @@ them are provided on the [Managing Scheduled
 Jobs](http://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs)
 wiki page.
 
-
-
 ## Manual execution of scheduled jobs
 
 The scheduled jobs page can also be used to run scheduled jobs on a one-off basis. This is useful for some of the scheduled jobs that are
@@ -82,8 +78,6 @@ designed to be run on a less regular basis, including the geo-coding job
 and the greetings and addressees job. Execute a job manually by
 clicking the **More > Execute Now** link for the given job
 at **Administer > System Settings > Scheduled Jobs**.
-
-
 
 ## Scheduling specific jobs via individual cron tasks
 
@@ -100,35 +94,12 @@ Details on triggering specific jobs via command-line, URL, Drush and
 other methods can be found in the [Managing Scheduled
 Jobs](http://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs)
 wiki page.
-# Managing Scheduled Jobs
 
-* Overview
-* Scheduled Jobs
-* Scheduled Jobs Editing Fields
-* Command-line Syntax for Running Jobs
 
-* Drush method
-* wp-cli method
-* PHP cli method
-* URL method
+## Managing Scheduled Jobs
 
-* Run ALL Scheduled Jobs via URL
-* Run a Specific Job via URL
-* Specific Job via URL works only for API entity = job
 
-* Running CiviCRM crons in Aegir
-* Running CiviCRM crons using Drush
-
-* Configuring your Site Key
-* Troubleshooting
-
-* DB Error: Connect failed
-* DB Error: no such table
-* Wrong permissions for cli.php
-* Using the URL method with https and cron fails silently
-* Other issues
-
-## Overview
+### Overview
 
 CiviCRM includes a number of "Jobs" which process data and handle batch tasks "in the background". The available jobs are listed below, with a description of their purpose and required parameters. Your site / system administrator should review the available jobs, and determine which ones need to be run on a regular basis. These jobs can be configured and enabled from the Scheduled Jobs page ( **Administer > System Settings > Scheduled Jobs** ). Jobs can also be executed manually from this page. However, for most sites it is best to run the required jobs from the server command line, often as one or more automatically scheduled "cron" jobs.
 
@@ -149,7 +120,7 @@ To actually trigger all the enabled jobs in Scheduled Jobs you will have to set 
 
 **Note as of CiviCRM version 4.7 the Deprecated Bin Scripts have been removed**
 
-## Scheduled Jobs
+### Scheduled Jobs
 
 | Component | Job Title (API action) | Description | Parameters | Deprecated Bin Script |
 | --- | --- | --- | --- | --- |
@@ -186,7 +157,7 @@ To actually trigger all the enabled jobs in Scheduled Jobs you will have to set 
 | CiviMember | Set Renewal Reminder Dates ( **process_membership_reminder_date** ) | Sets membership renewal reminder dates for current membership records where reminder date is null. **This job should never be run automatically as it will cause members to get renewal reminders repeatedly. It is disabled by default to prevent it from being included in an "run all jobs" session.** | (none) | UpdateMembershipReminderDate.php |
 | CiviPledge | Process Pledges ( **process_pledge** ) | Updates pledge payment and pledge statuses and optionally sends payment reminders | send_reminders=1 (optional: add this parameter if you want pledge payment reminder emails sent) | UpdatePledgeRecord.php |
 
-## Scheduled Jobs Editing Fields
+### Scheduled Jobs Editing Fields
 
 Creating a Scheduled Job requires filling in API fields that are similar to those used in the API Explorer. [Find out more about using the API here](https://wiki.civicrm.org/confluence/display/CRMDOC/API+Reference) and [detailed instructions (developer oriented) here](https://wiki.civicrm.org/confluence/display/CRMDOC/How+to+migrate+or+write+an+api).
 
@@ -214,9 +185,9 @@ The result would be a call to function civicrm_api3_activity_get ($params) in fi
 
 You can explore APIs, actions, and parameters at the API explorer, which is included in your CiviCRM installation at _yourwebsite.com/civicrm/api/explorer._ [An explanation and video tour of the API explorer is here.](http://civicrm.org/API_version_3) Once you have a working API call at the API explorer you can transfer the same API call, action, and parameters to create a new Scheduled Job that will carry out that same task automatically.
 
-## Command-line Syntax for Running Jobs
+### Command-line Syntax for Running Jobs
 
-### Drush method
+#### Drush method
 
 Using Drush, you require:
 
@@ -241,7 +212,7 @@ If successful, this command will output an array with a key/value of error = 0. 
 
 For more information using drush with cron see: [http://www.drush.org/en/master/cron/](http://www.drush.org/en/master/cron/)
 
-### wp-cli method
+#### wp-cli method
 
 ```
 /path/to/wp-cli --user=<cron> --url=<http://example.com> --path=</path/to/wp> civicrm api job.execute auth=0
@@ -265,7 +236,7 @@ One to note here
 /path/to/wp-cli --user=<cron> --url=<http://example.com> --path=</path/to/wp> --timezone=<timezone identifier> civicrm api job.execute auth=0
 ```
 
-### PHP cli method
+#### PHP cli method
 
 This method requires a valid Username and Password (for a Drupal, Joomla or WordPress user who has adequate permissions for the job or jobs being run). If you use drupal, use the drush method, that is easier to configure and more secure (it doesn't require to put the user password)
 
@@ -315,7 +286,7 @@ $ php bin/cli.php -s site -u user -p password -e Job -a update_greeting --ct=Ind
     and spaces.
 
 
-### URL method
+#### URL method
 
 You can run ALL scheduled jobs that are Enabled and are due to run based on last run and run frequency by invoking a URL with curl or wget. You can also invoke specific jobs via URL. This method requires a valid Username and Password (for a Drupal, Joomla or WordPress user who has adequate permissions for the job or jobs being run. The minimal permissions for that user are: "view all contacts", "access CiviCRM", "access CiviMail"). It also requires you to pass in the CIVICRM_SITE_KEY which is configured by editing your copy of civicrm.settings.php (see Configuring your Site Key below).
 
@@ -329,7 +300,7 @@ You can run ALL scheduled jobs that are Enabled and are due to run based on last
     Any jobs that are invoked using the URL method are automatically logged.
 
 
-#### Run ALL Scheduled Jobs via URL
+##### Run ALL Scheduled Jobs via URL
 
 Calling cron.php as shown below will run ALL scheduled jobs that are Enabled and are due to run based on last run and run frequency:
 
@@ -359,7 +330,7 @@ When calling these urls using wget from within a crontab, enclose the url in sin
 
 An alternative way to set up cron job is using webcron like [https://www.easycron.com](https://www.easycron.com).
 
-#### Run a Specific Job via URL
+##### Run a Specific Job via URL
 
 You can also run any single job via URL by passing job=<api_action> as well as any required parameters. For example to run the Update Greeting job via URL:
 
@@ -381,17 +352,17 @@ In WordPress:
 http://[SITEROOT]/[CONTENT-DIR]/plugins/civicrm/civicrm//bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
 ```
 
-#### Specific Job via URL works only for API entity = job
+##### Specific Job via URL works only for API entity = job
 
 Note that you can execute API actions **_only_** from the API entity "job"; this is hard-coded into cron.php. So you can't call any of the built in API functions (other than those under entity "job") using cron.php, but you also can't create a new API action So for instance, if you create new API entity called "myapi" with API action "my action" then you would be able to call that action via the Scheduled Jobs page but you will not be able to call it via cron.php.
 
 A possible workaround for this problem is here: [http://forum.civicrm.org/index.php/topic,28215.0.html](http://forum.civicrm.org/index.php/topic,28215.0.html)
 
-### Running CiviCRM crons in Aegir
+#### Running CiviCRM crons in Aegir
 
 If you are using the [Aegir](http://www.aegirproject.org) hosting environment, with the [provision_civicrm](http://drupal.org/project/provision_civicrm) sub-module, you can automate the installation of a new cron for each site using the [hosting_civicrm_cron](http://drupal.org/project/hosting_civicrm_cron) module. You can also use the Drush method below to call CiviCRM cron tasks.
 
-### Running CiviCRM crons using Drush
+#### Running CiviCRM crons using Drush
 
 You can run cron manually for a site by using the drush command:
 
@@ -403,7 +374,7 @@ This assumes that you have an administrator account called "admin" with the corr
 
 Currently (CiviCRM 4.2.x) you need to use an additional argument, 'auth=0', to work around [CRM-11199](http://issues.civicrm.org/jira/browse/CRM-11199).
 
-## Configuring your Site Key
+### Configuring your Site Key
 
 If you are triggering jobs using the URL method, you must manually generate a site key, and then add it to your CiviCRM settings file.
 
@@ -411,42 +382,34 @@ If you are triggering jobs using the URL method, you must manually generate a si
     * create a random 16-32 character key from your keyboard OR
     * use an external service like: [http://www.thebitmill.com/tools/password.html](http://www.thebitmill.com/tools/password.html) OR
     * use the following shell command to generate a key
-```
-$ php -r 'echo md5(uniqid(rand(), true)) . "
-";'
-```
 
-!!! warning
-
-    Make sure there that there are no **reserved or unsafe URL characters** in your site key. These include:
-    ```
-    & = + $ ? % , / : { } # | '
-    ```
-     and spaces. |
-
-    * Open your settings file - civicrm.settings.php - in your favorite editor and either add or edit the CIVICRM_SITE_KEY value.
+        ```
+        $ php -r 'echo md5(uniqid(rand(), true)) . " ";'
+        ```
 
     !!! warning
+    
+        Make sure there that there are no **reserved or unsafe URL characters** in your site key. These include:
+        
+        ```
+        & = + $ ? % , / : { } # | '
+        ```
+        and spaces.
 
-    **in Drupal** , civicrm.settings.php is located in /sites/default
-
-    **in Joomla,** there are 2 civicrm.settings.php files. By default these are located in site/administrator/components/com_civicrm and site/components/com_civicrm - it's important to add the same key to both files as some Joomla front-end functions rely on the key (eg, decrypting the Outbound Mail SMTP Password)
-
-    **in WordPress** , civicrm.settings.php is located in :
-
-    For versions 4.6 and Prior /wp-content/plugins/civicrm
-
-    Starting in 4.7 for new installs CONTENT-DIR/uploads/civicrm
+* Open your settings file - `civicrm.settings.php` - in your favorite editor and either add or edit the `CIVICRM_SITE_KEY` value.
+    
+    * **in Drupal** , civicrm.settings.php is located in /sites/default
+    * **in Joomla,** there are 2 civicrm.settings.php files. By default these are located in site/administrator/components/com_civicrm and site/components/com_civicrm - it's important to add the same key to both files as some Joomla front-end functions rely on the key (eg, decrypting the Outbound Mail SMTP Password)
+    * **in WordPress** , civicrm.settings.php is located in : For versions 4.6 and Prior `/wp-content/plugins/civicrm`. Starting in 4.7 for new installs `CONTENT-DIR/uploads/civicrm`
 
 
-Depending on which version of CiviCRM you've installed, you may have this setting in your file already with a value of _null_, or you may need to add the line. In either case, replace _null_ with the value of your key.
-
-EXAMPLE: If my generated site key value is: 3cx4aNkpQwxmM1hTMV~!B09iO6
- ... then my settings file should look like this:
-
-```
-define( 'CIVICRM_SITE_KEY', '3cx4aNkpQwxmM1hTMV~!B09iO6' );
-```
+    Depending on which version of CiviCRM you've installed, you may have this setting in your file already with a value of _null_, or you may need to add the line. In either case, replace _null_ with the value of your key.
+    
+    EXAMPLE: If my generated site key value is: `3cx4aNkpQwxmM1hTMV~!B09iO6` then my settings file should look like this:
+    
+    ```
+    define( 'CIVICRM_SITE_KEY', '3cx4aNkpQwxmM1hTMV~!B09iO6' );
+    ```
 
 * Finally, make sure that you include the key=<sitekey> parameter whenever your run any of these scripts.
 
@@ -513,7 +476,10 @@ The solution is to upgrade wget to a version with the proper https support. A wo
 
 If you've just upgraded to CiviCRM 4.3 on a multi-site install and your cron silently stops working, try switching to the Drush method ([forum thread](http://forum.civicrm.org/index.php/topic,30338.0.html)).
 
-If you're using HostGator, and switched to PHP 5.3, check [this thread](http://forum.civicrm.org/index.php?topic=26334.0).# Running Command-line Scripts via URL
+If you're using HostGator, and switched to PHP 5.3, check [this thread](http://forum.civicrm.org/index.php?topic=26334.0).
+
+
+## Running Command-line Scripts via URL
 
 CiviCRM scheduled jobs (background processing tasks) can be run using the HTTP **GET** or **POST** methods. This is an alternative to using PHP Cli which is [documented here](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs). The GET method is slightly easier to configure, but may be considered less secure since authentication information is included in the command line, and therefore may be visible to other users with sufficient permissions on your server. Examples of both methods are included below. Information for run
 

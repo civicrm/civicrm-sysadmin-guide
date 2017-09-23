@@ -51,14 +51,13 @@ If you modified any core files, also be prepared to backup and update them to th
 !!! warning
 
     *If you get the following error when installing or upgrading CiviCRM for Joomla!,* download and use the civicrm-4.7.x-joomla-alt.zip package.
-    **Your PHP version is missing zip functionality. Please ask your system administrator/hosting provider to recompile PHP with zip support.** |
+    **Your PHP version is missing zip functionality. Please ask your system administrator/hosting provider to recompile PHP with zip support.**
 
-    The steps above will install CiviCRM directly on top of your existing installation. If you run into any issues, such as the component not appearing to reflect the new version, you may need to first uninstall the existing version and then install the new version. Uninstalling CiviCRM will remove the component files, but will not impact your database in any way.
+The steps above will install CiviCRM directly on top of your existing installation. If you run into any issues, such as the component not appearing to reflect the new version, you may need to first uninstall the existing version and then install the new version. Uninstalling CiviCRM will remove the component files, but will not impact your database in any way.
 
-    ## 4. Run the Database Upgrade script
+## Run the Database Upgrade script
 
-    !!! forbidden "Update requiredments"
-
+!!! forbidden "Update requiredments"
     Support for MySQL versions prior to 5.0 has been discontinued. Delete all cache files in [yoursite]/media/civicrm/templates_c on your server before proceeding with the update script.
 
 
@@ -97,51 +96,54 @@ If your organization has modified the default versions of System Workflow messag
 
 ## Troubleshooting
 
-#### Reset Session
+### Reset Session
 
 If you are seeing unexpected behavior after completing the upgrade, you may need to reset your session. First log-out of your Administrator session and log back in. This may resolve the issues. If this doesn't help, use this procedure to force a session reset:
 
 1. Temporarily enable CiviCRM debug features:
     * Go to **Administer** » **System Settings** » **Debugging and Error Handling**
     * Set **Enable Debugging** to Yes and click Save.
+    
 1. Click the Administer CiviCRM menu (or any other CiviCRM menu item). After the page is loaded, add an additional query string value (&sessionReset=2) to the URL in your browser's location bar, and reload the page.
-```
-// Example URL
-http://.../administrator/index.php?option=com_civicrm&task=civicrm/admin/setting&reset=1&sessionReset=2
-```
+    ```
+    // Example URL
+    http://.../administrator/index.php?option=com_civicrm&task=civicrm/admin/setting&reset=1&sessionReset=2
+    ```
+    
 1. Clear template cache by adding an additional query string value (&directoryCleanupReset=1)
-```
-// Example URL
-http://.../administrator/index.php?option=com_civicrm&task=civicrm/admin/setting&reset=1&directoryCleanup=1
-```
+    ```
+    // Example URL
+    http://.../administrator/index.php?option=com_civicrm&task=civicrm/admin/setting&reset=1&directoryCleanup=1
+    ```
+    
 1. Now set **Enable Debugging** to No and click Save.
 
-!!! danger "Do Not Leave Debug Features Enabled for a Public Site"
-     Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information. |
+    !!! danger "Do Not Leave Debug Features Enabled for a Public Site"
+         Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information.
 
-    #### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
+### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
 
-    Download and run the [Database Troubleshooting Tools](https://wiki.civicrm.org/confluence/display/CRMDOC41/Database+Troubleshooting+Tools) to test the current state of the database and provides a diagnosis. The tools suite also includes a repair facility.
-     (Note ... the troubleshooting tools do not work with version 4.7 - this item should be deleted shortly)
+Download and run the [Database Troubleshooting Tools](https://wiki.civicrm.org/confluence/display/CRMDOC41/Database+Troubleshooting+Tools) to test the current state of the database and provides a diagnosis. The tools suite also includes a repair facility.
+ (Note ... the troubleshooting tools do not work with version 4.7 - this item should be deleted shortly)
 
-    #### Remove cached copies of old templates
+### Remove cached copies of old templates
 
-    It may be that the install did not clear out the template cache. Try removing the cache contents. For example, with Linux, use with a command like:
+It may be that the install did not clear out the template cache. Try removing the cache contents. For example, with Linux, use with a command like:
 
-    ```
-    rm -r JOOMLA_ROOT/media/civicrm/templates_c/en_us/en_us
-    ```
+```
+rm -r JOOMLA_ROOT/media/civicrm/templates_c/en_us/en_us
+```
 
-    This will force CiviCRM to load the new templates rather than cached copies of the old ones.
+This will force CiviCRM to load the new templates rather than cached copies of the old ones.
 
-    #### Out of Date Joomla! Version
+### Out of Date Joomla! Version
 
-    !!! forbidden "Joomla 2.5 reached End of Life (EOL)"
+!!! forbidden "Joomla 2.5 reached End of Life (EOL)"
 
     * **Joomla 2.5 reached _End of Life_ (EOL) in 2014 and is no longer supported by the Joomla! Project.**
     * **While CiviCRM 4.7 supports Joomla 2.5.x or 3.x.x, i**** t is strongly recommended by the Joomla! Project that 2.5 users upgrade to the most current version of 3.x ([https://docs.joomla.org/Joomla!_CMS_versions](https://docs.joomla.org/Joomla!_CMS_versions)).**
 
-#### Cron Job Reconfiguration Necessary when upgrading from < CiviCRM 4.2
+### Cron Job Reconfiguration Necessary when upgrading from < CiviCRM 4.2
 
 !!! danger "System Administrators Alert"
 
@@ -151,6 +153,6 @@ http://.../administrator/index.php?option=com_civicrm&task=civicrm/admin/setting
 
     * **Upgrades from 4.2.x** : If you are running scheduled jobs using CLI.php, you will need to reconfigure cron to include a password. Scheduled jobs will no longer run if the password is not provided ([learn more](http://wiki.civicrm.org/confluence/display/CRMDOC43/Managing+Scheduled+Jobs)).
 
-#### Need More Help?
+### Need More Help?
 
 If you have any problems with these procedures, try searching the [community forums](http://forum.civicrm.org/) and this wiki for solutions. If you've gotten an error message, use that message in your search. If you can not resolve the problem, then post your problem to the forum. Be sure to include the CiviCRM version and revision you are upgrading FROM and TO; your Joomla version; your PHP and MySQL versions; the steps you've taken and a the exact error message or problem that resulted.

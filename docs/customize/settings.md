@@ -4,7 +4,7 @@ CiviCRM provides a web-based interface for configuring its settings. This approa
 
 Further information about settings is on [Settings Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Settings+Reference)
 
-## Discussion: Use Copied Databases by Overriding Server Directory and URL Settings
+## Use Copied Databases by Overriding Server Directory and URL Settings
 
 Some organizations run separate copies of CiviCRM for "production" ("live"), "testing", and/or "development." For example, if a developer wants to test a new feature, he might copy the database from the production system to the development system where he can safely test without interrupting normal users. Most of the settings should be copied exactly from production to development, but some server-specific settings – like the directory and URL settings – will always be different in production and development.
 
@@ -15,11 +15,11 @@ Administer > System Settings > Directories
 
 If you regularly copy a production database to a test or development server, then manually editing these settings will become cumbersome and error-prone. A better alternative is to override the server-specific settings (e.g. directory and URL paths) by adding them to a local copy of the CiviCRM settings file (_civicrm.settings.php_).
 
-## Discussion: Advanced/Hidden Settings
+## Hidden Settings
 
 There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions) for more details).
 
-## Example: Override Temporary Files directory
+## Override Temporary Files directory
 
 To override the Temporary Files directory for a test site, add these lines to _civicrm.settings.php_:
 
@@ -31,7 +31,7 @@ global $civicrm_setting;
 $civicrm_setting['Directory Preferences']['customFileUploadDir'] = '/var/www/testing/sites/default/files/civicrm/upload';
 ```
 
-## Appendix: List of Selected Settings
+## List of Selected Settings
 
 The table below shows some of the settings file "constants" which will override the database value if present in _civicrm.settings.php_ and administrative settings field.
 

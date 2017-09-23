@@ -1,5 +1,6 @@
-# Updating System Workflow Message Templates
-              after Upgrades - method 1 - kdiff
+# Special upgrade tasks
+
+## Updating System Workflow Message Templates after Upgrades
 
 If your organization has modified the default versions of System Workflow message templates, then the changes and bug fixes included in an upgrade will need to be merged with your modified versions.
 

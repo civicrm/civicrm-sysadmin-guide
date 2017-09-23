@@ -1,7 +1,5 @@
 # CiviMember Roles Sync
 
-# CiviMember Roles Sync
-
 A common need is to synchronize your CiviCRM members to your Drupal roles to allow you to have, among other things, members' only content on your website that is only accessible to current members defined by the rules and types you have set up in CiviCRM.
 
 The CiviMember Roles Sync module is now part of the core Drupal CiviCRM package and includes this powerful feature.

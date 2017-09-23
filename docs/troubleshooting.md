@@ -1,6 +1,8 @@
-# Cleanup Caches and Update Paths
+# Troubleshooting
 
-## Overview
+## Cleanup Caches and Update Paths
+
+### Overview
 
 On this settings page you can:
 
@@ -25,7 +27,7 @@ If Drupal Language detection is set to "By URL" and the "Language Domain" settin
 
 You may need a bit of code in civicrm.settings.php to get the correct CIVICRM_UF_BASEURL to work on front end pages exposed on various domains. See [Forum Post on Domain Access and Drupal](http://forum.civicrm.org/index.php/topic,24657.msg104529.html#msg104529).
 
-# Installation and Configuration Troubleshooting
+## Installation and Configuration Troubleshooting
 
 !!! tip "Troubleshooting Resources"
 
@@ -46,12 +48,14 @@ If you are getting this error when submitting a form (search or adding / editing
 
 * Ensure cookies are enabled on browser. Like most web applications, CiviCRM can not function properly with cookies disabled.
 * Ensure your configuration settings are using the same "machine name" for CiviCRM and your CMS (Drupal or Joomla!). For example, you will have problems if CiviCRM is configured to use [http://example.com](http://example.com) as it's BASE_URL and you CMS is using [http://www.example.com](http://www.example.com). You can use an .htaccess entry to redirect to the configured URL if needed (i.e. push all users to [http://www.example.com](http://www.example.com) even if they hit [http://example.com](http://example.com)).
-  1. For Drupal sites, ensure that uid = 0 exists in your Drupal users table. This is required for anonymous access to CiviCRM pages and forms to work properly.
-  1. For Drupal sites, ensure that Drupal sessions table uses UTF8 collation, AND that the session column in this table is of SQL type longtext in the schema. You can check both of these in phpMyAdmin, or issue these commands from mysql command line:
-```
-$ desc session;
-$ show create table sessions;
-```
+
+    1. For Drupal sites, ensure that uid = 0 exists in your Drupal users table. This is required for anonymous access to CiviCRM pages and forms to work properly.
+    1. For Drupal sites, ensure that Drupal sessions table uses UTF8 collation, AND that the session column in this table is of SQL type longtext in the schema. You can check both of these in phpMyAdmin, or issue these commands from mysql command line:
+    
+        ```
+        $ desc session;
+        $ show create table sessions;
+        ```
 
 ### "Failed to initialize storage module: user" fatal error message (new installs)
 
@@ -62,7 +66,6 @@ If you see this error, you may need to modify the session.save_handler method fo
 CiviCRM provides several URL-param debug settings which can help debug and resolve problems such as corrupt sessions and obsolete template caches. In order to use these URL parameters, you must first enable debugging from **Administer » System Settings » Debugging and Error Handling**.
 
 !!! danger "Do NOT Leave Debug Turned On in Production Sites"
-
     It is critical that the DEBUG features are disabled in production sites. When debug is enabled - system paths and other internal settings may be exposed to browsers.
 
 
@@ -80,28 +83,24 @@ CiviCRM provides several URL-param debug settings which can help debug and resol
 
 * **Stack Trace** - To display stack trace at the top of the page when an error occurs, set Enable Backtrace from **Administer » System Settings » Debugging**  **and Error Handling**.
 
-### Resolving RELAY-DENIED Errors When Trying to Send Emails to Contacts
-
-(under construction)
-
 ### Configuring PHP to Handle Import Files from/on Macintosh Computers
 
 In order for CiviCRM to properly handle CSV import files created on Macs, you may need to update a PHP setting for detecting line endings. The symptom of this problem is that the "Import Contacts: Match Fields" step shows the file as one big record - rather than recognizing the end of each row.
 
 * Open /opt/local/etc/php.ini in your favorite editor (you may need root privileges to do this).
 * Look for the following setting in the Fopen wrappers section (near line 525):
-
-```
-auto_detect_line_endings = On
-```
+    
+    ```
+    auto_detect_line_endings = On
+    ```
 
 * If this line is commented out, or set to Off, change the value to On as shown above.
 * Stop and start your local instance of Apache
 
-```
-$ sudo /opt/local/etc/rc.d/apache2.sh stop
-$ sudo /opt/local/etc/rc.d/apache2.sh start
-```
+    ```
+    $ sudo /opt/local/etc/rc.d/apache2.sh stop
+    $ sudo /opt/local/etc/rc.d/apache2.sh start
+    ```
 
 ### Database version inconsistencies / upgrade problems
 
@@ -125,7 +124,10 @@ Note the &triggerRebuild=1 key-value pair. It rebuilds the triggers and this rou
 
 ### Firewall with NAT
 
-If CiviCRM is installed on a server behind a firewall with NAT, you'll need to add your **internal** IP address and host name to /etc/hosts (on Linux). Otherwise, the dashboard will time out and the Force Secure URLs option will have issues. The reasoning behind this is, the dashboard tries to connect to http(s)://www.SITE.com to load the dashboard, but times out since SITE.com is being resolved via the public IP address. Your server can't access this public IP address if it's behind a firewall with NAT.# Ensuring Schema Integrity on Upgrades
+If CiviCRM is installed on a server behind a firewall with NAT, you'll need to add your **internal** IP address and host name to /etc/hosts (on Linux). Otherwise, the dashboard will time out and the Force Secure URLs option will have issues. The reasoning behind this is, the dashboard tries to connect to http(s)://www.SITE.com to load the dashboard, but times out since SITE.com is being resolved via the public IP address. Your server can't access this public IP address if it's behind a firewall with NAT.
+
+
+## Ensuring Schema Integrity on Upgrades
 
 ### Introduction
 
@@ -144,41 +146,55 @@ After running these steps, you can be confident that your database schema matche
 ### Procedure to rebuild schema for database versions 2.2.x or later
 
 1. Take a DATA dump of existing, intact database. If possible, do not dump data from a database upon which you have attempted an upgrade and failed. Dump data from a database backup you did prior to upgrading that has a schema version number that is accurate. Find this information in _civicrm_domain.version_. A value in this column containing the word 'upgrade' indicates a database that failed to upgrade and may be stuck 'between schemas'. Lets call this dump file datafile.sql
-```
-mysqldump -u username -p -c -e -n -t --skip-triggers databasename > datafile.sql
-```
-**Note:** You may wish to exclude the following tables from your data-only export: any table with the word "cache" in it or any table starting with "civicrm_import_job"
+
+    ```
+    mysqldump -u username -p -c -e -n -t --skip-triggers databasename > datafile.sql
+    ```
+    
+    **Note:** You may wish to exclude the following tables from your data-only export: any table with the word "cache" in it or any table starting with "civicrm_import_job"
+
 1. Take a STRUCTURE only dump for all your custom data tables (civicrm_value_* tables or custom_value_* tables) of your database.
-```
-mysqldump -d -R -u username -p databasename civicrm_value_blah_1 civicrm_value_blah_2 > customfieldsfile.sql
-```
- The only option that is different than creating an entire backup is the -d switch, which tells mysqldump not to output the data. List all the relevant custom value tables before the > customfieldsfile.sql. If you did not exclude "civicrm_import_job*" tables in step 1, you must export these tables' data and structure in step 2 along with your custom data tables.
+
+    ```
+    mysqldump -d -R -u username -p databasename civicrm_value_blah_1 civicrm_value_blah_2 > customfieldsfile.sql
+    ```
+    
+     The only option that is different than creating an entire backup is the -d switch, which tells mysqldump not to output the data. List all the relevant custom value tables before the > customfieldsfile.sql. If you did not exclude "civicrm_import_job*" tables in step 1, you must export these tables' data and structure in step 2 along with your custom data tables.
 
 1. Create a new database for your rebuilt data.
 1. Import the original database structure from the same version of CiviCRM you are currently using: civicrm/sql/civicrm.mysql (this file is found relative to your root civicrm directory)
-```
-mysql -u username -p newdatabase < civicrm/sql/civicrm.mysql
-```
+    ```
+    mysql -u username -p newdatabase < civicrm/sql/civicrm.mysql
+    ```
+    
 1. Now import customfieldsfile.sql (taken from step2) in the new database.
-```
-mysql -u username -p newdatabase < customfieldsfile.sql
-```
+    ```
+    mysql -u username -p newdatabase < customfieldsfile.sql
+    ```
+    
 1. Now import your datafile.sql (taken from step1) again in the new database.
-```
-mysql -u username -p newdatabase < datafile.sql
-```
-**A note on possible Foreign Key Constraint Violation errors during import** (and what to do about them): You may receive Foreign Key constraint violation errors on import because of the order in which the tables are exported and then imported, which is alphabetical. For example, data for the civicrm_activity_assignment table would be imported before data for the civicrm_contact table, violating the Foreign Key constraint defined on the civicrm_activity_assignment.assignee_contact_id field. You can avoid this by instructing MySQL to disable Foreign Key checks before the import and to re-enable it when the import is complete. Before importing the datafile.sql file, open it in a text editor and add the following MySQL code to the first line of the file:
-```
-SET foreign_key_checks = 0;
-```
- And append the following code to the last line of the file:
-```
-SET foreign_key_checks = 1;
-```
+
+    ```
+    mysql -u username -p newdatabase < datafile.sql
+    ```
+    
+    **A note on possible Foreign Key Constraint Violation errors during import** (and what to do about them): You may receive Foreign Key constraint violation errors on import because of the order in which the tables are exported and then imported, which is alphabetical. For example, data for the civicrm_activity_assignment table would be imported before data for the civicrm_contact table, violating the Foreign Key constraint defined on the civicrm_activity_assignment.assignee_contact_id field. You can avoid this by instructing MySQL to disable Foreign Key checks before the import and to re-enable it when the import is complete. Before importing the datafile.sql file, open it in a text editor and add the following MySQL code to the first line of the file:
+
+    ```
+    SET foreign_key_checks = 0;
+    ```
+    
+    And append the following code to the last line of the file:
+     
+    ```
+    SET foreign_key_checks = 1;
+    ```
+    
 1. Rebuild the triggers by running
-```
-http://<your_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1
-```
+    ```
+    http://<your_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1
+    ```
+    
 1. Make sure you have the backup of your original working database and replace this with the new database created in step 3.
 
 Browse through few civicrm pages to verify if civicrm is working fine along with all the custom data. Also make a few checks for e.g if number of contacts / custom-data are same in both the databases.
@@ -199,11 +215,11 @@ Here's how I chose to deal with it. Remember: the goal is to compare this clean 
 1. Now, using a diff utility such as 'diff' with [Unxitils](http://unxutils.sourceforge.net/), 'windiff' or [WinMerge](http://winmerge.org/) compare the two schemas side by side.
 1. You will notice, most likely, several things:
 
-* Tables existing in the fouled schema that do not exist in the clean schema
-* Some fields that exist in the fouled schema that do not exist in the clean one
-* Minor differences in comments, or grammar, or /r /n code (newlines)
-* Some identically named fields existing in a slightly different order
-* Many ALTER statements with foreign key stuff
+    * Tables existing in the fouled schema that do not exist in the clean schema
+    * Some fields that exist in the fouled schema that do not exist in the clean one
+    * Minor differences in comments, or grammar, or /r /n code (newlines)
+    * Some identically named fields existing in a slightly different order
+    * Many ALTER statements with foreign key stuff
 
 1. You can ignore all but the first two listed above.
 1. Make a backup of the fouled database

@@ -1,10 +1,7 @@
 # Address Settings
 
-##### Return to [System Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/System+Settings) Main Page
 
-### Address Settings - Format contact address input and display. Configure optional Address Standardization provider.
-
-#### Mailing Labels
+## Mailing Labels
 
 **Individual Name Format** - The order and the specific fields for Individual Contact names **when they are included in mailing labels**.
 
@@ -39,7 +36,7 @@ The standard format is:
 
 **Include County?** - Indicate if you want a County field to be included in contact address input forms.
 
-#### Address Standardization
+## Address Standardization
 
 !!! note
 
@@ -55,14 +52,16 @@ Click **Save** to save your action or **Cancel** to cancel it.
 
 !!! note
 
-    There is a [how-to guide on integrating with USPS for address standardization](https://wiki.civicrm.org/confluence/display/CRMDOC/Configuring+Address+Standardization+to+work+with+USPS).# Configuring Address Standardization to work with USPS
+    There is a [how-to guide on integrating with USPS for address standardization](https://wiki.civicrm.org/confluence/display/CRMDOC/Configuring+Address+Standardization+to+work+with+USPS).
+    
+## Configuring Address Standardization to work with USPS
 
 !!! note
 
     ![](https://wiki.civicrm.org/confluence/download/thumbnails/22904945/American_Flag_3.gif?version=1&modificationDate=1252275467000&api=v2) Address Standardization is currently only available for The United States Postal Service API.
 
 
-## Register for USPS Web Tools ID
+### Register for USPS Web Tools ID
 
 Go to: [https://secure.shippingapis.com/registration/](https://secure.shippingapis.com/registration/)
 
@@ -70,7 +69,7 @@ Go to: [https://secure.shippingapis.com/registration/](https://secure.shippingap
 
 Upon submission you will receive a confirmation email. You will need the Web Tools ID for the next step.
 
-## Request access to the Address Information API
+### Request access to the Address Information API
 
 Go to: [https://www.usps.com/business/webtools-address-information.htm](https://www.usps.com/business/webtools-address-information.htm)
 
@@ -83,20 +82,22 @@ Select from the following:
 * U.S. Postal Service letters
 * Do not select other choices, as these uses are not provided or permitted for this API.
 
-###### If there are questions, The USPS Internet Customer Care Center (ICCC) will contact you via the listed email address, seeking more information.
+If there are questions, The USPS Internet Customer Care Center (ICCC) will contact you via the listed email address, seeking more information.
 
-Dear USPS Customer,
- Address Information APIs are accessible with special permission. The APIs can only be used in conjunction with USPS SHIPPING SERVICES ONLY.
- We must first understand how you'll be using the API. We need a commitment that the API will be used on a transactional basis (not batch processing or cleansing of a database, but as a customer enters the information into a form on a website). Also, you must state that you will use the output from this API solely in association with USPS SHIPPING SERVICES ONLY.
+> Dear USPS Customer,
+>
+> Address Information APIs are accessible with special permission. The APIs can only be used in conjunction with USPS SHIPPING SERVICES ONLY.
+>
+> We must first understand how you'll be using the API. We need a commitment that the API will be used on a transactional basis (not batch processing or cleansing of a database, but as a customer enters the information into a form on a website). Also, you must state that you will use the output from this API solely in association with USPS SHIPPING SERVICES ONLY.
+> 
+> Please provide a detailed description how you plan to use the APIs, include the URL of the site (development or production). We will review the material received to see if you meet our requirements.
 
-Please provide a detailed description how you plan to use the APIs, include the URL of the site (development or production). We will review the material received to see if you meet our requirements.
-
-###### The USPS needs to read two things, and read them very clearly.
+The USPS needs to read two things, and read them very clearly.
 
 1. You are using the USPS provided information only to ship letters or packages via United States Postal Service.
 1. The user's address will be updated only when users modify their postal information. (e.g. transactional basis)
 
-## Sending test requests using your Web Tools ID
+### Sending test requests using your Web Tools ID
 
 Before USPS can grant you access to their production servers, they need to receive some requests from you that include the Web Tools ID they gave you.
 
@@ -127,7 +128,7 @@ Now you can send a few test requests. Create a contact and input the following t
     It is important that you do not stop at this step. The test server is not intended for long term use and does not work for all addresses. Your access rights could be halted if you use the test server for too long.
 
 
-## Request access to the Production Server & Address Standardization
+### Request access to the Production Server & Address Standardization
 
 Once you have been approved to use the Address Standardization API, you should ask for access to the production server. Email them or call them as indicated in the email indicated by them.
 
@@ -137,7 +138,7 @@ Inform them that you are using CiviCRM and it is a fully developed Open Source p
 
 They may want to see how your production website uses the service. Including a URL to the forms your users enter their postal address postal address should speed things up. It might even help to make a temp account for them, if the forms are only available to registered users.
 
-## Setup CiviCRM to access the USPS production server
+### Setup CiviCRM to access the USPS production server
 
 Successful completion of task three should reward you with an email such as this:
 
@@ -154,19 +155,20 @@ In CiviCRM, you should go to Administer -> Localization > Address Settings [Addr
 http://production.shippingapis.com/shippingapi.dll
 ```
 
-### Sample Production Setup
+#### Sample Production Setup
 
 Input under Administer->Localization->Address settings.
 
 ![](https://wiki.civicrm.org/confluence/download/attachments/22904945/CiviCRMAddressStandardizationSample.png?version=1&modificationDate=1252275467000&api=v2)
 
-## The USPS Internet Customer Care Center (ICCC)
+### The USPS Internet Customer Care Center (ICCC)
 
 staffed from 7:00AM to 11:00PM Eastern Time
 **E-mail:** [icustomercare@usps.com](mailto:icustomercare@usps.com)
 **Telephone:** 1-800-344-7779
 
-## USPS Terms of Service violations that can terminate your service
+### USPS Terms of Service violations that can terminate your service
+
 > This unique User ID cannot be shared with others outside your organization, nor is it to be packaged and distributed or sold to other individuals, businesses or e-commerce web site entities.> If the U.S. Postal Service discovers use of the same User ID from more than one web site, all users will be subject to loss of access to the USPS production server
 
 **Warning: CiviCRM invokes the address standardization API even when doing contact imports. Be careful to either turn off the standardization feature when doing imports, or to limit yourself to imports containing only a addresses.**
@@ -178,7 +180,7 @@ What some may be viewing as technical problems may just be the result of being c
     If you are developing a website for a client, you need a Web Tools ID for each client. You may even have them fill out the Web Tools forms. For email contact, a unique email address that the client owns is a good idea. You can forward the address to your email while in development, or send to both yourself and the client. This will allow you to remain in compliance with the agreement while also directly receiving the communications.
 
 
-## Other Related discussions or Internet Resources
+### Other Related discussions or Internet Resources
 
 [USPS Address Standardization Returns BLANKS](http://forum.civicrm.org/index.php?topic=2745.0 "CiviCRM Forum Post")
 

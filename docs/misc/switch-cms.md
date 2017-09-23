@@ -1,140 +1,133 @@
-# Migrating from Joomla to Drupal
+# Switching CMS platforms
 
-## Preparing for the migration
+This page provides instructions for moving your CiviCRM installation from being installed within one CMS to being installed within another.
+
+## Joomla to Drupal
+
+### Preparing for the migration
 
 * Backup your system
     * Backup the CiviCRM database that was set up for Joomla.
     * Backup the Drupal site before making any changes to it.
 
-!!! tip
-
-    If you are going to be importing and overwriting your older CiviCRM database over the newly installed, blank CiviCRM database, adding IF NOT EXISTS clauses to the CREATE TABLE statements will help the import. DROP TABLE statements will fail because of foreign key restraints. |
+        !!! tip
+            If you are going to be importing and overwriting your older CiviCRM database over the newly installed, blank CiviCRM database, adding IF NOT EXISTS clauses to the CREATE TABLE statements will help the import. DROP TABLE statements will fail because of foreign key restraints.
 
     * Set up CiviCRM in your Drupal site
 
-    !!! check
+        !!! check
+            When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
-    When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration. |
+        Refer to the [Drupal Installation Guide](http://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+Installation+Guide) for details on obtaining and setting up CiviCRM for Drupal.
 
-     Refer to the [Drupal Installation Guide](http://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+Installation+Guide) for details on obtaining and setting up CiviCRM for Drupal.
-
-    ## Restore the CiviCRM database backup to the desired location
-
-    * The installation process would have set up new database tables for CiviCRM. If this is where you want your CiviCRM database to be, then you may overwrite these tables by restoring your old database over it.
-    * Alternatively you can restore your CiviCRM database somewhere else and modify **CIVICRM_DSN** in _<drupal_root>/sites/default/civicrm.settings.php_ to point to this new database.
-
-    ## Empty the `civicrm_uf_match` table
-
-    This table is used for mapping your CMS users with CiviCRM contacts. At this stage those mappings will be according to users from your Joomla site. You will need to delete these mappings so that Drupal can then automatically rebuild them from the new users table.
-
-    ```
-    TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
-    ```
-
-    ## Update the Directory Path and URL
-
-    * Log in to Drupal with a username that has administrator access to CiviCRM
-    * Go to **http://<drupal_site>/civicrm/admin/setting/updateConfigBackend?reset=1**
-        * Set your base directory to _<drupal_root>/sites/default/files/_
-        * Ensure your base URL is correct
-        * Click **Save**
-
-    ## Update the Resource URLs
-
-    Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
-
-    * Go to **http://<drupal_site>/civicrm/admin/setting/url?reset=1**
-        * Set CiviCRM Resource URL to _http://<home>/sites/all/modules/civicrm/_
-        * Set Image Upload URL to _http://<home>/sites/default/files/civicrm/persist/contribute/_
-        * Click **Save**
-
-    ## Rebuild the menus and triggers
-
-    The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Joomla.
-
-    * Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
-    ```
-    TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
-    ```
-    * In the CiviCRM database, set the `civicrm_domain.config_backend` field to `NULL`
-    ```
-    UPDATE `<civicrm_database>`.`civicrm_domain` SET `config_backend` = NULL
-    WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
-    ```
-    * Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
-
-    ## Drupal table prefixes
-
-    If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
-
-    * Go to **http://<drupal_site>/civicrm/admin/setting/uf?reset=1**
-        * Update Drupal Users Table Name with your_table_prefix_users (eg. drupal_users)
-        * Click **Save**
-
-    ## Update screen editor
-
-    If you're having trouble editing and/or adding users, check your WYSIWYG setting under Display Preferences
-
-    * Go to **http://<drupal_site>/civicrm/admin/setting/preferences/display&reset=1**
-        * Check the WYSIWYG editor setting and choose one of the selections (this resets to a Drupal choice vs. Joomla)
-        * Click **Save**
-
-    !!! check
-
-    The CiviCRM sidebar may disappear at this point. This is because in Joomla the sidebar is fixed. In Drupal you are able to set the position of these components as **blocks** on the page.
-
-
-!!! tip
-
-    You may find the CiviCRM screens do not fit comfortably on the page if you are using a fixed width Drupal theme. A solution is to use the [civicrm_theme](http://drupal.org/project/civicrm_theme) module that enables you to choose a different theme for the CiviCRM screens.# Migrating from Drupal to WordPress
-
-* Preparing for the migration
-* Restore the CiviCRM database backup to the desired location
-* Empty the `civicrm_uf_match` table
-* Relocate Custom Files
-* Update the Base Directory Path and URL
-* Update the Resource URLs
-* Rebuild the menus
-* WordPress table prefixes
-* Update the changed URL in your user data
-* Problems
-
-## Preparing for the migration
-
-* Backup your system
-    * Backup the CiviCRM database that was set up for Drupal.
-    * Backup the WordPress site before making any changes to it.
-
-!!! tip
-
-If you are going to be importing and overwriting your older CiviCRM database over the newly installed, blank CiviCRM database, adding IF NOT EXISTS clauses to the CREATE TABLE statements will help the import. DROP TABLE statements will fail because of foreign key restraints. |
-
-* Set up CiviCRM in your WordPress site
-
-!!! tip
-
-When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration. |
-
- Refer to the [WordPress Installation Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/WordPress+Installation+Guide+for+CiviCRM) for details on obtaining and setting up CiviCRM for WordPress.
-*
-
-!!! tip "WordPress Admin Account"
- When you set up WordPress, make sure you use the same Administrator account name as the Drupal Administrator account. Otherwise, you might encounter DB errors and/or Foreign Constraint issues due to the WordPress account not being associated with the CRM Accounts. If you have no choice, make sure you synchronize your accounts prior to trying to edit anything else. |
-
-## Restore the CiviCRM database backup to the desired location
+### Restore the CiviCRM database backup to the desired location
 
 * The installation process would have set up new database tables for CiviCRM. If this is where you want your CiviCRM database to be, then you may overwrite these tables by restoring your old database over it.
 * Alternatively you can restore your CiviCRM database somewhere else and modify **CIVICRM_DSN** in _<drupal_root>/sites/default/civicrm.settings.php_ to point to this new database.
 
-## Empty the `civicrm_uf_match` table
+### Empty the `civicrm_uf_match` table
 
-This table is used for mapping your CMS users with CiviCRM contacts. At this stage those mappings will be according to users from your Drupal site. You will need to delete these mappings so that WordPress can then automatically rebuild them from the new users table.
+This table is used for mapping your CMS users with CiviCRM contacts. At this stage those mappings will be according to users from your Joomla site. You will need to delete these mappings so that Drupal can then automatically rebuild them from the new users table.
 
 ```
 TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ```
 
-## Relocate Custom Files
+### Update the Directory Path and URL
+
+* Log in to Drupal with a username that has administrator access to CiviCRM
+* Go to **http://<drupal_site>/civicrm/admin/setting/updateConfigBackend?reset=1**
+    * Set your base directory to _<drupal_root>/sites/default/files/_
+    * Ensure your base URL is correct
+    * Click **Save**
+
+### Update the Resource URLs
+
+Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
+
+* Go to **http://<drupal_site>/civicrm/admin/setting/url?reset=1**
+    * Set CiviCRM Resource URL to _http://<home>/sites/all/modules/civicrm/_
+    * Set Image Upload URL to _http://<home>/sites/default/files/civicrm/persist/contribute/_
+    * Click **Save**
+
+### Rebuild the menus and triggers
+
+The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Joomla.
+
+* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
+    ```
+    TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
+    ```
+    
+* In the CiviCRM database, set the `civicrm_domain.config_backend` field to `NULL`
+    ```
+    UPDATE `<civicrm_database>`.`civicrm_domain` SET `config_backend` = NULL
+    WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
+    ```
+    
+* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
+
+### Drupal table prefixes
+
+If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
+
+* Go to **http://<drupal_site>/civicrm/admin/setting/uf?reset=1**
+    * Update Drupal Users Table Name with your_table_prefix_users (eg. drupal_users)
+    * Click **Save**
+
+### Update screen editor
+
+If you're having trouble editing and/or adding users, check your WYSIWYG setting under Display Preferences
+
+* Go to **http://<drupal_site>/civicrm/admin/setting/preferences/display&reset=1**
+* Check the WYSIWYG editor setting and choose one of the selections (this resets to a Drupal choice vs. Joomla)
+* Click **Save**
+
+!!! check
+    The CiviCRM sidebar may disappear at this point. This is because in Joomla the sidebar is fixed. In Drupal you are able to set the position of these components as **blocks** on the page.
+
+
+!!! tip
+    You may find the CiviCRM screens do not fit comfortably on the page if you are using a fixed width Drupal theme. A solution is to use the [civicrm_theme](http://drupal.org/project/civicrm_theme) module that enables you to choose a different theme for the CiviCRM screens.
+    
+
+
+## Drupal to WordPress
+
+### Preparing for the migration
+
+* Backup your system
+    * Backup the CiviCRM database that was set up for Drupal.
+    * Backup the WordPress site before making any changes to it.
+
+        !!! tip
+            If you are going to be importing and overwriting your older CiviCRM database over the newly installed, blank CiviCRM database, adding IF NOT EXISTS clauses to the CREATE TABLE statements will help the import. DROP TABLE statements will fail because of foreign key restraints.
+
+* Set up CiviCRM in your WordPress site
+
+    !!! tip
+        When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
+    
+     Refer to the [WordPress Installation Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/WordPress+Installation+Guide+for+CiviCRM) for details on obtaining and setting up CiviCRM for WordPress.
+
+
+!!! tip "WordPress Admin Account"
+    When you set up WordPress, make sure you use the same Administrator account name as the Drupal Administrator account. Otherwise, you might encounter DB errors and/or Foreign Constraint issues due to the WordPress account not being associated with the CRM Accounts. If you have no choice, make sure you synchronize your accounts prior to trying to edit anything else.
+
+### Restore the CiviCRM database backup to the desired location
+
+* The installation process would have set up new database tables for CiviCRM. If this is where you want your CiviCRM database to be, then you may overwrite these tables by restoring your old database over it.
+* Alternatively you can restore your CiviCRM database somewhere else and modify **CIVICRM_DSN** in _<drupal_root>/sites/default/civicrm.settings.php_ to point to this new database.
+
+### Empty the `civicrm_uf_match` table
+
+This table is used for mapping your CMS users with CiviCRM contacts. At this stage those mappings will be according to users from your Drupal site. You will need to delete these mappings so that WordPress can then automatically rebuild them from the new users table.
+
+```sql
+TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
+```
+
+### Relocate Custom Files
 
 * On your old site, visit Administer > System Settings > Directories and Administer > System Settings > Resource URL's.
 * Copy all of your custom files and uploads to the appropriate directories on your new site.
@@ -142,7 +135,7 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
  In drupal, these will likeley be under sites/default/files/civicrm.
 
 
-## Update the Base Directory Path and URL
+### Update the Base Directory Path and URL
 
 * Log in to WordPress with a username that has administrator access to CiviCRM
 * Go to _**http://<wordpress_root>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1**_
@@ -150,7 +143,7 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
  Ensure your base URL is correct - it should be _http://<wordpress_site>/_ (the main URL of your site)
     * Click **Save**
 
-## Update the Resource URLs
+### Update the Resource URLs
 
 Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
 
@@ -159,21 +152,23 @@ Up to this stage, CiviCRM screens are missing all of its CSS formatting and imag
     * Set Image Upload URL to _http://<wordpress_site>/wp-content/plugins/files/civicrm/persist/contribute/_ (may need to be created)
     * Click **Save**
 
-## Rebuild the menus
+### Rebuild the menus
 
 The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Drupal.
 
 * Go to _**http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1**_. Alternatively, delete all the records in civicrm_menu:
-```
-TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
-```
+    ```sql
+    TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
+    ```
+    
 * In the CiviCRM database, set the `civicrm_domain.config_backend` field to `NULL`
-```
-UPDATE `<civicrm_database>`.`civicrm_domain` SET `config_backend` = NULL
-WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
-```
+    ```sql
+    UPDATE `<civicrm_database>`.`civicrm_domain`
+    SET `config_backend` = NULL
+    WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
+    ```
 
-## WordPress table prefixes
+### WordPress table prefixes
 
 If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
 
@@ -181,14 +176,18 @@ If you have table prefixes on your Drupal database you'll also need to do the fo
     * Update WordPress Users Table Name with your_table_prefix_users (eg. wp_users) You may have changed this in accordance with WordPress best practices to have a different prefix other than wp_
     * Click **Save**
 
-## Update the changed URL in your user data
+### Update the changed URL in your user data
 
 When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location) under the heading "Additional Steps if your URL has changed".
 
-## Problems
+### Problems
 
-If you have issues with this post a note or become a Wiki editor and fix it. If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.# Moving an Existing CiviCRM Installation from
-              one Drupal frontend to another
+If you have issues with this post a note or become a Wiki editor and fix it. If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.
+
+
+
+
+## Drupal to Drupal
 
 In most cases when moving a site, you are moving both the CMS (Drupal or Joomla!) as well as CiviCRM at the same time. If that is the case, please refer to the instructions on [Moving an Existing Installation to a New Server or Location](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location).
 
@@ -242,23 +241,292 @@ Disable helper modules like civicrm_roles_sync, but leave CiviCRM enabled.
 1. Restore the old Drupal database into a temporary drupal database on the new server, old_dru.
 1. We will be integrating some of its content with the new Drupal database, mysite_dru.
 
-### Insert CiviCRM entries into Drupal tables that are normally done by the CiviCRM installation script, but taking the data from your old site
+### Insert entries into Drupal tables
 
-1. Login to your mysql instance via a command line or phpMyAdmin using a mysql account that has privileges for old_dru, mysite_dru, and mysite_civ.
-1. As a precaution if you did not upgrade Drupal core and contrib modules to the same version, before doing any of the following operations on the bocks or other tables, compare the old and new table structures using 'SHOW CREATE TABLE old_dru.blocks;' and 'SHOW CREATE TABLE mysite_dru.blocks;'
-1. INSERT INTO mysite_dru.blocks (`module`, `delta`, `theme`, `status`, `weight`, `region`, `custom`, `throttle`, `visibility`, `pages`, `title`, `cache`) SELECT `module`, `delta`, `theme`, `status`, `weight`, `region`, `custom`, `throttle`, `visibility`, `pages`, `title`, `cache` FROM old_dru.`blocks` where module='civicrm'; // NB bid note in field list
-1. INSERT INTO mysite_dru.menu_links (`menu_name`, `plid`, `link_path`, `router_path`, `link_title`, `options`, `module`, `hidden`, `external`, `has_children`, `expanded`, `weight`, `depth`, `customized`, `p1`, `p2`, `p3`, `p4`, `p5`, `p6`, `p7`, `p8`, `p9`, `updated`) SELECT m1.menu_name, if(m3.mlid is null, 0, m3.mlid) as plid, m1.link_path, m1.`router_path`, m1.`link_title`, m1.`options`, m1.`module`, m1.`hidden`, m1.`external`, m1.`has_children`, m1.`expanded`, m1.`weight`, m1.`depth`, m1.`customized`, m1.`p1`, m1.`p2`, m1.`p3`, m1.`p4`, m1.`p5`, m1.`p6`, m1.`p7`, m1.`p8`, m1.`p9`, m1.`updated` FROM `old_dru`.`menu_links` m1 left join old_dru.menu_links m2 on m1.plid=m2.mlid left join mysite_dru.menu_links m3 on m2.router_path=m3.router_path where m1.router_path like '%civicrm%' and if(m1.plid, m3.mlid, TRUE) // fancy stuff is to handle updating of plid
-1. INSERT INTO mysite_dru.menu_router (`path`, `load_functions`, `to_arg_functions`, `access_callback`, `access_arguments`, `page_callback`, `page_arguments`, `fit`, `number_parts`, `tab_parent`, `tab_root`, `title`, `title_callback`, `title_arguments`, `type`, `block_callback`, `description`, `position`, `weight`, `file`) SELECT `path`, `load_functions`, `to_arg_functions`, `access_callback`, `access_arguments`, `page_callback`, `page_arguments`, `fit`, `number_parts`, `tab_parent`, `tab_root`, `title`, `title_callback`, `title_arguments`, `type`, `block_callback`, `description`, `position`, `weight`, `file` FROM `old_dru`.`menu_router` WHERE `path` LIKE '%civicrm%'
-1. INSERT INTO mysite_dru.system (`filename`, `name`, `type`, `owner`, `status`, `throttle`, `bootstrap`, `schema_version`, `weight`, `info`) SELECT `filename`, `name`, `type`, `owner`, `status`, `throttle`, `bootstrap`, `schema_version`, `weight`, `info` FROM `old_dru`.`system` WHERE `name` LIKE '%civicrm%'; // check that all of the modules desired are captured - perhaps you have a module with civi but not civicrm in its name, in which case you will need to ensure it is copied over
-1. INSERT INTO mysite_dru.role (`name`) select r.`name` from role r inner join permission p on r.rid=p.rid and perm like '%Civi%' left join mysite_dru.role rn on r.name=rn.name where rn.name is null; // NB: this merely inserts new roles that include Civi* perms - you may get extrras if non CiviCRM permissions have names including Civi
+Insert CiviCRM entries into Drupal tables that are normally done by the CiviCRM installation script, but taking the data from your old site
+
+1. Login to your mysql instance via a command line or phpMyAdmin using a mysql account that has privileges for `old_dru`, `mysite_dru`, and `mysite_civ`.
+
+1. As a precaution if you did not upgrade Drupal core and contrib modules to the same version, before doing any of the following operations on the bocks or other tables, compare the old and new table structures using `SHOW CREATE TABLE old_dru.blocks;` and `SHOW CREATE TABLE mysite_dru.blocks;`
+
+1. Run this...
+    ```sql
+    INSERT INTO mysite_dru.blocks (
+      `module`,
+      `delta`, 
+      `theme`, 
+      `status`, 
+      `weight`,
+      `region`, 
+      `custom`,
+      `throttle`,
+      `visibility`,
+      `pages`,
+      `title`, 
+      `cache`)
+    SELECT
+      `module`,
+      `delta`,
+      `theme`,
+      `status`,
+      `weight`,
+      `region`,
+      `custom`,
+      `throttle`,
+      `visibility`,
+      `pages`,
+      `title`,
+      `cache`
+    FROM old_dru.`blocks`
+    WHERE module = 'civicrm';
+    ```
+
+1. Run this... (the fancy stuff is to handle updating of plid)
+
+    ```sql
+    INSERT INTO mysite_dru.menu_links (
+      `menu_name`,
+      `plid`,
+      `link_path`,
+      `router_path`,
+      `link_title`,
+      `options`,
+      `module`,
+      `hidden`,
+      `external`,
+      `has_children`,
+      `expanded`,
+      `weight`,
+      `depth`,
+      `customized`,
+      `p1`,
+      `p2`,
+      `p3`,
+      `p4`,
+      `p5`,
+      `p6`,
+      `p7`,
+      `p8`,
+      `p9`,
+      `updated`)
+      
+    SELECT
+      m1.menu_name,
+      if(m3.mlid is null, 0, m3.mlid) as plid,
+      m1.link_path,
+      m1.`router_path`,
+      m1.`link_title`,
+      m1.`options`,
+      m1.`module`,
+      m1.`hidden`,
+      m1.`external`,
+      m1.`has_children`,
+      m1.`expanded`,
+      m1.`weight`,
+      m1.`depth`,
+      m1.`customized`,
+      m1.`p1`,
+      m1.`p2`,
+      m1.`p3`,
+      m1.`p4`,
+      m1.`p5`,
+      m1.`p6`,
+      m1.`p7`,
+      m1.`p8`,
+      m1.`p9`,
+      m1.`updated`
+    FROM `old_dru`.`menu_links` m1 
+    LEFT JOIN old_dru.menu_links m2 ON m1.plid=m2.mlid
+    LEFT JOIN mysite_dru.menu_links m3 ON m2.router_path=m3.router_path
+    WHERE
+      m1.router_path like '%civicrm%' AND 
+      if(m1.plid, m3.mlid, TRUE);
+    ```
+
+
+1. Run this...
+
+    ```sql
+    INSERT INTO mysite_dru.menu_router (
+      `path`,
+      `load_functions`,
+      `to_arg_functions`,
+      `access_callback`,
+      `access_arguments`,
+      `page_callback`,
+      `page_arguments`,
+      `fit`,
+      `number_parts`,
+      `tab_parent`,
+      `tab_root`,
+      `title`,
+      `title_callback`,
+      `title_arguments`,
+      `type`,
+      `block_callback`,
+      `description`,
+      `position`,
+      `weight`,
+      `file`) 
+    SELECT 
+      `path`,
+      `load_functions`,
+      `to_arg_functions`,
+      `access_callback`,
+      `access_arguments`,
+      `page_callback`,
+      `page_arguments`,
+      `fit`,
+      `number_parts`,
+      `tab_parent`,
+      `tab_root`,
+      `title`,
+      `title_callback`,
+      `title_arguments`,
+      `type`,
+      `block_callback`,
+      `description`,
+      `position`,
+      `weight`,
+      `file`
+    FROM `old_dru`.`menu_router`
+    WHERE `path` LIKE '%civicrm%';
+    ```
+
+1. Check that all of the modules desired are captured - perhaps you have a module with civi but not civicrm in its name, in which case you will need to ensure it is copied over
+
+    ```sql
+    INSERT INTO mysite_dru.system (
+      `filename`,
+      `name`,
+      `type`,
+      `owner`,
+      `status`,
+      `throttle`,
+      `bootstrap`,
+      `schema_version`,
+      `weight`,
+      `info`)
+    SELECT
+      `filename`,
+      `name`,
+      `type`,
+      `owner`,
+      `status`,
+      `throttle`,
+      `bootstrap`,
+      `schema_version`,
+      `weight`,
+      `info`
+    FROM `old_dru`.`system`
+    WHERE `name` LIKE '%civicrm%';
+    ```
+
+
+1. This merely inserts new roles that include Civi* perms - you may get extrras if non CiviCRM permissions have names including Civi
+
+    ```sql
+    INSERT INTO mysite_dru.role (`name`) 
+    SELECT r.`name` 
+    FROM role r 
+    INNER JOIN permission p ON
+      r.rid=p.rid AND 
+      perm LIKE '%Civi%'
+    LEFT JOIN mysite_dru.role rn ON r.name=rn.name
+    WHERE rn.name IS NULL;
+    ```
+
 1. Manually set CiviCRM permissions on roles in new site to match those on the old site. (Okay, I'm lazy and didn't want to do this in code as permissions isn't normalized on each perm.)
-1. `USE mysite_dru; TRUNCATE `cache`; TRUNCATE `cache_block`; TRUNCATE `cache_filter`; TRUNCATE `cache_form`; TRUNCATE `cache_menu`; TRUNCATE `cache_page`; TRUNCATE `sessions`; //` Truncate sessions and various cache tables. Depending on your installation, you may need to truncate additional module-specific cache tables.
+
+1. Truncate sessions and various cache tables. Depending on your installation, you may need to truncate additional module-specific cache tables.
+
+    ```sql
+    USE mysite_dru;
+    TRUNCATE `cache`;
+    TRUNCATE `cache_block`;
+    TRUNCATE `cache_filter`;
+    TRUNCATE `cache_form`;
+    TRUNCATE `cache_menu`;
+    TRUNCATE `cache_page`;
+    TRUNCATE `sessions`;
+    ```
 
 ### Integrate the users from the two Drupal sites
 
-1. INSERT INTO mysite_dru.users (`name`, `pass`, `mail`, `mode`, `sort`, `threshold`, `theme`, `signature`, `signature_format`, `created`, `access`, `login`, `status`, `timezone`, `language`, `picture`, `init`, `data`) SELECT ou.`name`, ou.`pass`, ou.`mail`, ou.`mode`, ou.`sort`, ou.`threshold`, ou.`theme`, ou.`signature`, ou.`signature_format`, ou.`created`, ou.`access`, ou.`login`, ou.`status`, ou.`timezone`, ou.`language`, ou.`picture`, ou.`init`, ou.`data` FROM `users` ou left join mysite_dru.users nu on ou.mail=nu.mail where nu.mail is null; // left join used to get only new users
-1. INSERT INTO mysite_dru.users_roles (uid,rid) SELECT nu.uid, nr.rid FROM old_dru.users ou inner join mysite_dru.users nu on ou.mail=nu.mail inner join old_dru.users_roles our on ou.uid=our.uid inner join old_dru.role oldr on our.rid=oldr.rid inner join mysite_dru.role nr on oldr.name=nr.name left join mysite_dru.users_roles nur on our.uid=nur.uid and our.rid=nur.rid where nur.rid is null
-1. UPDATE civicaction_civ.`civicrm_uf_match` m inner join civicaction_dru.users u on (m.uf_name COLLATE utf8_unicode_ci) = (u.mail COLLATE utf8_unicode_ci) set uf_id=uid
+1. left join used to get only new users
+
+    ```sql
+    INSERT INTO mysite_dru.users (
+      `name`,
+      `pass`,
+      `mail`,
+      `mode`,
+      `sort`,
+      `threshold`,
+      `theme`,
+      `signature`,
+      `signature_format`,
+      `created`,
+      `access`,
+      `login`,
+      `status`,
+      `timezone`,
+      `language`,
+      `picture`,
+      `init`,
+      `data`)
+    SELECT
+      ou.`name`,
+      ou.`pass`,
+      ou.`mail`,
+      ou.`mode`,
+      ou.`sort`,
+      ou.`threshold`,
+      ou.`theme`,
+      ou.`signature`,
+      ou.`signature_format`,
+      ou.`created`,
+      ou.`access`,
+      ou.`login`,
+      ou.`status`,
+      ou.`timezone`,
+      ou.`language`,
+      ou.`picture`,
+      ou.`init`,
+      ou.`data`
+    FROM `users` ou 
+    LEFT JOIN mysite_dru.users nu ON ou.mail=nu.mail 
+    WHERE nu.mail IS NULL;
+    ```
+
+1. Run this...
+
+    ```sql
+    INSERT INTO mysite_dru.users_roles (
+      uid,
+      rid) 
+    SELECT
+      nu.uid,
+      nr.rid 
+    FROM old_dru.users ou
+    INNER JOIN mysite_dru.users nu ON ou.mail=nu.mail
+    INNER JOIN old_dru.users_roles our ON ou.uid=our.uid
+    INNER JOIN old_dru.role oldr ON our.rid=oldr.rid
+    INNER JOIN mysite_dru.role nr ON oldr.name=nr.name
+    LEFT JOIN mysite_dru.users_roles nur ON 
+      our.uid=nur.uid AND 
+      our.rid=nur.rid
+    WHERE nur.rid IS NULL
+    ```
+
+1. Run this...
+
+    ```sql
+    UPDATE civicaction_civ.`civicrm_uf_match` m
+    INNER JOIN civicaction_dru.users u ON
+      (m.uf_name COLLATE utf8_unicode_ci) = (u.mail COLLATE utf8_unicode_ci)
+    SET uf_id = uid
+    ```
 
 ### Let CiviCRM know about its new home
 

@@ -6,7 +6,7 @@ This is available from the download section in [http://developer.cardaccess.com.
 
 ## Installation & Configuration
 
-### Step 1: Ensure your CiviCRM extensions directory is configured
+### Ensure your CiviCRM extensions directory is configured
 
 More details can be found on the CiviCRM website, but typically this involves logging in as administrator and editing the directory setting:
 
@@ -15,15 +15,15 @@ More details can be found on the CiviCRM website, but typically this involves lo
 
 If you have already configured other extensions then this step is not necessary
 
-### Step 2: Install extension
+### Install extension
 
 This requires 3 separate steps
 
-#### Step 2a: Unpack extension
+#### Unpack extension
 
 Unzip au.com.cardaccess.payment.casconnect.zip into the extensions directory (as configured above)
 
-#### Step 2b: Copy the IPN files to their final location
+#### Copy the IPN files to their final location
 
 Please copy the following files into CiviCRM's "extern" directory:
 
@@ -40,7 +40,7 @@ This above procedure is the recommended way as it will work without further modi
 
 But if you absolutely cannot modify the extern directory (e.g. your hosting provider won't allow it) and need to use another URL then this can be done but it will require some manual fiddling - please contact us for more details, we will need to make a configuration change to your account on our end and the notify script
 
-#### Step 2c: Activate the CASConnect Payment Processor
+#### Activate the CASConnect Payment Processor
 
 Please do the following:
 
@@ -49,7 +49,7 @@ Please do the following:
     * CiviCRM 4.1: "Administer->Customise Data And Screens->Manage CiviCRM Extensions"
 * You should now see CASConnect become available for installation. Click "Install" and then "Install" again
 
-### Step 3: Configure extension
+### Configure extension
 
 Please configure the following items before starting to process transactions (these will be randomly generated when an account is setup on our end):
 

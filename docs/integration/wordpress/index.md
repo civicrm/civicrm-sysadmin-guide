@@ -4,7 +4,7 @@ CiviCRM integrates with WordPress as a plugin starting with WordPress version 3.
 
 CiviCRM public forms such as online contribution pages and event registration pages will be shown to the public in your selected WordPress theme. When logged in to your Control Panel, CiviCRCM will be shown as a link in the left sidebar menu.
 
-### Synchronize WordPress Users to CivCRM Contacts
+## Synchronize WordPress Users to CivCRM Contacts
 
 CiviCRM offers a function to Synchronize Users to Contacts: CiviCRM will check each user record for a contact record. A new contact record will be created for each user where one does not already exist. To perform this function go to **Administer -> Users and Permissions -> Synchronize Users to Contacts**
 
@@ -54,7 +54,7 @@ Finally, for **Petitions**, the only option presented is to select the specific 
 
 There are several plugins that have been developed to improve the integration between CiviCRM and WordPress.
 
-#### [CiviCRM Admin Utilities](https://wordpress.org/plugins/civicrm-admin-utilities/)
+### [CiviCRM Admin Utilities](https://wordpress.org/plugins/civicrm-admin-utilities/)
 
 CiviCRM Admin Utilities modifies CiviCRM’s behaviour in single site and multisite installs. It does a number of useful things:
 
@@ -64,13 +64,13 @@ CiviCRM Admin Utilities modifies CiviCRM’s behaviour in single site and multis
 
 [Download](https://wordpress.org/plugins/civicrm-admin-utilities/)
 
-#### [CiviCRM WordPress Profile Sync](https://wordpress.org/plugins/civicrm-wp-profile-sync/)
+### [CiviCRM WordPress Profile Sync](https://wordpress.org/plugins/civicrm-wp-profile-sync/)
 
 The CiviCRM WordPress Profile Sync plugin keeps the “First Name”, “Last Name”, “Email Address” and “Website” fields of a WordPress (and BuddyPress) user profile in sync with the corresponding fields of a CiviCRM contact. The synchronisation takes place regardless of whether the changes are made in WordPress, BuddyPress or CiviCRM.
 
 [Download](https://wordpress.org/plugins/civicrm-wp-profile-sync/)
 
-#### [CiviCRM WordPress Member Sync](https://wordpress.org/plugins/civicrm-wp-member-sync/)
+### [CiviCRM WordPress Member Sync](https://wordpress.org/plugins/civicrm-wp-member-sync/)
 
 CiviCRM WordPress Member Sync keeps a WordPress user in sync with a CiviCRM membership by granting either a role or capabilities to a WordPress user who has that membership.
 
@@ -78,7 +78,7 @@ This enables you to have, among other things, members-only content on your websi
 
 [Download](https://wordpress.org/plugins/civicrm-wp-member-sync/)
 
-#### [Caldera Forms CiviCRM](https://github.com/mecachisenros/caldera-forms-civicrm)
+### [Caldera Forms CiviCRM](https://github.com/mecachisenros/caldera-forms-civicrm)
 
 A WordPress plugin that integrates the [Caldera Forms plugin](https://wordpress.org/plugins/caldera-forms/) with CiviCRM.
 
@@ -103,13 +103,13 @@ To use this plugin, the following is needed:
 
 [Download](https://github.com/mecachisenros/caldera-forms-civicrm)
 
-#### [Contact Form 7 CiviCRM integration](https://wordpress.org/plugins/contact-form-7-civicrm-integration/)
+### [Contact Form 7 CiviCRM integration](https://wordpress.org/plugins/contact-form-7-civicrm-integration/)
 
 This plugin adds integration for CiviCRM to contact form 7. With this plugin it is possible to submit a contact for to an external CiviCRM.
 
 [Download](https://wordpress.org/plugins/contact-form-7-civicrm-integration/)
 
-#### [CiviCRM Event Organiser](https://github.com/christianwach/civicrm-event-organiser)
+### [CiviCRM Event Organiser](https://github.com/christianwach/civicrm-event-organiser)
 
 A WordPress plugin for syncing Event Organiser plugin Events with CiviCRM Events. The plugin syncs Event Organiser Events, Venues and Event Categories to their corresponding entities in CiviCRM.
 Notes
@@ -124,17 +124,17 @@ It also requires:
 [Download](https://github.com/christianwach/civicrm-event-organiser)
 
 
-### Widgets
+## Widgets
 
 WordPress Widgets add content and features to your Sidebars. Examples are the default widgets that come with WordPress: for Categories, Tag cloud, Search, etc. Plugins will often add their own widgets.
 
-#### [CiviEvent Widget](https://wordpress.org/plugins/civievent-widget/)
+### [CiviEvent Widget](https://wordpress.org/plugins/civievent-widget/)
 
 You can use the CiviEvent widget to add two types of widgets for upcoming public events from CiviCRM. There’s no limit to the number of widgets you can add of either type. You can include the widgets in the sidebar like normal, or you can include them via shortcodes in the body of your posts.
 
 [Download](https://wordpress.org/plugins/civievent-widget/)
 
-#### [CiviCRM Contribution Page Widget](https://wordpress.org/plugins/civicrm-contribution-page-widget/)
+### [CiviCRM Contribution Page Widget](https://wordpress.org/plugins/civicrm-contribution-page-widget/)
 
 CiviCRM contribution pages allow you to generate a “widget” showing the progress toward a goal. This plugin makes it easy to include one or more contribution page “widgets” as actual WordPress widgets on your sidebar.
 

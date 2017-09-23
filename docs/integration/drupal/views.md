@@ -1,5 +1,7 @@
 # Views3 Integration
 
+## Drupal 7
+
 These instructions assume CiviCRM and Drupal are on separate databases located on the same physical host.
 
 1. Before making any changes, it is _strongly_ advised that you make backups of your mysql databases and settings.php file.
@@ -27,7 +29,7 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 1. Save the file. You might want to clear your site cache at this point.
 1. You should now be able to create views based on CiviCRM data.
 
-### Drupal 6
+## Drupal 6
 
 NOTE: For Drupal 6 the variable name in the settings.php file is different. Rather than "$databases['default']['default']['prefix']= array(", for Drupal 6 the relevant array is $db_prefix, so the beginning lines of the addition to settings.php will look something like this:
 
@@ -49,5 +51,3 @@ etc.
 That example is for a Drupal set that uses table prefix "dru_" and for which CiviCRM is set up to use a separate table named "civicrmdb". CiviCRM also uses a table prefix but that is automatically added–do not add it again here.
 
 Also–if you use a table prefix in Drupal 6 you probably already have a $db_prefix="dru_"; or similar statement in your settings.php. So you will need to remove any existing declaration of $db_prefix and replace it with one similar to above.
-
-_Many thanks to Jalama for coding and support!_

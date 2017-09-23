@@ -1,7 +1,5 @@
 # Error handling
 
-##### Return to [System Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/System+Settings) Main Page
-
 Administer » System Settings » Debugging and Error Handling
 
 Debugging options are covered in the developer documentation.

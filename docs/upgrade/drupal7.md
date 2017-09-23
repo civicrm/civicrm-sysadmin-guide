@@ -5,7 +5,7 @@
     * Installing from scratch? Use the installation instructions for [Drupal 7](https://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+Installation+Guide+for+CiviCRM+4.5+-+Drupal+7)
     * Upgrading from a version prior to 2.2? First upgrade to 2.2 [using these instructions](https://wiki.civicrm.org/confluence/display/CRMDOC22/Upgrade+Drupal+Sites+to+2.2).
 
-    {*}IMPORTANT: These instructions are for sites using or upgrading to Drupal 7 only. Before considering an upgrade of a production Drupal 6 site, verify that other Drupal modules you may be using are either compatible with Drupal 7.x OR that there is a Drupal 7 version you can upgrade to.
+    IMPORTANT: These instructions are for sites using or upgrading to Drupal 7 only. Before considering an upgrade of a production Drupal 6 site, verify that other Drupal modules you may be using are either compatible with Drupal 7.x OR that there is a Drupal 7 version you can upgrade to.
 
     **NOTE: When you upgrade Drupal from 6.x to 7.x, the official instructions on Drupal.org say to disable all non-core modules. However, we recommend that you do NOT disable CiviCRM. If CiviCRM is disabled and you upgrade to Drupal 7.0, you will then**  **not**  **be able to upgrade CiviCRM. If you have done this, the only option is to install CiviCRM on a blank database, and then manually edit civicrm.settings.php to point to your real database and then proceed with the upgrade. See below for more information. Or, you can use drush civicrm-upgrade-db.**
 
@@ -60,8 +60,6 @@
 
     * **Upgrades from 4.2.x** : If you are running scheduled jobs using CLI.php, you will need to reconfigure cron to include a password. Scheduled jobs will no longer run if the password is not provided ([learn more](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs)).
 
-# Step-by-step Upgrade Procedures
-
 ## Download the most recent CiviCRM Package
 
 * From [http://sourceforge.net/projects/civicrm/files/civicrm-latest/](http://sourceforge.net/projects/civicrm/files/civicrm-latest/)
@@ -96,8 +94,7 @@ If you have modules installed in your Drupal site that integrate with or extend 
 Note which modules in the CiviCRM section of the modules listing are currently enabled (taking a screenshot is one easy way to do this). Now un-check the Enabled box for ALL modules in the CiviCRM section of the modules listing EXCEPT for CiviCRM itself. Click Save.
 
 !!! warning
-
-    **Do NOT disable CiviCRM itself. Only disable other modules in the CiviCRM section of the modules page. The upgrade will NOT run if CiviCRM is disabled.**
+    Do NOT disable CiviCRM itself. Only disable other modules in the CiviCRM section of the modules page. The upgrade will NOT run if CiviCRM is disabled.
 
 
 ## Backup your CiviCRM database
@@ -111,40 +108,39 @@ This backup is what you'll rely on if the upgrade doesn't go as planned - before
 **CiviCRM will not run properly if files from previous version are present after the upgrade.** Make sure you have a good backup of your complete previous version installation and then delete _/sites/all/modules/civicrm_.
 
 !!! danger
-
-    **Be sure that your backup copy of the previous version codebase is NOT located below the <drupal home>/modules or <drupal home>/sites/all/modules directory.** For example, placing your codebase backup in <drupal home>/modules/civicrm.bak... will cause errors (Drupal executes any *.module files that are found in the modules or sites/all/modules directory tree).
+    Be sure that your backup copy of the previous version codebase is NOT located below the <drupal home>/modules or <drupal home>/sites/all/modules directory. For example, placing your codebase backup in <drupal home>/modules/civicrm.bak... will cause errors (Drupal executes any *.module files that are found in the modules or sites/all/modules directory tree).
 
 
 !!! warning
-
     Make sure you have logged in to Drupal BEFORE deleting the old files. Do not log out until the entire process is complete.
 
 
 ## Unpack the latest package and verify permissions
 
 * Unpack the files into _<drupal home>/sites/all/modules/_.
-```
-// Modify this line to use your real drupal root
-cd <drupal home>/sites/all/modules
-// Modify this line with the actual downloaded package file name
-tar -xzf civicrm_download_file.tgz
-```
+    ```
+    // Modify this line to use your real drupal root
+    cd <drupal home>/sites/all/modules
+    // Modify this line with the actual downloaded package file name
+    tar -xzf civicrm_download_file.tgz
+    ```
+    
 * You should now have a new civicrm directory tree under the _<drupal home>/sites/all/modules/_ directory.
 * Ensure that your Drupal _files_directory is writeable by the webserver. You can use the following command to set proper permissions:
-```
-// Modify this line to use your real drupal root directory
-cd <drupal home>/sites/default
-
-// The following two lines set basic reasonable web permissions:
-// 0755 is Equivalent to chmod u=rwx,g=rx,o=rx
-// 0644 is Equivalent to chmod u=rw,g=r,o=r
-find . -type d -exec chmod 0755 {} \;
-find . -type f -exec chmod 0644 {} \;
-
-// Give the web user permissions to
-// read and write recursively inside the files directory.
-chmod -R u+rw files
-```
+    ```
+    // Modify this line to use your real drupal root directory
+    cd <drupal home>/sites/default
+    
+    // The following two lines set basic reasonable web permissions:
+    // 0755 is Equivalent to chmod u=rwx,g=rx,o=rx
+    // 0644 is Equivalent to chmod u=rw,g=r,o=r
+    find . -type d -exec chmod 0755 {} \;
+    find . -type f -exec chmod 0644 {} \;
+    
+    // Give the web user permissions to
+    // read and write recursively inside the files directory.
+    chmod -R u+rw files
+    ```
 
 ## Update the civicrm.settings.php file
 
@@ -155,7 +151,7 @@ chmod -R u+rw files
 
 If your civicrm.settings.php does not have this section, copy and paste from here into civicrm.settings.php:
 
-```
+```php
 // These lines should appear just above the line "Do not change anything below this line. Keep as is"
 /**
  * This setting logs all emails to a file. Useful for debugging any mail (or civimail) issues.
@@ -231,24 +227,27 @@ Delete all files in [yoursite]/sites/default/files/civicrm/templates_c/ and clea
 
     Support for MySQL versions 4.0 and 4.1 has been discontinued. This means that you may encounter various issues and/or unexpected behavior if you attempt to run CiviCRM under these versions, and the CiviCRM engineering team will not provide support for debugging or resolving these issues. You are strongly encouraged to upgrade to the current generally available release of MySQL.
 
-
 * Point your web browser to the following URL (you should already be logged in to Drupal with administrator-level permissions):
 
-* *- _If "clean URLs" are enabled_
-```
-http://<your_drupal_home>/civicrm/upgrade?reset=1
-```
- *- _If "clean URLs" are NOT enabled_
-```
-http://<your_drupal_home>/?q=civicrm/upgrade&reset=1
-```
+    * _If "clean URLs" are enabled_
+    
+        ```
+        http://<your_drupal_home>/civicrm/upgrade?reset=1
+        ```
+    
+     * _If "clean URLs" are NOT enabled_
+        ```
+        http://<your_drupal_home>/?q=civicrm/upgrade&reset=1
+        ```
+        
 * You should see the Upgrade screen.
     * NOTE: This page loads on a drupal maintenance page. If you use a custom maintenance.tpl.php file you may wish to temporarily disable that file and use Drupal's default.
+    
 * Should you encounter an error reading: "Version information missing in civicrm database", try running a query like this: 'UPDATE civicrm_domain SET version = '2.2.9' WHERE id = 1;'
 * If you are ready to upgrade, click the **Upgrade Now** button.
 * You should see the message **Upgrade successful** when the upgrade completes.
-
     * If you receive any errors during the process, please note down the exact error message, and check for solutions on the [community support forum](http://forum.civicrm.org/).
+    
 * Now click the **Return to CiviCRM home page** link.
 
 ## Verify and Update Resource URL Settings
@@ -291,7 +290,6 @@ If you changed the default Drupal homepage from civicrm to node in step 3 above,
  then change the Default front page to civicrm, and click Save configuration.
 
 !!! warning
-
     NB: As mentioned in 3 above, there are a variety of modules that may affect the Drupal homepage. Consult the appropriate module's documentation if you are using them to set the homepage to civicrm for the administrative action required to change your site's homepage back to CiviCRM.
 
 
@@ -310,17 +308,17 @@ If your organization has modified the default versions of System Workflow messag
 
 Check this section for answers to upgrade problems. If your problem isn't addressed here, check out the **[Installation and Configuration Troubleshooting](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Configuration+Troubleshooting)** page for additional resources.
 
-#### Version information missing in civicrm database
+### Version information missing in civicrm database
 
 Try running a query like this: 'UPDATE civicrm_domain SET version = '2.2.9' WHERE id = 1;'
 
 Then try invoking the upgrade script again with your browser.
 
-#### Non-recoverable error: Unknown column 'is_deleted' in 'field list', 1054
+### Non-recoverable error: Unknown column 'is_deleted' in 'field list', 1054
 
 Another Drupal module is accessing the database and the update process is being blocked. Disable any modules that interact or rely on CiviCRM, such as RealName. Perform the update, then enable those modules again.
 
-#### Page Not Found error
+### Page Not Found error
 
 if you get this error when trying to upgrade the database in step 7, you most likely disabled CiviCRM in step 3. Here's how to fix it and get back on track. In short, you have to restore the original version of civicrm, re-enable the module, and then replace the old files with the new.
 
@@ -332,7 +330,7 @@ if you get this error when trying to upgrade the database in step 7, you most li
 * Go to Step 7 and try it again. Everything should be back to normal!!
 * If so, then don't forget to delete sites/all/modules/civicrm_old.
 
-#### Reset Your User Session
+### Reset Your User Session
 
 If you are getting foreign key constraint errors when trying to add or modify records, you may need to reset your user session.
 
@@ -340,24 +338,25 @@ If you are getting foreign key constraint errors when trying to add or modify re
     * Go to **Administer CiviCRM » System Settings » Debugging and Error Handling**
     * Set **Enable Debugging** to Yes and click Save.
 * Click the Administer CiviCRM menu (or any other CiviCRM menu item). After the page is loaded, add an additional query string value (sessionReset=2) to the URL in your browser's location bar, and reload the page.
-```
-// Example URL
-http://...../?q=civicrm/admin&sessionReset=2
-
-// Example with Clean URLs
-http://...../civicrm/admin?sessionReset=2
-```
+    ```
+    // Example URL
+    http://...../?q=civicrm/admin&sessionReset=2
+    
+    // Example with Clean URLs
+    http://...../civicrm/admin?sessionReset=2
+    ```
+    
 * Now reset **Enable Debugging** to No and click Save.
 
 !!! danger "Do Not Leave Debug Features Enabled for a Public Site"
- Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information. |
+    Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information.
 
-#### Verify and Update Base Directory and Base URL Settings in the Database
+### Verify and Update Base Directory and Base URL Settings in the Database
 
 If you are seeing problems with missing images or page styling, you may need to adjust the Base Directory and Base URL Settings in the database. You can do this from:
 **Administer CiviCRM » System Settings » Cleanup Caches and Update Paths**
 
-#### Verify and Update Configuration Settings File
+### Verify and Update Configuration Settings File
 
 CiviCRM in versions 2.2 stores most configuration settings in the database. However values needed to load the code and database are stored in the settings file and may need to be updated prior to beginning the upgrade process if you are upgrading a copy of a working 2.2 site:
 
@@ -369,12 +368,13 @@ CiviCRM in versions 2.2 stores most configuration settings in the database. Howe
     * **CIVICRM_UF_BASEURL** : If the Drupal URL for this site is different from your 2.2 site, update this setting with the base URL for your Drupal home page.
     * **CIVICRM_UF_DSN** : If this install will be using a different database for Drupal, update this setting.
     * **CIVICRM_DSN** : This setting must contain the correct information for your current (not yet upgraded) database. If you are upgrading a copy of your database that has a different database name - you will need to change the civicrm_db portion of the setting below. Also review the other values to make sure they are correct for the database that will be used for 4.0
-```
-define( 'CIVICRM_DSN', 'mysql://crm_db_username:crm_db_password@db_server/civicrm_db?new_link=true');
-```
+        ```
+        define( 'CIVICRM_DSN', 'mysql://crm_db_username:crm_db_password@db_server/civicrm_db?new_link=true');
+        ```
+    
     * **CIVICRM_SITE_KEY** : If you are upgrading to 4.0 from a version earlier than 2.0.7, you will need to define your CIVICRM_SITE_KEY. Components such as CiviMail's cronjob will not function without the site key with CiviCRM 4.0. Learn how to define the site key here: [http://wiki.civicrm.org/confluence/display/CRMDOC/Command-line+Script+Configuration](http://wiki.civicrm.org/confluence/display/CRMDOC/Command-line+Script+Configuration)
 
-#### A fatal error appears when I try to load a CiviCRM page.
+### A fatal error appears when I try to load a CiviCRM page.
 
 ```
 Fatal error: civicrm_initialize() [CRM:function.require]: Failed opening
@@ -384,15 +384,15 @@ in <drupal root>/modules/civicrm/modules/civicrm.module on line 206
 
 This error likely indicates that the new CiviCRM configuration file is not in the expected location or that the $civicrm_root setting is incorrect. See step 3 above.
 
-#### Foreign Key Errors or Warnings During the Database Upgrade
+### Foreign Key Errors or Warnings During the Database Upgrade
 
 Foreign keys may have been assigned different names on some installations. Also, different versions of MySQL handle the dropping and adding of constraint checks differently. Try [this procedure](https://wiki.civicrm.org/confluence/display/CRMDOC/Ensuring+Schema+Integrity+on+Upgrades) or [this procedure (on the forum)](http://forum.civicrm.org/index.php/topic,4259.msg21599.html#msg21599) to reload your data into a new 4.0 database structure if you are having this type of issue with upgrading your database.
 
-#### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
+### Upgrade script fails with fatal database-related errors OR reports "Database check failed"
 
 Download and run [Database Troubleshooting Tools](https://wiki.civicrm.org/confluence/display/CRMDOC/Database+Troubleshooting+Tools) to test the current state of the database and provides a diagnosis. The tools suite also includes a repair facility.
 
-#### Calendar widget doesn't work (throws a Javascript error), and/or CiviMail scripts for open tracking, SOAP authentication, etc. don't function.
+### Calendar widget doesn't work (throws a Javascript error), and/or CiviMail scripts for open tracking, SOAP authentication, etc. don't function.
 
 If your CiviCRM codebase is NOT located in either **<drupal root>/modules/civicrm** or **<drupal root>/sites/all/modules** (i.e. you are using a symlink from there to your codebase) - you will need to create a local file in the top-level directory of your codebase which points to the location of your drupal sites directory.
 
@@ -405,38 +405,38 @@ define( 'CIVICRM_CONFDIR', '/home/lobo/public_html/drupal/sites' );
 ?>
 ```
 
-#### Access Forbidden (403) Error After Upgrade
+### Access Forbidden (403) Error After Upgrade
 
 This may be caused by directory permission settings. Make sure your <drupal home>/files/civicrm directory is set with chmod a+rwx -R
  If you're still getting this error and have clean URLs enabled, try disabling clean URLS (Drupal >> admin >> settings) prior to running the session reset and cleanup. Then re-enable clean URLs.
 
-#### Screen grays out and a camera icon appears whenever you click any link in CiviCRM
+### Screen grays out and a camera icon appears whenever you click any link in CiviCRM
 
 This error is caused by a known problem in the [Drupal Lightbox2 module](http://drupal.org/project/lightbox2). Either disable the module in **Administration » Modules** or upgrade to the dev version of the Lightbox2 (dated July 2009 or later) that fixes this issue.
 
-#### Reset config_backend
+### Reset config_backend
 
 Having strange problems with Administrative settings forms after upgrade? Try deleting all files in [yoursite]/sites/default/files/civicrm/templates_c/ and sites/default/files/civicrm/ConfigAndLog/Config.IDS.ini
 
-#### UpdateMembershipRecord.php won't run after upgrading from prior versions
+### UpdateMembershipRecord.php won't run after upgrading from prior versions
 
 Double check that there is a Membership Status Rule called "Deceased" and that it is active in **Administer CiviCRM » CiviMember**  **» Membership Status Rules.** The solution is described in this [forum thread](http://forum.civicrm.org/index.php?topic=10092).
 
-#### The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
+### The menus are wrong, the admin dashboard does not have the correct links and settings, or get an error with CRM_Core_Invoke::require_once()
 
 You can re-build the menu/admin dashboard by visiting the following url - ([http:///civicrm/menu/rebuild?reset=1](http://wiki.civicrm.org/civicrm/menu/rebuild?reset=1) (http://%3cdomain%3e/civicrm/menu/rebuild?reset=1))
 
-#### Version information missing in civicrm database error
+### Version information missing in civicrm database error
 
 Try running a query like this: 'UPDATE civicrm_domain SET version = '2.2.9' WHERE id = 1;'
 
 Then try invoking the upgrade script again with your browser.
 
-#### **Upgrade script failed to modify civicrm.settings.php**
+### Upgrade script failed to modify civicrm.settings.php
 
 If you relied on the upgrade script to modify civicrm.settings.php, check that it did so. If it didn't, restart the upgrade, and modify the file by hand.
 
-#### **Rolling back to previous/backed-up version of CiviCRM**
+### Rolling back to previous/backed-up version of CiviCRM
 
 Sometimes an upgrade fails and you need to get back to the last working version. You should have backups of the database saved as well as a backup of the civicrm files from the /sites/all/modules/ directory. Here are the steps you need to take in order to roll back to the last working version before your upgrade:
 
@@ -453,6 +453,6 @@ Sometimes an upgrade fails and you need to get back to the last working version.
 
 Sometimes it helps to rebuild the menu/admin dashboard by visiting the url [http://yoursitename.com/civicrm/menu/rebuild?reset=1](http://yoursitename.com/civicrm/menu/rebuild?reset=1)
 
-#### After clicking "Upgrade Now", upgrade freezes with "[]" message (Firefox)
+### After clicking "Upgrade Now", upgrade freezes with "[]" message (Firefox)
 
 This may be a compatibility issue with certain releases of Firefox. The issue has appeared intermittently and has not been reliably reproduced. If you encounter it, please report details at [CRM-11386](http://issues.civicrm.org/jira/browse/CRM-11386); to continue with the upgrade, you can work-around the issue by upgrading Firefox or using a different web browser.

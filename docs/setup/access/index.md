@@ -170,8 +170,6 @@ Roles can be assigned to users in the following ways:
 
 
 
-### 
-
 ### Anonymous and Authenticated roles
 
 You will encounter both these role types as you work with the access
@@ -451,9 +449,7 @@ group of contacts, profile, custom data or event for this ACL
 
 
 
-# Access Control Context and Overview
-
-##### Return to [Access Control](https://wiki.civicrm.org/confluence/display/CRMDOC/Access+Control) Main Page
+## Access Control Context and Overview
 
 ### Context - Uses for Permissions, Roles and Access Rules
 

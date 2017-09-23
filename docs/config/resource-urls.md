@@ -1,9 +1,5 @@
 # Resource URLs
 
-##### Return to [System Settings](https://wiki.civicrm.org/confluence/display/CRMDOC/System+Settings) Main Page
-
-### Resource URLs - URLs used to access CiviCRM resources (CSS files, Javascript files, images, etc.).
-
 **Administer >> System Settings >> Resource URLs** (/civicrm/admin/setting/url?reset=1)
 
 Default values for the settings on this screen are supplied during the automated installation process. In general, you should only need to review and/or modify these settings if you've moved your CiviCRM installation to a different server or directory path OR if you've changed the base URL used to access your site.
@@ -23,7 +19,7 @@ If successful you will see the message "Your settings changes have been saved."
     You can also define additional CSS styles to be applied to all or specific page elements by adding CSS styles to the 'extra CSS' file: _css/extras.css_. This file is included in the downloaded code, but is empty by default.
 
 
-### Trouble-shooting
+## Trouble-shooting
 
 The following symptoms are all indications that your **CiviCRM Resource URL** setting is incorrect:
 
@@ -39,6 +35,6 @@ If you notice these symptoms, use the **View Source** option in your browser and
 
 Copy the URL portion of this line ( the portion in parentheses - starting with http:// ) into your browser's location bar and try to navigate to civicrm.css. If you see a css file code in your brower - then your Resource URL setting is correct. If you get **Page Not Found** - then you'll need to examine the URL and modify as needed.
 
-### Base URL Detection problems
+## Base URL Detection problems
 
 Sometimes the CiviCRM Resource URL setting is correct but there are problems with how CiviCRM is determining your base url that then affect the resource URL generation. See the troubleshooting section on [Cleanup Caches and Update Paths](https://wiki.civicrm.org/confluence/display/CRMDOC/Cleanup+Caches+and+Update+Paths).

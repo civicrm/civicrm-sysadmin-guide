@@ -29,7 +29,7 @@ The Drupal approaches only work if you are using Drupal as your CMS.
 
 Within Drupal, there are different approaches as well. Most of them are based on the Drupal base theme called "[bootstrap](https://www.drupal.org/project/bootstrap)" that incorporates a lot of the bootstrap framework into Drupal and provides a reasonable model of how to use other bits as well.
 
-#### Public Facing Pages only
+### Public Facing Pages only
 
 One approach is to only focus on a custom Drupal theme to be applied to public facing pages. This approach makes no effort to use the bootstrap theme to display the administrative screens of CiviCRM. Instead, it focuses on ensuring that your contribution, membership, event, petition, etc. pages are properly displayed in the mobile-friendly bootstrap way.
 
@@ -44,7 +44,7 @@ You can use [themekey](https://www.drupal.org/project/themekey) (and [themekey_c
 
 In addition, PTP has developed a base subtheme, available here that is specifically focused on ensuring public facing pages work well and is designed to be sub-themed to match a variety of different layouts: git clone git://git.progressivetech.org/powerbase/civiresponsive.git
 
-#### The Whole Enchilada
+### The Whole Enchilada
 
 PTP tried to create a Drupal base theme of Bootstrap that worked with the CiviCRM admin interface (see `git clone [git://git.progressivetech.org/powerbase/powerbase](git://git.progressivetech.org/powerbase/powerbase)`), however, we abandoned it as too difficult without changing CiviCRM Core
 

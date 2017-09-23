@@ -144,11 +144,16 @@ examined:
     passwords are of a sufficient complexity and length (e.g. minimum 8
     characters, including letters and numbers), and must not be shared
     or divulged over insecure communications like email.
-# checkDirectoriesAreNotBrowseable
+
+## Filesystem permissions
+
+### Directories should not be browsable
 
 In its default configuration, CiviCRM places some uploaded and server-generated data in the CMS's data folder (such as Drupal's "sites/default/files" or Joomla's "media"). This folder is web-accessible, but many of the documents processed by CiviCRM should not be web-accessible. If CiviCRM's data folders are not suitably protected from web access, then sensitive information may be disclosed.
 
-If these directories are accessible and browseable, then data from your site may be indexed by search engines. This makes it significantly easier for an attacker to identify your site.# checkUploadsAreNotAccessible
+If these directories are accessible and browseable, then data from your site may be indexed by search engines. This makes it significantly easier for an attacker to identify your site.
+
+### Uploads should not be accessible
 
 If you see this warning, CiviCRM is alerting you that it was able to retrieve a file from the CiviCRM uploads directory over HTTP. If this is the case then there is a risk of personal data being exposed via your CiviCRM install.
 
@@ -172,7 +177,10 @@ See also CRM_Utils_Check_Security::checkDirectoriesAreNotBrowseable()
 
 This check was introduced in CivICRM 4.4.4. For details, see [https://civicrm.org/advisory/civi-sa-2014-001-risk-information-disclosure](https://civicrm.org/advisory/civi-sa-2014-001-risk-information-disclosure)
 
-If you believe you are seeing false positives on this check, please see [http://forum.civicrm.org/index.php?topic=31570](http://forum.civicrm.org/index.php?topic=31570.new;topicseen#new)# checkLogFileIsNotAccessible
+If you believe you are seeing false positives on this check, please see [http://forum.civicrm.org/index.php?topic=31570](http://forum.civicrm.org/index.php?topic=31570.new;topicseen#new)
+
+
+### The Log file should not be accessible
 
 The CiviCRM log file contains a significant amount of debug data on some sites. If directly accessible, sensitive data may be revealed to outsiders. This file should be protected.
 
