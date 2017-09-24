@@ -234,51 +234,6 @@ $pages = [
   ],
   [
     'space' => 'CRMDOC',
-    'name' => 'Manage Access Control Lists (ACLs)',
-    'destination' => 'setup/access/acl.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Manage ACL Roles',
-    'destination' => 'setup/access/acl.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Assign Users to Roles',
-    'destination' => 'setup/access/acl.md'
-  ],
-  [
-    'space' => 'USER',
-    'name' => 'initial-set-up/permissions-and-access-control.md',
-    'destination' => 'setup/access/index.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Access Control Context and Overview',
-    'destination' => 'setup/access/index.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Multisites, Multidomain, and Multilevel ACLs',
-    'destination' => 'setup/access/multi-level-acl.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Multi-level Organization ACL Permissions',
-    'destination' => 'setup/access/multi-level-acl.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'CMS Access Control',
-    'destination' => 'setup/access/permissions.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Default Permissions and Roles',
-    'destination' => 'setup/access/permissions.md'
-  ],
-  [
-    'space' => 'CRMDOC',
     'name' => 'Backup Data',
     'destination' => 'setup/backups.md'
   ],
@@ -461,21 +416,6 @@ $pages = [
     'space' => 'CRMDOC',
     'name' => 'checkLogFileIsNotAccessible',
     'destination' => 'setup/security.md'
-  ],
-  [
-    'space' => 'USER',
-    'name' => 'sms-text-messaging/set-up.md',
-    'destination' => 'setup/sms.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Setting up a SMS Provider for CiviSMS',
-    'destination' => 'setup/sms.md'
-  ],
-  [
-    'space' => 'CRMDOC',
-    'name' => 'Adding Sender ID(s) to your SMS messages (clickatell only)',
-    'destination' => 'setup/sms.md'
   ],
   [
     'space' => 'CRMDOC',
