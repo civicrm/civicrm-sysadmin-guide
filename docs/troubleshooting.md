@@ -1,8 +1,139 @@
 # Troubleshooting
 
-## Cleanup Caches and Update Paths
 
-### Overview
+## General advice
+
+If you have any problems with these procedures, try searching the [community forums](http://forum.civicrm.org/) and this wiki for solutions. If you've gotten an error message, use that message in your search. If you can not resolve the problem, then post your problem to the forum. Be sure to include the CiviCRM version and revision you are upgrading FROM and TO; your Joomla version; your PHP and MySQL versions; the steps you've taken and a the exact error message or problem that resulted.
+
+For installations problems, first make sure that you're read and followed the step-by-step directions for your type of installation: Drupal Installation Guide, Joomla Installation Guide, or Standalone Installation Guide.
+
+You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,6.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html). You can also check out the Installation section of our FAQs.
+
+If you don't find an answer to your problem in those places, the next step is to [post a support request on the forum](http://forum.civicrm.org/index.php/board,6.0.html).
+
+
+
+
+
+
+## Symptoms
+
+### Access Forbidden (403) Error After Upgrade
+
+This may be caused by directory permission settings.
+
+Make sure your `<drupal_root>/files/civicrm` directory is set with
+ 
+```bash
+$ chmod a+rwx -R
+```
+
+If you're still getting this error and have clean URLs enabled, try disabling clean URLS (Drupal >> admin >> settings) prior to running the session reset and cleanup. Then re-enable clean URLs.
+
+### Calendar widget throws a Javascript error
+
+If applicable, try [creating a config file pointing to your Drupal sites directory](#conf-drupal-sites).
+
+### CiviMail is unable to track clicks and opens
+
+If applicable, try [creating a config file pointing to your Drupal sites directory](#conf-drupal-sites).
+
+### "civicrm_strip_non_numeric does not exist"
+
+This error occurs when your database has lost a MySQL function definition for `civicrm_strip_non_numeric`. It can happen when moving from one server to another with the wrong `mysqldump` parameters, or if you use phpMyAdmin or certain other tools to rename a database, since they copy most but not all of the contents of the database to a database with the new name before deleting the old one. [Re-build your database triggers](#trigger-rebuild) to fix the problem.
+
+### "Could not find valid Key"
+
+If you are getting this error when submitting a form (search or adding / editing records), check the following:
+
+* Ensure cookies are enabled on browser. Like most web applications, CiviCRM can not function properly with cookies disabled.
+* Ensure your configuration settings are using the same "machine name" for CiviCRM and your CMS. For example, you will have problems if CiviCRM is configured to use `http://example.com` as it's `BASE_URL` and you CMS is using `http://www.example.com`. You can use an `.htaccess` entry to redirect to the configured URL if needed (i.e. push all users to `http://www.example.com` even if they hit `http://example.com`).
+
+    1. For Drupal sites, ensure that `uid = 0` exists in your Drupal users table. This is required for anonymous access to CiviCRM pages and forms to work properly.
+    1. For Drupal sites, ensure that Drupal sessions table uses UTF8 collation, AND that the session column in this table is of SQL type longtext in the schema. You can check both of these in phpMyAdmin, or issue these commands from mysql command line:
+    
+        ```
+        > desc session;
+        > show create table sessions;
+        ```
+
+### "DB_DataObject Error: DB Error: connect failed"
+
+If you get this error on a new Drupal/CiviCRM installation, you may have skipped the step of running CiviCRM's installation script. You can not install CiviCRM using the standard Drupal module installer.
+
+### "Failed to initialize storage module: user" fatal error message (new installs)
+
+If you see this error, you may need to modify the session.save_handler method for your site. Check with your hosting provider for the recommended way to do this. [More info at this forum post](http://forum.civicrm.org/index.php/topic,8561.0/topicseen.html).
+
+### Foreign key constraint errors
+
+If you are getting foreign key constraint errors when trying to add or modify records, you may need to [reset your session](#reset-session).
+
+### Foreign Key Errors or Warnings During the Database Upgrade
+
+Foreign keys may have been assigned different names on some installations. Also, different versions of MySQL handle the dropping and adding of constraint checks differently. Try [this procedure](https://wiki.civicrm.org/confluence/display/CRMDOC/Ensuring+Schema+Integrity+on+Upgrades) or [this procedure (on the forum)](http://forum.civicrm.org/index.php/topic,4259.msg21599.html#msg21599) to reload your data into a new 4.0 database structure if you are having this type of issue with upgrading your database.
+
+### Missing images or page style
+
+If you are seeing problems with missing images or page styling, you may need to [update your base directory and URL settings](#base-settings).
+
+### Out of Date Joomla Version
+
+> Joomla 2.5 reached _End of Life_ (EOL) in 2014 and is no longer supported by the Joomla! Project.
+
+While CiviCRM 4.7 supports Joomla 2.5.x or 3.x.x, it is strongly recommended by the Joomla project that 2.5 users upgrade to the most current version of 3.x ([https://docs.joomla.org/Joomla!_CMS_versions](https://docs.joomla.org/Joomla!_CMS_versions)).
+
+### Screen grays out and a camera icon appears whenever you click any link in CiviCRM
+
+This error is caused by a known problem in the [Drupal Lightbox2 module](http://drupal.org/project/lightbox2). Either disable the module in **Administration » Modules** or upgrade to the dev version of the Lightbox2 (dated July 2009 or later) that fixes this issue.
+
+### "Unknown column 'is_deleted' in 'field list'"
+
+If you are getting this error while upgrading CiviCRM in Drupal, it's possible that another Drupal module is accessing the database and the update process is being blocked. Disable any modules that interact or rely on CiviCRM, such as RealName. Perform the update, then enable those modules again.
+
+### UpdateMembershipRecord.php won't run after upgrading from prior versions
+
+Double check that there is a Membership Status Rule called "Deceased" and that it is active in **Administer CiviCRM » CiviMember**  **» Membership Status Rules.** The solution is described in this [forum thread](http://forum.civicrm.org/index.php?topic=10092).
+
+### Upgrade script failed to modify civicrm.settings.php
+
+If you relied on the upgrade script to modify `civicrm.settings.php`, check that it did so. If it didn't, restart the upgrade, and modify the file by hand.
+
+### Version information missing in CiviCRM database
+
+Try running a query like this:
+
+```sql
+UPDATE civicrm_domain SET version = 'x.x.x' WHERE id = 1;
+```
+
+_(where `x.x.x` should be replaced with the version you're upgrading to)_
+
+Then try invoking the upgrade script again with your browser.
+
+### WordPress menus are wrong
+
+Try [rebuilding the WordPress menus](#rebuild-wp-menus).
+
+### "You do not have sufficient permissions to access this page."
+
+If you get this error when trying to run the upgrade script in WordPress, you most likely deactivated CiviCRM plugin during the upgrade process. You just have to visit `<wordpress_home>/wp-admin/plugins.php` and activate the plugin, and then proceed.
+
+### "Your PHP version is missing zip functionality"
+
+If you get this error when installing or upgrading CiviCRM for Joomla, download and use the `civicrm-4.7.x-joomla-alt.zip` package.
+
+
+
+
+
+
+
+
+
+## Solutions
+
+### Cleanup Caches and Update Paths {:#clear-cache}
 
 On this settings page you can:
 
@@ -13,123 +144,20 @@ On this settings page you can:
 
 Although you enter your Base URL in civicrm.settings.php the value shown here reflects additional attempts by CiviCRM to automatically detect the correct base url in various environments - for example in multilingual sites.
 
-## Troubleshooting - Known issues and workarounds
+### Create a config file pointing to your Drupal sites directory {:#conf-drupal-sites}
 
-Sometimes CiviCRM's attempt to detect the Base Url can be confused by various factors in the site environment such as http redirects, CMS multilingual settings and other CMS modules.
+If your CiviCRM codebase is not located in either `<drupal_root>/modules/civicrm` or `<drupal_root>/sites/all/modules` (for example, if you're using a symlink from there to your codebase) - you will need to create a local file in the top-level directory of your codebase which points to the location of your drupal sites directory.
 
-### Drupal Modules
+```
+// Create a new file - settings_location.php
+// Enter the following code (substitute the actual location of your
+// <drupal root>/sites directory)
+<?php
+define( 'CIVICRM_CONFDIR', '/home/lobo/public_html/drupal/sites' );
+?>
+```
 
-#### Internationalization (CiviCRM 4.4 and lower)
-
-If Drupal Language detection is set to "By URL" and the "Language Domain" setting has the protocol entered in the URL (Eg. http or https) then the CiviCRM Base URL detection includes the protocol twice. See [Jira Issue CRM-14489](https://issues.civicrm.org/jira/browse/CRM-14489).
-
-#### Domain Access
-
-You may need a bit of code in civicrm.settings.php to get the correct CIVICRM_UF_BASEURL to work on front end pages exposed on various domains. See [Forum Post on Domain Access and Drupal](http://forum.civicrm.org/index.php/topic,24657.msg104529.html#msg104529).
-
-## Installation and Configuration Troubleshooting
-
-!!! tip "Troubleshooting Resources"
-
-    For installations problems, first make sure that you're read and followed the step-by-step directions for your type of installation: Drupal Installation Guide, Joomla Installation Guide, or Standalone Installation Guide.
-
-     You can often find solutions to your issue by searching the **[installation support section of the community forum](http://forum.civicrm.org/index.php/board,6.0.html)** OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html). You can also check out the **Installation section of our FAQs**.
-
-     If you don't find an answer to your problem in those places, the next step is to **[post a support request on the forum](http://forum.civicrm.org/index.php/board,6.0.html)**.
-
-
-### "DB_DataObject Error: DB Error: connect failed"
-
-If you get this error on a new Drupal/CiviCRM installation, you may have skipped the step of running CiviCRM's installation script. You can not install CiviCRM using the standard Drupal module installer. Review the [installation instructions here](https://wiki.civicrm.org/confluence/display/CRMDOC/Installing+CiviCRM+for+Drupal+6).
-
-### "Could not find valid Key"
-
-If you are getting this error when submitting a form (search or adding / editing records), check the following:
-
-* Ensure cookies are enabled on browser. Like most web applications, CiviCRM can not function properly with cookies disabled.
-* Ensure your configuration settings are using the same "machine name" for CiviCRM and your CMS (Drupal or Joomla!). For example, you will have problems if CiviCRM is configured to use [http://example.com](http://example.com) as it's BASE_URL and you CMS is using [http://www.example.com](http://www.example.com). You can use an .htaccess entry to redirect to the configured URL if needed (i.e. push all users to [http://www.example.com](http://www.example.com) even if they hit [http://example.com](http://example.com)).
-
-    1. For Drupal sites, ensure that uid = 0 exists in your Drupal users table. This is required for anonymous access to CiviCRM pages and forms to work properly.
-    1. For Drupal sites, ensure that Drupal sessions table uses UTF8 collation, AND that the session column in this table is of SQL type longtext in the schema. You can check both of these in phpMyAdmin, or issue these commands from mysql command line:
-    
-        ```
-        $ desc session;
-        $ show create table sessions;
-        ```
-
-### "Failed to initialize storage module: user" fatal error message (new installs)
-
-If you see this error, you may need to modify the session.save_handler method for your site. Check with your hosting provider for the recommended way to do this. [More info at this forum post](http://forum.civicrm.org/index.php/topic,8561.0/topicseen.html).
-
-### Using the Built-in Debugging Tools
-
-CiviCRM provides several URL-param debug settings which can help debug and resolve problems such as corrupt sessions and obsolete template caches. In order to use these URL parameters, you must first enable debugging from **Administer » System Settings » Debugging and Error Handling**.
-
-!!! danger "Do NOT Leave Debug Turned On in Production Sites"
-    It is critical that the DEBUG features are disabled in production sites. When debug is enabled - system paths and other internal settings may be exposed to browsers.
-
-
-#### Debug Commands
-
-* **Smarty Debug Window** - Loads all variables available to the current page template into a pop-up
- window. To trigger, add '&smartyDebug=1' to any CiviCRM URL query string.
-
-* **Session Reset** - Resets all values in your client session. To trigger, add '&sessionReset=2'
-
-* **Directory Cleanup** - Empties template cache and/or upload file folders.
-    * To empty template cache (civicrm/templates_c folder), add '&directoryCleanup=1'
-    * To remove temporary upload files (civicrm/upload folder), add '&directoryCleanup=2'
-    * To cleanup both, add '&directoryCleanup=3'
-
-* **Stack Trace** - To display stack trace at the top of the page when an error occurs, set Enable Backtrace from **Administer » System Settings » Debugging**  **and Error Handling**.
-
-### Configuring PHP to Handle Import Files from/on Macintosh Computers
-
-In order for CiviCRM to properly handle CSV import files created on Macs, you may need to update a PHP setting for detecting line endings. The symptom of this problem is that the "Import Contacts: Match Fields" step shows the file as one big record - rather than recognizing the end of each row.
-
-* Open /opt/local/etc/php.ini in your favorite editor (you may need root privileges to do this).
-* Look for the following setting in the Fopen wrappers section (near line 525):
-    
-    ```
-    auto_detect_line_endings = On
-    ```
-
-* If this line is commented out, or set to Off, change the value to On as shown above.
-* Stop and start your local instance of Apache
-
-    ```
-    $ sudo /opt/local/etc/rc.d/apache2.sh stop
-    $ sudo /opt/local/etc/rc.d/apache2.sh start
-    ```
-
-### Database version inconsistencies / upgrade problems
-
-Download and run [Database Troubleshooting Tools](https://wiki.civicrm.org/confluence/display/CRMDOC/Database+Troubleshooting+Tools) to test the current state of the database and provides a diagnosis. The tools suite also includes a repair facility.
-
-### Windows XP SP3: Problem setting the /sites/default/files directory permissions so it is writable
-
-There is a weird glitch that can happen under Windows XP (SP3) (and perhaps other Windows OS versions): if you try to change the permissions for a file or directory, they won't 'stick.' For example, if you go to your <yoursite>/sites/default/files directory and right click on it and bring up the Properties dialog, you can see the permissions for the directory. If this is set to read only, you will get an error message when you install CiviCRM telling that it needs to be writable. If you click on the "Read Only" checkbox so that it is **_not checked_** and then OK your change, the permission should be changed. (The directory should now be writable.) However, sometimes this change will not actually take effect. You have to make the change using the _ATTRIB_ command in a command prompt window. Open a command prompt window and go to the <yoursite>/sites/default directory. Type "help attrib" to get help using the attrib command and then enter the appropriate arguments to set the /files directory permissions (attributes) so that it's writeable. This will usually invovle the "-R" attribute and the "/D" argument.
-
-Installing 4.1.2 on windows/drupal will not work with ATTRIB only, but needs hack. It's been proposed to install first 4.0.8 and then upgrade. You can also hack /modules/civicrm/install/index.php on line 368 replacing it with _$this->requireWriteable($dir,_ Follow Issue tracker: [CRM-10175](http://issues.civicrm.org/jira/browse/CRM-10175)
-
-### civicrm_strip_non_numeric does not exist error
-
-This error occurs when your database has lost a MySQL function definition for civicrm_strip_non_numeric. It can happen when moving from one server to another with the wrong mysqldump parameters, or if you use phpMyAdmin or certain other tools to rename a database, since they copy most but not all of the contents of the database to a database with the new name before deleting the old one.
-
-The solution is to navigate to the following url:
-
-http://<yourdomain>/civicrm/menu/rebuild?reset=1&triggerRebuild=1
-
-Note the &triggerRebuild=1 key-value pair. It rebuilds the triggers and this routine.
-
-### Firewall with NAT
-
-If CiviCRM is installed on a server behind a firewall with NAT, you'll need to add your **internal** IP address and host name to /etc/hosts (on Linux). Otherwise, the dashboard will time out and the Force Secure URLs option will have issues. The reasoning behind this is, the dashboard tries to connect to http(s)://www.SITE.com to load the dashboard, but times out since SITE.com is being resolved via the public IP address. Your server can't access this public IP address if it's behind a firewall with NAT.
-
-
-## Ensuring Schema Integrity on Upgrades
-
-### Introduction
+### Fix problems with your database schema
 
 When a CiviCRM site is upgraded to a new version, there are frequently changes to the structure of the database. This may include adding or dropping tables, columns, indexes and foreign keys. Generally, the SQL upgrade script provided with each new version does a decent job of modifying the existing database to match the new schema.
 
@@ -142,8 +170,6 @@ The [Civi Schema Harmonizer](https://github.com/progressivetech/civi-schema-harm
 The procedures below provide a way to manually make these changes.
 
 After running these steps, you can be confident that your database schema matches the current production version exactly, with all indexes, foreign keys, defaults and other constraints.
-
-### Procedure to rebuild schema for database versions 2.2.x or later
 
 1. Take a DATA dump of existing, intact database. If possible, do not dump data from a database upon which you have attempted an upgrade and failed. Dump data from a database backup you did prior to upgrading that has a schema version number that is accurate. Find this information in _civicrm_domain.version_. A value in this column containing the word 'upgrade' indicates a database that failed to upgrade and may be stuck 'between schemas'. Lets call this dump file datafile.sql
 
@@ -190,10 +216,7 @@ After running these steps, you can be confident that your database schema matche
     SET foreign_key_checks = 1;
     ```
     
-1. Rebuild the triggers by running
-    ```
-    http://<your_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1
-    ```
+1. [Rebuild your database triggers](#trigger-rebuild) 
     
 1. Make sure you have the backup of your original working database and replace this with the new database created in step 3.
 
@@ -201,29 +224,92 @@ Browse through few civicrm pages to verify if civicrm is working fine along with
 
 Now the new database is ready for upgrade to next higher version.
 
-### How to Deal With A Partially Upgraded Database When You Don't Have a Backup
+### Make CiviCRM available behind a NAT firewall {:#nat-firewall}
 
-Recently I was asked to help in a situtation where there **was no pre-upgrade** backup. This is a worst case scenario. In this example, the database was previously 3.0 and while attempting an upgrade to 3.1 it failed, with no backup to fall back on. When this happens, CiviCRM will not allow you to re-run the upgrade script because the database integrity check will fail. Attempting to circumvent this integrity check almost always results in worse errors.
+If CiviCRM is installed on a server behind a firewall with NAT, you'll need to add your **internal** IP address and host name to /etc/hosts (on Linux). Otherwise, the dashboard will time out and the Force Secure URLs option will have issues. The reasoning behind this is, the dashboard tries to connect to http(s)://www.SITE.com to load the dashboard, but times out since SITE.com is being resolved via the public IP address. Your server can't access this public IP address if it's behind a firewall with NAT.
 
-The only real option is to compare a "clean and correct schema" to the partially-upgraded and fouled schema that exists on your server, and manually change the fouled schema to be what it should. This is a painstaking process.
+### Rebuild CiviCRM menus {:#rebuild-civicrm-menus}
 
-Here's how I chose to deal with it. Remember: the goal is to compare this clean schema to your partially-upgraded, fouled schema that exists on your server.
+Sometimes it helps to rebuild the menu/admin dashboard by visiting the following URL:
 
-1. Look in the .tar.gz (or .zip) distributable of the prior version - the one you were trying to upgrade from. In the "sql" folder you will find civicrm.mysql, which is the "clean schema" of that version, structure only - no data.
-1. Find your partially-upgraded database and export the structure only. For this purpose I like using [PHPMyAdmin](http://www.phpmyadmin.net/home_page/index.php), which is available already on most servers. If it is not on your server, you can install - it is open source. Export the "structure" only (see the checkbox on the 'export' tab) and save it to your local computer, during the export, omit all tables that begin with 'civicrm_value' (these are custom fields) as well as 'civicrm_import', which are not relevant to this task
-1. Take the civicrm.mysql clean schema and import it into a new test database on your server, then immediately export it using PHPMyAdin, just as you did with the fouled schema. The purpose of this action is to get the formatting of the CREATE statements to be as close to identical as possible.
-1. Now, using a diff utility such as 'diff' with [Unxitils](http://unxutils.sourceforge.net/), 'windiff' or [WinMerge](http://winmerge.org/) compare the two schemas side by side.
-1. You will notice, most likely, several things:
+`http://<yourdomain>.org/civicrm/menu/rebuild?reset=1`
 
-    * Tables existing in the fouled schema that do not exist in the clean schema
-    * Some fields that exist in the fouled schema that do not exist in the clean one
-    * Minor differences in comments, or grammar, or /r /n code (newlines)
-    * Some identically named fields existing in a slightly different order
-    * Many ALTER statements with foreign key stuff
+### Rebuild database triggers {:#trigger-rebuild}
 
-1. You can ignore all but the first two listed above.
-1. Make a backup of the fouled database
-1. Take great care to drop all tables that exist in the fouled schema that do not in the clean one. Remember, **don't** drop your 'civicrm_import' tables nor your 'civicrm_value' tables. These are custom fields and import records - keep these tables.
-1. Remove any fields that existed in the fouled schema but do not in the clean one
-1. In table "civicrm_domain" set "version" to the previous version (before the upgrade)
-1. Attempt the upgrade again
+If you need to rebuild your database triggers, navigate to the following url:
+
+`http://<yourdomain>.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
+
+Note the `&triggerRebuild=1` key-value pair.
+
+### Rebuild WordPress menus {:#rebuild-wp-menus}
+
+You can re-build the menu/admin dashboard by visiting the following url
+
+`http://<yourdomain>.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1`
+
+### Reset config_backend
+
+Having strange problems with Administrative settings forms after upgrade? Try deleting all files in the following directories:
+
+* `sites/default/files/civicrm/templates_c/` 
+* `sites/default/files/civicrm/ConfigAndLog/Config.IDS.ini`
+
+### Reset Your User Session {:#reset-session} 
+
+To reset your user session:
+
+1. Temporarily enable CiviCRM debug features:
+    * Go to **Administer CiviCRM » System Settings » Debugging and Error Handling**
+    * Set **Enable Debugging** to Yes and click Save.
+1. Click the Administer CiviCRM menu (or any other CiviCRM menu item). After the page is loaded, add an additional query string value (`sessionReset=2`) to the URL in your browser's location bar, and reload the page.
+    ```
+    http://...../civicrm/admin?sessionReset=2
+    ```
+    
+1. Now reset **Enable Debugging** to No and click Save.
+
+!!! danger "Do Not Leave Debug Features Enabled for a Public Site"
+    Debugging should be disabled for publicly available sites as it may allow browsers to view system configuration information.
+    
+### Roll back to previous version of CiviCRM (from a backup)
+
+Sometimes an upgrade fails and you need to get back to the last working version. You should have backups of the database saved as well as a backup of the civicrm files from the `/sites/all/modules/` directory. Here are the steps you need to take in order to roll back to the last working version before your upgrade:
+
+1. Go into maintenance mode and take the site offline.
+1. In the modules screen, disable all the CiviCRM modules EXCEPT the Core CiviCRM module. Make sure to take note of which CiviCRM modules you've disabled so you can enable them again after you restore the backups.
+1. Make sure to drop all the tables in the civicrm database that relate to civicrm. If you're sharing a database with Drupal, make sure to ONLY drop the tables that belong to CiviCRM and NOT the tables for Drupal. If Drupal's tables are in a separate database, then you should be safe as long as you don't touch any of the Drupal tables.
+1. Restore all the civicrm tables from your database backup back into the database.
+1. In the `/sites/all/modules` directory, make sure to delete the entire civicrm directory (`../sites/all/modules/civicrm`).
+1. Restore the civicrm directory in `/sites/all/modules/` from your files backup.
+1. CRUCIAL: Remove the `templates_c` directory from `../sites/default/files/civicrm/` (don't worry, CiviCRM will recreate these files when you reload the pages).
+1. Go back to Drupal's Modules screen and enable the CiviCRM modules you disabled in step 2.
+1. Bring the site back online by turning off Maintenance mode.
+1. Load up civicrm by going to `http://yoursitename.com/civicrm` (or wherever you have civicrm installed). This should have restored you back to the last working condition.
+
+Sometimes it helps to [rebuild the CiviCRM menus](#rebuild-civicrm-menus).
+
+### Update Base Directory and Base URL Settings {:#base-settings}
+
+To update your Base Directory and Base URL Settings in the database, visit this settings page:
+
+* **Administer CiviCRM > System Settings > Cleanup Caches and Update Paths**
+
+### Using the Built-in Debugging Tools {:#debugging}
+
+CiviCRM provides several URL-param debug settings which can help debug and resolve problems such as corrupt sessions and obsolete template caches. In order to use these URL parameters, you must first enable debugging from **Administer » System Settings » Debugging and Error Handling**.
+
+!!! danger "Do NOT Leave Debug Turned On in Production Sites"
+    It is critical that the DEBUG features are disabled in production sites. When debug is enabled - system paths and other internal settings may be exposed to browsers.
+
+* **Smarty Debug Window** - Loads all variables available to the current page template into a pop-up
+ window. To trigger, add '&smartyDebug=1' to any CiviCRM URL query string.
+
+* **Session Reset** - Resets all values in your client session. To trigger, add '&sessionReset=2'
+
+* **Directory Cleanup** - Empties template cache and/or upload file folders.
+    * To empty template cache (civicrm/templates_c folder), add '&directoryCleanup=1'
+    * To remove temporary upload files (civicrm/upload folder), add '&directoryCleanup=2'
+    * To cleanup both, add '&directoryCleanup=3'
+
+* **Stack Trace** - To display stack trace at the top of the page when an error occurs, set Enable Backtrace from **Administer » System Settings » Debugging**  **and Error Handling**.

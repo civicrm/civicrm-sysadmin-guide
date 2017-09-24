@@ -37,7 +37,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### Joomla
 
-* Joomla 2.5.x or 3.x.x is required.
+* Joomla 3.x.x is required.
 
 ### Backdrop 
 

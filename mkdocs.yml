@@ -54,13 +54,13 @@ pages:
   - Error handling: config/error-handling.md
   - Resource URLs: config/resource-urls.md
 - Upgrades:
-  #- Upgrades overview: upgrade/index.md
+  - Upgrades: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
   - Upgrade in Drupal 7: upgrade/drupal7.md
   - Upgrade in WordPress: upgrade/wordpress.md
   - Upgrade in Joomla: upgrade/joomla.md
   #- Upgrade in Backdrop: upgrade/backdrop.md
-  - Special upgrade tasks: upgrade/misc.md
+  - Version-specific upgrade steps: upgrade/version-specific.md
 - Troubleshooting: troubleshooting.md
 - Customization:
   #- Basic customization: customize/index.md
