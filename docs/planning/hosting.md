@@ -68,7 +68,7 @@ CiviCRM. If they do not, there are two options available to you:
 
 ### Migrate to another host
 
-If your current host cannot accomidate CiviCRM you may want to connsider migrating your CMS to a new host before installingn CiviCRM. Depending on the CMS you are using, the process of moving from one host to another may be fairly straightforward. You are in a good position to transfer to another host if you can:  
+If your current host cannot accommodate CiviCRM you may want to consider migrating your CMS to a new host before installing CiviCRM. Depending on the CMS you are using, the process of moving from one host to another may be fairly straightforward. You are in a good position to transfer to another host if you can:  
 
 1.  request that your users **stop creating and updating content**
     during the migration,
