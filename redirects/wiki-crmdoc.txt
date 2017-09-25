@@ -80,3 +80,8 @@ Upgrading+CiviCRM+for+Joomla upgrade/joomla
 Updating+System+Workflow+Message+Templates+after+Upgrades+-+method+1+-+kdiff upgrade/misc
 Upgrade+WordPress+Sites+to+4.7 upgrade/wordpress
 Upgrading+CiviCRM+for+WordPress upgrade/wordpress
+Installation+and+Upgrades index.html
+CiviMail+Admin setup/civimail
+Drupal integration/drupal
+WordPress integration/wordpress
+Drupal+Integration+Modules integration/drupal
