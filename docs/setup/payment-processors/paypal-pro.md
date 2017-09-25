@@ -1,153 +1,14 @@
-# PayPal Configuration
-
-## Overview
-
-**What is the basic business idea of paypal?**
-
-Every user has his account with paypal where he has some money he can use to pay online, using various means like e-mail, web etc. Once a user has a paypal account he cannot do transactions with paypal without logging into his account.
-
-Beware: If your account has some unresolved conflicts it will not let you do things you want but will just show the account overview where you could select the next actions.
-
-Note for registered non-profits: If you start a non-profit account with Paypal you must provide acceptable documentation to Paypal of your legal status as a non-profit, or Paypal will disable your account.
-
-**What is the principle of using a sandbox at paypal?**
-
-They have tried to use exactly the same software as the live system with the same screens and behaviour. To enter the sandbox you first log in to your paypal developer account, then select a test user (the role depends on your needs) and enter the sandbox. From then on you are like a user in the live situation.
-
-## PayPal Website Payments Standard
-
-Enable CiviContribute
-
-* Log into CiviCRM as an administrator.
-* Select **Administer CiviCRM**  **>>**  **Global Settings**  **>>**  **Enable Components**
-* Ensure that CiviContribute is enabled.
-
-Add a Payment Processor
-
-* Select **Administer CiviCRM >> Global Settings >> Payment Processors**
-* Click **» New Payment Processor**
-* Select **PayPal - Website Payments Standard** for Processor Type.
-* Enter into **Merchant Account Email Address** the email which is used for your Paypal account for **live transactions.**
-* Enter the **Merchant Account Email Address** linked to your PayPal Sandbox merchant account (e.g. **_paypal_1207343391_biz@_****_example_****_.com_** ) in the **Processor Details for TEST Payments** section, if you are using a testing sandbox. If not, enter the same email address as the step above.
-* If you'd like to process live payments on the site, you can generally accept the default values for **Site and Button URLs**.
-
-Note: If you are still developing the site, and would like to test the work-flow on the site (and accept no live payments), copy the "Test Payments" values to the "Live Payments" section.
-
-Note: If you see an API URL field for Paypal_Standard, you can ignore it.
-
-### Assign this Processor to your Contribution or Event Registration Page(s)
-
-You must assign your new Payment Processor to your Contribution Page or Event Registration before you can test-drive them.
-
-* For Contribution Pages - go to **Manage Contribution Pages » Configure » Title and Settings** and select your Website Standard processor, then click **Save**.
-* For Event Registration - go to **Manage Events » Configure » Event Fees** and select your Website Standard processor, then click **Save**.
-
-### Enabling Recurring Contributions
-
-If you are using PayPal Website Payments Standard - you can give users the option to make a recurring contribution on any of your Contribution Pages.
-
-* **Administer CiviCRM » Manage Contribution Pages**
-* Click **Configure** for the page where you want to enable recurring contributions
-* Click **Contribution Amounts**
-* Check the **Enable recurring payments** box.
-
-### Configure Paypal to Talk to CiviCRM
-
-CiviCRM can receive feedback from Paypal after the contribution is made. This requires making some changes within your Paypal account Profile at [https://www.paypal.com](https://www.paypal.com)
-
-#### Instant Payment Notification
-
-* To configure Instant Payments Notification (IPN) for your PayPal account Click: Profile, under Selling preferences click "Instant Payment Notification preferences"
-* Enable Instant Payments Notification (Select "Receive IPN messages (Enabled)")
-* Enter your CiviCRM site home page (e.g. [http://www.example.com](http://www.example.com/)) as the Notification URL. This is a placeholder. CiviContribute will pass the exact IPN 'listener' URL to PayPal automatically during each transaction.
-* Click Save
-
-Note: Recently we have introduced new improved (CMS independent and self-sufficient) IPN url in 4.7.12 and this does NOT mean that we have deprecated the old (extern) IPN. The new IPN - [http://www.example.com/civicrm/payment/ipn/2](http://www.example.com/civicrm/payment/ipn/2) where '2' is the Paypal Std. processor ID in CiviCRM.
-
-#### Then Set the Auto Return So the Contributor Goes Back to Your Site
-
-* Click: Profile > My Selling Tools > Website Preferences > Update
-* Set Auto Return to On
-* Enter your CiviCRM site home page as the **Return URL**. This is a placeholder. CiviContribute will pass the exact return URL to PayPal automatically during each transaction.
-* Set "Payment Data Transfer" to "Off"
-* Click Save
-
-### Creating A Testing Sandbox Account at Paypal Developer Central
-
-[https://developer.paypal.com](https://developer.paypal.com/)
-
-If you don't have an Developer Central account, follow PayPal instructions to register a developer account and create a sandbox (test) merchant account.
-
-#### Launch your merchant sandbox
-
-Login as your Developer Central account (e.g. **_paypaldev@example.com_** ) and create two new "sandbox" accounts. "Create Account:" -> "Preconfigured"
-
-* Create a "seller" - this is your website. E.g. **_paypal_1207343391_biz@_****_example_****_.com_**
-* Create a "buyer" - this is your test donor/customer. E.g. **_paypal_1208220862_per@_****_example_****_.com_**
-
-Configure CiviCRM with the "seller". Use the "buyer" to test the site. If you "reset" the seller account, be sure to repeat these steps.
-
-#### Profile >> Instant Payment Notification Preferences
-
-From your Developer central account (e.g. **_paypaldev@example.com_** ) at [https://developer.paypal.com](https://developer.paypal.com/)
-
-* Test accounts -> Select the "seller" account (e.g. **_paypal_1207343391_biz@_****_example_****_.com_** ) -> Click "Enter Sandbox Test Site" -> Login
-* You should now be at [https://www.sandbox.paypal.com/...](https://www.sandbox.paypal.com/...)
-
-### Trouble-shooting
-
-#### Contributions remain in PENDING status
-
-In order for contributions to be marked as COMPLETED, PayPal's Instant Payment Notification (IPN) must post back to CiviCRM an acknowledgement that the contribution was completed. In order for this to happen, your CiviCRM site must be accessible on the public internet (i.e. not running on localhost or behind a firewall). Interactions with PayPal IPN are logged to a file called **CiviCRM.log** or CiviCRM.<33char string>.log located in your configured **Temporary Files Directory** (_<drupal_root>/files/civicrm/upload/CiviCRM.log_ or files/civicrm/templates_c/en_US/ConfigAndLog (depending on your version) by default on Drupal installations). Check this file for errors if your contribution statuses are not being set to COMPLETED.
-
-One issue when using the Paypal test account is that you sometimes need to confirm your payments in PayPal- possibly only when dealing with multiple currencies. If you see a message in the CiviCRM.log file:
-
-> [info] returning since contribution status is pending.
-
-If this is the case:
-
-* Log into into your test PayPal account:
-* On the overview page you will see that the payment will be in an Unclaimed status - click Accept in the Order status/Actions column.
-* The IPN will be resent and you should get a message similar to:
-
-    > [info] Contribution record updated successfully
-    > [info] Success: Database updated and mail sent
-
-#### Resending IPNS
-
-From civicrm 4.5 a copy of any IPNs received will be in the civicrm_system_log table. If the IPN was not received at all (e.g server outage) you can resend them while logged into your paypal account
-
-1. Go to 'Profile' and then under 'Selling Preferences' you should see 'Instant Notification Preferences'
-1. On the Instant Notification page you get to you should see a link to 'IPN History Page'
-1. Search for the missed IPNS (up to 28 days ago), select them all & click resend
-1. TIPS - you don't have to worry about oversending - if you select some that were already received no harm done (despite the scary message). Also, at the bottom of the page you can change to select more than 25 at once to reduce your effort
-
-#### Unexpected errors from PayPal
-
-Occasionally there are technical / availability problems with the PayPal Sandbox servers. You can [check Sandbox status here](https://www.paypaldeveloper.com/blog?blog.id=sb).
-
-#### Turning on Taxes in PayPal causes payments to remain pending
-
-If you change the PayPal setting so that PayPal calculates and adds taxes, then the total amount charged by PayPal will no longer match that in CiviCRM. When PayPal calls back to CiviCRM saying it has received payment for $Total including taxes this doesn't match CiviCRM's $Total that excludes taxes. If you check your CiviCRM log file (generally under files/civicrm/ConfigAndLog/) you'll find an error similar to
-
-Nov 04 10:12:57 [info] Amount values dont match between database and IPN request
-
-The solution is to turn off the PayPal Sales Tax option.
-
-Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax extension available. Feel free to contact Joe (dot) Murray (at) JMAConsulting (dot) biz for advice on how to create an extension for your jurisdiction if need be.
-
-
-## PayPal Website Payments Pro and Express Configuration
+# PayPal Website Payments Pro and Express Configuration
 
 !!! note "Scope and Audience"
     This document covers the steps needed to configure and run CiviContribute using the PayPal Website Payments Pro plugin. This plugin supports PayPal Pro Express Checkout, and (if desired) Direct Checkout. Consult the PayPal's site for an overview of features and pricing for [Website Payments Pro](https://www.paypal.com/webapps/mpp/merchant).
      The installation of the PayPal plugin is recommended for developers and technical users only at this stage. _It is important that you thoroughly test your site using PayPal Sandbox Server and Sandbox accounts prior to configuring and enabling live transactions. You will also need to acquire and install an SSL certificate if you planning on offering Direct Checkout_.
 
-### Overview of Paypal Pro
+## Overview of Paypal Pro
 
 PayPal Pro allows you to process payments without users leaving your site.
 
-### Overview of Paypal Express
+## Overview of Paypal Express
 
 PayPal Express is an option available to Paypal Pro account users that works like Paypal Standard. It shows up as an orange button "Check out with PayPal" that appears above the billing address. Pressing it takes the end user to the Paypal website where they pay and hopefully return to the site.
 
@@ -161,9 +22,9 @@ This is a [known issue](http://issues.civicrm.org/jira/browse/CRM-8221).
 
     If your organization is headquartered outside of the United States, we recommend that you confirm availability of Website Payments Pro for your country (and/or banking relationship) with PayPal prior to beginning configuration of this plugin.
 
-### Configuration
+## Configuration
 
-#### PHP Configuration Requirements
+### PHP Configuration Requirements
 
 The following PHP extensions must be enabled in order for CiviCRM to interface with PayPal's payment services:
 
@@ -180,13 +41,13 @@ CURL support => enabled
 OpenSSL support => enabled
 ```
 
-#### Create a Developer Central Account
+### Create a Developer Central Account
 
 * Go to [https://developer.paypal.com/](https://developer.paypal.com/) and click "Sign Up".
 * Fill out the sign-up form (be sure to make a record of the email address and password used - and use a valid email address so you can respond to the activation email sent by PayPal).
 * Check for activation email and click on link to go to Developer Central login page
 
-#### Create a Business (Merchant) Account on the PayPal Sandbox
+### Create a Business (Merchant) Account on the PayPal Sandbox
 
 * Login to PayPal Developer Central
 * Click on the Sandbox tab
@@ -245,7 +106,7 @@ Contact MTS including your Sandbox Email Address by clicking on [https://www.pay
     
 *Return to Overview tab in the Sandbox. Your account status should now be *Verified*
 
-### Enable Website Payments Pro for Your Sandbox Account
+## Enable Website Payments Pro for Your Sandbox Account
 
 * In Sandbox, click the **Merchant Tools** tab
 * Under all-in-one payments, click **Sign Up** under **Website Payments Pro**
@@ -263,11 +124,11 @@ Contact MTS including your Sandbox Email Address by clicking on [https://www.pay
     When going through these steps for a live account, you should see a **Getting Started** panel in the upper left corner of your **My Account - Overview tab**. Once you complete Step 2 - Verify your (bank account) information, you should be able to click on **Apply for Website Payments Pro** to begin the process. After submitting the requested info online - you will need to wait for an approval email reply from PayPal - in our experience this took approximately 3 days.
     !PayPal_Web_Pro_Apply.gif!*You will get an error message from the PayPal Payments server if you attempt to do a direct (Website Payments Pro style) transaction before your account is approved.*
 
-### Configure API Access
+## Configure API Access
 
 API Credentials are used to authenticate the connection between the PayPal payment gateway and the server where CiviContribute is installed. Two types of credentials are available - **API Signature** and **API Certificate**. The API Signature credential is recommended because it is easier to configure.
 
-#### Generate API Signature Credential
+### Generate API Signature Credential
 
 * Login to your Sandbox Account.
 * Click the **Profile** sub-tab from My Account.
@@ -294,7 +155,7 @@ UPDATE May 20 - PayPal interface has changed in some cases. You may need to visi
 * Then under **Option 2** - Request API credentials to create your own API username and password, click Request API credentials
 * Leave the default Request API Signature as your choice for the kind of API credential. Click Agree and Submit.
 
-#### Configure CiviContribute Using API Signature
+### Configure CiviContribute Using API Signature
 
 * Log into CiviCRM as an administrator.
 * Select **Administer CiviCRM**.
@@ -327,7 +188,7 @@ UPDATE May 20 - PayPal interface has changed in some cases. You may need to visi
 !!! tip "Changing Your API Access Method"
     If you have setup your API Access using the **API Certificate** method, and want to change to **API Signature** - you first need to Remove the existing credential. Click **View or Remove Credentials** from the API Setup page (My Account >> Profile >> API Access). Then click the Remove button. After confirmation, you are redirected to the API Setup page where you can click **Request API Credentials** to get a new credential.
 
-### Configure Drupal Error Reporting
+## Configure Drupal Error Reporting
 
 The PayPal SDK currently triggers a PHP warning during transaction processing. This warning does not affect processing - but you need to make sure that Drupal is configured to NOT display warnings on the screen.
 
@@ -344,14 +205,14 @@ warning: Services_PayPal::getType(Services/PayPal/Type/Struct.php)
 in <drupal-root>/modules/civicrm/packages/Services/PayPal.php on line 50.
 ```
 
-### Assign this Processor to your Contribution or Event Registration Page(s)
+## Assign this Processor to your Contribution or Event Registration Page(s)
 
 You must assign your new Payment Processor to your Contribution Page or Event Registration before you can test-drive them.
 
 * For Contribution Pages - go to **Manage Contribution Pages » Configure » Contribution Amounts** and select your PayPal Website Pro processor, then click **Save**.
 * For Event Registration - go to **Manage Events » Configure » Event Fees** and select your PayPal Website Pro processor, then click **Save**.
 
-### Test-drive a CiviContribute Online Contribution Page
+## Test-drive a CiviContribute Online Contribution Page
 
 * Login and navigate to Administer CiviCRM >> Configure Online Contribution Pages.
 * Click on the referenced 'Test-drive' link for your page and make a contribution. In this mode, contributions records are saved with a **Test** flag. These are not shown under contact view - but you can view them by searching for **Test Contributions** under **CiviContribute » Find Contributions**.
@@ -359,7 +220,7 @@ You must assign your new Payment Processor to your Contribution Page or Event Re
 !!! tip "Test Credit Cards"
     Use the PayPal Sandbox **Add a Credit Card** function to generate credit card numbers which are valid for testing.
 
-### Recurring Contributions
+## Recurring Contributions
 
 As of version 3.1, CiviCRM supports Paypal Pro recurring contributions. Prior versions of CiviCRM do NOT support Pro recurring contributions.
 
@@ -393,7 +254,7 @@ With Paypal Standard, a payor wishing to stop their recurring payment may do so 
 **Recurring Processing Failure**
  Credit card numbers and expiration dates change over time. Because neither CiviCRM nor Paypal are capable of reaching into a payor's wallet to update this information, you should expect that a percentage of recurring payments will fail. When this happens, CiviCRM records a contribution of status "Failed" associated with the Contact record, although CiviCRM does **not** send a "Failed" email notification to the payor directly. Paypal will, however, send an email to the payor notifying them of a failed recurring payment and the repeating payment or subscription will be canceled. The payor can then attempt to re-establish their payment.
 
-### Apply for and Configure Your LIVE Account
+## Apply for and Configure Your LIVE Account
 
 Once you are comfortable with your site's operation in testing mode, you will need to apply for a live PayPal Business Account [here](https://www.paypal.com/us/cgi-bin/webscr?cmd=_registration-run) - or upgrade an existing PayPal account to a Business Account. Approval may take several days.
 
@@ -401,9 +262,9 @@ The basic steps for obtaining and configuring your live Profile and settings are
 
 Once you have your LIVE account configured, it is important that you submit a few live contributions prior to exposing your live online contribution page(s) to the public.
 
-## Troubleshooting
+# Troubleshooting
 
-### Turning on Taxes in PayPal causes payments to remain pending
+## Turning on Taxes in PayPal causes payments to remain pending
 
 If you change the PayPal setting so that PayPal calculates and adds taxes, then the total amount charged by PayPal will no longer match that in CiviCRM. When PayPal calls back to CiviCRM saying it has received payment for $Total including taxes this doesn't match CiviCRM's $Total that excludes taxes. If you check your CiviCRM log file (generally under files/civicrm/ConfigAndLog/) you'll find an error similar to
 
@@ -414,15 +275,15 @@ The solution is to turn off the PayPal Sales Tax option.
 Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax extension available. Feel free to contact Joe (dot) Murray (at) JMAConsulting (dot) biz for advice on how to create an extension for your jurisdiction if need be.
 
 
-## Configuring PayPal API Certificate Credentials
+# Configuring PayPal API Certificate Credentials
 
-### Generating and Configuring PayPal API Certificate Credentials
+## Generating and Configuring PayPal API Certificate Credentials
 
 **Note that this method is not supported in CiviCRM v1.8 (and later)**
 
 **API Certificates** are an alternate authentication method for interacting with PayPal's servers. Follow these procedures if you wish to use this method rather than the default API Signature credential.
 
-### Generate and Download API Certificate Credential
+## Generate and Download API Certificate Credential
 
 * Login to your Sandbox or Live Account.
 * Click the Profile sub-tab from My Account.
@@ -433,7 +294,7 @@ Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax 
 * Click Generate Certificate and then Download on the next page
     * A certificate file will be downloaded to your local machine (file name will be cert_key_pem.txt)
 
-### Create Your API Profile and Configure CiviCRM with your PayPal Configuration Settings
+## Create Your API Profile and Configure CiviCRM with your PayPal Configuration Settings
 
 !!! danger "During Initial Testing - Use Test (Sandbox) Account/API Info for All Settings"
     CiviCRM allows you to store settings for connecting to both the Test and Live Payment Processor servers. When first setting up your site to accept online contributions, you should configure both TEST and LIVE server settings **with test values**. This will ensure that no LIVE transactions are submitted unintentionally. Once you have tested your site thoroughly, you can update the LIVE settings with the correct values for your live merchant account. The TEST settings will be used when you access an Online Contribution Page in **Test-drive Mode**.

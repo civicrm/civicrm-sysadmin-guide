@@ -42,7 +42,8 @@ pages:
     - Moneris: setup/payment-processors/moneris.md
     - PayFlow: setup/payment-processors/payflow.md
     - PayJunction: setup/payment-processors/payjunction.md
-    - PayPal: setup/payment-processors/paypal.md
+    - PayPal Standard: setup/payment-processors/paypal-standard.md
+    - PayPal Pro and Express: setup/payment-processors/paypal-pro.md
     - Ogone: setup/payment-processors/ogone.md
   - Mapping and geocoding: setup/mapping.md
   - Detailed logging: setup/logging.md
