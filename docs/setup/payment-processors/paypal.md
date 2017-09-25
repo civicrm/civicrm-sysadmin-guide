@@ -1,4 +1,4 @@
-# PayPal Website Payments Standard and Recurring Contributions
+# PayPal Configuration
 
 ## Overview
 
@@ -141,7 +141,7 @@ Sales tax support is added to core in v. 4.6, and there is a Canadian Sales Tax 
 
 !!! note "Scope and Audience"
     This document covers the steps needed to configure and run CiviContribute using the PayPal Website Payments Pro plugin. This plugin supports PayPal Pro Express Checkout, and (if desired) Direct Checkout. Consult the PayPal's site for an overview of features and pricing for [Website Payments Pro](https://www.paypal.com/webapps/mpp/merchant).
-     The installation of the PayPal plugin is recommended for developers and technical users only at this stage. _It is important that you thoroughly test your site using PayPal Sandbox Server and Sandbox accounts prior to configuring and enabling live transactions. You will also need to acquire and install an SSL certificate if you planning on offering Direct Checkout_ _(more info...)_.
+     The installation of the PayPal plugin is recommended for developers and technical users only at this stage. _It is important that you thoroughly test your site using PayPal Sandbox Server and Sandbox accounts prior to configuring and enabling live transactions. You will also need to acquire and install an SSL certificate if you planning on offering Direct Checkout_.
 
 ### Overview of Paypal Pro
 
@@ -214,12 +214,23 @@ OpenSSL support => enabled
 The Sandbox automatically generates bank account and sort code numbers when you add a bank account to an US Account.
 
 **UK, Australian, Canadian and German Accounts**
- To add test Canadian, German, or UK bank account information, use the following test numbers.
 
-| **UK** | **Australia** | **Canada** | **Germany** |
-| Bank Account Number: Any 8-digit number- try to be unique - see Error message for why | BSB Number: 242-200 | Transit Number: 00001 | Routing Number: 37020500 |
-| Sort Code: 609204 or 700709 | Account Number: any random number | Institution Number: 311 | Bank Account Number: Any 10-digit number |
-| | Bank Account Number: Any one-digit to 12-digit number | Sort Code: Any 8-digit number | |
+To add test Canadian, German, or UK bank account information, use the following test numbers.
+
+* UK
+    * Bank account number: Any 8-digit number- try to be unique - see Error message for why
+    * Sort code: 609204 or 700709
+* Australia
+    * Bank account number: Any one-digit to 12-digit number
+    * Account number: any random number 
+    * BSB Number: 242-200 
+* Canada
+    * Institution number: 311 
+    * Transit number: 00001
+    * Sort code: Any 8-digit number
+* Germany
+    * Bank account number: Any 10-digit number
+    * Routing number: 37020500 
 
 **Error Messages**
 
@@ -246,11 +257,11 @@ Contact MTS including your Sandbox Email Address by clicking on [https://www.pay
 * Click Agree to confirm billing agreement
 
 !!! check "Sandbox Use of Website Pro is Free"
-    There is actually no charge for using any of the services in the PayPal Sandbox. However, you will need to go through the same steps if you choose to create a live Website Pro Account. EXCEPT there will be a waiting period while PayPal actually reviews and approves your application. |
+    There is actually no charge for using any of the services in the PayPal Sandbox. However, you will need to go through the same steps if you choose to create a live Website Pro Account. EXCEPT there will be a waiting period while PayPal actually reviews and approves your application.
 
 !!! check "Applying for Website Payments Pro for a Live Account"
     When going through these steps for a live account, you should see a **Getting Started** panel in the upper left corner of your **My Account - Overview tab**. Once you complete Step 2 - Verify your (bank account) information, you should be able to click on **Apply for Website Payments Pro** to begin the process. After submitting the requested info online - you will need to wait for an approval email reply from PayPal - in our experience this took approximately 3 days.
-    !PayPal_Web_Pro_Apply.gif!*You will get an error message from the PayPal Payments server if you attempt to do a direct (Website Payments Pro style) transaction before your account is approved.* |
+    !PayPal_Web_Pro_Apply.gif!*You will get an error message from the PayPal Payments server if you attempt to do a direct (Website Payments Pro style) transaction before your account is approved.*
 
 ### Configure API Access
 
@@ -308,13 +319,13 @@ UPDATE May 20 - PayPal interface has changed in some cases. You may need to visi
 
     CiviCRM allows you to store settings for connecting to both the Test and Live Payment Processor servers. When first setting up your site to accept online contributions, you should configure both TEST and LIVE server settings **with test values**. This will ensure that no LIVE transactions are submitted unintentionally. Once you have tested your site thoroughly, you can update the LIVE settings with the correct values for your live merchant account. The TEST settings will be used when you access an Online Contribution Page in **Test-drive Mode**.
 
-    If you are having problems submitting transactions to the PayPal Sandbox - check PayPal's [Sandbox Status Page](http://www.paypaldeveloper.com/blog?blog.id=%20sb) to see if there is an system problem on their end. |
+    If you are having problems submitting transactions to the PayPal Sandbox - check PayPal's [Sandbox Status Page](http://www.paypaldeveloper.com/blog?blog.id=%20sb) to see if there is an system problem on their end.
 
 !!! note "Credentials for LIVE Payments"
-    Remember that when you are ready to configure CiviContribute for LIVE payments, you must generate new API credentials by logging in to your live merchant account (at [http://www.paypal.com](http://www.paypal.com). Then, enter these values in the Processor Details for LIVE Payments section of the Payment Processor configuration form. We recommend doing an initial LIVE contribution yourself and then checking for activity by logging back in to your PayPal account. |
+    Remember that when you are ready to configure CiviContribute for LIVE payments, you must generate new API credentials by logging in to your live merchant account (at [http://www.paypal.com](http://www.paypal.com). Then, enter these values in the Processor Details for LIVE Payments section of the Payment Processor configuration form. We recommend doing an initial LIVE contribution yourself and then checking for activity by logging back in to your PayPal account.
 
 !!! tip "Changing Your API Access Method"
-    If you have setup your API Access using the **API Certificate** method, and want to change to **API Signature** - you first need to Remove the existing credential. Click **View or Remove Credentials** from the API Setup page (My Account >> Profile >> API Access). Then click the Remove button. After confirmation, you are redirected to the API Setup page where you can click **Request API Credentials** to get a new credential. |
+    If you have setup your API Access using the **API Certificate** method, and want to change to **API Signature** - you first need to Remove the existing credential. Click **View or Remove Credentials** from the API Setup page (My Account >> Profile >> API Access). Then click the Remove button. After confirmation, you are redirected to the API Setup page where you can click **Request API Credentials** to get a new credential.
 
 ### Configure Drupal Error Reporting
 
@@ -346,7 +357,7 @@ You must assign your new Payment Processor to your Contribution Page or Event Re
 * Click on the referenced 'Test-drive' link for your page and make a contribution. In this mode, contributions records are saved with a **Test** flag. These are not shown under contact view - but you can view them by searching for **Test Contributions** under **CiviContribute » Find Contributions**.
 
 !!! tip "Test Credit Cards"
-    Use the PayPal Sandbox **Add a Credit Card** function to generate credit card numbers which are valid for testing. |
+    Use the PayPal Sandbox **Add a Credit Card** function to generate credit card numbers which are valid for testing.
 
 ### Recurring Contributions
 
@@ -436,14 +447,14 @@ The final steps in getting ready to use CiviContribute with PayPal in **TEST MOD
 * Set both your TEST and live **..._Certificate Path** settings to the directory noted above. **Include a trailing slash on both path settings.**
 
     !!! danger
-        **Make sure the Test and Live Username fields are blank before saving this screen.** If these fields are not empty, you will get an error from PayPal when attempting to make a test or live contribution. |
+        **Make sure the Test and Live Username fields are blank before saving this screen.** If these fields are not empty, you will get an error from PayPal when attempting to make a test or live contribution.
 
 * Open your CiviCRM configuration file in a text editor (civicrm.settings.php)
 * Set both your TEST and live **..._PASSWORD** settings to the **API Password** you used when requesting your sandbox certificate.
 
-    ```
+    ```php
     define( 'CIVICRM_CONTRIBUTE_PAYMENT_TEST_PASSWORD' , 'fo$y7#233u' );
-    ...
+    // ...
     define( 'CIVICRM_CONTRIBUTE_PAYMENT_PASSWORD' , 'fo$y7#233u' );
     ```
 
@@ -460,9 +471,9 @@ The final steps in getting ready to use CiviContribute with PayPal in **TEST MOD
 
 * Go back to you CiviCRM configuration file, and enter your Profile **PAYMENT_KEY** value in both TEST and LIVE settings.
 
-    ```
+    ```php
     define( 'CIVICRM_CONTRIBUTE_PAYMENT_TEST_KEY' , '82dd81ec5b571959b3d36b73bd30d4o2' );
-    ...
+    // ...
     define( 'CIVICRM_CONTRIBUTE_PAYMENT_KEY' , '82dd81ec5b571959b3d36b73bd30d4o2' );
     ```
 

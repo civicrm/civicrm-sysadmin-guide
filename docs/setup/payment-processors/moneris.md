@@ -1,5 +1,7 @@
 # Moneris Configuration Guide
 
+## Overview
+
 Moneris is a Canadian transaction processor, working with most of the major credit cards and now direct payment cards as well. There is a US version of the Moneris API out there, but it hasn't been implemented yet.
 
 Unfortunately, they haven't given us an appropriate GPL license, so as of version 3.1.4, there is some assembly required.
@@ -18,17 +20,7 @@ Once you have the mpgClasses.php file, put it in the packages/Services folder. T
 1. Moneris provides a web interface to do lots of administrative stuff (e.g. reversing charges, managing recurring payments), not currently handled by CiviContribute. Lots of contributor information is also sent to Moneris to help you match up data in your accounting.
 1. Recurring payments, while functional, is incomplete. The Moneris payment processor in CiviCRM will trigger recurring transactions in Moneris, however that is about it. There is no way, out of the box, for CiviCRM to poll or be notified when a recurrence happens and log the respective transaction as a contribution. As such, you will need to manually monitor your Moneris admin for recurring transactions, and when they occur, you'll need to manually enter the contribution on the CiviCRM admin in order to keep the data in CiviCRM up to date. There is also no way that I am aware of to manage the Moneris end of a recurring contribution. For cancelations, credit card information updates and otherwise, you'll need to use your Moneris admin account. This of course leaves much to be desired, so take that into consideration before choosing Moneris as your payment processor for CiviCRM.
 
-## Joomla Issue
-
-There is a bug in the code that persists, at least in the joomla install on an apache server
-
-administrator/components/com_civicrm/CRM/Core/Payment/Moneris.php
-
-line 65: if (include_once 'Services/mpgClasses.php' === false )
-
-needs extra brackets.
-
-line 65: if ((include_once 'Services/mpgClasses.php') === false )# Setting up Moneris Hosted Payment Processor for CiviCRM
+## Setting up Moneris Hosted Payment Processor for CiviCRM
 
 This document serves as a brief description of how you go about setting up Moneris Hosted to work with CiviCRM 4.x
 
@@ -37,9 +29,6 @@ This document serves as a brief description of how you go about setting up Moner
     ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A21.png?version=1&modificationDate=1372586539000&api=v2)
 
 1. The next thing is to configure Moneris eSELECT Plus Hosted Paypage . The following configuration steps are required under your Moneris eSELECT Plus merchant account.Please ensure you have your merchant account set up on moneris before continuing.
-
-
-
 
 1. Log into the Merchant Resource Center: [Developement](https://esqa.moneris.com/mpg/index.php) [Production](https://www3.moneris.com/mpg)
 
