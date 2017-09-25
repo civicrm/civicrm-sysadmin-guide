@@ -187,5 +187,6 @@ Good planning can minimise the risks around change, but it is important
 to be flexible within your plan; unforeseen things often occur, and a
 rigid plan could prevent you from reaching the best solution.
 
-## Choosing a Consultant/Service Providers
+## Choosing a consultant/service provider
+
 For many projects have a trusted outside partner is very important. Outside partners are experts in CiviCRM and will listen to you to learn about your organization and how to best match your needs to CiviCRM. There are many [providers](https://civicrm.org/partners-contributors) that participate in the CiviCRM community and can help you with your implementation. 
