@@ -1,14 +1,12 @@
 # iATS Payments Configuration
 
-If you are looking for information about the old iATS payment processor, you can still find that [here](https://wiki.civicrm.org/confluence/display/CRMDOC44/IATS+Configuration).
+1. Read the [extension's README](https://github.com/iATSPayments/com.iatspayments.civicrm/blob/master/README.md)
+for notes about setting up your iATS account setting permissions, as well as for server requirements and other helpful configuration notes.
 
-But you really should now be using the new iATS Services Payment Processor packaged as an extension, linked below. Both processors can co-exist, and you can migrate to the new one from the old one.
+2. Sign up for an account with [iATS Payments](http://home.iatspayments.com/). If you're working with a CiviCRM developer, they may have an agency-specific page where you should sign up so that iATS knows who you are working with. When you signup, tell them you are using CiviCRM, it helps them set up your account appropriately. You also need to tell them if you want ACH/EFT and/or Swipe support for the account. And make sure you're setting up an account for the right region (i.e. the North America, or UK server).
 
-[https://civicrm.org/extensions/iats-payments](https://civicrm.org/extensions/iats-payments)
+3. Once your account is approved (which may take a few days to a few weeks, depending), you'll need the [iATS Services Payment Processor extension](https://civicrm.org/extensions/iats-payments), installed in the usual way.
 
-Configuration Notes:
-
-1. Be sure to tell iATS that you are using CiviCRM, they do know about it. You also need to tell them if you want ACH/EFT and/or swipe support.
-1. See the readme for information about recommended practices re: accounts.
-1. Make sure you're setting up an account for the right region (i.e. the North America, or UK server).
-1. Questions? Use the github issue queue here: [https://github.com/iATSPayments/com.iatspayments.civicrm/issues](https://github.com/iATSPayments/com.iatspayments.civicrm/issues)
+4. You create a payment processor for each type of payment (i.e. credit card, ACH/EFT, swipe) you'll be receving. The credentials are usually the same for each one.
+ 
+5. Questions? Use the [github issue queue](https://github.com/iATSPayments/com.iatspayments.civicrm/issues).
