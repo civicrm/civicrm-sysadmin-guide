@@ -28,7 +28,7 @@ Note: when installing a new version over an old one, please check first "5. Trou
 
 !!! warning
 
-    If you get the following error when installing or upgrading CiviCRM for Joomla - you can downloading the alternate Joomla install file - `civicrm-4.7.x-joomla-alt.zip` - which doesn't require built-in unzip functionality on your server. Then repeat the install steps starting with step 3 above.
+    If you get the following error when installing or upgrading CiviCRM for Joomla - you can downloading the alternate Joomla install file - `civicrm-4.7.x-joomla-alt.zip` - which doesn't require built-in unzip functionality on your server. Then repeat the install steps starting with [running the installer](#installer).
 
     > Your PHP version is missing zip functionality. Please ask your system administrator / hosting provider to recompile PHP with zip support.
 

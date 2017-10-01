@@ -416,9 +416,8 @@ new association rule.
 1. The page will reload, and you should see the message "Your Association
 Rule has been added."
 
-1. Repeat steps 1-8 to add all necessary association rules for your
-organization. Once you have finished adding all of your association
-rules, move on to step 10.
+1. Repeat all of the above steps to add all necessary association rules for your
+organization.
 
 1. Click on the tab **Manually Synchronize**
 

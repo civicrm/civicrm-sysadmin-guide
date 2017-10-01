@@ -22,7 +22,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
 ## Steps
 
 1. Make a note of which CiviCRM modules are enabled on the original CMS.
-1. Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy in step 6. You can check this using the menu option "Administer >> System Settings >> Directories".
+1. Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy later on in these steps. You can check this using the menu option "Administer >> System Settings >> Directories".
 1. Disable but do not uninstall CiviCRM in your original CMS (unless you are moving the whole CMS).
 1. Get a copy of the codebase in the new location.
 
@@ -31,7 +31,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         1. If you decide not to do a fresh install, be sure to review the file paths in civicrm.settings.php, such as civicrm_root, civicrm_base, and CIVICRM_TEMPLATE_COMPILEDIR
 
             !!! danger
-                If the new server or location is going to be a copy of a production system, to avoid duplicate emails going out, consider uncommenting and filling in an appropriate value in civicrm.settings.php to define 'CIVICRM_MAIL_LOG'. |
+                If the new server or location is going to be a copy of a production system, to avoid duplicate emails going out, consider uncommenting and filling in an appropriate value in civicrm.settings.php to define 'CIVICRM_MAIL_LOG'.
 
         1. Execute a fresh install of your CMS to the new location.
 
@@ -184,7 +184,7 @@ Use the following article, or many others on the web to enable mod_rewrite. -- [
 
 ### Only the front page of your site can be displayed - Joomla
 
-I just had an issue at step 13 above getting to the page where the directories can be updated. There was an error with Joomla 1.7 / CiviCRM 4.0.5 on a site that had been upgraded a few times already: Failed opening required 'CRM/Core/Config.php. I solved this by manually editting [DOCROOT]/administrator/components/com_civicrm/civicrm.settings.php and [DOCROOT]/components/com_civicrm/civicrm.settings.php to replace incorrect values for $civicrm_root, CIVICRM_TEMPLATE_COMPILEDIR, and CIVICRM_UF_BASEURL (the latter since I was using a different URL on my local dev machine).
+I just had an issue getting to the page where the directories can be updated. There was an error with Joomla 1.7 / CiviCRM 4.0.5 on a site that had been upgraded a few times already: Failed opening required 'CRM/Core/Config.php. I solved this by manually editting [DOCROOT]/administrator/components/com_civicrm/civicrm.settings.php and [DOCROOT]/components/com_civicrm/civicrm.settings.php to replace incorrect values for $civicrm_root, CIVICRM_TEMPLATE_COMPILEDIR, and CIVICRM_UF_BASEURL (the latter since I was using a different URL on my local dev machine).
 
 ### Unable to update Config Backend
 

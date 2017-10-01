@@ -127,7 +127,7 @@ If you were using Views integration prior to this upgrade, you will need to go t
 
 ### Restore CiviCRM as the Drupal homepage if appropriate
 
-If you changed the default Drupal homepage from civicrm to node in step 3 above, you need to restore civicrm as the homepage. You can do this by navigating to:
+If you changed the default Drupal homepage from CiviCRM, now is the time to restore it. You can do this by navigating to:
 **Administration » Configuration » System » Site Information**
  then change the Default front page to civicrm, and click Save configuration.
 

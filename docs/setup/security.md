@@ -90,8 +90,7 @@ certificate from a trusted vendor. To install SSL:
     be willing to install the certificate on your *domain*, not one at a
     higher level. CiviCRM does not support shared SSL.
 2.  Purchase an SSL certificate from a security vendor.
-3.  Install the SSL on your server following the procedure you learned
-    in step 1.
+3.  Install the SSL certificate on your server.
 4.  Enable 'HTTPS' redirection on your CiviCRM site so that the login,
     online contribution, member, event and administrator pages use SSL
     encryption. CiviCRM has an option in global settings to check the

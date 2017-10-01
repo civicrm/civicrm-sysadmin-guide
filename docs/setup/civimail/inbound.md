@@ -111,9 +111,9 @@ The purpose of this step is to create an email account in your Google Apps that 
     1. Send your new return@example.com account an email
 1. Log out of Google Apps
 1. Log in to your new return@example.com Google Apps account to check that the new account/password works
-    1. Check that the account received the email you sent as an admin
- (You may wish to also do Step 5 - Set up Spam Filter - at this point)
-1. Google has tightened down secure access to their systems. To get CiviCRM bounce processing to work you need to loosen security for the email account. To do this, make sure you are logged into this bounce email account and go to [https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps) and change the setting to **allow less restrictive access** , otherwise you will receive the following error when testing the bounce processing email in CiviCRM: (code: 534, response: 5.7.14 Please log in via your web browser and 5.7.14 then try again. 5.7.14 Learn more at 5.7.14 which means that Gmail blocked access from "a less secure app" (as per[https://support.google.com/accounts/answer/6010255)](https://support.google.com/accounts/answer/6010255))
+    1. Check that the account received the email you sent as an admin.
+ (You may wish to [set filters](#filters) at this point.)
+1. Google has tightened down secure access to their systems. To get CiviCRM bounce processing to work you need to loosen security for the email account. To do this, make sure you are logged into this bounce email account and go to [https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps) and change the setting to **allow less restrictive access** , otherwise you will receive the following error when testing the bounce processing email in CiviCRM: (code: 534, response: 5.7.14 Please log in via your web browser and 5.7.14 then try again. 5.7.14 Learn more at 5.7.14 which means that Gmail blocked access from "a less secure app" (as per [https://support.google.com/accounts/answer/6010255)](https://support.google.com/accounts/answer/6010255))
 
 ### Configure CiviCRM bounce processing email account
 
@@ -157,7 +157,7 @@ The purpose of this step is to create an email account in your Google Apps that 
 1. This assumes you have already configured your scheduled jobs cron job according to: [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs).
 1. Enable the 'Fetch Bounces' job to run with the frequency setting set to 'Every time cron job is run'.
 
-### Set filters on return@example.com
+### Set filters on return@example.com {:#filters}
 
 1. Go to your return@example.com Google Apps account Spam folder
 1. Go to email
@@ -207,10 +207,10 @@ In the typical implementation you will create a single email account that is use
 
 Another possible implementation to consider if your mail server supports IMAP is:
 
-1. Create a mail folder that will be used to indicate to the processor what emails should be processed. Let's call it "civicrm".
-1. In step 2) above, in the Source field, enter the path to this folder. Note it will typically be "INBOX.civicrm", not just "civicrm".
+1. Create a mail folder that will be used to indicate to the processor what emails should be processed. Let's call it `civicrm`.
+1. When administering your mail accounts in the steps above, in the "Source" field, enter the path to the folder you just created. Note it will typically be `INBOX.civicrm`, not just `civicrm`.
 1. If you want an email in your inbox to be autofiled, move it into this folder. If your mail client supports it, make a copy of the email rather than simply move it, as you likely will want the email to remain in your Inbox or be filed in your primary folder structure.
-1. The processor will create subfolders INBOX.civicrm.CiviMail.processed and INBOX.civicrm.CiviMail.ignored, and will move the email into one of those when done.
+1. The processor will create subfolders `INBOX.civicrm.CiviMail.processed` and `INBOX.civicrm.CiviMail.ignored`, and will move the email into one of those when done.
 
 #### Tip #3
 

@@ -121,7 +121,7 @@ Contact MTS including your Sandbox Email Address by clicking on [https://www.pay
     There is actually no charge for using any of the services in the PayPal Sandbox. However, you will need to go through the same steps if you choose to create a live Website Pro Account. EXCEPT there will be a waiting period while PayPal actually reviews and approves your application.
 
 !!! check "Applying for Website Payments Pro for a Live Account"
-    When going through these steps for a live account, you should see a **Getting Started** panel in the upper left corner of your **My Account - Overview tab**. Once you complete Step 2 - Verify your (bank account) information, you should be able to click on **Apply for Website Payments Pro** to begin the process. After submitting the requested info online - you will need to wait for an approval email reply from PayPal - in our experience this took approximately 3 days.
+    When going through these steps for a live account, you should see a **Getting Started** panel in the upper left corner of your **My Account - Overview tab**. Once you verify your bank account information, you should be able to click on **Apply for Website Payments Pro** to begin the process. After submitting the requested info online - you will need to wait for an approval email reply from PayPal - in our experience this took approximately 3 days.
     !PayPal_Web_Pro_Apply.gif!*You will get an error message from the PayPal Payments server if you attempt to do a direct (Website Payments Pro style) transaction before your account is approved.*
 
 ## Configure API Access

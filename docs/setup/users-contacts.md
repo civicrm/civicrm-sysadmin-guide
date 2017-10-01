@@ -18,7 +18,7 @@ CiviCRM does not natively use the hooks and APIs of Joomla to facilitate hooking
     Thus, for example, if a contact has been entered in the CiviCRM database manually by an administrator, or as a result of a transaction as the anonymous Joomla user (eg in a contribution or membership transaction, or a "quick registration"), then the user needs to do more than merely create a Joomla account with matching criteria (eg email) to get linked to their CiviCRM record. They need also to engage in a CiviCRM transaction while they are logged in. Thus a process might look like:
 
     1. User makes a Contribution as the anonymous Joomla user i.e. no login required. Their email address and any custom Profile fields from the Contribution form is recorded in a CiviCRM record.
-    1. User subsequently returns to site and registers as a Joomla user using the same email address as in step 1.
+    1. User subsequently returns to site and registers as a Joomla user using the same email address as previously used.
     1. User logs in as the above Joomla user and is now presented with a menu item (visible to registered users only) to eg "Edit my details" which links to a CiviCRM Profile.
     1. Clicking on this menu link performs the match between the Joomla user and CiviCRM contact record, and the user is taken to their Profile edit page. The Joomla user account and CiviCRM record are now linked.
 

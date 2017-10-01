@@ -92,7 +92,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 
 !!! check ""
 
-    Note that Drupal tries to create the /files/ directory (and make it writeable), but only when saving admin/settings. Same holds for /temp directory, and a /uploads/ directory in the CiviCRM module root. On a brand-new Drupal install, this directory may be missing. Even on an existing installation, if file permissions are not set properly, the directory may be missing. If enabling the **civicrm** module generates errors regarding the files directory, you must create it (writeable) manually. Refer to Step 2 for instructions on directories to create and permissions to set.
+    Note that Drupal tries to create the `/files/` directory (and make it writeable), but only when saving `admin/settings`. Same holds for `/temp` directory, and a `/uploads/` directory in the CiviCRM module root. On a brand-new Drupal install, this directory may be missing. Even on an existing installation, if file permissions are not set properly, the directory may be missing. If enabling the **civicrm** module generates errors regarding the files directory, you must create it (writeable) manually.
 
 * Go to **Administer » User management » Permissions**
 
@@ -118,7 +118,7 @@ When CiviCRM is installed on top of an existing Drupal site, a special CiviCRM A
 
 * Login to your Drupal site with an administrator-level login
 * Click the **CiviCRM** link in the main navigation block
-* If your Drupal site makes use of the db_prefix setting (in settings.php - cf. Step 2, above), in de top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the Drupal Users Table Name so that it includes the prefix.
+* If your Drupal site makes use of the `db_prefix` setting (in `settings.php`), in de top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the Drupal Users Table Name so that it includes the prefix.
 * Click **Administer** in the menu bar
 * Click **Users and Permissions** from the drop-down menu, then select **Synchronize Users to Contacts**
 

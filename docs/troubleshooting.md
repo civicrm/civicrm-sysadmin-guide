@@ -185,7 +185,7 @@ After running these steps, you can be confident that your database schema matche
     mysqldump -d -R -u username -p databasename civicrm_value_blah_1 civicrm_value_blah_2 > customfieldsfile.sql
     ```
     
-     The only option that is different than creating an entire backup is the -d switch, which tells mysqldump not to output the data. List all the relevant custom value tables before the > customfieldsfile.sql. If you did not exclude "civicrm_import_job*" tables in step 1, you must export these tables' data and structure in step 2 along with your custom data tables.
+     The only option that is different than creating an entire backup is the -d switch, which tells mysqldump not to output the data. List all the relevant custom value tables before the > customfieldsfile.sql. If you did not exclude "civicrm_import_job*" tables previously, you must export these tables' data and structure along with your custom data tables.
 
 1. Create a new database for your rebuilt data.
 1. Import the original database structure from the same version of CiviCRM you are currently using: civicrm/sql/civicrm.mysql (this file is found relative to your root civicrm directory)
@@ -218,7 +218,7 @@ After running these steps, you can be confident that your database schema matche
     
 1. [Rebuild your database triggers](#trigger-rebuild) 
     
-1. Make sure you have the backup of your original working database and replace this with the new database created in step 3.
+1. Make sure you have the backup of your original working database and replace this with the new database created above.
 
 Browse through few civicrm pages to verify if civicrm is working fine along with all the custom data. Also make a few checks for e.g if number of contacts / custom-data are same in both the databases.
 
@@ -283,7 +283,7 @@ Sometimes an upgrade fails and you need to get back to the last working version.
 1. In the `/sites/all/modules` directory, make sure to delete the entire civicrm directory (`../sites/all/modules/civicrm`).
 1. Restore the civicrm directory in `/sites/all/modules/` from your files backup.
 1. CRUCIAL: Remove the `templates_c` directory from `../sites/default/files/civicrm/` (don't worry, CiviCRM will recreate these files when you reload the pages).
-1. Go back to Drupal's Modules screen and enable the CiviCRM modules you disabled in step 2.
+1. Go back to Drupal's Modules screen and enable the CiviCRM modules you disabled.
 1. Bring the site back online by turning off Maintenance mode.
 1. Load up civicrm by going to `http://yoursitename.com/civicrm` (or wherever you have civicrm installed). This should have restored you back to the last working condition.
 

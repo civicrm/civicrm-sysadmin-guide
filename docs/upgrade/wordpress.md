@@ -58,9 +58,9 @@ CiviCRM will not run properly if files from previous version are present after t
     $ unzip <civicrm_download_file>.zip
     ```
     
-1. For Versions installed prior to 4.7 - Relocate (paste) the backed-up civicrm.settings.php file(in step 2) inside <wordpress home>/wp-content/plugins/civicrm/
+1. For Versions installed prior to 4.7 - Relocate (paste) the backed-up `civicrm.settings.php` file inside `<wordpress_root>/wp-content/plugins/civicrm/`
 
-1. If you have upgraded from a CiviCRM 4.1 version, check the contents of civicrm.settings.php. Make sure at the very end of the file these 2 lines exist, and if not, add them.
+1. If you have upgraded from a CiviCRM 4.1 version, check the contents of `civicrm.settings.php`. Make sure at the very end of the file these 2 lines exist, and if not, add them.
 
     ```php
     require_once 'CRM/Core/ClassLoader.php';
@@ -90,7 +90,7 @@ If you don't have SSH access and your IP panel does not recognize tar files, you
 1. Rename `civicrm2` to `civicrm`.
 1. Zip the `civicrm` directory and name it `civicrm-x.x.x-l10n.zip`
 1. Now, you can upload `civicrm-x.x.x-l10n.zip` into `<wordpress_root>/wp-content/plugins/`
-1. Unzip `civicrm-x.x.x-l10n.zip` and continue with Step 5.
+1. Unzip `civicrm-x.x.x-l10n.zip` and continue with the following steps.
 
 
 ### Clear cached files

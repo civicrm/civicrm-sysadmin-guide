@@ -103,12 +103,12 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Fill in the CiviCRM Database Settings.
 
     !!! tip "Where Should I Store CiviCRM Data?"
-        CiviCRM may be configured to use your existing WordPress database, or a separate (new) database. Using a separate database is generally preferred - as it makes backups and upgrades easier. The installer will create a new database for CiviCRM automatically if you enter a database name that doesn't already exist on your database server AND the database user you enter has permission to create databases. In case the installer does not automatically create a new database, simply create a new one following the same process as creating a new database for WordPress. |
+        CiviCRM may be configured to use your existing WordPress database, or a separate (new) database. Using a separate database is generally preferred - as it makes backups and upgrades easier. The installer will create a new database for CiviCRM automatically if you enter a database name that doesn't already exist on your database server AND the database user you enter has permission to create databases. In case the installer does not automatically create a new database, simply create a new one following the same process as creating a new database for WordPress.
 
-* Fill in the WordPress Database Settings for your existing WordPress database (as noted in step 2 above). In version 4.7.x CiviCRM will fill in the WP database settings, you can change these if you want to use a separate database.
+* Fill in the WordPress Database Settings for your existing WordPress database. In version 4.7.x CiviCRM will fill in the WP database settings, you can change these if you want to use a separate database.
 
     !!! tip "Loading Sample Data"
-        The Installer includes an option to load a set of sample contact, group, and relationship data by default. Sample data can provide a useful head-start in learning to use CiviCRM. However, if you do NOT want the sample data to be loaded, just uncheck **Load sample data** under **Other Settings**. |
+        The Installer includes an option to load a set of sample contact, group, and relationship data by default. Sample data can provide a useful head-start in learning to use CiviCRM. However, if you do NOT want the sample data to be loaded, just uncheck **Load sample data** under **Other Settings**.
 
 * Select the appropriate language for the base installation. You will be able to add other languages after the installation for multi-lingual sites.
 * Click the **Check Requirements and Install CiviCRM** button.
@@ -135,7 +135,7 @@ When CiviCRM is installed on top of an existing WordPress site, a special CiviCR
 
 * Login to your WordPress site with an administrator-level login
 * Click the **CiviCRM** link in the main navigation block
-* (If your WordPress site makes use of the db_prefix setting (in settings.php - cf. Step 2, above), in de top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the WordPress Users Table Name so that it includes the prefix.)
+* (If your WordPress site makes use of the `db_prefix` setting (in `settings.php`), in de top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the WordPress Users Table Name so that it includes the prefix.)
 * Click **Administer** in the menu bar
 * Click **Users and Permissions** from the drop-down menu, then select **Synchronize Users to Contacts**
 

@@ -80,12 +80,12 @@ Depending on how you would like to install civicrm for site 2, proceed to one of
 
 #### Auto + manual installation for site2.example.com
 
-* Use civicrm installer for installing civicrm for site2.example.com. Specify a new civicrm db which can be dropped later.
- Note sites/site2.example.com/civicrm.settings.php is your new settings file which needs to be modified.
+* Use civicrm installer for installing civicrm for `site2.example.com`. Specify a new civicrm db which can be dropped later.
+ Note `sites/site2.example.com/civicrm.settings.php` is your new settings file which needs to be modified.
 
-* Adjust CIVICRM_DSN setting to use the civicrm db used by site1. Drop the new civicrm db created in Step B.
+* Adjust `CIVICRM_DSN` setting to use the civicrm db used by site1. Drop the new civicrm db previously created.
 
-* The sites can share a single instance of the civicrm code in sites/all/modules/ directory.
+* The sites can share a single instance of the civicrm code in `sites/all/modules/` directory.
 
 #### WordPress multi-sites
 
@@ -192,7 +192,7 @@ switch ($_SERVER['SERVER_NAME']) {
 }
 ```
 
-With either of the above, skip step 6.
+With either of the above, skip the following "Register a new domain" step.
 
 ## Register a new domain
 

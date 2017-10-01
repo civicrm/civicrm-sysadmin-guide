@@ -12,14 +12,14 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 
     ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-1.png?version=1&modificationDate=1372586969000&api=v2)
 
-1. Copy everything inside this box, including the trailing `);`
+1. Copy this setting output, including the trailing `);`
 1. Open `/sites/default/settings.php` for editing from the root directory of the site, typically `public_html` on most servers.
 
     !!! note
         This assumes you have a single site installation. The location of the settings file might be different depending on whether or not you have multiple sites
 
 1. Find the database connector array. This is where Drupal stores the information regarding the MySQL database and the necessary credentials to connect to it. The array beings with `$databases = array (` then goes on to include the location and MySQL credentials, as well as additional options.
-1. Paste the output from step 3 here. Be sure to paste it _after_ the trailing `);`
+1. Paste your previously-copied settings output here. Be sure to paste it _after_ the trailing `);`
 
     ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-2.png?version=1&modificationDate=1372586969000&api=v2)
  
