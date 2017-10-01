@@ -52,7 +52,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
 
 Follow these steps to download and install the files that contain strings for languages other than American English:
 
-* Download the appropriate tarball file from [here](http://sourceforge.net/projects/civicrm/files/civicrm-stable/4.4.5/) with your browser. Tarball file-names include the CiviCRM version, and l10n (that's lower case ell-ten-en). For example, **civicrm-4.5.x-l10n.tar.gz.**.
+* Download the appropriate tarball file from [civicrm.org/download](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version, and `l10n`. For example, `civicrm-4.5.x-l10n.tar.gz`.
 
 * Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins` directory to allow for "Write" Access. Just remember to change it back to default when done.
 
@@ -67,7 +67,7 @@ Follow these steps to download and install the files that contain strings for la
     
         1. wget the file (modify this line to use the current tarball file name for the version you want)
             ```
-            $ wget http://sourceforge.net/projects/civicrm/files/civicrm-latest/4.5.x/civicrm-4.5.x-l10n.tar.gz
+            $ wget https://download.civicrm.org/civicrm-x.x.xx-l10n.tar.gz
             ```
 
 

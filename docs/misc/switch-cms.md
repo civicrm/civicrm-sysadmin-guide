@@ -221,17 +221,17 @@ This is to ensure there are no unexpected differences in the Drupal tables to be
 
 ### Disable CiviCRM helper modules
 
-Disable helper modules like civicrm_roles_sync, but leave CiviCRM enabled.
+Disable helper modules like `civicrm_roles_sync`, but leave CiviCRM enabled.
 
 ### Move your files
 
 1. Copy your civicrm files from your old server to your new server.
-    1. This should include the codebase at sites/all/modules (safer to copy the existing one than to get a new tarball from Sourceforge),
-    1. any overridden php or tpl files (I store these in sites/mysite/files/civicrm/custom_php and sites/mysite/files/civicrm/custom_tpl),
-    1. and other civicrm files (from sites/mysite/files/civicrm including custom, persist, and upload subdirectories).
-1. Delete CiviCRM's temporary files if you copied them (ie sites/mysite/files/civicrm/templates_c/*), and ensure the directory exists if you didn't copy the files over.
-1. Ensure the ownership and permissions on the directories and files are correct - ie readable by web server process, writable in the case of the files/ directory excluding the overridden php and tpl dirs).
-1. If you have Drupal contrib modules that interact with civicrm in your sites/mysite/modules or sites/all/modules directories, you should move them.
+    1. This should include the codebase at `sites/all/modules` (safer to copy the existing one than to get a new tarball),
+    1. any overridden php or tpl files (I store these in `sites/mysite/files/civicrm/custom_php` and `sites/mysite/files/civicrm/custom_tpl`),
+    1. and other civicrm files (from `sites/mysite/files/civicrm` including `custom`, `persist`, and `upload` subdirectories).
+1. Delete CiviCRM's temporary files if you copied them (ie `sites/mysite/files/civicrm/templates_c/*`), and ensure the directory exists if you didn't copy the files over.
+1. Ensure the ownership and permissions on the directories and files are correct - ie readable by web server process, writable in the case of the `files/` directory excluding the overridden php and tpl dirs).
+1. If you have Drupal contrib modules that interact with civicrm in your `sites/mysite/modules` or `sites/all/modules` directories, you should move them.
 
 ### Copy your old civicrm and drupal databases to the new server
 

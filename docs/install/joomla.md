@@ -12,7 +12,7 @@
 
 All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
 
-* Download the appropriate tarball file from [here](https://civicrm.org/download)[with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-4.7.x-joomla.zip**. If you have command line access to your server, use wget and the URL of the file to pull a copy directly to your server. Then you can skip the next step.](http://sourceforge.net/project/showfiles.php?group_id=177914)
+* Download the appropriate tarball file from [civicrm.org/download](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version. For example, `civicrm-4.7.x-joomla.zip`. If you have command line access to your server, use `wget` and the URL of the file to pull a copy directly to your server. Then you can skip the next step.
 * Upload this file to a folder in your root Joomla directory. Recommended location: `JOOMLA_ROOT/tmp/`.
 * Unzip the package, which will create a directory called: `com_civicrm`. On cPanel, you can use the File Manager's Extract function to unzip the file you uploaded.
 
