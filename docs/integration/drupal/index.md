@@ -389,7 +389,7 @@ Role.
 1. Under **Select a Drupal Role** select the Drupal Role that should be
 granted.
 
-   *Example: RBA wants any user with a Current Bakery Membership Type to be
+    *Example: RBA wants any user with a Current Bakery Membership Type to be
 granted the "Active Member" role, so the RBA staff creates a new
 Association Rule and selects Bakery under Select a CiviMember Membership
 Type and selects "Active Member" under Select a Drupal Role.*
@@ -397,7 +397,7 @@ Type and selects "Active Member" under Select a Drupal Role.*
 1. Under **Current Status** select the Membership Status that a user
 should have to be granted your selected Drupal Role.
 
-   *Example: RBA wants to grant any user who has a Membership Status of
+    *Example: RBA wants to grant any user who has a Membership Status of
 either New, Current, or Grace access to the member-only website content,
 so the RBA staff checks the boxes next to those three Membership
 Statuses.*
@@ -405,7 +405,7 @@ Statuses.*
 1. Under **Expired Status** select the Membership Status that will revoke
 the Drupal Role from the user.
 
-   *Example: RBA wants to make sure that any user whose membership expires
+    *Example: RBA wants to make sure that any user whose membership expires
 or who cancels their membership has their access to the member-only website
 content revoked, so the RBA staff checks the boxes next to Expired and
 Canceled.*
