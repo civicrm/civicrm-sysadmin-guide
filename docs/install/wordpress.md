@@ -147,7 +147,7 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear.
 
-You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options. Tips for creating CiviCRM Profiles (forms), custom data fields and programming custom data manipulation are included in the [Drupal installation and configuration example](https://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+installation+and+configuration+example) document.
+You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options.
 
 ## Upgrade CiviCRM
 

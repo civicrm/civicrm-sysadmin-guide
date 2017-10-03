@@ -37,7 +37,7 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
 
     The installer in 4.7 does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
     
-Copy this file to a location outside your Joomla project. You will need to restore it after upgrading.
+Copy this file to a location outside your Wordpress project. You will need to restore it after upgrading.
 
 * Also, if you are using the `<wordpress_root>/wp-content/plugins/civicrm/civicrm/settings_location.php` file in your implementation, make a copy of this as well.
 

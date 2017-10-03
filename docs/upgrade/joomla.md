@@ -8,7 +8,7 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 ## Download the latest code
 
 1. Go to [civicrm.org/download](https://civicrm.org/download)
-1. Select the latest currently available CiviCRM tarball for Drupal.
+1. Select the latest currently available CiviCRM tarball for Joomla.
 
     Example: `civicrm-4.7.20-joomla.zip`
 
