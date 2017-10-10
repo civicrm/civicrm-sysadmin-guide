@@ -360,7 +360,9 @@ A possible workaround for this problem is here: [http://forum.civicrm.org/index.
 
 #### Running CiviCRM crons in Aegir
 
-If you are using the [Aegir](http://www.aegirproject.org) hosting environment, with the [provision_civicrm](http://drupal.org/project/provision_civicrm) sub-module, you can automate the installation of a new cron for each site using the [hosting_civicrm_cron](http://drupal.org/project/hosting_civicrm_cron) module. You can also use the Drush method below to call CiviCRM cron tasks.
+If you are using the [Aegir](http://www.aegirproject.org) hosting environment, with the [hosting_civicrm](http://drupal.org/project/hosting_civicrm) module, the CiviCRM cron will automatically be configured. A global default cron interval is defined in the CiviCRM cron queue settings. It is also possible to set a site-specific value. 
+
+You can also use the Drush method below to call CiviCRM cron tasks manually.
 
 #### Running CiviCRM crons using Drush
 
