@@ -1,6 +1,6 @@
 # WordPress plugins and themes incompatible with CiviCRM
 
-Because of the huge number and ever-changing nature of community contributed Wordpress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts, Please add to/edit this information as applicable.
+Because of the huge number and ever-changing nature of community contributed WordPress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts, Please add to/edit this information as applicable.
 
 ## Super Cache
 
