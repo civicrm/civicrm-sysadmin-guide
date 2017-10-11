@@ -109,7 +109,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         !!! check "Be Careful"
             If you have edited the IDS ini file to add any custom exclusions then you need to edit the settings for the three paths in the file, filter_path, tmp_path, HTML_Purifier_Cache. If these paths are not accessible Civi pages will display blank.
 
-    * Wordpress:
+    * WordPress:
 
         * <wordpress-root>/wp-content/plugins/files/civicrm/templates_c/*
         * <wordpress-root>/wp-content/plugins/files/civicrm/ConfigAndLog/Config.IDS.ini
@@ -125,7 +125,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
     * Drupal sites: http://<drupal_site>/index.php?q=civicrm/admin/setting/updateConfigBackend&reset=1
     * Joomla 1.5 sites: http://<joomla_site>/administrator/index2.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
     * Joomla 1.6 sites: http://<joomla_site>/administrator/index.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
-    * Wordpress sites: http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1
+    * WordPress sites: http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1
         * Prior to 4.3.3 the WordPress implementation mistakenly drops everything after the domain in its suggestion for a new URL. The default location for a WordPress install relative to docroot would normally mean that the url should be http://<wordpress_site>/wp-content/plugins/civicrm/civicrm/
         
 1. Review the recommended modified paths in the form - they should reflect the new Base Directory, Base URL, and Site name for CiviCRM.

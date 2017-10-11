@@ -560,7 +560,7 @@ Drupal:
 wget -O - -q -t 1 \
 'http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 
-Wordpress:
+WordPress:
 wget -O - -q -t 1 \
 'http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 ```
@@ -591,7 +591,7 @@ Joomla: http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.
 
 Drupal: http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 
-Wordpress: http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+WordPress: http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 If the above works, it means CiviCRM is working OK, but the cron on your server is not configured properly. Try _crontab -e_ and review it again.

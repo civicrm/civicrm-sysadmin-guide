@@ -143,7 +143,7 @@ WordPress multi-sites do not offer multiple codebases for plugins. There is only
 !!! note
     If you're using Drupal with Domain Access, consider installing the [Domain Access CiviCRM](https://civicrm.org/extensions/domain-access-civicrm) module if users might be creating new Drupal accounts via CiviCRM profiles.
 
-Similar to Wordpress, with Domain Access module there is only one copy of the codebase, and one copy of civicrm.settings.php.
+Similar to WordPress, with Domain Access module there is only one copy of the codebase, and one copy of civicrm.settings.php.
 
 The easiest is to assign the same domain_id's in Drupal and CiviCRM, then you can just replace this line:
 

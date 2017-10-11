@@ -83,7 +83,7 @@ pages:
   #- Backdrop integration:
     #- Backdrop integration: integration/backdrop/index.md
   - WordPress integration:
-    - Wordpress integration: integration/wordpress/index.md
+    - WordPress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
   - Joomla integration:

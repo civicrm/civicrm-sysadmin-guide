@@ -4,7 +4,7 @@ CiviCRM works with the three most popular open source Content Management Systems
 
 -   Drupal
 -   Joomla
--   Wordpress
+-   WordPress
 
 Before starting a project you should consider how you plan to use
 CiviCRM both now and in the future. Two big questions are; How much
@@ -31,7 +31,7 @@ Drupal. Joomla is easier to learn than Drupal. The amount of integration
 available is lower than then when using Drupal.
 
 **WordPress** is by a wide margin the most popular of the three CMS's.
-It is considered to be very easy to build sites using Wordpress,
+It is considered to be very easy to build sites using WordPress,
 especially for people that are not familiar with web technology. A lot
 of people know WordPress as a blogging platform rather than a CMS, but
 it is becoming more powerful and flexible with each release. The amount

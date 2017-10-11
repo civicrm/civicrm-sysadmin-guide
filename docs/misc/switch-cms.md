@@ -131,7 +131,7 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 
 * On your old site, visit Administer > System Settings > Directories and Administer > System Settings > Resource URL's.
 * Copy all of your custom files and uploads to the appropriate directories on your new site.
- In Wordpress, these will likely be under wp-content/plugins/files/civicrm/civicrm
+ In WordPress, these will likely be under wp-content/plugins/files/civicrm/civicrm
  In drupal, these will likeley be under sites/default/files/civicrm.
 
 
