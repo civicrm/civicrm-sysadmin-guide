@@ -45,8 +45,6 @@ are sent.
 Outbound email settings are configured at: **Administer > System
 Settings > Outbound Email (SMTP/Sendmail)**. The choices here are:
 
-![Screen shot of mail choices](../img/Administer-System_Settings-Outbound_Email.png)
-
 -   **mail()**: This is the default option and if it works for you, you
     should use it.
 -   **SMTP**: If you have a dedicated external mail server, specify its
@@ -167,9 +165,8 @@ you will need to set up an email mailbox to receive bounced email
 messages and a schedule the **Bounces Fetcher** job that will
 periodically read this mailbox and update your contacts in CiviCRM.
 
-Administer > System Settings > Scheduled Jobs
-
-![Screen shot of bounce fetcher scheduled job](../img/administer-scheduledjobs.png)
+1. Go to **Administer > System Settings > Scheduled Jobs**.
+1. Find the "Fetch Bounces" scheduled job and enable it.
 
 The bounce email address is an "invisible" email address visible only in
 the email message's envelope (hidden fields that precede the headers and
@@ -263,32 +260,16 @@ There are several ways of configuring your incoming mailbox:
 
 Once you have created your email account to receive bounces or emails
 for auto filing, you need to set up CiviMail so it knows how to read it:
-**Administer > CiviMail > Mail accounts** as the default email
-address.
 
-![Screen shot of the email box selection screen](../img/administer-civimail-mailaccount.png)
-
-![Screen Shot of adding an email box](../img/administer-civimail-mailaccount-edit.png)
-
--   Specify the mail **server, username, and password** you used when
-    creating the account.
--   The **local part** is optional and only relevant if you were able to
-    set up an account using sub-addressing. It should be the account you
-    created with '+' or '-' appended , e.g., "return+" or "return-".
--   The **email domain** is the domain of your email address
-    (example.org).
--   You can leave the **return path** empty.
--   If your mail server supports it, specify IMAP **protocol** and check
-    **SLL**, otherwise use POP.
--   You can specify an IMAP folder in the **source** field using the
-    syntax INBOX.CiviMail. **Note:** Some exchange servers may not be
-    configured in a compatible way. In that case, you can configure a
-    script like fetchmail and use Maildir.
--   In the **Used for?** field you can choose whether you want to use
-    the email account for **Bounce Processing** or **Email-to-Activity
-    Processing** (or Auto filing). You can have multiple accounts
-    specified for auto filing but only one for bounce processing. This
-    will be marked as default.
+1. Navigate to **Administer > CiviMail > Mail accounts**.
+1. Identify the default mail account used for bounce processing, and **edit** that account. 
+1. Specify the mail **server, username, and password** you used when creating the account.
+1. The **local part** is optional and only relevant if you were able to set up an account using sub-addressing. It should be the account you created with '+' or '-' appended , e.g., "return+" or "return-".
+1. The **email domain** is the domain of your email address (example.org).
+1. You can leave the **return path** empty.
+1. If your mail server supports it, specify IMAP **protocol** and check **SLL**, otherwise use POP.
+1. You can specify an IMAP folder in the **source** field using the syntax INBOX.CiviMail. **Note:** Some exchange servers may not be configured in a compatible way. In that case, you can configure a script like fetchmail and use Maildir.
+1. In the **Used for?** field you can choose whether you want to use the email account for **Bounce Processing** or **Email-to-Activity Processing** (or Auto filing). You can have multiple accounts specified for auto filing but only one for bounce processing. This will be marked as default.
 
 Once the **Bounce Processing** mailbox is configured, you will need to
 configure CiviMail to empty it, read all these bounced messages and

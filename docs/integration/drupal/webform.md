@@ -2,10 +2,11 @@
 
 ## Introduction
 
-[
- ![](https://drupal.org/files/Webform-CiviCRM-Intro.jpg)](http://civiteacher.com/video/introducing-civicrm-drupal-webform-integration "Video from CiviTeacher.org")
- These instructions relate to the [Webform CiviCRM module](https://www.drupal.org/project/webform_civicrm) and assume you are already familiar with [CiviCRM](http://book.civicrm.org) and the Drupal [Webform module](https://drupal.org/project/webform). Read those manuals first.
- This module enhances Drupal Webforms to create a smart form builder and processor for CiviCRM. With it you can make user-friendly forms that create and update information about contacts, relationships, cases, activities, event participants, group subscriptions, tags, memberships, contributions, grants, file attachments and custom data.
+[![Video from CiviTeacher.org](https://drupal.org/files/Webform-CiviCRM-Intro.jpg)](http://civiteacher.com/video/introducing-civicrm-drupal-webform-integration "Video from CiviTeacher.org")
+
+These instructions relate to the [Webform CiviCRM module](https://www.drupal.org/project/webform_civicrm) and assume you are already familiar with [CiviCRM](http://book.civicrm.org) and the Drupal [Webform module](https://drupal.org/project/webform). Read those manuals first.
+
+This module enhances Drupal Webforms to create a smart form builder and processor for CiviCRM. With it you can make user-friendly forms that create and update information about contacts, relationships, cases, activities, event participants, group subscriptions, tags, memberships, contributions, grants, file attachments and custom data.
 
 ### Getting Started
 
@@ -192,13 +193,13 @@ http://YOUR-SITE-URL/civicrm/contact/view/case?reset=1&action=view&cid=101&id=51
 
 Here is how it work in action :
 
-1) configuring the confirmation message :
+1. configuring the confirmation message :
 
-![](https://user-images.githubusercontent.com/6275540/28129010-b0400ff4-6729-11e7-9d85-01ad1edc9134.gif)
+    ![Animation showing the steps to configure the confirmation message](https://user-images.githubusercontent.com/6275540/28129010-b0400ff4-6729-11e7-9d85-01ad1edc9134.gif)
 
-2) submitting the webform :
+1. submitting the webform :
 
-![](https://user-images.githubusercontent.com/6275540/28128507-d24149b2-6727-11e7-9263-690d324d7a0b.gif)
+    ![Animation showing the steps to submit the webform](https://user-images.githubusercontent.com/6275540/28128507-d24149b2-6727-11e7-9263-690d324d7a0b.gif)
 
 ## Option Lists
 

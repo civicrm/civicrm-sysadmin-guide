@@ -18,11 +18,18 @@ To get this working you need to:
 * Configure a mail account for bounce handling in CiviCRM Mail Accounts
 * Configure mailings to use VERP or not
 
+### Finding "on hold" contacts
+
+You can use the Search Builder to find those contacts with an email **on hold** and look at the bounce report of a CiviMail sent message.
+
+1. From the CiviCRM menu, choose **Search > Search Builder**.
+1. Then choose **Contacts, On Hold, Primary, =, Yes**
+
 ### Causes of e-mail address bounces
 
 When the recipient's email server responds with a "bounce" email it could be for a variety of reasons. The CiviCRM mail processing script attempts to determine the cause for the bounce by parsing the bounce email returned by the receipient's email server. Based on the nature of the bounce and the number of times a bounce has occurred attempting to send to this particular email, a Contact's email may be placed **on hold.**
 
-### **Why is a contact's e-mail address put "On Hold"?**
+### Why is a contact's e-mail address put "on hold"?
 
 Here is a list from the database of the different types of bounces, and how many times each bounce must occur before CiviCRM deems **on hold** appropriate.
 
@@ -43,21 +50,19 @@ Here is a list from the database of the different types of bounces, and how many
 
 ### Removing Hold
 
+You can remove **on hold** from a contact by manually editing the contact record.
 
-The user could use the Search Builder function to find those contacts with an email **on hold.** The user could also look at the bounce report of a CiviMail sent message. However, once **on hold** a Contact may only be removed from this status by a CiviCRM user manually by editing a Contact's record page.
+Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.
 
-![](https://wiki.civicrm.org/confluence/download/attachments/86213661/on-hold-searchbuilder.png?version=1&modificationDate=1372586659000&api=v2)
-
-As CiviCRM administrator, you could execute a series of queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.
-
-Hold status is recorded in the _civicrm_email_ table as column _on_hold_. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
+Hold status is recorded in the `civicrm_email` table as column `on_hold`. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
 
 ```sql
 UPDATE civicrm_email SET on_hold = 0;
 ```
 
-**Warning:** backup your database before running any direct queries.
-**Warning:** this query will remove all "ON HOLD" status from email addresses, whether the email should be on hold or NOT!
+!!! warning "Warnings"
+    * Backup your database before running any direct queries.
+    * This query will remove all "ON HOLD" status from email addresses, whether the email should be on hold or NOT!
 
 A more nuanced query might be something like:
 
@@ -168,7 +173,9 @@ The purpose of this step is to create an email account in your Google Apps that 
 1. Click 'Next Step'
 1. Tick the 'Never send it to Spam' box
 1. Click 'Create Filter'
-1. You may need to create other filters, as Google Mail has a tendency to send Mailer Daemon and Postmaster emails to the spam, and bounces can have a variety of 'from' sources. See example below for suggestions ![](https://wiki.civicrm.org/confluence/download/attachments/86213592/filters.png?version=1&modificationDate=1372586558000&api=v2)
+1. You may need to create other filters, as Google Mail has a tendency to send Mailer Daemon and Postmaster emails to the spam, and bounces can have a variety of 'from' sources. See example below for suggestions
+
+    ![](/img/gmail-filters.png)
 
 ### Check the report
 
