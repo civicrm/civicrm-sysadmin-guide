@@ -26,6 +26,7 @@ pages:
   #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
+  - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Message templates: setup/message-templates.md
   - Directories: setup/directories.md
