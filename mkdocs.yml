@@ -26,7 +26,6 @@ pages:
   #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
-  - Sync users and contacts: setup/users-contacts.md
   - Scheduled jobs: setup/jobs.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
@@ -45,15 +44,10 @@ pages:
     - PayPal Standard: setup/payment-processors/paypal-standard.md
     - PayPal Pro and Express: setup/payment-processors/paypal-pro.md
     - Ogone: setup/payment-processors/ogone.md
-  - Mapping and geocoding: setup/mapping.md
   - Detailed logging: setup/logging.md
 - Configuration:
   - Message templates: config/message-templates.md
-  - Addresses: config/addresses.md
-  - Dates: config/dates.md
   - Directories: config/directories.md
-  - Error handling: config/error-handling.md
-  - Resource URLs: config/resource-urls.md
 - Upgrades:
   - Upgrades: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
