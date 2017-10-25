@@ -22,7 +22,9 @@ User = you won't have one initially (and I haven't tried to create one)
 
 Password = the password you have been supplied
 
-There are obviously a lot of things you can configure but the ones I am going to cover are under service settings/ configuration. Also refer to [https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm) ![](https://wiki.civicrm.org/confluence/download/attachments/86213603/config_1.jpg?version=1&modificationDate=1372586577000&api=v2)
+There are obviously a lot of things you can configure but the ones I am going to cover are under service settings/ configuration. Also refer to [https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm)
+
+![](/img/payflow-config.jpg)
 
 1. Return URL Method - you must set this to POST
 1. Return URL - the standard drupal URL looks something like this. [http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php](http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php). If you put the URL in your browser you should see "Failure: Missing Parameter"
@@ -30,11 +32,17 @@ There are obviously a lot of things you can configure but the ones I am going to
 1. Force silent post confirmation - if the server can't access your website for any reason the transaction will be reversed - I am inclined to think this shouldn't be enabled
 1. Transaction Process mode : test or live
 1. Billing information - the customer will be required to fill out the required fields and given the option of filling out the editable fields
-1. Shipping information - unless you are shipping product leave these unchecked ![](https://wiki.civicrm.org/confluence/download/attachments/86213603/display.jpg?version=1&modificationDate=1372586577000&api=v2)
- There are various presentation options that should be fairly self-explanatory - try here for more [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm)
+1. Shipping information - unless you are shipping product leave these unchecked
 
-Security ![](https://wiki.civicrm.org/confluence/download/attachments/86213603/security.jpg?version=1&modificationDate=1372586575000&api=v2)
- Once again the [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm) page is a good source of info but note that at the moment csc checking and AVS checking are not supported in that a transaction that fails due to either of these security measures will be voided at Payflow but will be treated as a success by CiviCRM (see proposed improvements). CSC checking is checking the 3 numbers on the credit card. AVS is checking the address supplied against the credit card address.
+    ![](/img/payflow-options.jpg)
+
+    There are various presentation options that should be fairly self-explanatory - try here for more [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm).
+ 
+Security
+
+![](/img/payflow-security.jpg)
+
+Once again the [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm) page is a good source of info but note that at the moment csc checking and AVS checking are not supported in that a transaction that fails due to either of these security measures will be voided at Payflow but will be treated as a success by CiviCRM (see proposed improvements). CSC checking is checking the 3 numbers on the credit card. AVS is checking the address supplied against the credit card address.
 
 Accepted URLS - you should put the URL for your site/s in these fields. Only browsers coming from those sites will be accepted.
 
@@ -46,7 +54,9 @@ card 4111111111111111
 
 visa
 
-any future date ![](https://wiki.civicrm.org/confluence/download/attachments/86213603/testing.jpg?version=1&modificationDate=1372586575000&api=v2)
+any future date
+
+![](/img/payflow-result-codes.jpg)
 
 ## Limitations / Proposed improvements
 

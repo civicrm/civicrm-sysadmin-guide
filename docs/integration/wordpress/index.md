@@ -22,11 +22,9 @@ Keep in mind that prior to being able to display any CiviCRM content on you publ
 
 To add a shortcode either create a new post or new page and you will now see a CiviCRM button next to Add Media.
 
-![image](../img/z_sprint14_shortcode%20insert.png)
+![Screenshot demonstrating the "CiviCRM" button after "Add Media"](/img/wordpress_shortcode_insert.png)
 
-After you click on CiviCRM you will be displayed with the following options:
-
-![image](../img/z_sprint14_Wordpress_shortcode.png)
+After you click on CiviCRM, you will be able to choose the type of content to display. (The options correspond to the types of content in the list above.)
 
 Dependent up the shortcode that you select you will have different sub options to cater the information to the end user.
 

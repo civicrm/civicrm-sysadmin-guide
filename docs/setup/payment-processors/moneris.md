@@ -16,10 +16,11 @@ Read the [extension's README](https://github.com/adixon/ca.civicrm.moneris/blob/
 
 Here is a brief description of how you go about setting up Moneris Hosted to work with CiviCRM 4.x
 
-1. The first thing is configure and Install Moneris extension in CiviCRM extensions. ([http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin](http://wiki.civicrm.org/confluence/display/CRMDOC40/Extensions+Admin))
+1. Install the Moneris extension.
 
 2. You should now be able to view the following screen when you set up extension for Moneris Hosted Payment Processor.
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A21.png?version=1&modificationDate=1372586539000&api=v2)
+
+    ![](/img/moneris-01.png)
 
 3. The next thing is to configure Moneris eSELECT Plus Hosted Paypage . The following configuration steps are required under your Moneris eSELECT Plus merchant account.Please ensure you have your merchant account set up on moneris before continuing.
 
@@ -40,14 +41,14 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
         
         To create a new Hosted Paypage configuration, click on “Generate a New Configuration”. You will be assigned a Hosted Paypage ID (ps_store_id). This is the identifier for this unique configuration. You will also be assigned a Hosted Paypage Token (hpp_key). The Hosted Paypage ID and Token are sent as part of the transaction request to securely identify your store and the specific configuration.
     
-        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2014%3A10%3A39.png?version=1&modificationDate=1372586539000&api=v2)
+        ![](/img/moneris-hosted-paypage.png)
     
     1. Set Transaction Type to Purchase (default).
     1. Under Payment Methods, ensure Credit Cards is enabled, all others disabled.
     1. Set Response Method to Sent to your server as a POST.
     1. Set Approved URL and Declined URL to: https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
     
-        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A26.png?version=1&modificationDate=1372586539000&api=v2)
+        ![](/img/moneris-response-method.png)
     
     1. Choose "Use Enhanced Cancel"  if you want to return a full response to decline url.
     
@@ -55,7 +56,7 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
     1. Click the Configuration Appearance button under Paypage Appearance.
     1. Set Cancel Button Text:
     
-        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A49%3A41.png?version=1&modificationDate=1372586539000&api=v2)
+        ![](/img/moneris-cancel-button-text.png)
     
     1. Click the Save Appearance Settings button then Return to main configuration.
     1. Enable Return the txn_number. This field is used to perform follow-ons and leave all others disabled.
@@ -63,7 +64,7 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
     1. Click the Configuration Security button under Security Features.
     1. Check Enable Transaction Verification and select Displayed as xml on our server.
     
-        ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-17%2016%3A14%3A31.png?version=1&modificationDate=1372586539000&api=v2)
+        ![](/img/moneris-transaction-verification.png)
     
         Response URL : https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
     
@@ -71,4 +72,4 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
 
 1. The Site URLs namely [Production](https://www3.moneris.com/) [Test](https://esqa.moneris.com/) serve as a means of communication between CiviCRM and Moneris Hosted. Your CiviCRM Payment Processor screen should look something like this:
 
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213583/Screenshot%20from%202013-05-20%2020%3A56%3A53.png?version=1&modificationDate=1372586539000&api=v2)
+    ![](/img/moneris-02.png)

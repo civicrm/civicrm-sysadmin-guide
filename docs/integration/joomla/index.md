@@ -10,20 +10,18 @@ will be shown as a menu item under Components.
 
 CiviCRM content can be displayed on your website in a couple of
 different ways. The primary way is to create a specific Menu Item that
-pulls in CiviCRM data. Within your Joomla! menu navigate to **Menu -> YourMenu -> Add New Menu Item**.
+pulls in CiviCRM data. Within your Joomla! menu navigate to **Menu > YourMenu > Add New Menu Item**.
 
-![image](../img/z_sprint14_Joomla!_Menu%20Item%20Type.png)
+![Screenshot demonstrating the "New menu item" page. "Menu Item Type" is the first field on the page.](/img/joomla-menu-item-type.png)
 
 Once you are inside of the Edit Menu item screen you will then have the
 option to select the menu item type. There will be a subsection called
 civicrm with the below options.
 
-![image](../img/z_sprint14_joomla!_Civi_Options.png)
+![Screenshot demonstrating the CiviCRM options when adding a new menu item](/img/joomla-civi-options.png)
 
 After choosing one of the below you will then need to go to **Basic
 Options**and select the corresponding CiviCRM page you wish to display.
-
-
 
 -   **Contribution Page:** A specific contribution or membership page
     that you would like to publish on your website
@@ -97,7 +95,8 @@ site and thus not have the ability to display John Smith's personal
 information back to him. In this scenario CiviCRM would present the
 following error:
 
-![image](../img/z_sprint14_wordpress_error.png)
+!!! error ""
+    Could not find the required id parameter (id=) for viewing a contact record with a Profile.
 
 Every Joomla!
 user that is created has a corresponding contact within CiviCRM. So when

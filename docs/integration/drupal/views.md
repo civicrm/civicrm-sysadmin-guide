@@ -10,7 +10,7 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 1. Visit `http://yourdomain.com/civicrm/admin/setting/uf?reset=1`
 1. You should see a page with output that begins with: `$databases['default']['default']['prefix']= array(`
 
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-1.png?version=1&modificationDate=1372586969000&api=v2)
+    ![Screenshot showing the "Drupal Integration" page, with output of settings to be placed into settings.php](/img/views3integration-1.png)
 
 1. Copy this setting output, including the trailing `);`
 1. Open `/sites/default/settings.php` for editing from the root directory of the site, typically `public_html` on most servers.
@@ -21,15 +21,16 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 1. Find the database connector array. This is where Drupal stores the information regarding the MySQL database and the necessary credentials to connect to it. The array beings with `$databases = array (` then goes on to include the location and MySQL credentials, as well as additional options.
 1. Paste your previously-copied settings output here. Be sure to paste it _after_ the trailing `);`
 
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-2.png?version=1&modificationDate=1372586969000&api=v2)
+    ![Screenshot demonstrating the output of database settings](/img/views3integration-2.png)
  
 1. You may need to indicate the default prefix. If you see an error like the one below:
 
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-3.png?version=1&modificationDate=1372586969000&api=v2)
+    !!! error ""
+        PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'kckruppc_every.semaphore' doesn't exist: SELECT ...
 
     You need to include an additional line, `'default' => '<drupaltableprefix>'`, in your `settings.php` just after `$database ['default']['default']['prefix']= array(`. You can find more information on this error in [this forum post](http://forum.civicrm.org/index.php?topic=20910.0).
 
-    ![](https://wiki.civicrm.org/confluence/download/attachments/86213823/views3integration-4.png?version=1&modificationDate=1372586967000&api=v2)
+    ![Screenshot demonstrating where to add a table prefix in your settings](/img/views3integration-4.png)
     
 1. Save the file. You might want to clear your site cache at this point.
 1. You should now be able to create views based on CiviCRM data.

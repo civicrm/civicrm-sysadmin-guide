@@ -16,11 +16,11 @@ Use phpInfo() to check for these extensions. The easiest way to do this is to cr
 
 Go to [your_website_url]/info.php. The phpinfo function returns **a lot** of information. Use your browser's search function to look for:
 
- ![](https://wiki.civicrm.org/confluence/download/attachments/86213608/curl.png?version=1&modificationDate=1421602154000&api=v2)
+![Screenshot of curl support indicated in phpinfo](/img/phpinfo-curl.png)
 
 and
 
- ![](https://wiki.civicrm.org/confluence/download/attachments/86213608/pcre.png?version=1&modificationDate=1421602161000&api=v2)
+![Screenshot of PCRE support indicated in phpinfo](/img/phpinfo-pcre.png)
 
 These represent the following lines of code:
 

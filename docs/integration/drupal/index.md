@@ -124,7 +124,7 @@ about other CiviCRM data such as events, relationships, contributions or
 activities there are additional options that might provide more data
 fields for those types.
 
-![image](../img/Views-CiviCRM-Partner-1.png)
+![Screenshot demonstrating the "Add new view" page](/img/Views-CiviCRM-Partner-1.png)
 
 After the View is created, edit the fields, filters, display and other
 configurations to show the data exactly how you'd prefer. Views does
@@ -132,7 +132,7 @@ take some experimentation and/or training to get it right. Feel free to
 ask questions on the [forums](http://forum.civicrm.org/) or [hire a
 consultant](http://civicrm.org/what/experts) if you become stuck.
 
-![image](../img/Views-CiviCRM-Partner-3.png)  
+![Screenshot demonstrating the "Edit view" page](/img/Views-CiviCRM-Partner-3.png)  
 
 This is a sample configuration using Views 3 in a Drupal 7 environment.
 Your View will probably be slightly different, but this gives you some
