@@ -99,7 +99,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         * <drupal-root>/sites/default/files/civicrm/templates_c/* (cached versions of Smarty templates that will be rebuilt)
         * <drupal-root>/sites/default/files/civicrm/ConfigAndLog/Config.IDS.ini
         * <drupal-root>/sites/default/files/civicrm/ConfigAndLog/* (You can clear all the logs if you get an error about parsing XML)
-        * <civicrm_custom_extension_folder>/cache/* (Only if you get errors after clearing the caches via the GUI) (See http://<drupal-site>/civicrm/admin/setting/path?reset=1 for location of custom extension folder)
+        * <civicrm_custom_extension_folder>/cache/* (Only if you get errors after clearing the caches via the GUI) (See http://example.org/civicrm/admin/setting/path?reset=1 for location of custom extension folder)
         
     * Joomla:
 
@@ -122,34 +122,34 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
 
 1. Enter the following URL in your browser to review and update directory paths and base URLs. See CiviCRM Menu: Administer >> System Settings >> Cleanup Caches and Update Paths
 
-    * Drupal sites: http://<drupal_site>/index.php?q=civicrm/admin/setting/updateConfigBackend&reset=1
-    * Joomla 1.5 sites: http://<joomla_site>/administrator/index2.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
-    * Joomla 1.6 sites: http://<joomla_site>/administrator/index.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
-    * WordPress sites: http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1
-        * Prior to 4.3.3 the WordPress implementation mistakenly drops everything after the domain in its suggestion for a new URL. The default location for a WordPress install relative to docroot would normally mean that the url should be http://<wordpress_site>/wp-content/plugins/civicrm/civicrm/
+    * Drupal sites: http://example.org/index.php?q=civicrm/admin/setting/updateConfigBackend&reset=1
+    * Joomla 1.5 sites: http://example.org/administrator/index2.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
+    * Joomla 1.6 sites: http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/admin/setting/updateConfigBackend&reset=1
+    * WordPress sites: http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1
+        * Prior to 4.3.3 the WordPress implementation mistakenly drops everything after the domain in its suggestion for a new URL. The default location for a WordPress install relative to docroot would normally mean that the url should be http://example.org/wp-content/plugins/civicrm/civicrm/
         
 1. Review the recommended modified paths in the form - they should reflect the new Base Directory, Base URL, and Site name for CiviCRM.
-    1. If these values do NOT look correct, then recheck the changes you made to civicrm.settings.php. If everything looks right in your civicrm.settings.php file, you may want to follow the directions for setting config_backend to null in the Troubleshooting section (below).
+    1. If these values do NOT look correct, then recheck the changes you made to civicrm.settings.php. If everything looks right in your civicrm.settings.php file, you may want to follow the directions for setting `config_backend` to `null` in the Troubleshooting section (below).
         * **Base Directory** - For Drupal installs, this is the absolute path to the location of the 'files' directory. For Joomla installs this is the absolute path to the location of the 'media' directory.
-        * **Base URL** - This is your Drupal or Joomla site URL (e.g. [http://www.mysite.com/drupal/](http://www.mysite.com/drupal/)).
-        * **Site Name** - The name of your Drupal sites subdirectory, starting from the docroot, and including an initial /, e.g. /sites/www.mysite.com/ |
+        * **Base URL** - This is your Drupal or Joomla site URL (e.g. `http://example.org/drupal/`).
+        * **Site Name** - The name of your Drupal sites subdirectory, starting from the docroot, and including an initial forward slash `/`, e.g. `/sites/www.mysite.com/`
 
     1. Otherwise click Save.
     1. You may also have to modify some of the other System Paths. If you had to copy custom hooks, reports etc. in a previous step look carefully at the "Custom PHP Path Directory" and "Custom Templates" path. See CiviCRM Menu: Administer >> System Settings >> Directories.
-        * Drupal sites: http://<drupal_site>/index.php?q=civicrm/admin/setting/path?reset=1
-        * Joomla 1.5 sites: http://<joomla_site>/administrator/index2.php?option=com_civicrm&task=civicrm/admin/setting/path?reset=1
-        * Joomla 1.6 sites: http://<joomla_site>/administrator/index.php?option=com_civicrm&task=civicrm/admin/setting/path?reset=1
-        * WordPress sites: http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/path?reset=1
+        * Drupal sites: http://example.org/index.php?q=civicrm/admin/setting/path?reset=1
+        * Joomla 1.5 sites: http://example.org/administrator/index2.php?option=com_civicrm&task=civicrm/admin/setting/path?reset=1
+        * Joomla 1.6 sites: http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/admin/setting/path?reset=1
+        * WordPress sites: http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/path?reset=1
     1. Rebuild the menus. The menu links in the civicrm_menu table contain full URL links and need to be updated with the new domain.
-        * Drupal sites: _http://<drupal_site>/index.php?q=civicrm/menu/rebuild&reset=1_
-        * Joomla 1.5 sites: _http://<joomla_site>/administrator/index2.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1_
-        * Joomla 1.6 sites: _http://<joomla_site>/administrator/index.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1_
-        * _WordPress sites: http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1_
+        * Drupal sites: _http://example.org/index.php?q=civicrm/menu/rebuild&reset=1_
+        * Joomla 1.5 sites: _http://example.org/administrator/index2.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1_
+        * Joomla 1.6 sites: _http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1_
+        * _WordPress sites: http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1_
     1. Rebuild database triggers. The trigger definitions in your database refer to the original database user.
-        * Drupal sites: _http://<drupal_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1_
-        * Joomla 1.5 sites: _http://<joomla_site>/administrator/index2.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
-        * Joomla 1.6 sites:_http://<joomla_site>/administrator/index.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
-        * WordPress sites: _http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
+        * Drupal sites: _http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1_
+        * Joomla 1.5 sites: _http://example.org/administrator/index2.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
+        * Joomla 1.6 sites:_http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
+        * WordPress sites: _http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1&triggerRebuild=1_
     1. Joomla 1.6/1.7 - Edit the path in /administrator/components/com_civicrm/civicrm/civicrm.config.php which may still use your old location.
     1. If you made any non-CiviCRM changes to your site (e.g. exposed profiles on the Drupal nav bar) don't forget to fix (e.g. for Drupal: Administer >> Site building >> Menus >> Navigation).
 
@@ -178,7 +178,7 @@ Your site should now be properly configured for its new location.
 
 ### Only the front page of your site can be displayed - Drupal
 
-If you are using drupal on Ubuntu, you may find that your site looks to be working until you click on a link or go to any other url than the front page. This can be caused by the default setting for the Apache mod-rewrite module. If you can load url's like, "http://<yoursite>/index.php?q=/civicrm/admin/setting", but not "http://<yoursite>/civicrm/admin/setting, then this is likely the cause.
+If you are using drupal on Ubuntu, you may find that your site looks to be working until you click on a link or go to any other url than the front page. This can be caused by the default setting for the Apache mod-rewrite module. If you can load url's like, "http://example.org/index.php?q=/civicrm/admin/setting", but not "http://example.org/civicrm/admin/setting, then this is likely the cause.
 
 Use the following article, or many others on the web to enable mod_rewrite. -- [http://drupal.org/node/134439](http://drupal.org/node/134439)
 
@@ -219,9 +219,9 @@ The error occurs on multi-lingual migrations when the source server is not case 
 
 This seems to be caused by the database backup and restore not copying the functions and triggers properly.
 
-The solution is to run `http://<yourdomain>/civicrm/menu/rebuild?reset=1&triggerRebuild=1` which fixes the trigger and function definitions in the database.
+The solution is to run `http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1` which fixes the trigger and function definitions in the database.
 
-On Joomla sites run `http://<yourdomain>/administrator/?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1`
+On Joomla sites run `http://example.org/administrator/?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1`
 
 
 

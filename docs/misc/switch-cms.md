@@ -36,7 +36,7 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ### Update the Directory Path and URL
 
 * Log in to Drupal with a username that has administrator access to CiviCRM
-* Go to **http://<drupal_site>/civicrm/admin/setting/updateConfigBackend?reset=1**
+* Go to **http://example.org/civicrm/admin/setting/updateConfigBackend?reset=1**
     * Set your base directory to _<drupal_root>/sites/default/files/_
     * Ensure your base URL is correct
     * Click **Save**
@@ -45,16 +45,16 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 
 Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/url?reset=1**
-    * Set CiviCRM Resource URL to _http://<home>/sites/all/modules/civicrm/_
-    * Set Image Upload URL to _http://<home>/sites/default/files/civicrm/persist/contribute/_
+* Go to **http://example.org/civicrm/admin/setting/url?reset=1**
+    * Set CiviCRM Resource URL to _http://example.org/sites/all/modules/civicrm/_
+    * Set Image Upload URL to _http://example.org/sites/default/files/civicrm/persist/contribute/_
     * Click **Save**
 
 ### Rebuild the menus and triggers
 
 The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Joomla.
 
-* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
+* Go to **http://example.org/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
     ```
     TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
     ```
@@ -65,13 +65,13 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
     WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
     ```
     
-* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
+* Go to **http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
 
 ### Drupal table prefixes
 
 If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/uf?reset=1**
+* Go to **http://example.org/civicrm/admin/setting/uf?reset=1**
     * Update Drupal Users Table Name with your_table_prefix_users (eg. drupal_users)
     * Click **Save**
 
@@ -79,7 +79,7 @@ If you have table prefixes on your Drupal database you'll also need to do the fo
 
 If you're having trouble editing and/or adding users, check your WYSIWYG setting under Display Preferences
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/preferences/display&reset=1**
+* Go to **http://example.org/civicrm/admin/setting/preferences/display&reset=1**
 * Check the WYSIWYG editor setting and choose one of the selections (this resets to a Drupal choice vs. Joomla)
 * Click **Save**
 
@@ -138,25 +138,25 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ### Update the Base Directory Path and URL
 
 * Log in to WordPress with a username that has administrator access to CiviCRM
-* Go to _**http://<wordpress_root>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1**_
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1**_
     * Set your base directory to _<wordpress_root>/wp-content/plugins/files/_
- Ensure your base URL is correct - it should be _http://<wordpress_site>/_ (the main URL of your site)
+ Ensure your base URL is correct - it should be _http://example.org/_ (the main URL of your site)
     * Click **Save**
 
 ### Update the Resource URLs
 
 Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
 
-* Go to _**http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/url&reset=1**_
-    * Set CiviCRM Resource URL to _http://<wordpress_site>/wp-content/plugins/civicrm/civicrm/_
-    * Set Image Upload URL to _http://<wordpress_site>/wp-content/plugins/files/civicrm/persist/contribute/_ (may need to be created)
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/url&reset=1**_
+    * Set CiviCRM Resource URL to _http://example.org/wp-content/plugins/civicrm/civicrm/_
+    * Set Image Upload URL to _http://example.org/wp-content/plugins/files/civicrm/persist/contribute/_ (may need to be created)
     * Click **Save**
 
 ### Rebuild the menus
 
 The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Drupal.
 
-* Go to _**http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1**_. Alternatively, delete all the records in civicrm_menu:
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1**_. Alternatively, delete all the records in civicrm_menu:
     ```sql
     TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
     ```
@@ -172,7 +172,7 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
 
 If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
 
-* Go to **http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1**
+* Go to **http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1**
     * Update WordPress Users Table Name with your_table_prefix_users (eg. wp_users) You may have changed this in accordance with WordPress best practices to have a different prefix other than wp_
     * Click **Save**
 
@@ -535,7 +535,7 @@ Insert CiviCRM entries into Drupal tables that are normally done by the CiviCRM 
 
 ### Rebuild the menus
 
-The menu links in the civicrm_menu table contain full URL links and need to be updated with the new domain. Navigate to _http://<drupal_site>/index.php?q=civicrm/menu/rebuild&reset=1_
+The menu links in the civicrm_menu table contain full URL links and need to be updated with the new domain. Navigate to _http://example.org/index.php?q=civicrm/menu/rebuild&reset=1_
 
 ### Fix the directories
 

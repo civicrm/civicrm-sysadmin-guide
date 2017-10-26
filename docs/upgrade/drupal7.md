@@ -98,7 +98,7 @@ Choose one of the following methods:
 * Or, point your web browser to the following URL and follow the on-screen instructions.
     
     ```
-    http://<your_drupal_home>/civicrm/upgrade?reset=1
+    http://example.org/civicrm/upgrade?reset=1
     ```
     
     !!! note

@@ -58,7 +58,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Login to your Backdrop site with Administrator level permissions.
 * Point your web browser to the following URL:
 
-    `http://<your_backdrop_home>/modules/civicrm/install/index.php?civicrm_install_type=backdrop`
+    `http://example.org/modules/civicrm/install/index.php?civicrm_install_type=backdrop`
     
 * You should see the **CiviCRM Installer** screen.
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.

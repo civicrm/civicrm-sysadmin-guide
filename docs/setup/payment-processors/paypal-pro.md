@@ -231,16 +231,17 @@ The differences between Paypal Standard Subscriptions and Paypal Pro Recurring C
 
 To take advantage of recurring and one-time contributions on the same CiviCRM Contribution page, you must have the Pro Recurring add on. You cannot process Pro one-time donations and Standard Subscriptions from the same Contribution page.
 
-Once you have added the Recurring feature to your existing Paypal Pro account, configure your IPN settings in Paypal so CiviCRM can recieve updates on the recurring contributions in this manner:
+Once you have added the Recurring feature to your existing Paypal Pro account, configure your IPN settings in Paypal so CiviCRM can receive updates on the recurring contributions in this manner:
 
 * Log in to your Paypal account, click "Profile" in the top navigation
 * Look to the bottom of the page, click "Instant Payment Notification preferences"
-* Enter your URL for your ipn.php page
-    * For Drupal: [http://YOUR-DOMAIN.org/sites/all/modules/civicrm/extern/ipn.php](http://YOUR-DOMAIN.org/sites/all/modules/civicrm/extern/ipn.php)
-    * For Joomla: [http://YOUR-DOMAIN.org/administrator/components/com_civicrm/civicrm/extern/ipn.php](http://YOUR-DOMAIN.org/administrator/components/com_civicrm/civicrm/extern/ipn.php)
-    * For WordPress: [http://YOUR-DOMAIN.org/wp-content/plugins/civicrm/civicrm/extern/ipn.php](http://YOUR-DOMAIN.org/wp-content/plugins/civicrm/civicrm/extern/ipn.php)
+* Enter your URL for your `ipn.php` page
+    * For Drupal: `http://example.org/sites/all/modules/civicrm/extern/ipn.php`
+    * For Joomla: `http://example.org/administrator/components/com_civicrm/civicrm/extern/ipn.php`
+    * For WordPress: `http://example.org/wp-content/plugins/civicrm/civicrm/extern/ipn.php`
 
-**Note** : You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
+!!! note
+    You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
 
 **Expected Behavior**
 

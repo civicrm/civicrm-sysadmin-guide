@@ -46,7 +46,7 @@ Delete all cache files in `<joomla_root>/media/civicrm/templates_c` on your serv
 **After the component installation completes click the link to run the database upgrade script.** You may also point your web browser to the following URL (you should already be logged in to Joomla with administrator-level permissions):
 
 ```
-http://<your_joomla_home>/administrator/index.php?option=com_civicrm&task=civicrm/upgrade&reset=1
+http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/upgrade&reset=1
 ```
 
 You should see an **Upgrade successful** message when the upgrade completes.

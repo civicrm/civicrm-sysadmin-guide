@@ -116,13 +116,13 @@ If CiviCRM is installed on a server behind a firewall with NAT, you'll need to a
 
 Sometimes it helps to rebuild the menu/admin dashboard by visiting the following URL:
 
-`http://<yourdomain>.org/civicrm/menu/rebuild?reset=1`
+`http://example.org.org/civicrm/menu/rebuild?reset=1`
 
 ### Rebuild database triggers {:#trigger-rebuild}
 
 If you need to rebuild your database triggers, navigate to the following url:
 
-`http://<yourdomain>.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
+`http://example.org.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
 
 Note the `&triggerRebuild=1` key-value pair.
 
@@ -130,7 +130,7 @@ Note the `&triggerRebuild=1` key-value pair.
 
 You can re-build the menu/admin dashboard by visiting the following url
 
-`http://<yourdomain>.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1`
+`http://example.org.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1`
 
 ### Reset config_backend
 
@@ -148,7 +148,7 @@ To reset your user session:
     * Set **Enable Debugging** to Yes and click Save.
 1. Click the Administer CiviCRM menu (or any other CiviCRM menu item). After the page is loaded, add an additional query string value (`sessionReset=2`) to the URL in your browser's location bar, and reload the page.
     ```
-    http://...../civicrm/admin?sessionReset=2
+    http://example.org/civicrm/admin?sessionReset=2
     ```
 
 1. Now reset **Enable Debugging** to No and click Save.
@@ -169,7 +169,7 @@ Sometimes an upgrade fails and you need to get back to the last working version.
 * CRUCIAL: Remove the `templates_c` directory from `../sites/default/files/civicrm/` (don't worry, CiviCRM will recreate these files when you reload the pages).
 * Go back to Drupal's Modules screen and enable the CiviCRM modules you disabled.
 * Bring the site back online by turning off Maintenance mode.
-* Load up civicrm by going to `http://yoursitename.com/civicrm` (or wherever you have civicrm installed). This should have restored you back to the last working condition.
+* Load up civicrm by going to `http://example.org/civicrm` (or wherever you have civicrm installed). This should have restored you back to the last working condition.
 
 Sometimes it helps to [rebuild the CiviCRM menus](#rebuild-civicrm-menus).
 

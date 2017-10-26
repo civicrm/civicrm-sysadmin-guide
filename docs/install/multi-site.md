@@ -119,16 +119,16 @@ WordPress multi-sites do not offer multiple codebases for plugins. There is only
       }
     
       switch ($url) {
-        case 'http://site1.org':
+        case 'http://site1.example.org':
           define( 'CIVICRM_DOMAIN_ID', 1 );
           break;
-        case 'http://site2.org' :
+        case 'http://site2.example.org' :
           define( 'CIVICRM_DOMAIN_ID', 2 );
           break;
-        case 'http://site3.org':
+        case 'http://site3.example.org':
           define( 'CIVICRM_DOMAIN_ID', 4 );
           break;
-        case 'http://site4.org':
+        case 'http://site4.example.org':
           define( 'CIVICRM_DOMAIN_ID', 5 );
           break;
         default:

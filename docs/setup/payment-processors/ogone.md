@@ -24,11 +24,11 @@ This document serves as a brief description of how you go about setting up Ogone
         
         ![](/img/ogone-payment-page.png)
 
-    1. Navigate to Technical information >> Data and origin verification-Checks for e-Commercei : Set URL from where your request will call: (else you will get unknown order/1/r/) eg. for contribution: http://yourHost/civicrm/contribute/transact for Event: [http://yourHost/civicrm/event/register](http://yourHost/civicrm/contribute/transact). Set your SHA-IN pass phrase
+    1. Navigate to Technical information >> Data and origin verification-Checks for e-Commercei : Set URL from where your request will call: (else you will get unknown order/1/r/) eg. for contribution: http://example.org/civicrm/contribute/transact for Event: [http://example.org/civicrm/event/register](http://example.org/civicrm/contribute/transact). Set your SHA-IN pass phrase
          
          ![](/img/ogone-data-origin-verification.png)
     
-    1. Navigate to Technical information >> Transaction feedbacki. HTTP redirection in the browser Set all URL as : `http://YourHost/civicrm/payment/ipn?processor_name=Ogone`
+    1. Navigate to Technical information >> Transaction feedbacki. HTTP redirection in the browser Set all URL as : `http://example.org/civicrm/payment/ipn?processor_name=Ogone`
     
         ![](/img/ogone-redirection.png)
         

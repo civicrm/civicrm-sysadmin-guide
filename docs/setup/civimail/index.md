@@ -535,15 +535,15 @@ Depending on your CMS, simply enter a single like like so, substituting in your 
 ```
 Joomla:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 
 Drupal:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 
 WordPress:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 ```
 
 #### wget with POST method
@@ -568,11 +568,11 @@ post-data=name=username&pass=password&key=site-key
 You can also test trigger the cron script by navigating to this URL with your browser:
 
 ```
-Joomla: http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+Joomla: http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 
-Drupal: http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+Drupal: http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 
-WordPress: http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+WordPress: http://example.org/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 If the above works, it means CiviCRM is working OK, but the cron on your server is not configured properly. Try _crontab -e_ and review it again.
@@ -587,11 +587,11 @@ WGETRC=/full/path/to/civicrm-wgetrc
 If you are worried CiviMail won't send email at all, you can send queued messages as well with these commands. You need to be logged in with sufficient privileges to run this command. If nothing is sent, check your Outgoing Mail Settings.
 
 ```
-Drupal: http://<site>/index.php?q=civicrm/mailing/queue&reset=1
+Drupal: http://example.org/index.php?q=civicrm/mailing/queue&reset=1
 
-Joomla: http://<site>/administrator/index.php?option=com_civicrm&task=civicrm/mailing/queue&reset=1
+Joomla: http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/mailing/queue&reset=1
 
-WordPress: http://<site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/mailing/queue&reset=1
+WordPress: http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/mailing/queue&reset=1
 ```
 
 ## Setting Up the Return Channel

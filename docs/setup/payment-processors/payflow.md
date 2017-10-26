@@ -27,7 +27,7 @@ There are obviously a lot of things you can configure but the ones I am going to
 ![](/img/payflow-config.jpg)
 
 1. Return URL Method - you must set this to POST
-1. Return URL - the standard drupal URL looks something like this. [http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php](http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php). If you put the URL in your browser you should see "Failure: Missing Parameter"
+1. Return URL - the standard drupal URL looks something like this. `http://example.org/sites/all/modules/civicrm/extern/payFlowLinkIPN.php`. If you put the URL in your browser you should see "Failure: Missing Parameter"
 1. Silent Post URL - tick this & set it to the same as the return URL
 1. Force silent post confirmation - if the server can't access your website for any reason the transaction will be reversed - I am inclined to think this shouldn't be enabled
 1. Transaction Process mode : test or live

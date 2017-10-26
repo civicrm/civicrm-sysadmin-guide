@@ -81,7 +81,7 @@ Because of the huge number and ever-changing nature of community contributed Wor
 * Problem: Causes conflict with Backbone JQuery calls
 * Workaround:
 
-    Instead of deactivating Jetpack every time you need to access a profile for a contribution page or edit a date, simply disable the Notifications Module at http://yoursite.com/wp-admin/admin.php?page=jetpack_modules
+    Instead of deactivating Jetpack every time you need to access a profile for a contribution page or edit a date, simply disable the Notifications Module at `http://example.org/wp-admin/admin.php?page=jetpack_modules`
     
 * Other comments:  
 

@@ -120,7 +120,7 @@ To do so, you need to add this following line on your civicrm.settings.php
 global $civicrm_setting;$civicrm_setting['Extension Preferences']['ext_repo_url'] = false;
 ```
 
-As a result of disabling the automatic installations of extensions, on the New Extensions page [https://yoursite.org/civicrm/admin/extensions?reset=1](https://yoursite.org/civicrm/admin/extensions?reset=1) (Drupal), you will see a message "The system administrator has disabled this feature."
+As a result of disabling the automatic installations of extensions, on the New Extensions page [http://example.org/civicrm/admin/extensions?reset=1](http://example.org/civicrm/admin/extensions?reset=1) (Drupal), you will see a message "The system administrator has disabled this feature."
 
 ## Enabling and disabling extensions
 

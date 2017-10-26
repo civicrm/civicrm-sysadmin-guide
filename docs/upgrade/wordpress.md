@@ -108,7 +108,7 @@ Delete all files in your `templates_c` directory
 1. Point your web browser to the following URL
 
     ```
-    http://<your_wordpress_home>/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1
+    http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1
     ```
 
 1. You should see the Upgrade screen.

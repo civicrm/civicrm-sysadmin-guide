@@ -90,9 +90,9 @@ Follow these steps to download and install the files that contain strings for la
 The installer will verify that you've downloaded the correct version of CiviCRM, and will check your server environment to make sure it meets CiviCRM requirements. It will then create and populate a database for CiviCRM as well as create your CiviCRM settings file `civicrm.settings.php`.
 
 * Login to your WordPress site with Administrator level permissions.
-* Go to plugins page: `http://<your_wordpress_home>/wp-admin/plugins.php`.
+* Go to plugins page: `http://example.org/wp-admin/plugins.php`.
 * Click the **Activate** link to activate the CiviCRM plugin.
-* Then go to Settings > CiviCRM Installer: `http://<your_wordpress_home>/wp-admin/options-general.php?page=civicrm-install`
+* Then go to Settings > CiviCRM Installer: `http://example.org/wp-admin/options-general.php?page=civicrm-install`
     * In version 4.7 you will see a link on the wp-admin page to the Installer screen
 
 * You should see the **CiviCRM Installer** screen.
@@ -162,7 +162,7 @@ When a new, stable version of CiviCRM is released it is recommended you upgrade 
  b. you overwrite existing civicrm directory during the extraction/unzip
  c. do NOT create an additional subdirectory for the extraction
   1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
-  1. Run the Upgrade script at:[http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1](http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1)
+  1. Run the Upgrade script at: `http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1`
 
 ## Trouble-shooting Resources
 
