@@ -12,7 +12,7 @@
 
 All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
 
-* Download the appropriate tarball file from [here](https://civicrm.org/download) with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-4.7.x-wordpress.zip.**
+* Download the appropriate tarball file from [here](https://civicrm.org/download) with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-x.x.x-wordpress.zip.**
 
 * Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins/civicrm` directory to allow for "Write" Access. Just remember to change it back to default when done.
 * You can upload the zip file that was downloaded via your WordPress admin panel at `wp-admin/plugin-install.php`
@@ -30,7 +30,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
         
         1. wget the file (modify this line to use the current tarball file name for the version you want)
             ```
-            wget https://download.civicrm.org/civicrm-4.7.xx-wordpress.zip
+            wget https://download.civicrm.org/civicrm-x.x.x-wordpress.zip
             ```
 
 
@@ -105,7 +105,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
     !!! tip "Where Should I Store CiviCRM Data?"
         CiviCRM may be configured to use your existing WordPress database, or a separate (new) database. Using a separate database is generally preferred - as it makes backups and upgrades easier. The installer will create a new database for CiviCRM automatically if you enter a database name that doesn't already exist on your database server AND the database user you enter has permission to create databases. In case the installer does not automatically create a new database, simply create a new one following the same process as creating a new database for WordPress.
 
-* Fill in the WordPress Database Settings for your existing WordPress database. In version 4.7.x CiviCRM will fill in the WP database settings, you can change these if you want to use a separate database.
+* Fill in the WordPress Database Settings for your existing WordPress database. CiviCRM will fill in the WP database settings, you can change these if you want to use a separate database.
 
     !!! tip "Loading Sample Data"
         The Installer includes an option to load a set of sample contact, group, and relationship data by default. Sample data can provide a useful head-start in learning to use CiviCRM. However, if you do NOT want the sample data to be loaded, just uncheck **Load sample data** under **Other Settings**.

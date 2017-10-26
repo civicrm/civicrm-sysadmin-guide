@@ -2,7 +2,7 @@
 
 ## CiviCRM system status
 
-Starting in v4.7, the CiviCRM System Status screen shows you a view of the current status of your CiviCRM installation. It is found at **Administer > Administration Console > System Status**. 
+Starting in 4.7, the CiviCRM System Status screen shows you a view of the current status of your CiviCRM installation. It is found at **Administer > Administration Console > System Status**. 
 
 ![Screen Shot of CiviCRM System Status](/img/system-status.png)
 

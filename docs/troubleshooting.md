@@ -77,7 +77,7 @@ Try [rebuilding the WordPress menus](#rebuild-wp-menus).
 
 ### "Your PHP version is missing zip functionality"
 
-If you get this error when installing or upgrading CiviCRM for Joomla, download and use the `civicrm-4.7.x-joomla-alt.zip` package.
+If you get this error when installing or upgrading CiviCRM for Joomla, download and use the `civicrm-x.x.x-joomla-alt.zip` package.
 
 
 

@@ -10,7 +10,7 @@ Use this document to upgrade CiviCRM installations on Drupal 7 to the latest Civ
 1. Go to [civicrm.org/download](https://civicrm.org/download)
 1. Select the latest currently available CiviCRM tarball for Drupal.
 
-    Example: `civicrm-4.7.20-drupal.tar.gz`
+    Example: `civicrm-x.x.x-drupal.tar.gz`
     
 1. Save this file in `<drupal_root>/sites/all/modules`.
 

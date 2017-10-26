@@ -10,7 +10,7 @@ Use this document to upgrade CiviCRM installations on WordPress to the latest Ci
 1. Go to [civicrm.org/download](https://civicrm.org/download)
 1. Select the latest currently available CiviCRM tarball for WordPress.
 
-    Example: `civicrm-4.7.x-wordpress.zip`
+    Example: `civicrm-x.x.x-wordpress.zip`
     
 1. Save this file in `<wordpress_root>/wp-content/plugins/`.
 
@@ -71,7 +71,7 @@ CiviCRM will not run properly if files from previous version are present after t
 
 ### Install localization files (optional)
 
-If your site requires the localization files, download the `civicrm-4.7.x-l10n.tar.gz` from [civicrm.org/download](https://civicrm.org/download)
+If your site requires the localization files, download the `civicrm-x.x.x-l10n.tar.gz` from [civicrm.org/download](https://civicrm.org/download)
 
 These files must be untarred under `<wordpress_root>/wp-content/plugins/civicrm/`. Please note the `tar.gz` file only contains `/civicrm` not `/civicrm/civicrm`
 
