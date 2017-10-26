@@ -10,10 +10,10 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 1. Go to [civicrm.org/download](https://civicrm.org/download)
 1. Select the latest currently available CiviCRM tarball for Joomla.
 
-    Example: `civicrm-4.7.20-joomla.zip`
+    Example: `civicrm-x.x.x-joomla.zip`
 
     !!! note
-        You may notice a file on the named something like `civicrm-4.7.xx-joomla-alt.zip` the `-alt` version does not require `.zip` functions compiled into PHP by your hosting company. If you get errors like _"Your PHP version is missing zip functionality"_, then try the `-alt` version.
+        You may notice a file on the named something like `civicrm-x.x.xx-joomla-alt.zip` the `-alt` version does not require `.zip` functions compiled into PHP by your hosting company. If you get errors like _"Your PHP version is missing zip functionality"_, then try the `-alt` version.
 
 1. Save this file in `<joomla_root>/tmp/`. Unzipping will create a directory called: `com_civicrm`.
 
