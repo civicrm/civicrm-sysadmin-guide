@@ -145,9 +145,7 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 ## Test-drive CiviCRM
 
-There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear.
-
-You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options.
+There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
 ## Upgrade CiviCRM
 
@@ -166,7 +164,7 @@ When a new, stable version of CiviCRM is released it is recommended you upgrade 
 
 ## Trouble-shooting Resources
 
-Review the **[Installation and Configuration Troubleshooting](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Configuration+Troubleshooting)** section of our wiki for help with problems you may encounter during the installation.
+Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
 
 You can often find solutions to your issue by searching the **[installation support section of the community forum](http://forum.civicrm.org/index.php/board,64.0.html)** and you can check out the **Installation section of our FAQs**.
 

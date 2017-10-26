@@ -17,4 +17,4 @@ Before you get started, be sure to have created all of your membership types and
 
 Be sure to test this module by creating a test user with a test CiviCRM membership and an association rule for that type. Log in as that user to ensure you have been granted the appropriate role. Then take away the membership for this user in their CiviCRM record, log back in as the test user, and make sure you no longer have that role.
 
-To read how this module can be used to make a CiviCRM profile directory for members only, visit: [http://wiki.civicrm.org/confluence/display/CRMDOC/Linking+Profiles](http://wiki.civicrm.org/confluence/display/CRMDOC/Linking+Profiles)
+To read how this module can be used to make a CiviCRM profile directory for members only, visit: [https://wiki.civicrm.org/confluence/display/CRMDOC/Linking+Profiles](https://wiki.civicrm.org/confluence/display/CRMDOC/Linking+Profiles)

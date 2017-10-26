@@ -67,4 +67,4 @@ TYPE=S&LOGIN=yourloginn&PARTNER=PAYPAL&AMOUNT=1.00&COMMENT1=civicrm contact ID 2
 1. Passing through Billing details: At the moment payflow link is not passing address details backwards & forwards successfully - I think ideally the same billing block would be displayed as on the payment processors that are handled on-site & a new type would be introduced that uses GET
 1. Potentially AVS & CSV support should be added
 1. Extension packaging - this is for purposes of future proofing
-1. Testing - I need to confirm how completely it has been tested - per [http://wiki.civicrm.org/confluence/display/CRMDOC40/Testing+Processor+Plugins](http://wiki.civicrm.org/confluence/display/CRMDOC40/Testing+Processor+Plugins)
+1. Testing - I need to confirm how completely it has been tested - per <https://docs.civicrm.org/dev/en/latest/extensions/payment-processors/create/#testing>

@@ -68,7 +68,7 @@ If the CiviCRM component does not install correctly (for example you get a blank
 
 If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`
 
-Review the [Installation and Configuration Troubleshooting](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Configuration+Troubleshooting) section of our wiki for help with problems you may encounter during the installation.
+Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
 
 You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,2.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html), and you can check out the Installation section of our FAQs.
 

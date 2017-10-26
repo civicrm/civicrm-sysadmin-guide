@@ -31,7 +31,3 @@ version that is stored on your local computer rather than on a server on
 the Internet. You'll still access it through a browser, but it will only
 be visible on your computer. The advantage of a test installation is
 that you can configure CiviCRM, and experiment with your data.
-
-Up-to-date information for installations (including troubleshooting
-tips) is maintained at
-[http://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades](http://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades).

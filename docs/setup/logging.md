@@ -31,7 +31,7 @@
 
         * Then go to Administer/CiviReport/Create Reports from Templates and create the Contact Logging (summary) report. That report works but the links to the detail report may not. You may be able to get the detail report to work, by adding "&force=1" to the URL of the detail report. See [http://forum.civicrm.org/index.php?topic=18503.0](http://forum.civicrm.org/index.php?topic=18503.0) but These reports are definitely in beta quality as of CiviCRM 4.2.2.
 
-    * You can download an Extension with extended reports for logging that provides basic functionality for contact changes and takes the place of the two contact reports mentioned above. Download the extension here: [http://civicrm.org/extensions/extended-logging-report/version-10-0](http://civicrm.org/extensions/extended-logging-report/version-10-0) and install by following the instructions here: [Extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions). Once installed, create report templates at Administer/CiviReport/Manage Templates with these values:
+    * You can download an Extension with extended reports for logging that provides basic functionality for contact changes and takes the place of the two contact reports mentioned above. Download the extension here: [http://civicrm.org/extensions/extended-logging-report/version-10-0](http://civicrm.org/extensions/extended-logging-report/version-10-0) and install by following the instructions here: [Extensions](/customize/extensions.md). Once installed, create report templates at Administer/CiviReport/Manage Templates with these values:
 
         * URL: contact/extendedloggingsummary
         * Class: CRM_Extendedloggingreports_Form_Report_CRM_extendedloggingreports_Report_Form_Contact_LoggingSummary

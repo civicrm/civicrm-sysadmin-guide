@@ -4,7 +4,7 @@ CiviCRM includes the ability to present online contribution pages, event informa
 
 ## Create the contribution page, profile, or event
 
-Refer to the main [Profiles Admin](http://wiki.civicrm.org/confluence/display/CRMDOC41/Profiles+Admin) page for an overview and general information on creating Profiles.
+Refer to the main [Profiles Admin](https://docs.civicrm.org/user/en/latest/organising-your-data/profiles/) page for an overview and general information on creating Profiles.
 
 ## View your public page from the link in the administrative interface
 

@@ -18,7 +18,7 @@ This page provides instructions for moving your CiviCRM installation from being 
         !!! check
             When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
-        Refer to the [Drupal Installation Guide](http://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+Installation+Guide) for details on obtaining and setting up CiviCRM for Drupal.
+        Refer to the [Drupal Installation Guide](/install/drupal7.md) for details on obtaining and setting up CiviCRM for Drupal.
 
 ### Restore the CiviCRM database backup to the desired location
 
@@ -108,7 +108,7 @@ If you're having trouble editing and/or adding users, check your WYSIWYG setting
     !!! tip
         When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
     
-     Refer to the [WordPress Installation Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/WordPress+Installation+Guide+for+CiviCRM) for details on obtaining and setting up CiviCRM for WordPress.
+     Refer to the [WordPress Installation Guide](/install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
 
 
 !!! tip "WordPress Admin Account"
@@ -178,18 +178,18 @@ If you have table prefixes on your Drupal database you'll also need to do the fo
 
 ### Update the changed URL in your user data
 
-When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location) under the heading "Additional Steps if your URL has changed".
+When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".
 
 ### Problems
 
-If you have issues with this post a note or become a Wiki editor and fix it. If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.
+If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.
 
 
 
 
 ## Drupal to Drupal
 
-In most cases when moving a site, you are moving both the CMS (Drupal or Joomla!) as well as CiviCRM at the same time. If that is the case, please refer to the instructions on [Moving an Existing Installation to a New Server or Location](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location).
+In most cases when moving a site, you are moving both the CMS (Drupal or Joomla!) as well as CiviCRM at the same time. If that is the case, please refer to the instructions on [Moving an Existing Installation to a New Server or Location](/misc/switch-servers.md).
 
 This page explains how to do a rarely needed action - switching a CiviCRM installation from working with one Drupal site to working with a different Drupal site. You need good MySQL skills to attempt this. If you don't have them, it is recommended you seek [professional assistance](http://civicrm.org/professional) from a provider with technical expertise.
 
@@ -551,4 +551,4 @@ If you disabled helper modules like civicrm_members_sync, time to turn them back
 
 ### If your URL has changed
 
-If your URL has changed, please review the documentation on [this page](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location) under the heading "Additional Steps if your URL has changed".
+If your URL has changed, please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".

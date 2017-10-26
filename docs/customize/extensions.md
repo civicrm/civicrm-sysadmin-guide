@@ -1,14 +1,10 @@
 # Extensions
 
 !!! tip "See Comparison of Add-On Formats"
-
-    There are many ways to extend CiviCRM with benefits and drawbacks for each. See [Add-on Formats](https://wiki.civicrm.org/confluence/display/CRMDOC/Add-on+Formats) to help decide which is appropriate for your current needs. This page covers "native" CiviCRM extensions - which are NOT restricted to use with a specific CMS. CiviCRM can also be "extended and customized" using CMS-specific extensions - e.g Drupal modules, Joomla components, and WordPress plugins. Refer to the [add-on formats page](https://wiki.civicrm.org/confluence/display/CRMDOC/Add-on+Formats) on this wiki and to each CMS's documentation for more information.
-
+    There are many ways to extend CiviCRM with benefits and drawbacks for each. See [Packaging Formats](https://docs.civicrm.org/dev/en/latest/extensions/packaging/) to help decide which is appropriate for your current needs. This page covers "native" CiviCRM extensions - which are NOT restricted to use with a specific CMS. CiviCRM can also be "extended and customized" using CMS-specific extensions - e.g Drupal modules, Joomla components, and WordPress plugins. Refer to the [Packaging Formats](https://docs.civicrm.org/dev/en/latest/extensions/packaging/) page and to each CMS's documentation for more information.
 
 !!! note "More information about CiviCRM Extensions"
-
-    To find out more about developing CiviCRM Extensions, please visit [Create an Extension](https://wiki.civicrm.org/confluence/display/CRMDOC/Create+an+Extension) page.
-
+    To find out more about developing CiviCRM extensions, see the [Extensions](https://docs.civicrm.org/dev/en/latest/extensions/) page in the Developer Guide.
 
 ## Enabling extensions
 
@@ -135,7 +131,7 @@ If new version of an extension installed in your system becomes available, you w
     The mechanics of the upgrade process depend on a few rules:
 
     * If the extension is a 3.x-style specialized extension (i.e. "Payment Processor Extension", "Custom Search Extension", or "Report Extension"), then both the _source code_ and the _metadata_ will be uninstalled and reinstalled. (3.x-style extensions should not have other data.)
-    * If the extension is a 4.2+-style module extension, then the _source code_ will be uninstalled and reinstalled, but the _metadata_ will be modified in-place, and (if applicable and if approved by the admin) the database will be upgraded using [hook_civicrm_upgrade](https://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade) (or, more specifically, using an [Upgrader](http://wiki.civicrm.org/confluence/display/CRMDOC43/Create+a+Module+Extension#CreateaModuleExtension-Addadatabaseupgrader) class).
+    * If the extension is a 4.2+-style module extension, then the _source code_ will be uninstalled and reinstalled, but the _metadata_ will be modified in-place, and (if applicable and if approved by the admin) the database will be upgraded using [hook_civicrm_upgrade](https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_upgrade/) (or, more specifically, using an [Upgrader](https://docs.civicrm.org/dev/en/latest/extensions/civix/#generate-upgrader).
 
 ## Uninstalling extensions
 

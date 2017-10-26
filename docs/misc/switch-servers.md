@@ -2,7 +2,7 @@
 
 Some settings in the CiviCRM database relate to a physical location, such as a server file path or a public URL. These settings are usually stored as relative paths (with respect to the default file container, eg `sites/default/files/civicrm` or `media/civicrm`), but sometimes an admin customizes them to use an absolute path. If you have any absolute paths, then you must usually change these when moving an existing CiviCRM installation to a new server. This documentation covers the general steps.
 
-**If you regularly copy a production database to a test server, you can [use a settings override](https://wiki.civicrm.org/confluence/display/CRMDOC/Override+CiviCRM+Settings) to avoid having to "fix" the directory and URL-based settings each time you copy the database over.**
+**If you regularly copy a production database to a test server, you can [use a settings override](/customize/settings.md) to avoid having to "fix" the directory and URL-based settings each time you copy the database over.**
 
 _Older versions of CiviCRM included a script which performed a heuristic search-replace against file paths and URLs. The script had various interfaces (e.g. `doSiteMove()`, `civicrm/admin/setting/updateConfigBackend`, `bin/migrate/move.php`, `drush civicrm-update-cfg`, `wp civicrm update-cfg`.) But it was not maintained well and was removed in 4.7. Best advice: stick to relative paths under the default file container, or use a settings-override for absolute paths. (See also: [forum discussion](https://forum.civicrm.org/index.php?topic=36692.msg155904#msg155904))_
 
@@ -36,7 +36,7 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         1. Execute a fresh install of your CMS to the new location.
 
             1. If you decide to do a fresh install, you will also need to recreate your (non-CiviCRM) installed module base.
-            1. Do not copy your civicrm.settings.php from the old server, rather, install a clean copy of CiviCRM: [Installation and Upgrades](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades) and merge any custom values needed (for example multi site variables or global settings overrides) into the new settings file
+            1. Do not copy your `civicrm.settings.php` from the old server, rather, install a clean copy of CiviCRM and merge any custom values needed (for example multi site variables or global settings overrides) into the new settings file
             1. If you are using a fresh install you need to make sure that the new version matches the version of your database.
                 * Check in your live database "SELECT version FROM civicrm_domain" or check this value in the SQL export file you are using to move the database
 
@@ -116,10 +116,6 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         
 1. Login to Drupal or to Joomla Administrator
 1. Re-enable the CiviCRM module and any other CiviCRM sub-modules.
-
-    !!! check
-        You can also override the settings in your local civicrm.settings.php and avoid going to some of the below urls. Check: [Override Server Directory and URL Settings](https://wiki.civicrm.org/confluence/display/CRMDOC42/Override+Server+Directory+and+URL+Settings) |
-
 1. Enter the following URL in your browser to review and update directory paths and base URLs. See CiviCRM Menu: Administer >> System Settings >> Cleanup Caches and Update Paths
 
     * Drupal sites: http://example.org/index.php?q=civicrm/admin/setting/updateConfigBackend&reset=1
@@ -227,9 +223,7 @@ On Joomla sites run `http://example.org/administrator/?option=com_civicrm&task=c
 
 ## Moving the database using phpMyAdmin
 
-This is an alternate method for moving a civiCRM installation from one server to another which is similar to the instructions: [Moving the database using phpMyAdmin](https://wiki.civicrm.org/confluence/display/CRMDOC/Moving+the+database+using+phpMyAdmin)
-
-This method has worked well for moving Drupal/CiviCRM based websites from development servers to production servers and uses the Backup and Migrate module for transferring the Drupal data and PHPMyAdmin for the civiCRM data.
+This is an alternate method for moving a civiCRM installation from one server to another. This method has worked well for moving Drupal/CiviCRM based websites from development servers to production servers and uses the Backup and Migrate module for transferring the Drupal data and PHPMyAdmin for the civiCRM data.
 
 ### Preliminary Setup
 
@@ -296,5 +290,3 @@ After you have imported the civiCRM data, there are some tasks that need to be d
 1. Navigate to the civiCRM Configuration Checklist ([www.example.com/civicrm/admin/configtask?reset=1)](http://www.example.com/civicrm/admin/configtask?reset=1%29) and review the setting to make sure that they are correct. More than likely the settings for language, default country and other regional settings will be incorrect. Take extra care to ensure that your directories are set up correctly, especially if you use custom templates for one reason or another.
 1. **Very Important:** If you have custom data profiles set up in your civiCRM, they may be present but for some unknown reason not be active. Go to your Administer >> Customize >> Custom Data and select _**"View and Edit Custom Fields"**_. Select **_"Edit Field"_** for any one of the custom fields in the group and save it without making any changes. This will make civiCRM aware of the custom data fields and everything should be back on track.
 1. If you have Drupal user Profiles that relate to the civiCRM contacts, you will want to run **_"Synchronize Users to Contacts"_**. It can be found at Administer >> Manage >> Synchronize Users to Contacts
-
-I think that covers my process. If I come up with anything else I will edit the Wiki to reflect the changes. If anyone else can add to this, please feel free to do so.
