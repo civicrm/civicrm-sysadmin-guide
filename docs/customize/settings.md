@@ -2,7 +2,7 @@
 
 CiviCRM provides a web-based interface for configuring its settings. This approach is easy-to-use for new administrators who maintain a single site, but it presents challenges for sophisticated administrators who manage many copies of CiviCRM. CiviCRM 4.1 introduced a new settings system which allows administrators to override some settings by managing a custom PHP file.
 
-Further information about settings is on [Settings Reference](https://wiki.civicrm.org/confluence/display/CRMDOC/Settings+Reference)
+Further information about settings is on [Settings Reference](https://docs.civicrm.org/dev/en/latest/framework/setting/)
 
 ## Use Copied Databases by Overriding Server Directory and URL Settings
 
@@ -17,7 +17,7 @@ If you regularly copy a production database to a test or development server, the
 
 ## Hidden Settings
 
-There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions) for more details).
+There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](/customize/extensions.md) for more details).
 
 ## Override Temporary Files directory
 

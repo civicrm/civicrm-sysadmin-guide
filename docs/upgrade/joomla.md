@@ -17,7 +17,7 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 
 1. Save this file in `<joomla_root>/tmp/`. Unzipping will create a directory called: `com_civicrm`.
 
-If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](http://wiki.civicrm.org/confluence/display/CRMDOC40/CiviCRM+Localisation) page about how to install files for running CiviCRM in languages other than American English.
+If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
 
 ## Backup your settings files
 
@@ -46,7 +46,7 @@ Delete all cache files in `<joomla_root>/media/civicrm/templates_c` on your serv
 **After the component installation completes click the link to run the database upgrade script.** You may also point your web browser to the following URL (you should already be logged in to Joomla with administrator-level permissions):
 
 ```
-http://<your_joomla_home>/administrator/index.php?option=com_civicrm&task=civicrm/upgrade&reset=1
+http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/upgrade&reset=1
 ```
 
 You should see an **Upgrade successful** message when the upgrade completes.

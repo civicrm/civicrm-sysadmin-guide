@@ -27,7 +27,7 @@ There are obviously a lot of things you can configure but the ones I am going to
 ![](/img/payflow-config.jpg)
 
 1. Return URL Method - you must set this to POST
-1. Return URL - the standard drupal URL looks something like this. [http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php](http://yoursite/sites/all/modules/civicrm/extern/payFlowLinkIPN.php). If you put the URL in your browser you should see "Failure: Missing Parameter"
+1. Return URL - the standard drupal URL looks something like this. `http://example.org/sites/all/modules/civicrm/extern/payFlowLinkIPN.php`. If you put the URL in your browser you should see "Failure: Missing Parameter"
 1. Silent Post URL - tick this & set it to the same as the return URL
 1. Force silent post confirmation - if the server can't access your website for any reason the transaction will be reversed - I am inclined to think this shouldn't be enabled
 1. Transaction Process mode : test or live
@@ -67,4 +67,4 @@ TYPE=S&LOGIN=yourloginn&PARTNER=PAYPAL&AMOUNT=1.00&COMMENT1=civicrm contact ID 2
 1. Passing through Billing details: At the moment payflow link is not passing address details backwards & forwards successfully - I think ideally the same billing block would be displayed as on the payment processors that are handled on-site & a new type would be introduced that uses GET
 1. Potentially AVS & CSV support should be added
 1. Extension packaging - this is for purposes of future proofing
-1. Testing - I need to confirm how completely it has been tested - per [http://wiki.civicrm.org/confluence/display/CRMDOC40/Testing+Processor+Plugins](http://wiki.civicrm.org/confluence/display/CRMDOC40/Testing+Processor+Plugins)
+1. Testing - I need to confirm how completely it has been tested - per <https://docs.civicrm.org/dev/en/latest/extensions/payment-processors/create/#testing>

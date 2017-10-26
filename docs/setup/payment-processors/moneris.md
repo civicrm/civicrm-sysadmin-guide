@@ -46,7 +46,7 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
     1. Set Transaction Type to Purchase (default).
     1. Under Payment Methods, ensure Credit Cards is enabled, all others disabled.
     1. Set Response Method to Sent to your server as a POST.
-    1. Set Approved URL and Declined URL to: https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
+    1. Set Approved URL and Declined URL to: http://example.org/civicrm/payment/ipn?processor_name=MonerisEselect
     
         ![](/img/moneris-response-method.png)
     
@@ -66,7 +66,7 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
     
         ![](/img/moneris-transaction-verification.png)
     
-        Response URL : https://<YOUR HOST>/civicrm/payment/ipn?processor_name=MonerisEselect
+        Response URL : http://example.org/civicrm/payment/ipn?processor_name=MonerisEselect
     
     1. Click the Save Verification Settings button then Return to main configuration.
 

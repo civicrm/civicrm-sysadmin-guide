@@ -17,7 +17,7 @@ PayJunction has a sandbox account that is open to the public to use. To use it f
 
 Test your payment processor by following these steps:
 
-* Set up contribution page in CiviContribute (see [documentation](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviContribute+Admin))
+* Set up contribution page in CiviContribute (see [documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/CiviContribute+Admin))
 * Select your PayJunction payment processor as that contribution page's processor
 * Run your contribution page in Test mode
 * For the financial information enter the following:

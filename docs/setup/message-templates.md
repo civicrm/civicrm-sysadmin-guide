@@ -35,7 +35,7 @@ If you are using the CiviMember component, you can also use a message template t
 
 !!! tip
 
-    If you need to add custom logic to a system message template, [you can do so using "Smarty" coding](https://wiki.civicrm.org/confluence/display/CRMDOC41/Smarty+in+mail+templates).
+    If you need to add custom logic to a system message template, [you can do so using "Smarty" coding](https://docs.civicrm.org/sysadmin/en/latest/setup/message-templates/#smarty-in-mail-templates).
 
 
 ## Configure Message Templates

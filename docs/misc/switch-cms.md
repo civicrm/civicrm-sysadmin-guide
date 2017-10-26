@@ -18,7 +18,7 @@ This page provides instructions for moving your CiviCRM installation from being 
         !!! check
             When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
-        Refer to the [Drupal Installation Guide](http://wiki.civicrm.org/confluence/display/CRMDOC/Drupal+Installation+Guide) for details on obtaining and setting up CiviCRM for Drupal.
+        Refer to the [Drupal Installation Guide](/install/drupal7.md) for details on obtaining and setting up CiviCRM for Drupal.
 
 ### Restore the CiviCRM database backup to the desired location
 
@@ -36,7 +36,7 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ### Update the Directory Path and URL
 
 * Log in to Drupal with a username that has administrator access to CiviCRM
-* Go to **http://<drupal_site>/civicrm/admin/setting/updateConfigBackend?reset=1**
+* Go to **http://example.org/civicrm/admin/setting/updateConfigBackend?reset=1**
     * Set your base directory to _<drupal_root>/sites/default/files/_
     * Ensure your base URL is correct
     * Click **Save**
@@ -45,16 +45,16 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 
 Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/url?reset=1**
-    * Set CiviCRM Resource URL to _http://<home>/sites/all/modules/civicrm/_
-    * Set Image Upload URL to _http://<home>/sites/default/files/civicrm/persist/contribute/_
+* Go to **http://example.org/civicrm/admin/setting/url?reset=1**
+    * Set CiviCRM Resource URL to _http://example.org/sites/all/modules/civicrm/_
+    * Set Image Upload URL to _http://example.org/sites/default/files/civicrm/persist/contribute/_
     * Click **Save**
 
 ### Rebuild the menus and triggers
 
 The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Joomla.
 
-* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
+* Go to **http://example.org/civicrm/menu/rebuild?reset=1**. Alternatively, delete all the records in civicrm_menu:
     ```
     TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
     ```
@@ -65,13 +65,13 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
     WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
     ```
     
-* Go to **http://<drupal_site>/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
+* Go to **http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1.** This will rebuild your triggers
 
 ### Drupal table prefixes
 
 If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/uf?reset=1**
+* Go to **http://example.org/civicrm/admin/setting/uf?reset=1**
     * Update Drupal Users Table Name with your_table_prefix_users (eg. drupal_users)
     * Click **Save**
 
@@ -79,7 +79,7 @@ If you have table prefixes on your Drupal database you'll also need to do the fo
 
 If you're having trouble editing and/or adding users, check your WYSIWYG setting under Display Preferences
 
-* Go to **http://<drupal_site>/civicrm/admin/setting/preferences/display&reset=1**
+* Go to **http://example.org/civicrm/admin/setting/preferences/display&reset=1**
 * Check the WYSIWYG editor setting and choose one of the selections (this resets to a Drupal choice vs. Joomla)
 * Click **Save**
 
@@ -108,7 +108,7 @@ If you're having trouble editing and/or adding users, check your WYSIWYG setting
     !!! tip
         When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
     
-     Refer to the [WordPress Installation Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/WordPress+Installation+Guide+for+CiviCRM) for details on obtaining and setting up CiviCRM for WordPress.
+     Refer to the [WordPress Installation Guide](/install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
 
 
 !!! tip "WordPress Admin Account"
@@ -138,25 +138,25 @@ TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ### Update the Base Directory Path and URL
 
 * Log in to WordPress with a username that has administrator access to CiviCRM
-* Go to _**http://<wordpress_root>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1**_
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/updateConfigBackend&reset=1**_
     * Set your base directory to _<wordpress_root>/wp-content/plugins/files/_
- Ensure your base URL is correct - it should be _http://<wordpress_site>/_ (the main URL of your site)
+ Ensure your base URL is correct - it should be _http://example.org/_ (the main URL of your site)
     * Click **Save**
 
 ### Update the Resource URLs
 
 Up to this stage, CiviCRM screens are missing all of its CSS formatting and images because the paths to these resources are incorrect. This step is to set the correct paths to these resources.
 
-* Go to _**http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/url&reset=1**_
-    * Set CiviCRM Resource URL to _http://<wordpress_site>/wp-content/plugins/civicrm/civicrm/_
-    * Set Image Upload URL to _http://<wordpress_site>/wp-content/plugins/files/civicrm/persist/contribute/_ (may need to be created)
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/url&reset=1**_
+    * Set CiviCRM Resource URL to _http://example.org/wp-content/plugins/civicrm/civicrm/_
+    * Set Image Upload URL to _http://example.org/wp-content/plugins/files/civicrm/persist/contribute/_ (may need to be created)
     * Click **Save**
 
 ### Rebuild the menus
 
 The menu links in the civicrm_menu table contains URLs for the menu links. These links need to be updated since CiviCRM uses a different URLs in Drupal.
 
-* Go to _**http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1**_. Alternatively, delete all the records in civicrm_menu:
+* Go to _**http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1**_. Alternatively, delete all the records in civicrm_menu:
     ```sql
     TRUNCATE TABLE `<civicrm_database>`.`civicrm_menu`;
     ```
@@ -172,24 +172,24 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
 
 If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
 
-* Go to **http://<wordpress_site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1**
+* Go to **http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1**
     * Update WordPress Users Table Name with your_table_prefix_users (eg. wp_users) You may have changed this in accordance with WordPress best practices to have a different prefix other than wp_
     * Click **Save**
 
 ### Update the changed URL in your user data
 
-When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location) under the heading "Additional Steps if your URL has changed".
+When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".
 
 ### Problems
 
-If you have issues with this post a note or become a Wiki editor and fix it. If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.
+If you have a DBA with a solid understanding of CiviCRM you can manually migrate tables leaving out ACL tables, cache tables, and any tables which don't have data, but audit your migration thoroughly before opening for business. Do not add any data until it has been satisfactorily audited to confirm data is complete.
 
 
 
 
 ## Drupal to Drupal
 
-In most cases when moving a site, you are moving both the CMS (Drupal or Joomla!) as well as CiviCRM at the same time. If that is the case, please refer to the instructions on [Moving an Existing Installation to a New Server or Location](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location).
+In most cases when moving a site, you are moving both the CMS (Drupal or Joomla!) as well as CiviCRM at the same time. If that is the case, please refer to the instructions on [Moving an Existing Installation to a New Server or Location](/misc/switch-servers.md).
 
 This page explains how to do a rarely needed action - switching a CiviCRM installation from working with one Drupal site to working with a different Drupal site. You need good MySQL skills to attempt this. If you don't have them, it is recommended you seek [professional assistance](http://civicrm.org/professional) from a provider with technical expertise.
 
@@ -535,7 +535,7 @@ Insert CiviCRM entries into Drupal tables that are normally done by the CiviCRM 
 
 ### Rebuild the menus
 
-The menu links in the civicrm_menu table contain full URL links and need to be updated with the new domain. Navigate to _http://<drupal_site>/index.php?q=civicrm/menu/rebuild&reset=1_
+The menu links in the civicrm_menu table contain full URL links and need to be updated with the new domain. Navigate to _http://example.org/index.php?q=civicrm/menu/rebuild&reset=1_
 
 ### Fix the directories
 
@@ -551,4 +551,4 @@ If you disabled helper modules like civicrm_members_sync, time to turn them back
 
 ### If your URL has changed
 
-If your URL has changed, please review the documentation on [this page](http://wiki.civicrm.org/confluence/display/CRMDOC/Moving+an+Existing+Installation+to+a+New+Server+or+Location) under the heading "Additional Steps if your URL has changed".
+If your URL has changed, please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".

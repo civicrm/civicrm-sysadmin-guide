@@ -166,8 +166,7 @@ someone submits the form. Webform CiviCRM has extensive online
 documentation which you should read to make the most out of its
 functionality.
 
-For more information see:
-<http://wiki.civicrm.org/confluence/display/CRMDOC/Webform+CiviCRM+Integration>.
+For more information see [Webform](/integration/drupal/webform.md).
 
 ## CiviCRM Organic Groups Sync
 

@@ -90,9 +90,9 @@ Follow these steps to download and install the files that contain strings for la
 The installer will verify that you've downloaded the correct version of CiviCRM, and will check your server environment to make sure it meets CiviCRM requirements. It will then create and populate a database for CiviCRM as well as create your CiviCRM settings file `civicrm.settings.php`.
 
 * Login to your WordPress site with Administrator level permissions.
-* Go to plugins page: `http://<your_wordpress_home>/wp-admin/plugins.php`.
+* Go to plugins page: `http://example.org/wp-admin/plugins.php`.
 * Click the **Activate** link to activate the CiviCRM plugin.
-* Then go to Settings > CiviCRM Installer: `http://<your_wordpress_home>/wp-admin/options-general.php?page=civicrm-install`
+* Then go to Settings > CiviCRM Installer: `http://example.org/wp-admin/options-general.php?page=civicrm-install`
     * In version 4.7 you will see a link on the wp-admin page to the Installer screen
 
 * You should see the **CiviCRM Installer** screen.
@@ -145,9 +145,7 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 ## Test-drive CiviCRM
 
-There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear.
-
-You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options.
+There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
 ## Upgrade CiviCRM
 
@@ -162,11 +160,11 @@ When a new, stable version of CiviCRM is released it is recommended you upgrade 
  b. you overwrite existing civicrm directory during the extraction/unzip
  c. do NOT create an additional subdirectory for the extraction
   1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
-  1. Run the Upgrade script at:[http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1](http://www.YOURSITE.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1)
+  1. Run the Upgrade script at: `http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1`
 
 ## Trouble-shooting Resources
 
-Review the **[Installation and Configuration Troubleshooting](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Configuration+Troubleshooting)** section of our wiki for help with problems you may encounter during the installation.
+Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
 
 You can often find solutions to your issue by searching the **[installation support section of the community forum](http://forum.civicrm.org/index.php/board,64.0.html)** and you can check out the **Installation section of our FAQs**.
 

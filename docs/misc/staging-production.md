@@ -14,8 +14,6 @@ The following explains support that has been added to better support disabling p
 
 1. On the Scheduled jobs page, a bolded message in red is displayed indicating that execution of scheduled jobs are terminated even though they appear to be running (appropriate text to be supplied later).
 
-1. There will also be a link to this wiki page containing further documentation.
-
 1. If one wishes to run a specific scheduled job when the Environment <> Production, add a param:
 
 runInEnvironment={Production,Staging}

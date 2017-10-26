@@ -7,7 +7,7 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 1. Before making any changes, it is _strongly_ advised that you make backups of your mysql databases and settings.php file.
 1. If you have different database users for your CiviCRM and Drupal databases, then you need to grant `SELECT` access for the Drupal user to all the CiviCRM tables.
 1. Make sure you are logged into your Drupal site as the administrator.
-1. Visit `http://yourdomain.com/civicrm/admin/setting/uf?reset=1`
+1. Visit `http://example.org/civicrm/admin/setting/uf?reset=1`
 1. You should see a page with output that begins with: `$databases['default']['default']['prefix']= array(`
 
     ![Screenshot showing the "Drupal Integration" page, with output of settings to be placed into settings.php](/img/views3integration-1.png)

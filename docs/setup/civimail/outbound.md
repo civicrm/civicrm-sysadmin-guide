@@ -74,6 +74,4 @@ Assumptions: The scheduled task "Mailings scheduler" is set to run "always" and 
 
 For example the attached image shows an Excel pivot table/chart that shows a server that is frquently having problems delivering up to it's limit of 70 emails.
 
-[Excel Pivot Table](https://wiki.civicrm.org/confluence/download/attachments/86213664/mailer_batch_limit_check.png?version=1&modificationDate=1394725343000&api=v2)
-
-mailer_batch_limit_check.png
+![Excel Pivot Table](/img/mailer_batch_limit_check.png)

@@ -49,7 +49,7 @@ The most up-to-date version of CiviCRM will always be available at [https://civi
 
 ## Install localization files (only for non-English sites) {:#i18n}
 
-If using CiviCRM in another language than English, see the [internationalisation and localisation](https://wiki.civicrm.org/confluence/pages/viewpage.action?pageId=88408149) page about how to install files for running CiviCRM in other languages.
+If using CiviCRM in another language than English, see the [internationalisation and localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in other languages.
 
 ## Run the Installer {:#installer}
 
@@ -58,7 +58,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Login to your Backdrop site with Administrator level permissions.
 * Point your web browser to the following URL:
 
-    `http://<your_backdrop_home>/modules/civicrm/install/index.php?civicrm_install_type=backdrop`
+    `http://example.org/modules/civicrm/install/index.php?civicrm_install_type=backdrop`
     
 * You should see the **CiviCRM Installer** screen.
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.
@@ -120,16 +120,12 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 ## Test-drive CiviCRM {:#test-drive}
 
-There should now be a **CiviCRM** link in your Backdrop menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear.
-
-You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs. Refer to the [Administrator Guide](https://wiki.civicrm.org/confluence/display/CRMDOC/User+guide+supplement) for information on configuration tasks and options.
+There should now be a **CiviCRM** link in your Backdrop menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-Review the [Installation and Configuration Troubleshooting](https://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Configuration+Troubleshooting) section of our wiki for help with problems you may encounter during the installation.
+Review the [Installation and Configuration Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
 
 You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,6.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html), and you can check out the Installation section of our FAQs.
 
 If you don't find an answer to your problem in those places, the next step is to [post a support request on the forum](http://forum.civicrm.org/index.php/board,6.0.html).
-
-To check compatibility with other Backdrop modules see: [Backdrop modules incompatible with CiviCRM](https://wiki.civicrm.org/confluence/display/CRMDOC/Backdrop+modules+incompatible+with+CiviCRM)

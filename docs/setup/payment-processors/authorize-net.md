@@ -99,11 +99,11 @@ Authorize.net offers a recurring payment system called Automated Recurring Billi
 CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**. Within CiviCRM, get the ID number of your payment processor by looking at the URL of the form for editing your payment processor: it should read "&id=" followed by a number. That number is your ID. Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the URL (the following examples are for payment processor ID 2):
 
 ```
-Drupal: https://yoursite.org/civicrm/payment/ipn/2
+Drupal: http://example.org/civicrm/payment/ipn/2
 
-Joomla!: https://yoursite.org/index.php?option=com_civicrm&task=civicrm/payment/ipn/2
+Joomla!: http://example.org/index.php?option=com_civicrm&task=civicrm/payment/ipn/2
 
-WordPress: https://yoursite.org/?page=CiviCRM&q=civicrm/payment/ipn/2
+WordPress: http://example.org/?page=CiviCRM&q=civicrm/payment/ipn/2
 ```
 
 If you fail to do this, one-time contributions will succeed normally, and recurring contributions will be processed successfully by Authorize.net, but the contribution status will be stuck at Pending.
@@ -146,7 +146,7 @@ Note that you must modify the URL to match your own web site and various other p
 ```bash
 #!/bin/sh
 
-curl http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test
+curl http://example.org/sites/all/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test
 ```
 
 _Note that the script above has not been tested and will need some work to determine the exact parameters needed. See alternate testing method below for an idea of what the parameters should look like._
@@ -165,7 +165,7 @@ Another way to test the authorize.net IPN system for recurring transactions is t
 One common problem with IPN responses is that your web host may accept connections internally but not from an external host. So the form may work when hosted on your own web site, but not when hosted externally (or called from authorize.net's servers). You can post the form on a site like [http://jsfiddle.net](http://jsfiddle.net) to test IPN calls from an outside host.
 
 ```html
-<form action="http://crm_42/sites/crm_42/modules/civicrm/extern/authorizeIPN.php" method="post">
+<form action="http://example.org/sites/all/modules/civicrm/extern/authorizeIPN.php" method="post">
   <input type="hidden" name="x_response_code" value="1"/>
   <input type="hidden" name="x_response_subcode" value="1"/>
   <input type="hidden" name="x_response_reason_code" value="1"/>

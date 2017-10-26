@@ -87,7 +87,7 @@ If you cannot setup a catch all email and your server does not support VERP you 
        //}
 ```
 
-## Step-by-step Return Channel on Drupal - Google Apps
+## Step-by-step Return Channel on Drupal - Google Apps {:#return-channel-google-apps}
 
 ### Steps to configure Return Channel with Drupal and Google Apps
 
@@ -159,7 +159,7 @@ The purpose of this step is to create an email account in your Google Apps that 
 
 ### Enable Corresponding Scheduled Job
 
-1. This assumes you have already configured your scheduled jobs cron job according to: [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs).
+1. This assumes you have already configured your scheduled jobs cron job according to: [Managing Scheduled Jobs](/setup/jobs.md).
 1. Enable the 'Fetch Bounces' job to run with the frequency setting set to 'Every time cron job is run'.
 
 ### Set filters on return@example.com {:#filters}
@@ -203,10 +203,10 @@ The email processor is a function and scheduled job that will attempt to parse e
 1. Under Administer CiviCRM >> CiviMail >> Mail Accounts, configure one or more email accounts. In the "Used For" field select Email-to-Activity Processing.
 1. Test it by executing the job under Administer >> System Settings >> Scheduled Jobs >> select "Process Incoming Emails" (API: **fetch_activities** ) and "Execute now."
 1. The first time you run the script you should see folders created in your email account to designate processed and ignored emails. After testing, visit the contact record you emailed to and confirm the presence of the email activity.
-1. Optionally set it up to run regularly via [scheduled jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs).
+1. Optionally set it up to run regularly via [scheduled jobs](/setup/jobs.md).
 
 !!! note "Important note on bounce processing and processing incoming emails"
-    Because the [Bounce Handling](https://wiki.civicrm.org/confluence/display/CRMDOC/Bounce+Handling) and [EmailProcessor](https://wiki.civicrm.org/confluence/display/CRMDOC41/Autofiling+email+activities+via+EmailProcessor) routines both process emails and then file them under "processed" and "ignored" emails, they cannot be used on the same email account. That is, you cannot use one email account for both bounce processing and email-to-activity processing. You need to set two separate accounts, one for bounce processing, and one for email-to-activity processing.
+    Because the bounce handling and EmailProcessor routines both process emails and then file them under "processed" and "ignored" emails, they cannot be used on the same email account. That is, you cannot use one email account for both bounce processing and email-to-activity processing. You need to set two separate accounts, one for bounce processing, and one for email-to-activity processing.
 
 #### Tip #2
 

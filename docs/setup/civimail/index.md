@@ -25,10 +25,7 @@ systems, but you will need to adapt them to your system and tools.
 The configuration described works fine for mailings to up to about
 10,000 people. If you plan on sending email to hundreds of thousands of
 contacts, you should benchmark several options and consider a dedicated
-SMTP server. This more complex configuration is outside the scope of
-this book but you can find community contributed instructions on the
-CiviCRM documentation
-wiki. ([http://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Installation](http://wiki.civicrm.org/confluence/display/CRMDOC/CiviMail+Installation)).
+SMTP server.
 
 In this chapter we'll use an external Gmail mailbox address to test
 configuration. So the first step is to create a Gmail account if you
@@ -187,7 +184,7 @@ Hold. For transient failures, CiviCRM waits for several bounces before
 setting the contact's email On Hold.
 
 The specific [threshold for each bounce
-type](http://wiki.civicrm.org/confluence/display/CRMDOC43/Bounce+Handling)
+type](/docs/setup/civimail/inbound.md#bounce-handling)
 can be found in the civicrm_mailing_bounce_pattern and
 civicrm_mailing_bounce_type. Multiple different bounce reply patterns
 are linked to a given type and threshold.
@@ -290,11 +287,8 @@ regular basis.
 ## Scheduling inbound and outbound mail processing
 
 As discussed in the earlier chapter, mail processing and other jobs may
-be automated through the Scheduled Jobs administrative page, cron or a
-combination of both. The full range of options is discussed in the
-[Manage Scheduled Jobs wiki
-page](http://wiki.civicrm.org/confluence/display/CRMDOC43/Managing+Scheduled+Jobs),
-but below are specific examples for enabling CiviCRM mail processing.
+be automated through the [Scheduled Jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs) administrative page, [cron](/setup/jobs.md#cron) or a
+combination of both. Below are specific examples for enabling CiviCRM mail processing.
 
 ### Scheduling using the Scheduled Jobs administrative page
 
@@ -309,7 +303,7 @@ installations. Then select **more > Enable** for each.
 
 In this example using the jobs' default frequency and [cron configured
 to run at 15 minute
-intervals](http://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs),
+intervals](/setup/jobs.md),
 scheduled mailings would be sent every 15 minutes and bounces would be
 fetched and processed hourly.
 
@@ -446,7 +440,7 @@ Outbound email setting are configured at: Administer > System Settings > Outboun
 
 ### Setting Up the Cron Job
 
-To have your mailing actually send, set up a cron job that will periodically poke CiviMail to send all of the mailings that are past their scheduled date. **See [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) for more details**.
+To have your mailing actually send, set up a cron job that will periodically poke CiviMail to send all of the mailings that are past their scheduled date. **See [Managing Scheduled Jobs](/setup/jobs.md) for more details**.
 
 There are two methods to run the cron: From a Control Panel or from a command line interface (CLI) which is the preferred way.
 
@@ -521,29 +515,29 @@ You don't have to run both scripts at the same frequency. The preceding crontab 
 1. The site you used, which is **-sdefault**. If you run multiple CiviCRM sites (applicable for Drupal) on a single server, you need to specify your site's domain, such as **-sexample.org**.
 1. The user login account ( **-u mailprocess** ).
 1. The password you defined ( **-p password** ).
-1. [The scheduled job](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) (-a)
+1. [The scheduled job](/setup/jobs.md) (-a)
 
 #### Using wget via Crontab
 
-**wget** will process an external URL (like CiviCRM's cron.php) and therefore will send CiviMail messages. You can run this script using either "GET" or "POST" methods. However, using "POST" with the authentication values stored in a file on your server is generally considered to be better security practice, especially on shared hosting. [Learn more ...](https://wiki.civicrm.org/confluence/display/CRMDOC/Running+Command-line+Scripts+via+URL)
+**wget** will process an external URL (like CiviCRM's cron.php) and therefore will send CiviMail messages. You can run this script using either "GET" or "POST" methods. However, using "POST" with the authentication values stored in a file on your server is generally considered to be better security practice, especially on shared hosting.
 
 #### wget with GET method
 
-Depending on your CMS, simply enter a single like like so, substituting in your login credentials and [sitekey](http://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs#ManagingScheduledJobs-ConfiguringyourSiteKey).
+Depending on your CMS, simply enter a single like like so, substituting in your login credentials and sitekey.
  Note that the GET method is not recommended on shared hosting because the credentials are written to the access logs.
 
 ```
 Joomla:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 
 Drupal:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 
 WordPress:
 wget -O - -q -t 1 \
-'http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+'http://example.org/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 ```
 
 #### wget with POST method
@@ -568,11 +562,11 @@ post-data=name=username&pass=password&key=site-key
 You can also test trigger the cron script by navigating to this URL with your browser:
 
 ```
-Joomla: http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+Joomla: http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 
-Drupal: http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+Drupal: http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 
-WordPress: http://[SITEROOT]/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+WordPress: http://example.org/wp-content/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 If the above works, it means CiviCRM is working OK, but the cron on your server is not configured properly. Try _crontab -e_ and review it again.
@@ -587,11 +581,11 @@ WGETRC=/full/path/to/civicrm-wgetrc
 If you are worried CiviMail won't send email at all, you can send queued messages as well with these commands. You need to be logged in with sufficient privileges to run this command. If nothing is sent, check your Outgoing Mail Settings.
 
 ```
-Drupal: http://<site>/index.php?q=civicrm/mailing/queue&reset=1
+Drupal: http://example.org/index.php?q=civicrm/mailing/queue&reset=1
 
-Joomla: http://<site>/administrator/index.php?option=com_civicrm&task=civicrm/mailing/queue&reset=1
+Joomla: http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/mailing/queue&reset=1
 
-WordPress: http://<site>/wp-admin/admin.php?page=CiviCRM&q=civicrm/mailing/queue&reset=1
+WordPress: http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/mailing/queue&reset=1
 ```
 
 ## Setting Up the Return Channel
@@ -617,13 +611,13 @@ There are four possible solutions for handling of the return channel.
 
     There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](http://forum.civicrm.org/index.php/topic,7553.msg38766.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
 
-    For Google Apps, however, see [http://wiki.civicrm.org/confluence/display/CRMDOC40/Step-by-step+Return+Channel+on+Drupal+-+Google+Apps+-+CentOS](http://wiki.civicrm.org/confluence/display/CRMDOC40/Step-by-step+Return+Channel+on+Drupal+-+Google+Apps+-+CentOS) for directions how to setup the return channel
+For Google Apps, however, see these [directions on setting up the return channel](/setup/civimail/inbound.md#return-channel-google-apps).
 
 
 ## Troubleshooting
 
-* The wiki article on [Managing Scheduled Jobs](https://wiki.civicrm.org/confluence/display/CRMDOC/Managing+Scheduled+Jobs) has a troubleshooting section with solutions for common problems that arise.
-* Not receiving the test email? Make sure your FROM address (Administer>CiviMail>From Email Addresses) matches your domain or is recognized as an email account by your ISP.
+* The page on [Managing Scheduled Jobs](/setup/jobs.md) has a troubleshooting section with solutions for common problems that arise.
+* Not receiving the test email? Make sure your FROM address (Administer > CiviMail > From Email Addresses) matches your domain or is recognized as an email account by your ISP.
 
 
 

@@ -307,25 +307,25 @@ Calling cron.php as shown below will run ALL scheduled jobs that are Enabled and
 In Drupal:
 
 ```
-http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 In Joomla:
 
 ```
-http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 In WordPress:
 
 ```
-http://[SITEROOT]/[CONTENT-DIR]/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
+http://example.org/[CONTENT-DIR]/plugins/civicrm/civicrm/bin/cron.php?name=username&pass=password&key=site-key
 ```
 
 When calling these urls using wget from within a crontab, enclose the url in single quotes, like so:
 
 ```
-*/15 * * * * wget -O - -q -t 1 'http://mysite.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+*/15 * * * * wget -O - -q -t 1 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 ```
 
 An alternative way to set up cron job is using webcron like [https://www.easycron.com](https://www.easycron.com).
@@ -337,19 +337,19 @@ You can also run any single job via URL by passing job=<api_action> as well as a
 In Drupal:
 
 ```
-http://[SITEROOT]/sites/all/modules/civicrm/bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
+http://example.org/sites/all/modules/civicrm/bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
 ```
 
 In Joomla:
 
 ```
-http://[SITEROOT]/administrator/components/com_civicrm/civicrm/bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
+http://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
 ```
 
 In WordPress:
 
 ```
-http://[SITEROOT]/[CONTENT-DIR]/plugins/civicrm/civicrm//bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
+http://example.org/[CONTENT-DIR]/plugins/civicrm/civicrm//bin/cron.php?job=update_greeting&ct=Individual&gt=email_greeting&name=username&pass=password&key=site-key
 ```
 
 ##### Specific Job via URL works only for API entity = job
@@ -469,7 +469,7 @@ If your server has an older version of wget installed and you are trying to conn
 The solution is to upgrade wget to a version with the proper https support. A workaround is to use the flag --no-check-certificate in your wget call.
 
 ```
-*/15 * * * * wget --no-check-certificate -O - -q -t 1 'https://mysite.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+*/15 * * * * wget --no-check-certificate -O - -q -t 1 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
 ```
 
 ### Other issues
@@ -578,13 +578,13 @@ When using the GET method, the username, password and site-key values are passed
 #### EXAMPLE: Use "wget" to run the Update Membership script - replacing _<username>_, _<password>_ and _<site-key>_ with the actual values (Drupal installation)
 
 ```
-$ wget 'http://<drupal_root>/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership'
+$ wget 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership'
 ```
 
 #### EXAMPLE: Use "[curl](http://curl.haxx.se/)" to run the Update Membership script - replacing _<username>_, _<password>_ and _<site-key>_ with the actual values (Drupal installation)
 
 ```
-$ curl 'http://<drupal_root>/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership'
+$ curl 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership'
 ```
 
 #### EXAMPLE: Use webcron (Drupal installation)
@@ -594,7 +594,7 @@ $ curl 'http://<drupal_root>/sites/all/modules/civicrm/bin/cron.php?name=<userna
 2) In the URL field of the Create Cron Job form, enter:
 
 ```
-http://<drupal_root>/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership
+http://example.org/sites/all/modules/civicrm/bin/cron.php?name=<username>&pass=<password>&key=<sitekey>&job=process_membership
 ```
 
 Check the [curl documentation](http://curl.haxx.se/docs/) for information about logging and console output options.
@@ -615,13 +615,13 @@ A cron can be configured to run either a script in a directory or to use WGET. T
 1. Wait a few minutes and check if the scheduled jobs have executed properly
 
 ```
-*/5 * * * * wget -O /dev/null -q -t 1 'http://<domain>/sites/all/modules/civicrm/bin/cron.php?name=<name>&pass=<pass>&key=<key>'
+*/5 * * * * wget -O /dev/null -q -t 1 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=<name>&pass=<pass>&key=<key>'
 ```
 
 The above example caters for Drupal; the following example caters for WordPress. The cron job is set to run every 15 minutes, and the wget uses IPv4 only with TLS.
 
 ```
-*/15 * * * * wget -O - -4 -q -t 1 'https://<siteURL>/[wp content]/plugins/civicrm/civicrm/bin/cron.php?name=<user>&pass=<password>&key=<key>'
+*/15 * * * * wget -O - -4 -q -t 1 'http://example.org/[wp content]/plugins/civicrm/civicrm/bin/cron.php?name=<user>&pass=<password>&key=<key>'
 ```
 
 ### Cron.php will run jobs with API entity=job only

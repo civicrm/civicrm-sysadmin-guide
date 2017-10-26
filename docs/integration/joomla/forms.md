@@ -6,7 +6,7 @@ CiviCRM includes the ability to expose Profile forms and listings, as well as On
 
 Create one or more Profiles (sets of fields for input forms and/or search and listing pages).
 
-Refer to the main [Profiles Admin](https://wiki.civicrm.org/confluence/display/CRMDOC/Profiles+Admin) page for an overview and general information on creating Profiles.
+Refer to the main [Profiles Admin](https://docs.civicrm.org/user/en/latest/organising-your-data/profiles/) page for an overview and general information on creating Profiles.
 
 ## Test profiles
 

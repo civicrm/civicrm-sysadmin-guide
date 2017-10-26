@@ -4,7 +4,7 @@
 
 [![Video from CiviTeacher.org](https://drupal.org/files/Webform-CiviCRM-Intro.jpg)](http://civiteacher.com/video/introducing-civicrm-drupal-webform-integration "Video from CiviTeacher.org")
 
-These instructions relate to the [Webform CiviCRM module](https://www.drupal.org/project/webform_civicrm) and assume you are already familiar with [CiviCRM](http://book.civicrm.org) and the Drupal [Webform module](https://drupal.org/project/webform). Read those manuals first.
+These instructions relate to the [Webform CiviCRM module](https://www.drupal.org/project/webform_civicrm) and assume you are already familiar with CiviCRM and the Drupal [Webform module](https://drupal.org/project/webform). Read those manuals first.
 
 This module enhances Drupal Webforms to create a smart form builder and processor for CiviCRM. With it you can make user-friendly forms that create and update information about contacts, relationships, cases, activities, event participants, group subscriptions, tags, memberships, contributions, grants, file attachments and custom data.
 
@@ -82,7 +82,7 @@ There is a [request in the issue queue to support recurring contributions](https
 
 * **Filters:** Limits the list of available choices from which this contact may be autofilled or selected.
 **Note:** The "check permissions" filter is enabled by default and will verify that the acting user has permission to view and edit a given contact. In rare cases you will wish to disable this permission check, for example to display a list of schools. You'll generally want to combine doing so with some filters or node-based permissions on the webform. Only disable "check permissions" if you know what you are doing!
-**Also note** that, as of CiviCRM 4.2 and later, if you want the 'permissions' check to evaluate contact relationships correctly, you must download and enable the [Related Permissions](https://civicrm.org/extensions/relationship-permissions-acls) CiviCRM extension, which makes permissioned relationships behave like ACLs. This allows, for example, an authenticated user to use the autocomplete widget to search for contacts, but the search will be limited to those contacts for which a permissioned relationship exists in CiviCRM. To enable CiviCRM extensions, refer to the [CiviCRM documentation](https://wiki.civicrm.org/confluence/display/CRMDOC/Extensions).
+**Also note** that, as of CiviCRM 4.2 and later, if you want the 'permissions' check to evaluate contact relationships correctly, you must download and enable the [Related Permissions](https://civicrm.org/extensions/relationship-permissions-acls) CiviCRM extension, which makes permissioned relationships behave like ACLs. This allows, for example, an authenticated user to use the autocomplete widget to search for contacts, but the search will be limited to those contacts for which a permissioned relationship exists in CiviCRM. To enable CiviCRM extensions, refer to the [CiviCRM documentation](/customize/extensions.md).
 
 * **Show/Hide fields:** When an existing contact is selected, you can control which fields the user is allowed to edit and which will be hidden. For example, hiding a contact's name fields will only show them when "Create New Contact" is selected, and makes for a nice select/add combo UX which keeps contacts from getting accidentally renamed.
 
@@ -166,29 +166,26 @@ This module provides hidden fields for cid and cs which you can use as tokens, a
 
 This module provides 3 tokens that can be used after submitting the webform , these 3 tokens are :
 
-* _[[submission:contact-link:?](http://submissioncontact-link:1)]_
-* _[[submission:activity-link:?](http://submissionactivity-link:1)]_
-* _[[submission:case-link:?](http://submissioncase-link:1)]_
+* `[submission:contact-link:?]`
+* `[submission:activity-link:?]`
+* `[submission:case-link:?]`
 
 Where ? can be replaced with the number of contact, activity or case that the webform is going to create or update starting from 1 (where 1 refers to the first contact/activity or case , 2 refers to the second contact/activity or case ..etc) . Each of these tokens will show a link to the specified contact , activity or case.
 
 E.g ) If your webform is configured to create two contacts and two cases , then you can use all or any of the following tokens inside your post webform submission message :
 
-_[[submission:contact-link:1](http://submissioncontact-link:1/)]_
-
-_[[submission:contact-link:2](http://submissioncontact-link:1/)]_
-
-_[[submission:case](http://submissioncase-link:1/)[-link:1](http://submissioncontact-link:1/)]_
-
-_[[submission:case](http://submissioncase-link:1/)[-link:2](http://submissioncontact-link:1/)]_
+* `[submission:contact-link:1]`
+* `[submission:contact-link:2]`
+* `[submission:case-link:1]`
+* `[submission:case-link:2]`
 
 And if the result of submitting this webform was creating a contact with 100 and other one with ID = 101 as well as two cases with ID = 50 and ID=51 then the following message should appear after submitting the form :
 
 ```
-http://YOUR-SITE-URL/civicrm/contact/view?reset=1&cid=100
-http://YOUR-SITE-URL/civicrm/contact/view?reset=1&cid=101
-http://YOUR-SITE-URL/civicrm/contact/view/case?reset=1&action=view&cid=100&id=50 (assuming the first case was assigned to the first contact)
-http://YOUR-SITE-URL/civicrm/contact/view/case?reset=1&action=view&cid=101&id=51(assuming the first case was assigned to the second contact)
+http://example.org/civicrm/contact/view?reset=1&cid=100
+http://example.org/civicrm/contact/view?reset=1&cid=101
+http://example.org/civicrm/contact/view/case?reset=1&action=view&cid=100&id=50 (assuming the first case was assigned to the first contact)
+http://example.org/civicrm/contact/view/case?reset=1&action=view&cid=101&id=51(assuming the first case was assigned to the second contact)
 ```
 
 Here is how it work in action :

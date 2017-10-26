@@ -117,7 +117,7 @@ party tools designed to solve specific problems and make customizations
 easier. 
 
 For more information, developers can refer to the [3rd party module
-listing](http://wiki.civicrm.org/confluence/display/CRMDOC/Joomla!+Extensions+for+CiviCRM+%283rd+party%29) as well as the [Developer Guide](https://docs.civicrm.org/dev/en/latest).
+listing](https://wiki.civicrm.org/confluence/display/CRMDOC/Joomla!+Extensions+for+CiviCRM+%283rd+party%29) as well as the [Developer Guide](https://docs.civicrm.org/dev/en/latest).
 
 ## Configuration/Conflicts with Common Extensions
 

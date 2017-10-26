@@ -109,11 +109,11 @@ Optionally provide a description for the payment processor, and indicate if the 
 
     Check with your server administrator or hosting service for information on obtaining an SSL certificate and configuring your web server to support SSL encrypted pages (more info...CRM:SSL Configuration for Apache and CiviCRM].
 
-    Once you have verified that you can access pages in your site using _[https://yoursite.org/_](https://yoursite.org/_) then configure CiviCRM to either use SSL for all pages (this is more secure) or at least redirect all online contribution pages to use SSL:
+    Once you have verified that you can access pages in your site using _[http://example.org/_](http://example.org/_) then configure CiviCRM to either use SSL for all pages (this is more secure) or at least redirect all online contribution pages to use SSL:
 
     * Navigate to **Administer » System Settings » Resource URLs**
     * Set **Force Secure URLs (SSL)** to YES and save your change.
-    * Verify the new setting by clicking **Test-drive** or **Live Page** from **Administer » CiviContribute »**  **Manage Contribution Pages**. Your contribution forms should automatically redirect to https://... and you should see the encryption (lock) symbol in your browser.
+    * Verify the new setting by clicking **Test-drive** or **Live Page** from **Administer » CiviContribute »**  **Manage Contribution Pages**. Your contribution forms should automatically redirect to HTTPS and you should see the encryption (lock) symbol in your browser.
 
 !!! note
 

@@ -14,7 +14,7 @@ Use this document to upgrade CiviCRM installations on Drupal 7 to the latest Civ
     
 1. Save this file in `<drupal_root>/sites/all/modules`.
 
-If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](http://wiki.civicrm.org/confluence/display/CRMDOC40/CiviCRM+Localisation) page about how to install files for running CiviCRM in languages other than American English.
+If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
 
 ## Prepare Drupal
 
@@ -98,7 +98,7 @@ Choose one of the following methods:
 * Or, point your web browser to the following URL and follow the on-screen instructions.
     
     ```
-    http://<your_drupal_home>/civicrm/upgrade?reset=1
+    http://example.org/civicrm/upgrade?reset=1
     ```
     
     !!! note
