@@ -184,7 +184,7 @@ Hold. For transient failures, CiviCRM waits for several bounces before
 setting the contact's email On Hold.
 
 The specific [threshold for each bounce
-type](/docs/setup/civimail/inbound.md#bounce-handling)
+type](/setup/civimail/inbound.md#bounce-handling)
 can be found in the civicrm_mailing_bounce_pattern and
 civicrm_mailing_bounce_type. Multiple different bounce reply patterns
 are linked to a given type and threshold.
