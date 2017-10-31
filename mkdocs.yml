@@ -27,7 +27,6 @@ pages:
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
   - Scheduled jobs: setup/jobs.md
-  - Message templates: setup/message-templates.md
   - Directories: setup/directories.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
