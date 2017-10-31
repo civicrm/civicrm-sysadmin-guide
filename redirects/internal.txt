@@ -6,3 +6,5 @@ config/resource-urls https://docs.civicrm.org/user/en/latest/initial-set-up/reso
 config/error-handling https://docs.civicrm.org/user/en/latest/initial-set-up/error-handling
 config/message-templates setup/message-templates
 config/directories setup/directories
+setup/message-templates.md https://docs.civicrm.org/user/en/latest/email/message-templates
+config/message-templates.md https://docs.civicrm.org/user/en/latest/email/message-templates
