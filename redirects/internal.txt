@@ -4,7 +4,6 @@ setup/mapping https://docs.civicrm.org/user/en/latest/initial-set-up/mapping
 setup/users-contacts https://docs.civicrm.org/user/en/latest/initial-set-up/users-contacts
 config/resource-urls https://docs.civicrm.org/user/en/latest/initial-set-up/resource-urls
 config/error-handling https://docs.civicrm.org/user/en/latest/initial-set-up/error-handling
-config/message-templates setup/message-templates
 config/directories setup/directories
-setup/message-templates.md https://docs.civicrm.org/user/en/latest/email/message-templates
-config/message-templates.md https://docs.civicrm.org/user/en/latest/email/message-templates
+setup/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
+config/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
