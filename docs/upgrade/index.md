@@ -46,6 +46,20 @@ If you are running the upgrade in a different directory from your previous versi
 
 If your organization has modified the default versions of System Workflow message templates, then the changes and bug fixes included in an upgrade will need to be merged with your modified versions.
 
+
+When your site is upgraded to a new version of CiviCRM there may be changes needed in the message template program logic to support new features. You will be notified during the upgrade that changes are required. **However, you will need to apply these changes manually for any workflow templates which you have modified previously**. Follow these steps:
+
+* Navigate to Administer > Communication > Message Templates (shown in the following screenshot) and click the System Workflow Message tab
+* Click the 'Edit' link
+* Open 2 new blank documents in a text editor
+* Copy and paste your customized HTML message into one of the blank documents, and your customized TEXT message into the other
+* Click 'Cancel' to return to the listing of message templates
+* Click 'Revert to Default' for the message template you're updating. This will replace your customized version with the upgraded version included all program logic - but NOT including your customizations.
+* Click 'Edit' again to review the new message versions, and compare to the customized versions saved in your text editor.
+* Copy / paste your customized changes from your text editor copies back into the new version in the CiviCRM screen. If you've only made changes to the header / introductory section of the message - this should be pretty straightforward. Otherwise you may need to use a command line tool like 'diff' to make sure you've caught all the changes needed.
+* Save your newly customized version of the messages.
+
+
 There are a few methods mentioned in this blog [https://civicrm.org/blogs/andrewhunt/upgrade-custom-templates](https://civicrm.org/blogs/andrewhunt/upgrade-custom-templates)
 
 The focus here is on the one that seems most low tech - [http://sourceforge.net/projects/kdiff3](http://sourceforge.net/projects/kdiff3)
