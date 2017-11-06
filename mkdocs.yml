@@ -52,7 +52,7 @@ pages:
   - Upgrade in Drupal 7: upgrade/drupal7.md
   - Upgrade in WordPress: upgrade/wordpress.md
   - Upgrade in Joomla: upgrade/joomla.md
-  #- Upgrade in Backdrop: upgrade/backdrop.md
+  - Upgrade in Backdrop: upgrade/backdrop.md
   - Version-specific upgrade steps: upgrade/version-specific.md
 - Troubleshooting: troubleshooting.md
 - Customization:
