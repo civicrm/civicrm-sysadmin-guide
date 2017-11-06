@@ -8,7 +8,7 @@ Use this document to upgrade CiviCRM installations on Backdrop CMS to the latest
 ## Download the latest code
 
 1. Go to [civicrm.org/download](https://civicrm.org/download)
-1. Select the latest currently available CiviCRM tarball for Drupal.
+1. Select the latest currently available CiviCRM tarball for Backdrop.
 
     Example: `civicrm-x.x.x-backdrop.tar.gz`
     
