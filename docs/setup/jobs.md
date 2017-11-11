@@ -45,6 +45,8 @@ Due to the flexibility of CiviCRM's API, there are several different methods ([l
 
 When you run one of the commands below to execute `Job.execute`, it's important to pay attention to the file permission of the operating system user that the command runs as. Typically you'll want to run the command as the same user as Apache (i.e. `www-data`, `apache`, or `nobody` are the most likely candidates).
 
+CiviCRM needs read and write access to some directories to operate normally, and can experience issues if "run" by multiple users simultaneously. If your CiviCRM runs on the web as user `www-data`, you need either to execute CiviCRM CLI tasks as the same user *or* to make special provision to ensure filesystem permissions do not interfere with normal operation. See [this StackExchange question](https://civicrm.stackexchange.com/questions/2923/civicrm-does-not-have-permission-to-write-temp-files) for more discussion on this.
+
 ### Choosing a CMS user
 
 Some of these methods require a valid username and password (for a CMS user who has adequate permissions for the job or jobs being run).
