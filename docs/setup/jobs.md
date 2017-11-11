@@ -64,9 +64,11 @@ Some of these methods require a valid username and password (for a CMS user who 
 
 ### cv method {:#cv}
 
-This method is not yet documented.
+[`cv`](https://github.com/civicrm/cv) is a CLI utility for CiviCRM, like [`drush`](http://www.drush.org/en/master/) is to Drupal, [`wp-cli`](http://wp-cli.org/) to WordPress, and [Joomlatools Console](https://www.joomlatools.com/developer/tools/console/) to Joomla. Once you have `cv` installed, you can execute CiviCRM's scheduled jobs with this command:
 
-See <https://github.com/civicrm/cv>
+```
+cv -u 1 job.execute
+```
 
 ### Drush method {:#drush}
 
