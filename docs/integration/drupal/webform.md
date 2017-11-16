@@ -179,7 +179,7 @@ E.g ) If your webform is configured to create two contacts and two cases , then 
 * `[submission:case-link:1]`
 * `[submission:case-link:2]`
 
-And if the result of submitting this webform was creating a contact with 100 and other one with ID = 101 as well as two cases with ID = 50 and ID=51 then the following message should appear after submitting the form :
+And if the result of submitting this webform was creating a contact with ID = 100 and other one with ID = 101 as well as two cases with ID = 50 and ID=51 then the following message should appear after submitting the form :
 
 ```
 http://example.org/civicrm/contact/view?reset=1&cid=100
