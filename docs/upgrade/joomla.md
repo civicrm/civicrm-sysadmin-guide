@@ -5,11 +5,11 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 !!! caution "Before upgrading"
     Make sure you have done the steps listed in ["Before upgrading"](/upgrade/index.md#before-upgrading) first.
 
-## Known Issues
-If using a version prior to 4.7.29 you need to apply the following two PRs after installation but before running the upgrader:
+!!! bug "Known Issues"
+    If using a version prior to 4.7.29 you need to apply the following two PRs after installation but before running the upgrader:
 
-* https://github.com/civicrm/civicrm-core/pull/11062 (If using Joomla > 3.8.1 otherwise CRON/CLI won't work).
-* https://github.com/civicrm/civicrm-core/pull/11236 (If using Paypal IPN).
+    * [#11062](https://github.com/civicrm/civicrm-core/pull/11062) (If using Joomla > 3.8.1 otherwise CRON/CLI won't work).
+    * [#11236](https://github.com/civicrm/civicrm-core/pull/11236) (If using Paypal IPN).
 
 ## Download the latest code
 
@@ -24,9 +24,9 @@ If using a version prior to 4.7.29 you need to apply the following two PRs after
 1. Save this file in `<joomla_root>/tmp/`.
 1. Unzip and check that it created a directory called `com_civicrm` in `<joomla_root>/tmp`.
 
-If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
+1. If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
 
-1. Goto `<joomla_root>/administrator/components/com_civicrm` and extract civicrm-4.x.x-l10n.tar.gz
+    Go to `<joomla_root>/administrator/components/com_civicrm` and extract `civicrm-x.x.x-l10n.tar.gz`
 
 ## Backup your settings files
 
