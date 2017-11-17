@@ -5,6 +5,12 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 !!! caution "Before upgrading"
     Make sure you have done the steps listed in ["Before upgrading"](/upgrade/index.md#before-upgrading) first.
 
+!!! bug "Known Issues"
+    If using a version prior to 4.7.29 you need to apply the following two PRs after installation but before running the upgrader:
+
+    * [#11062](https://github.com/civicrm/civicrm-core/pull/11062) (If using Joomla > 3.8.1 otherwise CRON/CLI won't work).
+    * [#11236](https://github.com/civicrm/civicrm-core/pull/11236) (If using Paypal IPN).
+
 ## Download the latest code
 
 1. Go to [civicrm.org/download](https://civicrm.org/download)
@@ -15,18 +21,21 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
     !!! note
         You may notice a file on the named something like `civicrm-x.x.xx-joomla-alt.zip` the `-alt` version does not require `.zip` functions compiled into PHP by your hosting company. If you get errors like _"Your PHP version is missing zip functionality"_, then try the `-alt` version.
 
-1. Save this file in `<joomla_root>/tmp/`. Unzipping will create a directory called: `com_civicrm`.
+1. Save this file in `<joomla_root>/tmp/`.
+1. Unzip and check that it created a directory called `com_civicrm` in `<joomla_root>/tmp`.
 
-If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
+1. If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
+
+    Go to `<joomla_root>/administrator/components/com_civicrm` and extract `civicrm-x.x.x-l10n.tar.gz`
 
 ## Backup your settings files
 
-The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ these two settings files, as they are, during the upgrade:
+The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade.  In particular, note that Joomla has two settings files for CiviCRM and they should both be backed up:
 
 * `<joomla_root>/components/com_civicrm/civicrm.settings.php`
 * `<joomla_root>/administrator/components/com_civicrm/civicrm.settings.php`
     
-Copy these files to a location outside your Joomla project. You will need to restore them after upgrading.
+Copy these files to a location outside your Joomla project.
 
 ## Install the Extension
 
