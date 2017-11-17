@@ -208,7 +208,7 @@ it as an email activity against contacts of type Individual corresponding to
 sender and recipients of the email. New individual contacts are created for
 email addresses not already assigned to individuals in the database.
 
-**NOTE**: This features only works for the Individual contact type. If the
+**NOTE**: These features only work for the Individual contact type. If the
 incoming email comes from an email address already recorded against an
 organization, a new individual contact with that same email address will be
 created and the activity will be recorded against that new individual contact,
@@ -226,6 +226,14 @@ time):
     drag emails that you want filed in CiviCRM. This works with both
     inbound and outbound emails (this requires that your email be set
     up using IMAP.)
+
+### Allowing users to edit inbound e-mails
+
+Activities created by CiviCRM as a result of email-to-activity processing 
+are not editable by users, as there is a restriction enforced on the Inbound 
+Email activity type. To allow users to be able to edit these activities, an
+administrator can enable the **Allow to Edit Inbound E-mails** option found on 
+**Administer > CiviMail > CiviMail Component Settings**
 
 ### Special email address for incoming email
 
