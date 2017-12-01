@@ -125,23 +125,25 @@ Notes:
 
 If you don't have command line access to the server running CiviCRM, then you can set up a separate system to make HTTP requests to your server in order to execute the `Job.execute` API call.
 
-You can use either the [REST interface](https://docs.civicrm.org/dev/en/latest/api/interfaces/#rest) (as documented in the Developer Gude) or the `cron.php` (as documented below). 
+You can use either the [REST interface](https://docs.civicrm.org/dev/en/latest/api/interfaces/#rest) (as documented in the Developer Gude) or the `cron.php` (as documented below).
 
 #### URL to `cron.php`
 
-* In Drupal:
+The URL you need to call depends on the CMS you are using.  In the examples below, replace `<cron-url>` with one of the following (using `http` or `https` as appropriate).
+
+* Drupal:
     
     ```
     https://example.org/sites/all/modules/civicrm/bin/cron.php
     ```
 
-* In Joomla:
+* Joomla:
 
     ```
     https://example.org/administrator/components/com_civicrm/civicrm/bin/cron.php
     ```
 
-* In WordPress:
+* WordPress:
 
     ```
     https://example.org/<CONTENT-DIR>/plugins/civicrm/civicrm/bin/cron.php
@@ -151,8 +153,11 @@ You can use either the [REST interface](https://docs.civicrm.org/dev/en/latest/a
 
 #### Parameters to pass to `cron.php`
 
-* This method requires you to pass in your [site key](/setup/site-key.md) as shown in the examples below.
-* When using `cron.php` you can only execute API from "job" entity. This means that if an extension has defined an API action like `Foo.process` you won't be able to call this action from `cron.php` because its entity is `Foo` instead of `Job`.
+You will need to pass the following parameters to `cron.php`.  Replace as appropriate in the examples below.
+
+* `<username>` = the CMS username - see [Choosing a CMS User](#choosing-a-cms-user)
+* `<password>` = the pasword for the CMS user
+* `<site-key>` = your site key - see [Configuring your site key](/setup/site-key.md)
 
 #### GET vs POST
 
@@ -162,51 +167,49 @@ The GET method is slightly easier to configure, but may be considered less secur
 
 When calling these urls using `wget`, enclose the url in single quotes, like so:
 
-```
-$ wget -O - -q -t 1 'http://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+```bash
+$ wget -O - -q -t 1 '<cron-url>?name=<username>&pass=<password>&key=<site-key>'
 ```
 
-Use "wget" to send queued CiviMail mailings (Drupal installation)
+Use `wget` to send queued CiviMail mailings:
 
-1. Create a file named `civicrm-wgetrc` that contains this line (replacing `username`, `password` and `site-key` with the actual values).
+1. Create a file named `civicrm-wgetrc` that contains this line:
     
     ```
-    post-data=name=username&pass=password&key=site-key&job=process_mailing
+    post-data=name=<username>&pass=<password>&key=<site-key>&job=process_mailing
     ```
 
 1. Create a script that contains these lines:
     
-    ```
+    ```bash
     export WGETRC=civicrm-wgetrc
-    wget -O - -q -t 1 \
-      http://example.org/sites/all/modules/civicrm/bin/cron.php
+    wget -O - -q -t 1 <cron-url>
     ```
 
 #### Calling `cron.php` with `curl`
 
-Use [curl](http://curl.haxx.se/) to send queued CiviMail mailings (Drupal installation)
+Use `curl` to send queued CiviMail mailings
 
-1. Create a file named `civicrm-curl` that contains this line (replacing `<username>`, `<password>` and `<site-key>` with the actual values).
+1. Create a file named `civicrm-curl` that contains this line:
 
     ```
-    name=<username>&pass=<password>&key=site-key&job=process_mailing
+    name=<username>&pass=<password>&key=<site-key>&job=process_mailing
     ```
 
 1. Create a script that contains this command:
 
-    ```
-    curl --data @civicrm-curl \
-     http://example.org/sites/all/modules/civicrm/bin/cron.php
+    ```bash
+    curl --data @civicrm-curl <cron-url>
     ```
 
 Alternative curl calling syntax
 
-```
-CIVI_USER=civicron
-CIVI_PASS=xxxxxxxx
-SITE_KEY=yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+```bash
+CIVI_USER=<username>
+CIVI_PASS=<password>
+SITE_KEY=<site-key>
 
-CIVI_CRON="http://example.org/sites/all/modules/civicrm/bin/cron.php"
+CIVI_CRON="<cron-url>"
 POST_AUTH="-d name=${CIVI_USER} -d pass=${CIVI_PASS} -d key=${SITE_KEY}"
 POST_JOBS="-d job=process_mailing"
 
@@ -221,14 +224,14 @@ Check the [curl documentation](http://curl.haxx.se/docs/) for information about 
 In order for the scheduled jobs configured within the CiviCRM UI to run automatically, you'll need to configure a cron job which executes the `Job.execute` API call.
 
 !!! note
-    The System Status screen `/civicrm/a#/status` will only report "Cron running OK" if your cron job invokes `job.execute`. The System Status page will complain that cron is "not running" if your cron only invokes particular jobs such as `process_mailing` or `fetch_bounces`. 
+    The System Status screen `/civicrm/a#/status` will only report "Cron running OK" if your cron job invokes `Job.execute`. The System Status page will complain that cron is "not running" if your cron only invokes particular jobs such as `process_mailing` or `fetch_bounces`. 
     
 ### crontab {:#crontab}
 
 1. Make sure you have chosen (and tested) one of the [commands to call `Job.execute`](#commands). In the following examples, we will refer to your command as `<command>`.
 1. Run the following command to edit your crontab:
 
-    ```bash
+    ```
     $ crontab -e
     ```
 
@@ -240,11 +243,11 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
     
 ### webcron
 
-Another way to set up your cron job is to use a webcron like [easycron](https://www.easycron.com). This example assumes Drupal as your CMS.
+Another way to set up your cron job is to use a webcron like [easycron](https://www.easycron.com).
 
 1. Sign up an account on [https://www.easycron.com](https://www.easycron.com).
 
-1. In the URL field of the Create Cron Job form, enter:
+1. In the URL field of the Create Cron Job form, enter the [URL for your CMS](#url-to-cronphp). For example for Drupal:
 
     ```
     http://example.org/sites/all/modules/civicrm/bin/cron.php
@@ -253,8 +256,9 @@ Another way to set up your cron job is to use a webcron like [easycron](https://
 1. In the POST field, enter:
 
     ```
-    name=username&pass=password&key=site-key&job=process_mailing
+    name=<username>&pass=<password>&key=<site-key>&job=process_mailing
     ```
+    (replacing `<username>`, `<password>` and `<site-key>` with the actual values)
 
 ### Aegir
 
@@ -269,6 +273,7 @@ But if you want more control over the scheduling of your jobs you can use softwa
 
 With all of the commands above, you can replace `Job.execute` with the API of the job of your choosing. Refer to the [list of all jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs/#specific-jobs) in the User Guide to find the right API call.
 
+When using `cron.php` you can only execute API from "job" entity. This means that if an extension has defined an API action like `Foo.process` you won't be able to call this action from `cron.php` because its entity is `Foo` instead of `Job`. 
 
 ## Troubleshooting
 
@@ -315,6 +320,6 @@ If your server has an older version of `wget` installed and you are trying to co
 
 The solution is to upgrade `wget` to a version with the proper https support. A workaround is to use the flag `--no-check-certificate` in your `wget` call.
 
-```
-wget --no-check-certificate -O - -q -t 1 'https://example.org/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=site-key'
+```bash
+wget --no-check-certificate -O - -q -t 1 '<cron-url>?name=<username>&pass=<password>&key=<site-key>'
 ```
