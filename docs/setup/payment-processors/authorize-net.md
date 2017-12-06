@@ -89,7 +89,7 @@ If you would like to use an Authorize.net Developer Test Account, you can sign u
 
 !!! danger
 
-    Remember that credit card information is being transmitted to the server. **Unless the site is specifically being used for testing, and no live transactions will take place, it is highly recommended that Force Secure URLs be set**
+    Remember that credit card information is being transmitted to the server. **Unless the site is specifically being used for testing, and no live transactions will take place, it is highly recommended that [https://docs.civicrm.org/sysadmin/en/latest/setup/security/#setting-up-ssl](Force Secure URLs) be set**
 
 
 ### Automated Recurring Billing
