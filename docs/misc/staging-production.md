@@ -5,6 +5,7 @@ Many websites have production and staging/development/test instances. When copyi
 The following explains support that has been added in CiviCRM 4.7.25+ to better support disabling production activities when moving a CiviCRM instance from production to non-production.
 
 ### Changing your Environment
+
 1. By default, 'Environment' is Production. Other options values can be defined, with 'Staging' and 'Development' defined by default.
 
 1. To change a site instance from production to non-production mode (for example, when migrating a site from production to a staging or test or development instance), navigate to debugging page via **Administer > System Settings > Debugging and Error Handling**.
@@ -13,7 +14,7 @@ The following explains support that has been added in CiviCRM 4.7.25+ to better 
 
 ### Effects of changing your Environment
 
-1. The outbound email will be set to “Disable Outbound Email”. Logging of mails will not be done until user explicitly sets the value in civicrm.settings.php & changes the outbound setting to mail().
+1. The outbound email will be set to “Disable Outbound Email”. Logging of mails will not be done until user explicitly sets the value in `civicrm.settings.php` and changes the outbound setting to `mail()`.
      1. This does NOT happen if you have set your Environment via `civicrm.settings.php`.
 
 1. If one wishes to run a specific scheduled job when the in a non-production Environment, add `runInNonProductionEnvironment=TRUE` to that job's parameters.
