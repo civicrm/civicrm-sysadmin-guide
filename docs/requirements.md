@@ -49,7 +49,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 * PHP 7.2 - not yet tested
 * PHP 7.1 - compatible with CiviCRM 4.7.24 and later, but not recommended due to insufficient testing
-* PHP 7.0 - compatible and **recommended**
+* PHP 7.0 - compatible and **recommended** (Note cannot be used with CiviCRM-4.6.X)
 * PHP 5.6 - compatible and **recommended**
 * PHP 5.5 - compatible, but not recommended due to to [PHP end-of life](http://php.net/eol.php) in July 2016
 * PHP 5.4 - [deprecated for CiviCRM 4.7 as of March, 2018](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54). Also not recommended due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015
