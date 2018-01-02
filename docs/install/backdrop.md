@@ -38,12 +38,12 @@ In the above example:
 
 First, download CiviCRM and install the files like you would any other module:
 
-* As administrator in Backdrop, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Project Installer** module in the backdrop modules page to see the **Install New Module** link.
+* As administrator in Backdrop, go to Modules, click on **Install New Module**.  Click **Manual Installation**, then **Install from a URL**.  Fill in the URL of the module (see below). You will need to enable the **Project Installer** module in the backdrop modules page to see the **Install New Module** link.
 * Alternatively, you can upload and extract the file in `<BACKDROP ROOT>/modules`
 
-The result will be that the CiviCRM directory will be at `<BACKDROP ROOT>/sites/all/modules/civicrm`
+The result will be that the CiviCRM directory will be at `<BACKDROP ROOT>/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
+The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download).
 
 **Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
 
