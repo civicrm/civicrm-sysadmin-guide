@@ -10,7 +10,7 @@ This module enhances Drupal Webforms to create a smart form builder and processo
 
 ### Getting Started
 
-* Download and enable this module, plus its dependencies: [CiviCRM](http://civicrm.org), [Webform](https://drupal.org/project/webform), [Views](https://www.drupal.org/project/views), [Ctools](https://www.drupal.org/project/ctools), [Options Element](https://www.drupal.org/project/options_element) and [Libraries](https://drupal.org/project/libraries). (dependencies will be automatically fetched if you install via drush).
+* Start with [CiviCRM](http://civicrm.org) installed in Drupal. Download and enable this module, plus its dependencies: [Webform](https://drupal.org/project/webform), [Views](https://www.drupal.org/project/views), [Ctools](https://www.drupal.org/project/ctools), [Options Element](https://www.drupal.org/project/options_element). (dependencies will be automatically fetched if you install via drush).
 * Configure permissions
 * Create a new webform (or go to edit an existing one).
 * Click on the CiviCRM tab.
