@@ -21,7 +21,7 @@ can't set permissions for Drupal users or do a full exploration of
 online payment options.
 
 If you are having trouble working on a demo site, contact the CiviCRM
-core team via the forum or IRC. If you want a more controlled
+[Core Team](https://civicrm.org/teams/core-team). If you want a more controlled
 environment for exploring CiviCRM, install your own test site.
 
 ## Test installations

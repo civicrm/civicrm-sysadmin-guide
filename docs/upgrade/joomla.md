@@ -60,7 +60,7 @@ http://example.org/administrator/index.php?option=com_civicrm&task=civicrm/upgra
 
 You should see an **Upgrade successful** message when the upgrade completes.
 
-1. If you receive any errors during the process, please note the exact error message and check for solutions on the community support forum.
+1. If you receive any errors during the process, please note the exact error message and check for solutions on [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org).
 1. Now click the **Return to CiviCRM home page** link.
 1. You should be up and running with the latest CiviCRM version. Confirm by checking the version and revision in the page footer. Note that you may need to refresh the browser screen a couple times to clear out your local cache and ensure the layout loads correctly.
 1. Take some time to browse the CiviCRM features that your organization uses. If you notice unexpected behaviors or error messages, refer to the trouble-shooting section below.
