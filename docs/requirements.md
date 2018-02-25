@@ -92,6 +92,9 @@ Your MySQL version must be **5.1.3 or greater**.
 * The `thread_stack` configuration variable should be set to 192k or higher
 * Trigger support is required
 
+    !!! note "MySQL Modes"
+        There have been some issues generated through different SQL modes being set. In MySQL 5.7+ the SQL mode ONLY_FULL_GROUP_BY is enabled by default. This has generated some issues due to sql construction. Administrators are able to turn off specific SQL modes by setting the sql_mode varaiables as per the [MySQL Documentation](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
+
 #### MySQL time
 
 CiviCRM performs various operations based on dates and times – for example, deactivating expired records or triggering scheduled reminders. To perform these operations correctly, the dates and times reported by PHP and MySQL should match. If the dates or times are mismatched, then one or more of the following may be the problem:
