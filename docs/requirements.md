@@ -88,9 +88,18 @@ Your MySQL version must be **5.1.3 or greater**.
  
 ### MySQL configuration
 
-* Support for the `innodb` storage engine is required
-* The `thread_stack` configuration variable should be set to 192k or higher
-* Trigger support is required
+* Support for the `innodb` storage engine is required.
+* The `thread_stack` configuration variable should be set to 192k or higher.
+* Trigger support is required.
+* The `ONLY_FULL_GROUP_BY` mode should be turned off.
+    * In MySQL 5.7+ the SQL mode `ONLY_FULL_GROUP_BY` is enabled by default which causes some errors due to some of CiviCRM's SQL queries that were written with the assumption that this mode would be disabled.
+    * Administrators are advised to turn off this SQL mode by removing the string `ONLY_FULL_GROUP_BY` from the `sql_mode` variable. The following SQL query will do the trick.
+        ```sql
+        SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+        ```
+    * See also:
+        * A popular [Stack Exchange question](https://stackoverflow.com/a/36033983/895563) discussing this issue
+        * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
 
 #### MySQL time
 
