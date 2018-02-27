@@ -124,8 +124,4 @@ There should now be a **CiviCRM** link in your Backdrop menu. Click that link an
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-Review the [Installation and Configuration Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
-
-You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,6.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html), and you can check out the Installation section of our FAQs.
-
-If you don't find an answer to your problem in those places, the next step is to [post a support request on the forum](http://forum.civicrm.org/index.php/board,6.0.html).
+* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.

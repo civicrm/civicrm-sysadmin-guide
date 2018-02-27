@@ -162,10 +162,6 @@ When a new, stable version of CiviCRM is released it is recommended you upgrade 
   1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
   1. Run the Upgrade script at: `http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1`
 
-## Trouble-shooting Resources
+## Trouble-shooting Resources {:#troubleshooting}
 
-Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
-
-You can often find solutions to your issue by searching the **[installation support section of the community forum](http://forum.civicrm.org/index.php/board,64.0.html)** and you can check out the **Installation section of our FAQs**.
-
-If you don't find an answer to your problem in those places, the next step is to **[post a support request on the forum](http://forum.civicrm.org/index.php/board,64.0.html)**.
+* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.

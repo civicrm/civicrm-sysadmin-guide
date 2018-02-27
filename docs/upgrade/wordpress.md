@@ -114,7 +114,7 @@ Delete all files in your `templates_c` directory
 1. You should see the Upgrade screen.
 1. If you are ready to upgrade, click the **Upgrade Now** button.
 1. You should see the message **Upgrade successful** when the upgrade completes.
-    * If you receive any errors during the process, please note down the exact error message, and check for solutions on the [community support forum](http://forum.civicrm.org/).
+    * If you receive any errors during the process, please note down the exact error message, and check for solutions on [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org).
     
 1. Now click the **Return to CiviCRM home page** link. This will rebuild CiviCRM menus automatically and return you to the CiviCRM home dashboard.
 
