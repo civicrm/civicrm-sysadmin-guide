@@ -35,7 +35,7 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
 
     `<wordpress_root>/content-dir/uploads/civicrm/civicrm.settings.php`
 
-    The installer in 4.7 does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
+    The installer in 4.7 and above does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
     
 Copy this file to a location outside your WordPress project. You will need to restore it after upgrading.
 

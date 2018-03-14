@@ -93,7 +93,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Go to plugins page: `http://example.org/wp-admin/plugins.php`.
 * Click the **Activate** link to activate the CiviCRM plugin.
 * Then go to Settings > CiviCRM Installer: `http://example.org/wp-admin/options-general.php?page=civicrm-install`
-    * In version 4.7 you will see a link on the wp-admin page to the Installer screen
+    * In version 4.7 and above you will see a link on the wp-admin page to the Installer screen
 
 * You should see the **CiviCRM Installer** screen.
 
