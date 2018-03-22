@@ -16,7 +16,11 @@
         ```
 
     * _<u><b>Before creating this new database for the logging tables or turning logging on in the admin menu, be sure to make a complete backup copy of your existing database.</b></u>_
-    * When you enable logging, your civicrm database user must have authority to create triggers. If your database user does not have proper authority you will see a generic DB error message when enabling logging. You may need to create a new DB user with the necessary authority and use that DB account when running civicrm.
+    !!! note "MySQL Storage Engines"
+        By Default CiviCRM uses the Archive storage engine to store the detailed logging data. The Archive engine may not automatically be installed on your MySQL system. Depending on your installation you maybe able to [install the Archive Engine](https://stackoverflow.com/questions/26996618/install-mariadb-archive-engine). However if you cannot install the Archive engine, the best solution would be to look to install the [nz.co.fuzion.innodbtriggers](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) Extension.
+
+    !!! warning "MySQL database permissions"
+         When you enable logging, your civicrm database user must have authority to create triggers. If your database user does not have proper authority you will see a generic DB error message when enabling logging. You may need to create a new DB user with the necessary authority and use that DB account when running civicrm.
     * A rundown of how the logging system works is in this article: [http://civicrm.org/blogs/shot/new-civicrm-33-feature-logging](http://civicrm.org/blogs/shot/new-civicrm-33-feature-logging)
     * The reporting system is still definitely in beta in CiviCRM 4.2. In 4.2, the example contact report templates, mentioned in the article above, are not automatically created. However, two contribution logging reports are available–looking under Reports/Reports Listing.
     * You can create the two contact logging reports, mentioned in the article above, in Administer/CiviReport/Manage Templates with these values for the Logging Summary Report:
