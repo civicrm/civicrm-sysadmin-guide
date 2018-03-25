@@ -23,12 +23,12 @@ Make sure you have logged in to WordPress as an administrator. Do not log out un
 
 ## Upgrade the filesystem
 
-### Backup your settings files
+### Backup
+#### Settings files
 
 The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ the `civicrm.settings.php` settings file, as it is, during the upgrade.
 
-* For Versions installed prior to 4.7
-
+!!! caution "For CiviCRM 4.6 and older:"
     `<wordpress_root>/wp-content/plugins/civicrm/civicrm.settings.php`
 
 * For Versions installed 4.7+
@@ -40,6 +40,10 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
 Copy this file to a location outside your WordPress project. You will need to restore it after upgrading.
 
 * Also, if you are using the `<wordpress_root>/wp-content/plugins/civicrm/civicrm/settings_location.php` file in your implementation, make a copy of this as well.
+
+#### CiviCRM and database
+1. Backup your existing <wordpress>/wp-content/plugins/civicrm directory by creating an archive or FTPing it to your local computer.
+1. Backup your existing database through Control Panel or PHPMyAdmin
 
 ### Remove old CiviCRM code
 
@@ -58,10 +62,11 @@ CiviCRM will not run properly if files from previous version are present after t
     $ unzip <civicrm_download_file>.zip
     ```
     
-1. For Versions installed prior to 4.7 - Relocate (paste) the backed-up `civicrm.settings.php` file inside `<wordpress_root>/wp-content/plugins/civicrm/`
+!!! caution "For CiviCRM 4.6 and older:"
+    For Versions installed prior to 4.7 - Restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory.
 
-1. If you have upgraded from a CiviCRM 4.1 version, check the contents of `civicrm.settings.php`. Make sure at the very end of the file these 2 lines exist, and if not, add them.
-
+!!! caution "For CiviCRM 4.1 and older:"
+    If you have upgraded from a CiviCRM 4.1 version, check the contents of `civicrm.settings.php`. Make sure at the very end of the file these 2 lines exist, and if not, add them.
     ```php
     require_once 'CRM/Core/ClassLoader.php';
     CRM_Core_ClassLoader::singleton()->register();
@@ -100,8 +105,8 @@ Delete all files in your `templates_c` directory
 * In CiviCRM 4.7 and above: 
     `<wordpress_root>/<content-dir>/uploads/civicrm/templates_c`
     
-* In CiviCRM 4.6 and below: 
-    `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c/`
+!!! caution "For CiviCRM 4.6 and older:"
+    `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c`
 
 ## Upgrade the database
 
