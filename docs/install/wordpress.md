@@ -147,21 +147,6 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
-## Upgrade CiviCRM
-
-When a new, stable version of CiviCRM is released it is recommended you upgrade if the release contains security patches, bug fixes or new features you desire.
-
-1. Backup your existing `<wordpress>/wp-content/plugins/civicrm directory` by creating an archive or FTPing it to your local computer
-  1. Backup your existing database through Control Panel or PHPMyAdmin
-  1. Download the latest CiviCRM .zip package from the download link at CiviCRM.org
-  1. Upload the .zip file to: `<wordpress>/wp-content/plugins`
-  1. Use your Control Panel to "extract" or "unzip" the file careful to:
- a. make sure you have a backup of your civicrm.settings.php file (see above at heading #6)
- b. you overwrite existing civicrm directory during the extraction/unzip
- c. do NOT create an additional subdirectory for the extraction
-  1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
-  1. Run the Upgrade script at: `http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1`
-
 ## Trouble-shooting Resources {:#troubleshooting}
 
 * Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
