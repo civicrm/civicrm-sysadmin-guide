@@ -36,6 +36,10 @@ These steps vary depending on your CMS. Find the appropriate page in this chapte
 
 ## After upgrading {:#after-upgrading}
 
+### Flush caches
+
+If you ran the upgrade on the command-line, you will need to flush caches by running `cv flush`. The upgrade web interface will take care of this automatically.
+
 ### Update resource settings
 
 If you are running the upgrade in a different directory from your previous version you may need to update the configured **CiviCRM Resource URL** and **Extension Resource URL** settings. (Missing icons and images, as well as problems with javascript functions and stylesheets are all symptoms indicating that these settings need to be updated.)
