@@ -47,7 +47,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-|  | CiviCRM 4.6.x | CiviCRM 4.7+ | CiviCRM 5.x |
+|  | CiviCRM 4.6.x | CiviCRM 4.7.x | CiviCRM 5.x.x |
 | -- | -- | -- | -- |
 | PHP 7.2 | **incompatible** | _not yet tested_ |  _not yet tested_ |
 | PHP 7.1 | **incompatible** | compatible with CiviCRM 4.7.24 and later, but **not recommended** due to insufficient testing | compatible |
