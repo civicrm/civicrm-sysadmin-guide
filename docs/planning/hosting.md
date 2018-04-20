@@ -5,6 +5,22 @@ it will be hosted. The main options with an outline of the situations in
 which you would want to choose them, and the advantages and
 disadvantages of doing so are outlined below:
 
+## CiviCRM Spark
+
+CiviCRM Spark is a quick and secure way to get started with CiviCRM. It allows you to get your own installation of CiviCRM up-and-running in minutes. Spark is ideal for organizations of any size wanting to test and trial CiviCRM, or for smaller organizations and activities with up to 2000 contacts.
+
+For more information, visit: [https://civicrm.org/spark](https://civicrm.org/spark)
+
+## CiviCRM recommended hosting providers and implementers
+
+There are implementers and experts in the CiviCRM community able to
+manage the hosting and/or installation for you. If requested, they may
+also be available to manage a local implementation and configuration on
+your premises.
+
+For a list of experts recommended within the community, visit:
+[https://civicrm.org/providers](https://civicrm.org/providers)
+
 ## Internal hosting
 
 If you have an internal IT department or staff members with a technical
@@ -92,15 +108,3 @@ Aside from paying a second bill, one of the limitations to this approach
 is the need to clone the style of your website on the second host to
 give the visitor the illusion that they are in the same place. If
 changes to the style are changed, the work must be duplicated.
-
-## Outsourcing to a CiviCRM implementer/host
-
-There are implementers and experts in the CiviCRM community able to
-manage the hosting and/or installation for you. If requested, they may
-also be available to manage a local implementation and configuration on
-your premises.
-
-For a list of experts recommended within the community, visit:
-[https://civicrm.org/providers](https://civicrm.org/providers)
-
-
