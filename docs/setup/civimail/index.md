@@ -41,13 +41,13 @@ are sent.
 
 Outbound email settings are configured at: **Administer > System
 Settings > Outbound Email (SMTP/Sendmail)**. The choices here are:
+!!! note
+    Consult your server administrator to find out which one is best for your system.
 
--   **mail()**: This is the default option and if it works for you, you
-    should use it.
+-   **mail()**: This is the default option.
 -   **SMTP**: If you have a dedicated external mail server, specify its
     details here. Bounce messages generated with SMTP are slightly more
-    complete than the ones from mail(), but there is no practical
-    benefit to using SMTP if you can use mail().
+    complete than the ones from mail().
 -   **Sendmail**: This option is kept for compatibility with older CiviCRM
     versions.
 -   **Disable Outbound Email**: Works as expected.
