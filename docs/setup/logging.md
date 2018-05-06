@@ -19,6 +19,13 @@ Detailed logging (aka "logging") allows you to maintain a full history of *all* 
 
 * Logging will _not_ destroy or change your existing data.
 
+### Log_conn_id
+
+The pre 4.7.7 log table format creates an integer field 13 chars long for the log_conn_id. The value stored here is the mysql CONNECTION_ID(). Unfortunately this mysql value is not actually unique. It is only unique at a given point in time. If you want to retrieve the changes made in a specific mysql transaction you need to add some time parameters - but unfortunately there is no accurate way to calculate what those time parameters should be since the transaction could be a batch transaction lasting 10 minutes or only 10 seconds. For anyone who has loaded change reports and found data missing the miscalculation of this timeframe is a likely cause. This was then changed to a 13 character varchar with using the `uniqid()` php function to generate the id
+
+## Performance
+
+In some testing there hasn't been any indication of any significant performance degredation to the system, however if your working on a large dataset there maybe be a need to do some performance testing with logging turned on before releasing it into production. In testing it showed that there wasn't any great difference in perfomance in INNODB v Archive engine storage.
 
 ## System requirements
 
@@ -69,6 +76,19 @@ If you want to turn on logging again, after it's been off for some time, you can
 
 1. For one update, click **Update** to view the fields that were updated.
 
+## Swapping over to INNODB for storage format
+
+While INNODB is a better option for most sites and the changed `log_conn_id` methodology is better for all it wasn't a change I wanted to put in the upgrade script, for the simple reason it could take a while. Converting and altering all the log tables on a large site is likely to require a planned outage - so instead of imposing that change we settled for
+
+1. new sites turning on logging would use the new `log_conn_id` format
+
+2. new sites turning on logging could get the INNODB table format and indexes by implementing a hook. The hook is implemented in this [extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers/blob/master/innodbtriggers.php) and sites could opt to install that extension or add a similar hook before turning on logging if they choose
+
+3. existing sites can migrate to the new `log_conn_id` by running an api function (probably by drush or similar) ```php civicrm_api3('System', 'updatelogtables', array())```;
+
+4. existing sites can do a one way conversion to INNODB format by adding a hook per above prior to running that command. 
+
+5. sites that wish to revert to ARCHIVE would need to do that through mysql - there is no process for this & it seems unlikely to be a good idea.
 
 ## Reporting on multiple changes
 
@@ -85,3 +105,7 @@ If you want to turn on logging again, after it's been off for some time, you can
 ### Extensions
 
 * The [Extended Logging Report](http://civicrm.org/extensions/extended-logging-report) offers some additional features over the built in reports which are designed to find out about individual transactions and don't cope with Batch or long running transactions. The extended logging report allows you to view all email address changes made this month (for example) or to see the changes made by an import job.
+
+## References
+
+There is a good write up on how logging is enabled the purpose in this [blog post](https://civicrm.org/blog/eileen/who-did-what-when).
