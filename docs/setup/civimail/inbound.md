@@ -68,8 +68,7 @@ A more nuanced query might be something like:
 
 ```sql
 UPDATE civicrm_email ce
-INNER JOIN civicrm_contact c ON ( c.id = ce.contact_id )
-LEFT JOIN civicrm_group_contact gc ON ( gc.contact_id = c.id and gc.status = 'Added' )
+LEFT JOIN civicrm_group_contact gc ON ( gc.contact_id = ce.contact_id AND gc.status = 'Added' )
 INNER JOIN civicrm_group gr ON ( gr.id = gc.group_id )
 SET ce.on_hold = 0
 WHERE gr.name = 'give your contact group name';
