@@ -71,7 +71,7 @@ Follow these steps to download and install the files that contain strings for la
             ```
 
 
-* Un-tar (unpack) the language files into the wordpress/wp-content/plugins directory.
+* Un-tar (unpack) the language files into the wordpress/wp-content/plugins/civicrm directory.
 
     1. Move to the wordpress/wp-content/plugins/civicrm directory (if not already there)
         ```
