@@ -87,12 +87,21 @@ Depending on how you would like to install civicrm for site 2, proceed to one of
 
 * The sites can share a single instance of the civicrm code in `sites/all/modules/` directory.
 
-#### WordPress multi-sites
+#### WordPress multisites
 
-WordPress multi-sites do not offer multiple codebases for plugins. There is only one that is shared among all sites. Therefore it is necessary to use the single civicrm.settings.php file and add a conditional statement.
+If using a WordPress multisite when CiviCRM is activated the `civicrm.settings.php` file is added within the [uploads directory for that site](https://codex.wordpress.org/Multisite_Network_Administration#Uploaded_File_Path). Site 1, generally the main site of the multisite, uses the default upload path `/wp-content/uploads/`. But all other sites will use be in `/wp-content/uploads/sites/#/civicrm`, the # being the website ID for that site. This default setup allows multiple CiviCRM databases to share one codebase. 
 
-* You will find the file at `/wp-content/plugins/CiviCRM/civicrmsettings.php`
-* The existing default code is this:
+If you are looking to share one CiviCRM database across multiple websites, for a chapter like setup, the following needs to be added to your `wp-config.php` file. 
+
+~~~
+// define CiviCRM constants here
+if ( ! defined( 'CIVICRM_SETTINGS_PATH' ) ) {
+        define( 'CIVICRM_SETTINGS_PATH', '/path/to/wordpress/website/wp-content/uploads/civicrm/civicrm.settings.php' );
+}
+~~~
+
+This will define the path for all websites on the multisite and when enabled they will access the CiviCRM instance defined by the path settings and access is managed through the `civicrm.settings.php` as this example outlines. 
+
 
     ```php
     echo "you need to configure site : " . home_url();
@@ -136,7 +145,9 @@ WordPress multi-sites do not offer multiple codebases for plugins. There is only
        }
     
        define( 'CIVICRM_UF_BASEURL', $url );
-    ```
+    ``` 
+ 
+**Recommendation**: Create a Site Admin role for any administrator of sub-sites that are sharing CiviCRM, meaning the default Administrator role is only used on the main site. This is recommended since by default all Adminstrators automatically get access to Administer CiviCRM and will be able to create things like custom data fields. By creating a Site Admin role the CiviCRM permissions can be managed from [Administer > Users and Permissions > Permissions (Access Control)](https://docs.civicrm.org/user/en/latest/initial-set-up/permissions-and-access-control/#access-control-permissions-in-wordpress) and will allow only main site administrator access to Administer CiviCRM.
 
 #### Drupal with the Domain Access module
 
