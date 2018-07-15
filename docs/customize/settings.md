@@ -11,27 +11,29 @@ Some organizations run separate copies of CiviCRM for "production" ("live"), "te
 These server-specific settings are _usually_ determined automatically during installation – but if you copy the database, then the administrator must fix them to match the new system. Two administrative forms are provided to allow administrators to manually edit these settings:
 
 Administer > System Settings > Directories
- Administer > System Settings > Resource URLs
-
-If you regularly copy a production database to a test or development server, then manually editing these settings will become cumbersome and error-prone. A better alternative is to override the server-specific settings (e.g. directory and URL paths) by adding them to a local copy of the CiviCRM settings file (_civicrm.settings.php_).
+Administer > System Settings > Resource URLs
 
 ## Hidden Settings
 
 There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](/customize/extensions.md) for more details).
+
+## Override settings in civicrm.settings.php
+
+If you regularly copy a production database to a test or development server, manually editing these settings may become cumbersome and error-prone. A faster alternative is to override the server-specific settings (e.g. directory and URL paths) by adding them to a local copy of the CiviCRM settings file (_civicrm.settings.php_).  First ensure this line exists in civicrm.settings.php before any override settings.
+```
+global $civicrm_setting;
+```
 
 ## Override Temporary Files directory
 
 To override the Temporary Files directory for a test site, add these lines to _civicrm.settings.php_:
 
 ```
-// Add this line only once above any settings overrides
-global $civicrm_setting;
-
 // Override the Temporary Files directory
 $civicrm_setting['Directory Preferences']['customFileUploadDir'] = '/var/www/testing/sites/default/files/civicrm/upload';
 ```
 
-## List of Selected Settings
+## List of Additional Settings
 
 The table below shows some of the settings file "constants" which will override the database value if present in _civicrm.settings.php_ and administrative settings field.
 
@@ -50,7 +52,7 @@ The table below shows some of the settings file "constants" which will override 
 | **Disable display of Community Messages on home dashboard** | $civicrm_setting['CiviCRM Preferences']['communityMessagesUrl'] = false; |
 | **Disable automatic download / installation of extensions** | $civicrm_setting['Extension Preferences']['ext_repo_url'] = false; |
 
-For a more complete list of settings, see [https://github.com/civicrm/civicrm-core/tree/master/settings](https://github.com/civicrm/civicrm-core/tree/4.4/settings)
+For a full list of settings, see [https://github.com/civicrm/civicrm-core/tree/master/settings](https://github.com/civicrm/civicrm-core/tree/master/settings)
 
 !!! warning "Incorrect Paths May Cause Unexpected Behaviors"
 
