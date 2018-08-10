@@ -18,12 +18,10 @@ To get this working you need to:
 * Configure a mail account for bounce handling in CiviCRM Mail Accounts
 * Configure mailings to use VERP or not
 
-### Finding "on hold" contacts
+### Finding "On Hold" contacts
 
-You can use the Search Builder to find those contacts with an email **on hold** and look at the bounce report of a CiviMail sent message.
-
-1. From the CiviCRM menu, choose **Search > Search Builder**.
-1. Then choose **Contacts, On Hold, Primary, =, Yes**
+1. From **Search > Advanced Search** and choose **Email On Hold** from the Basic Criteria section at the top
+1. Use **Search > Search Builder**.  Then choose **Contacts, On Hold, Primary, =, Yes**
 
 ### Causes of e-mail address bounces
 
@@ -50,7 +48,9 @@ Here is a list from the database of the different types of bounces, and how many
 
 ### Removing Hold
 
-You can remove **on hold** from a contact by manually editing the contact record.
+After running a Search, choose **Email - unhold addresses** 
+
+You can also remove **on hold** from a single contact by manually editing that contact.
 
 Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.
 
