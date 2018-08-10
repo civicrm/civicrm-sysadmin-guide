@@ -29,6 +29,7 @@ pages:
   - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Directories: setup/directories.md
+  - Caches: setup/cache.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
     - Outbound mail: setup/civimail/outbound.md
