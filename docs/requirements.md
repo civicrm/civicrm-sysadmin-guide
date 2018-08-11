@@ -47,15 +47,15 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-|  | CiviCRM 4.6.x | CiviCRM 4.7.x | CiviCRM 5.x.x |
+|  | CiviCRM 4.6.x | CiviCRM 5.x.x |
 | -- | -- | -- | -- |
 | PHP 7.2 | **incompatible** | _not yet tested_ | compatible and **recommended**|
-| PHP 7.1 | **incompatible** | compatible with CiviCRM 4.7.24 and later, but **not recommended** due to insufficient testing | compatible and **recommended** |
+| PHP 7.1 | **incompatible** | compatible and **recommended** |
 | PHP 7.0 | **incompatible** | compatible and **recommended** | compatible |
-| PHP 5.6 | compatible and **recommended** | compatible | compatible |
-| PHP 5.5 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 | **incompatible** |
-| PHP 5.4 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015 | **deprecated** [as of March, 2018](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54) | **incompatible** |
-| PHP 5.3 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in August 2014 | **deprecated** [as of December, 2017](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54) | **incompatible** |
+| PHP 5.6 | compatible and **recommended** | compatible |
+| PHP 5.5 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016  |compatible until end of 2018, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 |
+| PHP 5.4 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015 | **incompatible** |
+| PHP 5.3 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in August 2014 |  **incompatible** |
 
 ### PHP extensions
 
