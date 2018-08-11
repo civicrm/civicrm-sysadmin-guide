@@ -58,12 +58,12 @@ The servers and drivers are available in many formats and channels (`apt-get`, `
 
 Once you've installed, you should have a few pieces of information:
 
-* *Redis*: Hostname (e.g. `localhost`), port (e.g `6378`), and optionally a password
+* *Redis*: Hostname (e.g. `localhost`), port (e.g `6379`), and optionally a password
 * *Memcache*: Hostname (e.g. `localhost`), port (e.g `11211`)
 
 ## Configure the CiviCRM cache {:#config}
 
-The cache service is an essential part of CiviCRM that must be able at the very beginning of each page-request.  To configure CiviCRM to use a cache, edit the `civicrm.settings.php` and update the `define()` statements for `CIVICRM_DB_CACHE_*` options.  Below are some examples followed by more detailed reference.
+The cache service is an essential part of CiviCRM that must be available at the very beginning of each page-request.  To configure CiviCRM to use a cache, edit the `civicrm.settings.php` and update the `define()` statements for `CIVICRM_DB_CACHE_*` options.  Below are some examples followed by a more detailed reference.
 
 ### Example: Memcache {:#config-memcache}
 
@@ -109,7 +109,7 @@ if (!defined('CIVICRM_TEST') || !(getenv('CIVICRM_UF') === 'UnitTests')) {
     * `ArrayCache` (*default*) - Use an temporary, in-memory cache (unique for each page-request).
     * `Memcache` - Use the PHP `memcache` extension
     * `Memcached` - Use the PHP `memcached` extension
-    * `NoCache` -Do not cache anything
+    * `NoCache` - Do not cache anything
     * `Redis` - Use the PHP `redis` extension
 * `CIVICRM_DB_CACHE_HOST`: The hostname or IP address of the remote server. (Applies to `Memcache`, `Memcached`, `Redis`.)
 * `CIVICRM_DB_CACHE_PORT`: The port number of the remote server. (Applies to `Memcache`, `Memcached`, `Redis`.)
