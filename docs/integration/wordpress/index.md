@@ -10,23 +10,29 @@ CiviCRM offers a function to Synchronize Users to Contacts: CiviCRM will check e
 
 ## Using Shortcodes to Publish CiviCRM Content in WordPress
 
-WordPress shortcodes enable a user to be able to very easily display dynamic content within a WordPress Page or Post with the use of just one line of text. For more information about WordPress shortcodes [check here](http://en.support.wordpress.com/category/shortcodes/). After installing CiviCRM within your WordPress environment, you can immediately take advantage of CiviCRM specific shortcodes that enable you to display content that relates to:
+WordPress shortcodes enable a user to be able to very easily display dynamic content within a WordPress Page or Post with the use of just one line of text. For more information about WordPress shortcodes [check here](http://en.support.wordpress.com/category/shortcodes/). After installing CiviCRM within your WordPress environment, you can immediately take advantage of CiviCRM specific shortcodes that enable you to display content that relates to contribution pages, event pages, profiles, user dashboards, and petitions. Extensions can also add their own shortcodes. The basic shortcode format is `[civicrm compontent=X]` with various options, including the ID of the component you want to display.
 
--   Contribution Pages
--   Event Pages
--   Profiles
--   User Dashboards
--   Petitions
+| Component | Sample shortcodes | Description |
+| --- | --- | --- |
+| Contribution Pages | `[civicrm component="contribution" id="x"]` | A contribution page specified by the id attribute. |
+| Event Pages | `[civicrm component="event" action="register" id="x"]` or `[civicrm component="event" action="info" id="x"]` | Either a registration or information page for the event specified by the id attribute. |
+| Profiles | `[civicrm component="profile" mode="y" gid="x"]` | A page for displaying a user's profile. This can be one of 4 modes - edit, view, create or search. The default is create. The gid attribute selects which profile group is displayed. |
+| User Dashboards | `[civicrm component="user-dashboard"]` | The current user's dashboard page. |
+| Petitions | `[civicrm component="petition" id="x"]` | A petition form specified by the id attribute. |
+
+In addition, any of these can specify a hijack option (`hijack="1"`) and they will replace all other content on that page rather than being displayed inline.
 
 Keep in mind that prior to being able to display any CiviCRM content on you public website that record will have already been created within CiviCRM.
 
-To add a shortcode either create a new post or new page and you will now see a CiviCRM button next to Add Media.
+### Shortcodes with classic editor
+
+To add a shortcode either create a new post or new page. If you are using the classic editor (as opposed to the new Gutenberg editor) you will now see a CiviCRM button next to Add Media.
 
 ![Screenshot demonstrating the "CiviCRM" button after "Add Media"](/img/wordpress_shortcode_insert.png)
 
 After you click on CiviCRM, you will be able to choose the type of content to display. (The options correspond to the types of content in the list above.)
 
-Dependent up the shortcode that you select you will have different sub options to cater the information to the end user.
+Dependent upon the shortcode that you select you will have different sub options to cater the information to the end user.
 
 When selecting a front end element of **Contribution Page** you will have the ability to select the specific Contribution Page that you want to be displayed then you will have the ability to chose between Live or Test mode.
 
@@ -47,6 +53,11 @@ When selecting **Event Pages** you can either chose from the following two optio
 When selecting the **User Dashboard** you get no additional options. To identify what related information you have setup to be displayed within the user dashboard i.e. Contributions, memberships, etc. navigate to **Administer > Customize Data and Screens > Display Preferences** and select all of the information you would like to have visible to the user.
 
 Finally, for **Petitions**, the only option presented is to select the specific petition that you wish to display on your website.
+
+
+### Shortcodes in Gutenberg editor
+
+The Gutenberg editor is the default in Wordpress 5.0. Gutenberg has a Shortcodes block that can be used to insert shortcodes by typing them in. Currently there is no specific CiviCRM block for Gutenberg so there is no interactive way to see the options available for the shortcode. You will need to know the format and look up IDs and options in CiviCRM before creating the shortcode in Wordpress.
 
 ## Plugin Integrations
 
