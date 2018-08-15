@@ -93,7 +93,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Go to plugins page: `http://example.org/wp-admin/plugins.php`.
 * Click the **Activate** link to activate the CiviCRM plugin.
 * Then go to Settings > CiviCRM Installer: `http://example.org/wp-admin/options-general.php?page=civicrm-install`
-    * In version 4.7 you will see a link on the wp-admin page to the Installer screen
+    * In version 4.7 and above you will see a link on the wp-admin page to the Installer screen
 
 * You should see the **CiviCRM Installer** screen.
 
@@ -147,25 +147,6 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
-## Upgrade CiviCRM
+## Trouble-shooting Resources {:#troubleshooting}
 
-When a new, stable version of CiviCRM is released it is recommended you upgrade if the release contains security patches, bug fixes or new features you desire.
-
-1. Backup your existing `<wordpress>/wp-content/plugins/civicrm directory` by creating an archive or FTPing it to your local computer
-  1. Backup your existing database through Control Panel or PHPMyAdmin
-  1. Download the latest CiviCRM .zip package from the download link at CiviCRM.org
-  1. Upload the .zip file to: `<wordpress>/wp-content/plugins`
-  1. Use your Control Panel to "extract" or "unzip" the file careful to:
- a. make sure you have a backup of your civicrm.settings.php file (see above at heading #6)
- b. you overwrite existing civicrm directory during the extraction/unzip
- c. do NOT create an additional subdirectory for the extraction
-  1. Delete all files in `<wordpress>/wp-content/plugins/files/civicrm/templates_c/` and clear browser cache
-  1. Run the Upgrade script at: `http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/upgrade&reset=1`
-
-## Trouble-shooting Resources
-
-Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
-
-You can often find solutions to your issue by searching the **[installation support section of the community forum](http://forum.civicrm.org/index.php/board,64.0.html)** and you can check out the **Installation section of our FAQs**.
-
-If you don't find an answer to your problem in those places, the next step is to **[post a support request on the forum](http://forum.civicrm.org/index.php/board,64.0.html)**.
+* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.

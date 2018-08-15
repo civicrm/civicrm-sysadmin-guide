@@ -47,13 +47,15 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-* PHP 7.2 - not yet tested
-* PHP 7.1 - compatible with CiviCRM 4.7.24 and later, but not recommended due to insufficient testing
-* PHP 7.0 - compatible and **recommended**
-* PHP 5.6 - compatible and **recommended**
-* PHP 5.5 - compatible, but not recommended due to to [PHP end-of life](http://php.net/eol.php) in July 2016
-* PHP 5.4 - [deprecated for CiviCRM 4.7 as of March, 2018](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54). Also not recommended due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015
-* PHP 5.3 - [deprecated for CiviCRM 4.7 as of December, 2017](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54). Also not recommended due to to [PHP end-of life](http://php.net/eol.php) in August 2014
+|  | CiviCRM 4.6.x | CiviCRM 4.7.x | CiviCRM 5.x.x |
+| -- | -- | -- | -- |
+| PHP 7.2 | **incompatible** | _not yet tested_ |  _not yet tested_ |
+| PHP 7.1 | **incompatible** | compatible with CiviCRM 4.7.24 and later, but **not recommended** due to insufficient testing | compatible and **recommended** |
+| PHP 7.0 | **incompatible** | compatible and **recommended** | compatible and **recommended** |
+| PHP 5.6 | compatible and **recommended** | compatible and **recommended** | compatible and **recommended** |
+| PHP 5.5 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 | **incompatible** |
+| PHP 5.4 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015 | **deprecated** [as of March, 2018](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54) | **incompatible** |
+| PHP 5.3 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in August 2014 | **deprecated** [as of December, 2017](https://civicrm.org/blog/totten/end-of-zombies-php-53-and-54) | **incompatible** |
 
 ### PHP extensions
 
@@ -86,9 +88,18 @@ Your MySQL version must be **5.1.3 or greater**.
  
 ### MySQL configuration
 
-* Support for the `innodb` storage engine is required
-* The `thread_stack` configuration variable should be set to 192k or higher
-* Trigger support is required
+* Support for the `innodb` storage engine is required.
+* The `thread_stack` configuration variable should be set to 192k or higher.
+* Trigger support is required.
+* The `ONLY_FULL_GROUP_BY` mode should be turned off.
+    * In MySQL 5.7+ the SQL mode `ONLY_FULL_GROUP_BY` is enabled by default which causes some errors due to some of CiviCRM's SQL queries that were written with the assumption that this mode would be disabled.
+    * Administrators are advised to turn off this SQL mode by removing the string `ONLY_FULL_GROUP_BY` from the `sql_mode` variable. The following SQL query will do the trick.
+        ```sql
+        SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+        ```
+    * See also:
+        * A popular [Stack Exchange question](https://stackoverflow.com/a/36033983/895563) discussing this issue
+        * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
 
 #### MySQL time
 
@@ -96,7 +107,7 @@ CiviCRM performs various operations based on dates and times – for example, de
 
 * PHP and MySQL may be running on different servers, and the clocks may be out-of-sync. Configuring automatic clock synchronization is the best solution.
 * PHP, MySQL, and/or the operating system may be configured to use different default timezones. Verify the configuration of each.
-* The content management system (Drupal, Joomla, or WordPress) or one of its plugins may manipulate the timezone settings without CiviCRM's awareness. You may wish to post to the [CiviCRM Forum](http://forum.civicrm.org/) about your problem. Please include any available details about the timezone settings in the operating system, PHP, MySQL, and the CMS; if you have any special CMS plugins or configuration options which may affect timezones, please report them.
+* The content management system (Drupal, Joomla, or WordPress) or one of its plugins may manipulate the timezone settings without CiviCRM's awareness. You may wish to post to [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org) about your problem. Please include any available details about the timezone settings in the operating system, PHP, MySQL, and the CMS; if you have any special CMS plugins or configuration options which may affect timezones, please report them.
 
 
 ### MySQL permissions

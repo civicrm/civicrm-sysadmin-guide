@@ -1,6 +1,6 @@
 # Switching CMS platforms
 
-This page provides instructions for moving your CiviCRM installation from being installed within one CMS to being installed within another.
+This page provides instructions for moving your CiviCRM installation from being installed within one CMS to being installed within another.  If you are changing server at the same time, please also refer to the instructions on [Moving an Existing Installation to a New Server or Location](/misc/switch-servers.md).
 
 ## Joomla to Drupal
 
@@ -16,7 +16,7 @@ This page provides instructions for moving your CiviCRM installation from being 
     * Set up CiviCRM in your Drupal site
 
         !!! check
-            When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
+            When downloading the CiviCRM package get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
         Refer to the [Drupal Installation Guide](/install/drupal7.md) for details on obtaining and setting up CiviCRM for Drupal.
 
@@ -106,7 +106,7 @@ If you're having trouble editing and/or adding users, check your WYSIWYG setting
 * Set up CiviCRM in your WordPress site
 
     !!! tip
-        When downloading the CiviCRM package it would be best to get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
+        When downloading the CiviCRM package get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
     
      Refer to the [WordPress Installation Guide](/install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
 

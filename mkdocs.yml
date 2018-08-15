@@ -26,8 +26,10 @@ pages:
   #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
+  - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Directories: setup/directories.md
+  - Caches: setup/cache.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
     - Outbound mail: setup/civimail/outbound.md
@@ -67,7 +69,7 @@ pages:
     - Drupal views: integration/drupal/views.md
     - Webform: integration/drupal/webform.md
     - CiviGroup Roles Sync: integration/drupal/group-roles.md
-    - CiviMeber Roles Sync: integration/drupal/member-roles.md
+    - CiviMember Roles Sync: integration/drupal/member-roles.md
     - WYSIWYG integration: integration/drupal/wysiwyg.md
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md

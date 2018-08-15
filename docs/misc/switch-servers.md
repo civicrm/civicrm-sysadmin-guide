@@ -19,7 +19,9 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
 1. One important change is the need to delete a more file called Config.IDS.ini. This WILL break CiviCRM if you don't do this. See below for details.
 
 
-## Steps
+## Steps for non-Composer installations
+
+See below if you have a Drupal 8 composer installation, or other composer installs.
 
 1. Make a note of which CiviCRM modules are enabled on the original CMS.
 1. Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy later on in these steps. You can check this using the menu option "Administer >> System Settings >> Directories".
@@ -169,6 +171,63 @@ When moving your server, it's quite likely that you've changed your URL. If so, 
 As a result of your migration, many of your site's other configuration settings have been reset, for instance Available Countries in "Localization" and reCaptcha keys. Page through the _Configuration Checklist_ at **Administer > Administration Console > Configuration Checklist** to be sure that all your settings are once again set to their correct values.
 
 Your site should now be properly configured for its new location.
+
+## Steps for Composer installations
+
+This documentation covers the general steps to move a CiviCRM instance in a Drupal 8 website to a new server or location. Refer to Drupal documentation for instructions on how to move the rest of the Drupal 8 site.
+
+Some settings in the CiviCRM database relate to a physical location, such as a server file path or a public URL. These settings are usually stored as relative paths (with respect to the default file container, eg sites/default/files/civicrm or media/civicrm), and this is the recommended best practice. But sometimes an administrator user can customise them to use an absolute path. If you have any absolute paths, then you must change these when moving an existing CiviCRM installation to a new server as described below.
+
+Following are the instructions to migrate an existing CiviCRM instance to a New Server/Location:
+
+Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy later on in these steps. You can check this using the CiviCRM menu option "Administer >> System Settings >> Directories".
+
+Make a note of which CiviCRM dependent modules are enabled on the original CMS.
+
+Unlike in Drupal 7, Drupal 8 does not allow a module to be disabled without uninstalling it and removing all of its database entries (for more details see here). We have not tested the best approach for migrating sites that have Drupal modules dependent on CIviCRM enabled, like CiviCRM Group Roles, CiviCRM Member Roles, CiviCRM Views, CiviCRM Entity etc. For now you might want to try copying both the Drupal and CiviCRM systems at the same time so they stay in sync, and at worst assume you’ll need to uninstall the modules and later rebuild their configurations on the new instance.
+
+Copy the entire codebase from the old to the new location. (We hope at some point to rebuild it from composer.json and composer.lock using composer, but at present the install uses composer, bower and node_dependencies and more work is needed to deal with bower and node_dependencies.) Make sure to review the file paths in sites/default/files/civicrm/civicrm.settings.php, such as civicrm_root, CIVICRM_UF_BASEURL and CIVICRM_TEMPLATE_COMPILEDIR etc. This can be done by tar’ing or gzip'ing up the code, moving it to the new server/location, and untar’ing or gunzip’ing. The default locations to copy are:
+
+docroot/vendor/civicrm
+
+docroot/default/files/civicrm
+
+Make sure any CiviCRM dependent modules used in the old install are installed in the new location.
+
+Make sure CiviCRM package is present in vendor directory.
+
+Copy your database via command line (there are some cache tables you could skip the contents of, but it’s usually more trouble than it’s worth to do that):
+
+On the old server:
+$ mysqldump -u mysql_username -p drupal_db_name > drupal_dump_file_name_of_your_choice.sql
+$ mysqldump -u mysql_username -p civicrm_db_name > civi_dump_file_name_of_your_choice.sql
+8. Load your database(s) into to the new MySQL server
+
+On the new server:
+$ mysql -u mysql_username -p drupal_db_name < drupal_dump_file_name_of_your_choice.sql
+$ mysql -u mysql_username -p civicrm_db_name < civi_dump_file_name_of_your_choice.sql
+NOTE: You can find the DB credentials of Drupal 8 and CiviCRM in civicrm.settings.php, check CIVICRM_UF_DSN for D8 and CIVICRM_DSN for Civi.
+
+9. Delete files with cached settings:
+a. /sites/default/files/civicrm/templates_c/* (cached versions of Smarty templates that will be rebuilt)
+
+b. /sites/default/files/civicrm/ConfigAndLog/Config.IDS.ini
+
+c. /sites/default/files/civicrm/ConfigAndLog/* (You can clear all the logs if you get an error about parsing XML)
+d. /cache/* (Only if you get errors after clearing the caches via the GUI) (See http://example.org/civicrm/admin/setting/path?reset=1 for location of custom extension folder)
+
+10. Login to new Drupal8 site.
+11. Clear caches (and rebuild the menus) and Reset Paths by navigating to Administer > Cleanup Caches and Update Paths (https://www.example.com/civicrm/admin/setting/updateConfigBackend?reset=1). Click the Cleanup Caches and Reset Paths buttons in turn.
+
+12. You may also have to modify some of the other System Paths to non-default values. Click on the Directories button or navigate to Administer > System Settings > Directories Navigate to Administer > System Settings > Directories (https://www.example.com/civicrm/admin/setting/path?reset=1). If you had to copy custom hooks, reports etc. in a previous step look carefully at the "Custom PHP Path Directory" and "Custom Templates" path.
+
+13. You may need to adjust URLs if the directories above changed. Navigate to Administer > System Settings > Resource URLs (https://www.example.com/civicrm/admin/setting/url?reset=1). The help icon at the end of the introductory paragraph provides a useful explanation of how to configure relative URLs. Review the recommended modified URL and paths in the form - they should reflect the new Base Directory, Base URL. If these values do NOT look correct, then recheck the changes you made to civicrm.settings.php.
+
+14. If you made any non-CiviCRM changes to your site (e.g. exposed profiles on the Drupal nav bar) don't forget to fix them (e.g. at Drupal: Administer >> Site building >> Menus >> Navigation).
+
+15. On an operating command line or in a Control Panel, etc., ensure that your cron is working on your new server. Depending on how it was installed and whether you are decommissioning the previous server, you may find that decommissioning the old server is appropriate when it stops working. Note that it is often a best practice to NOT run cron jobs on staging and dev sites when production databases are copied down to them. This can result in non-production sites sending additional copies of CiviMails, and submitting additional payment requests (eg for certain payment processors with integration software not intended for easy and safe use in dev/staging/prod setups, eg iATS). Also, some sites that email reports or execute other similar jobs need to have multiple crons setup.
+
+16. After initial setup there should not be a need to make changes at Administer > System Settings > CMS Database Integration: https://www.example.com/civicrm/admin/setting/uf?reset=1
 
 ## Trouble-shooting
 

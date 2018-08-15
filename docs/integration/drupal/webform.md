@@ -10,7 +10,7 @@ This module enhances Drupal Webforms to create a smart form builder and processo
 
 ### Getting Started
 
-* Download and enable this module, plus its dependencies: [CiviCRM](http://civicrm.org), [Webform](https://drupal.org/project/webform), [Views](https://www.drupal.org/project/views), [Ctools](https://www.drupal.org/project/ctools), [Options Element](https://www.drupal.org/project/options_element) and [Libraries](https://drupal.org/project/libraries). (dependencies will be automatically fetched if you install via drush).
+* Start with [CiviCRM](http://civicrm.org) installed in Drupal. Download and enable this module, plus its dependencies: [Webform](https://drupal.org/project/webform), [Views](https://www.drupal.org/project/views), [Ctools](https://www.drupal.org/project/ctools), [Options Element](https://www.drupal.org/project/options_element). (dependencies will be automatically fetched if you install via drush).
 * Configure permissions
 * Create a new webform (or go to edit an existing one).
 * Click on the CiviCRM tab.
@@ -179,7 +179,7 @@ E.g ) If your webform is configured to create two contacts and two cases , then 
 * `[submission:case-link:1]`
 * `[submission:case-link:2]`
 
-And if the result of submitting this webform was creating a contact with 100 and other one with ID = 101 as well as two cases with ID = 50 and ID=51 then the following message should appear after submitting the form :
+And if the result of submitting this webform was creating a contact with ID = 100 and other one with ID = 101 as well as two cases with ID = 50 and ID=51 then the following message should appear after submitting the form :
 
 ```
 http://example.org/civicrm/contact/view?reset=1&cid=100

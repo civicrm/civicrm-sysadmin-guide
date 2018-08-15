@@ -96,7 +96,7 @@ Features
 To use this plugin, the following is needed:
 
 * WordPress
-* CiviCRM 4.6.x or 4.7.x
+* CiviCRM 4.6 and above
 * [Caldera Forms](https://wordpress.org/plugins/caldera-forms/) to be installed
 
 [Download](https://github.com/mecachisenros/caldera-forms-civicrm)

@@ -107,8 +107,8 @@ Settings > CMS Database Integration** shows some code that must be
 copied and pasted into the Drupal *settings.php* file after (but not
 replacing) the existing database connection code. If you have trouble
 consider asking for help in
-the [forums](http://forum.civicrm.org/) or [hiring a
-consultant](http://civicrm.org/what/experts). If you are using Custom
+[Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org); or consider [hiring a
+consultant](https://civicrm.org/partners-contributors). If you are using Custom
 Data sets in CiviCRM, anytime you add a new data **set** (not just a
 field) you must repeat this process.
 
@@ -129,8 +129,9 @@ fields for those types.
 After the View is created, edit the fields, filters, display and other
 configurations to show the data exactly how you'd prefer. Views does
 take some experimentation and/or training to get it right. Feel free to
-ask questions on the [forums](http://forum.civicrm.org/) or [hire a
-consultant](http://civicrm.org/what/experts) if you become stuck.
+ask questions on [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org)
+&mdash; or [hire a
+consultant](https://civicrm.org/partners-contributors) if you become stuck.
 
 ![Screenshot demonstrating the "Edit view" page](/img/Views-CiviCRM-Partner-3.png)  
 
