@@ -12,7 +12,7 @@ CiviCRM offers a function to Synchronize Users to Contacts: CiviCRM will check e
 
 WordPress shortcodes enable a user to be able to very easily display dynamic content within a WordPress Page or Post with the use of just one line of text. For more information about WordPress shortcodes [check here](http://en.support.wordpress.com/category/shortcodes/). After installing CiviCRM within your WordPress environment, you can immediately take advantage of CiviCRM specific shortcodes that enable you to display content that relates to contribution pages, event pages, profiles, user dashboards, and petitions. Extensions can also add their own shortcodes. The basic shortcode format is `[civicrm compontent=X]` with various options, including the ID of the component you want to display.
 
-### Shortcodes with classic editor
+### Shortcodes using tinymce editor (WP Versions 4.9.x and prior)
 
 To add a shortcode either create a new post or new page. If you are using the classic editor (as opposed to the new Gutenberg editor) you will now see a CiviCRM button next to Add Media.
 
@@ -21,10 +21,6 @@ To add a shortcode either create a new post or new page. If you are using the cl
 After you click on CiviCRM, you will be able to choose the type of content to display. (The options correspond to the types of content in the list above.)
 
 Dependent upon the shortcode that you select you will have different sub options to cater the information to the end user.
-
-### Shortcodes in new Gutenberg editor
-
-The Gutenberg editor is the default editor slated to be released in WordPress 5.0. Gutenberg has a Shortcodes block that can be used to insert shortcodes by typing them in. Currently there is no specific CiviCRM block for Gutenberg so there is no interactive way to see the options available for the shortcode. You will need to know the format and look up IDs and options in CiviCRM before creating the shortcode in Wordpress.
 
 ### Explanation of available core shortcodes
 
@@ -39,6 +35,11 @@ The Gutenberg editor is the default editor slated to be released in WordPress 5.
 In addition, any of these can specify a hijack option (`hijack="1"`) and they will replace all other content on that page rather than being displayed inline.
 
 Keep in mind that prior to being able to display any CiviCRM content on you public website that record will have already been created within CiviCRM.
+
+### Shortcodes in Gutenberg editor (Available as a plugin for versions 4.9.x and prior)
+
+The Gutenberg editor is slated to be the default editor released with WordPress 5.0. Gutenberg is currently available as a plugin from [WordPress Plugin Repo](https://wordpress.org/plugins/gutenberg) Gutenberg has a Shortcodes block that can be used to insert shortcodes by typing them in. Currently there is no specific CiviCRM block for Gutenberg so there is no interactive way to see the options available for the shortcode. You will need to know the format and look up IDs and options in CiviCRM before creating the shortcode in WordPress.
+
 
 ## Plugin Integrations
 
