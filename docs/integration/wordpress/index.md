@@ -12,18 +12,6 @@ CiviCRM offers a function to Synchronize Users to Contacts: CiviCRM will check e
 
 WordPress shortcodes enable a user to be able to very easily display dynamic content within a WordPress Page or Post with the use of just one line of text. For more information about WordPress shortcodes [check here](http://en.support.wordpress.com/category/shortcodes/). After installing CiviCRM within your WordPress environment, you can immediately take advantage of CiviCRM specific shortcodes that enable you to display content that relates to contribution pages, event pages, profiles, user dashboards, and petitions. Extensions can also add their own shortcodes. The basic shortcode format is `[civicrm compontent=X]` with various options, including the ID of the component you want to display.
 
-| Component | Sample shortcodes | Description |
-| --- | --- | --- |
-| Contribution Pages | `[civicrm component="contribution" id="x"]` | A contribution page specified by the id attribute. |
-| Event Pages | `[civicrm component="event" action="register" id="x"]` or `[civicrm component="event" action="info" id="x"]` | Either a registration or information page for the event specified by the id attribute. |
-| Profiles | `[civicrm component="profile" mode="y" gid="x"]` | A page for displaying a user's profile. This can be one of 4 modes - edit, view, create or search. The default is create. The gid attribute selects which profile group is displayed. |
-| User Dashboards | `[civicrm component="user-dashboard"]` | The current user's dashboard page. |
-| Petitions | `[civicrm component="petition" id="x"]` | A petition form specified by the id attribute. |
-
-In addition, any of these can specify a hijack option (`hijack="1"`) and they will replace all other content on that page rather than being displayed inline.
-
-Keep in mind that prior to being able to display any CiviCRM content on you public website that record will have already been created within CiviCRM.
-
 ### Shortcodes with classic editor
 
 To add a shortcode either create a new post or new page. If you are using the classic editor (as opposed to the new Gutenberg editor) you will now see a CiviCRM button next to Add Media.
@@ -34,30 +22,23 @@ After you click on CiviCRM, you will be able to choose the type of content to di
 
 Dependent upon the shortcode that you select you will have different sub options to cater the information to the end user.
 
-When selecting a front end element of **Contribution Page** you will have the ability to select the specific Contribution Page that you want to be displayed then you will have the ability to chose between Live or Test mode.
+### Shortcodes in new Gutenberg editor
 
-When selecting **Event Pages** you can either chose from the following two options:
+The Gutenberg editor is the default editor slated to be released in WordPress 5.0. Gutenberg has a Shortcodes block that can be used to insert shortcodes by typing them in. Currently there is no specific CiviCRM block for Gutenberg so there is no interactive way to see the options available for the shortcode. You will need to know the format and look up IDs and options in CiviCRM before creating the shortcode in Wordpress.
 
--   Information Page: By choosing this option your WordPress page will be populated with the Summary Information about the event. This will include the description as well as the map of the location if you have specified to do so within your event settings. In addition there is a button provided on the Information page that will enable an end user to register for the event
+### Explanation of available core shortcodes
 
--   Registration page: This option bypasses the Summary Information and displays the page for an end user to register for a specific event.
+| Component | Description | Sample shortcodes |
+| --- | --- | --- |
+| Contribution Pages | A contribution page. Option to show preview or live. | `[civicrm component="contribution" id="x"]`. Preview with `mode="test"` |
+| Event Pages | Either a registration or information page for the event. Option to show live or preview. **Information Page:** the Summary Information about the event including the description as well as the map of the location if you have specified in the event settings. In addition there is a button to register for the event. **Registration page:** bypasses the Summary Information and displays the page for an end user to register. | `[civicrm component="event" action="register" id="x"]` or `[civicrm component="event" action="info" id="x"]`. Show preview with `mode="test"` |
+| Profiles | A page for displaying a user's profile. This can be one of 4 modes - edit, view, create or search. The default is create. **Create:** A blank form on your website that an end user can fill out to create a new contact record. **View:** Display contact information to logged in users. For instance, the New Individual profile would show the First Name, Last Name, and Email address. **Edit:** Edit an existing contact record. For logged in users it will display their current contact info which they can update. **Search:** Displays search boxes for fields on the profile which have been set to searchable. The results are displayed in a list and are publicly available. This is configurable in each field.| `[civicrm component="profile" mode="y" gid="x"]` The `gid` attribute selects which profile group is displayed. |
+| User Dashboards | The current user's dashboard page. There are no additional options. To identify what related information you have setup to be displayed within the user dashboard i.e. Contributions, memberships, etc. navigate to **Administer > Customize Data and Screens > Display Preferences** and select all of the information you would like to have visible to the user. | `[civicrm component="user-dashboard"]` |
+| Petitions | A petition form. The only option is to select which petition to display. | `[civicrm component="petition" id="x"]` |
 
-**Profile Pages** give you 3 options to chose from: Create, View, and Edit.
+In addition, any of these can specify a hijack option (`hijack="1"`) and they will replace all other content on that page rather than being displayed inline.
 
--   Create: A blank form on your website that an end user can fill out and save which will then write to your CiviCRM database.
-
--   View: If an end user is logged into WordPress, you can display what information you have on record for them within CiviCRM for this specific profile. For instance if you displayed the New Individual profile which consists of First Name, Last Name, and Email address the end user would be able to view this information.
-
--   Edit: Similar to view mode, if an end user is logged in, you can display what information you have on record for them but also give them the ability to edit that information. For instance if an individual has recently changed their last name or email address and you are presenting the New Individual profile, they would have the ability to review the information and update it and save that information to CiviCRM all through the website.
-
-When selecting the **User Dashboard** you get no additional options. To identify what related information you have setup to be displayed within the user dashboard i.e. Contributions, memberships, etc. navigate to **Administer > Customize Data and Screens > Display Preferences** and select all of the information you would like to have visible to the user.
-
-Finally, for **Petitions**, the only option presented is to select the specific petition that you wish to display on your website.
-
-
-### Shortcodes in Gutenberg editor
-
-The Gutenberg editor is the default in Wordpress 5.0. Gutenberg has a Shortcodes block that can be used to insert shortcodes by typing them in. Currently there is no specific CiviCRM block for Gutenberg so there is no interactive way to see the options available for the shortcode. You will need to know the format and look up IDs and options in CiviCRM before creating the shortcode in Wordpress.
+Keep in mind that prior to being able to display any CiviCRM content on you public website that record will have already been created within CiviCRM.
 
 ## Plugin Integrations
 
