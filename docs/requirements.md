@@ -102,6 +102,7 @@ Your MySQL version must be **5.1.3 or greater**.
     * See also:
         * A popular [Stack Exchange question](https://stackoverflow.com/a/36033983/895563) discussing this issue
         * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
+* If you plan to have multiple lanaguages used in your CiviCRM installation it is strongly recomemnded that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To Alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
 
 #### MySQL time
 
