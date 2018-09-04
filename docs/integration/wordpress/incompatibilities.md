@@ -167,3 +167,16 @@ cv: 4.5 
 Perhaps a useful thread - http://civicrm.stackexchange.com/questions/11946/dequeue-backbone-from-theme-load-and-load-civicrm-backbone
 
 * Other comments:  
+
+## Slider Revolution
+
+* Information last updated on: 2018-05-17
+* Reporter: samuelsov
+* Problem:
+
+    CSS z-index problem - see also https://civicrm.stackexchange.com/questions/16560/civicrm-select-box-items-cant-be-selected-in-wordpress-page-create/18673?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    
+* Workaround:
+
+    See https://civicrm.stackexchange.com/a/24991/72
+    
