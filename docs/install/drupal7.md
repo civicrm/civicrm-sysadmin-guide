@@ -94,8 +94,8 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 
     Note that Drupal tries to create the `/files/` directory (and make it writeable), but only when saving `admin/settings`. Same holds for `/temp` directory, and a `/uploads/` directory in the CiviCRM module root. On a brand-new Drupal install, this directory may be missing. Even on an existing installation, if file permissions are not set properly, the directory may be missing. If enabling the **civicrm** module generates errors regarding the files directory, you must create it (writeable) manually.
 
-* Point your web browser to the following URL:
-http://example.org/civicrm
+* Go to the CiviCRM dashboard to see the CiviCRM menus:
+http://example.org/civicrm (or http://example.org/index.php?q=civicrm if you don't have Clean URLs enabled)
 
 * Go to **Administer » User management » Permissions**
 
