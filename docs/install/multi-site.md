@@ -10,7 +10,14 @@ It is not necessary to for the top level site to be multisite aware but if you w
 
 Create a new contact to be the domain contact for the new domain (note steps 2 & 3 can now be done with the `MultisiteDomain.create` api which is part of the extension)
 
-## Create the domain record
+## Create new database records
+
+You can create the database records in this section automatically if you prefer by installing the [Multisite Permissioning](https://civicrm.org/extensions/multisite-permissioning) extension and using the `MultisiteDomain.create` api as described in the [extension's README.md file](https://github.com/eileenmcnaughton/org.civicrm.multisite/).
+
+### Create the "Default Organization" record
+Each CiviCRM domain must have its own [Default Organization](../setup/index.md#edit-domain-information). Create a new Organization record to represent the default organization of the new domain.
+
+### Create the domain record
 
 Insert a new domain record into the CiviCRM database. For example if your new contact is 555
 
@@ -20,7 +27,7 @@ INSERT INTO `civicrm_domain` (
   `description`,
   `version`,
   contact_id)
-SELECT 
+SELECT
   'site 2',
   'second test site',
   cd.version,
@@ -29,7 +36,7 @@ FROM civicrm_domain cd
 WHERE cd.id = 1;
 ```
 
-## Build the navigation links for new domain
+### Build the navigation links for new domain
 
 Modify `civicrm_codebase/sql/civicrm_navigation.mysql` file and specify new domain, e.g
 
@@ -53,11 +60,11 @@ OR
 SET @domainID = 2;
 ```
 
-And import this file to your civicrm db
+And import this file to your CiviCRM database.
 
-## Locate the sites directory
+## Create the new site
 
-Setup another site on drupal say site2.example.com. This will create sites/site2.example.com/ directory in drupal.
+Setup the CMS for the second site.  In some cases, you will install a new instance of the CMS.  You can also use the existing CMS if you are using the [Domain Access](https://www.drupal.org/project/domain) module for Drupal or the [WordPress multisite network](https://codex.wordpress.org/Create_A_Network) feature.
 
 ## Locate the settings file for the second site
 
@@ -89,9 +96,9 @@ Depending on how you would like to install civicrm for site 2, proceed to one of
 
 #### WordPress multisites
 
-If using a WordPress multisite when CiviCRM is activated the `civicrm.settings.php` file is added within the [uploads directory for that site](https://codex.wordpress.org/Multisite_Network_Administration#Uploaded_File_Path). Site 1, generally the main site of the multisite, uses the default upload path `/wp-content/uploads/`. But all other sites will use be in `/wp-content/uploads/sites/#/civicrm`, the # being the website ID for that site. This default setup allows multiple CiviCRM databases to share one codebase. 
+If using a WordPress multisite when CiviCRM is activated the `civicrm.settings.php` file is added within the [uploads directory for that site](https://codex.wordpress.org/Multisite_Network_Administration#Uploaded_File_Path). Site 1, generally the main site of the multisite, uses the default upload path `/wp-content/uploads/`. But all other sites will use be in `/wp-content/uploads/sites/#/civicrm`, the # being the website ID for that site. This default setup allows multiple CiviCRM databases to share one codebase.
 
-If you are looking to share one CiviCRM database across multiple websites, for a chapter like setup, the following needs to be added to your `wp-config.php` file. 
+If you are looking to share one CiviCRM database across multiple websites, for a chapter like setup, the following needs to be added to your `wp-config.php` file.
 
 ~~~
 // define CiviCRM constants here
@@ -100,7 +107,7 @@ if ( ! defined( 'CIVICRM_SETTINGS_PATH' ) ) {
 }
 ~~~
 
-This will define the path for all websites on the multisite and when enabled they will access the CiviCRM instance defined by the path settings and access is managed through the `civicrm.settings.php` as this example outlines. 
+This will define the path for all websites on the multisite and when enabled they will access the CiviCRM instance defined by the path settings and access is managed through the `civicrm.settings.php` as this example outlines.
 
 
     ```php
@@ -118,7 +125,7 @@ This will define the path for all websites on the multisite and when enabled the
       $protocol = strstr('HTTPS', $_SERVER['SERVER_PROTOCOL']) ? 'https://' : 'http://';
       $url = $protocol . $_SERVER['SERVER_NAME'];
     }
-    
+
     /**
      * CiviCRM Configuration File
      */
@@ -126,7 +133,7 @@ This will define the path for all websites on the multisite and when enabled the
       if(empty($_SERVER['SERVER_NAME'])) {
         define( 'CIVICRM_DOMAIN_ID', 1 );
       }
-    
+
       switch ($url) {
         case 'http://site1.example.org':
           define( 'CIVICRM_DOMAIN_ID', 1 );
@@ -143,10 +150,10 @@ This will define the path for all websites on the multisite and when enabled the
         default:
           echo "you need to configure site : " . home_url();
        }
-    
+
        define( 'CIVICRM_UF_BASEURL', $url );
-    ``` 
- 
+    ```
+
 **Recommendation**: Create a Site Admin role for any administrator of sub-sites that are sharing CiviCRM, meaning the default Administrator role is only used on the main site. This is recommended since by default all Adminstrators automatically get access to Administer CiviCRM and will be able to create things like custom data fields. By creating a Site Admin role the CiviCRM permissions can be managed from [Administer > Users and Permissions > Permissions (Access Control)](https://docs.civicrm.org/user/en/latest/initial-set-up/permissions-and-access-control/#access-control-permissions-in-wordpress) and will allow only main site administrator access to Administer CiviCRM.
 
 #### Drupal with the Domain Access module
