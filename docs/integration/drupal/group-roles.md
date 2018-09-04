@@ -2,8 +2,6 @@
 
 CiviGroup Roles Sync is a module that works with Drupal to keep Drupal Users with a specific role synchronized to the group members of the users' corresponding CiviCRM Contact. Put another way: the module will make sure that users with a certain Drupal role are in a corresponding civicrm group, and vice versa.
 
-CiviGroup Roles Sync will **only work with Static Groups** , **_not Smart Groups_** , unless a contact has been added manually to the smart group.
-
 The first step is to create your group, and add contacts to it. Go to Contacts > Administer Groups and then click the Add New Group button. Create your group.
 
 Then go to Drupal, enable the CiviGroup Roles Sync module under Admin > Build > Modules
