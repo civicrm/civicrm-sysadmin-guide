@@ -110,6 +110,10 @@ If you fail to do this, one-time contributions will succeed normally, and recurr
 
 Important: if you are using a different domain for sandbox/staging or a local installation, you can create test transactions from your local that will be handled by Auth.net (hopefully you're doing this under one of the various test configurations described above), but note that Auth.net will attempt to use the above URL (your production site) to notify CiviCRM, so your staging/local installation will never hear back from CiviCRM unless you change the URL in Auth.net (which you probably don't want to do if you have a live site running).
 
+!!! note
+
+    The Authorize.net Silent-Post is pretty simplistic, so you should confirm the URL you configure. For instance, you do not want to use a URL that will require a redirect for SSL (https) or that enforces the use of "www". See below on [Testing Recurring Transactions](#testing-of-recurring-transactions) to confirm you have the correct URL to use.
+
 ## Other Authorize.Net settings
 
 * **Card Code Verification (CCV)** and **Address Verification Service** are free and part of your account. They do need to be configured to be used. If used, they will help prevent credit card fraud.
@@ -144,12 +148,31 @@ Developers can use a shell script like the one below to call the authorizeIPN.ph
 Note that you must modify the URL to match your own web site and various other parameters to match an actual existing recurring transaction on your site:
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 
-curl http://example.org/sites/all/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test
+# for development, you can go bare-metal with this URL:
+# no payment processor ID necessary:
+# THE_URL=http://awesome.org/sites/all/modules/civicrm/extern/authorizeIPN.php
+
+# Confirm the URL to use in the Authorize.net Silent-Post URL:
+# last URL segment is the payment processor ID
+THE_URL="https://awesome.org/civicrm/payment/ipn/1"
+
+X_AMOUNT="5.00"
+X_CUST_ID="3430"  # cvicrm contact id
+X_INVOICE_NUM="6692"  # civicrm contribution id
+X_SUBSCRIPTION_ID="40018319"
+X_TRANS_ID="40926580513"     # x_trans_id is a unique number that authorize.net returns to identify this transaction
+
+curl $THE_URL -d x_response_code=1 \
+    -d x_subscription_id=$X_SUBSCRIPTION_ID \
+    -d x_cust_id=$X_CUST_ID \
+    -d x_amount=$X_AMOUNT \
+    -d x_invoice_num=$X_INVOICE_NUM \
+    -d x_trans_id=$X_TRANS_IDtest
 ```
 
-_Note that the script above has not been tested and will need some work to determine the exact parameters needed. See alternate testing method below for an idea of what the parameters should look like._
+_Note See alternate testing method below for examples of other parameters that can be included._
 
 ### Online form testing method
 
