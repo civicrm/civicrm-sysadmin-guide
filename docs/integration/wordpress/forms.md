@@ -2,6 +2,8 @@
 
 CiviCRM includes the ability to present online contribution pages, event information pages and registration forms, and profile forms to users and visitors of the 'front-end' of your WordPress sites.
 
+Also see [Plugin Integration](./plugin-integration.md), that include Caldera Forms CiviCRM and Contact Form 7 plugin integrations. 
+
 ## Create the contribution page, profile, or event
 
 Refer to the main [Profiles Admin](https://docs.civicrm.org/user/en/latest/organising-your-data/profiles/) page for an overview and general information on creating Profiles.
