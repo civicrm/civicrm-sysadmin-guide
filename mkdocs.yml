@@ -79,6 +79,7 @@ pages:
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
+    - Plugins Integrations: integration/wordpress/plugins.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
   - Joomla integration:
     - Joomla integration: integration/joomla/index.md
