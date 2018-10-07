@@ -1,5 +1,11 @@
 # Installing CiviCRM for Drupal 7
 
+## Scope of this guide and alternative installation methods
+
+This guide covers standard installation of CiviCRM with Drupal 7 for production use. For installing a development environment including the [development tools](https://docs.civicrm.org/dev/en/latest/tools/) which are bundled in Buildkit, either directly on Linux, or using Vagrant or Docker, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+
+[CiviCRM Starterkit](https://www.drupal.org/project/civicrm_starterkit) is a Drupal 7 distribution including CiviCRM. Its versions of CiviCRM and Drupal are not up to date or fully secure, although the (nearly) [one-click install](https://dashboard.pantheon.io/products/civicrm_starterkit/spinup) based on Starterkit, and offered by the [Pantheon](https://pantheon.io/) hosting service, with [documentation on www.drupal.org](https://www.drupal.org/node/1694794), should generate an up-to-date installation.
+
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
