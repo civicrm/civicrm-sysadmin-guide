@@ -85,7 +85,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Click the **Check Requirements and Install CiviCRM** button.
     * The installer will configure your databases, create the settings file and redirect you to your Drupal Home page.
     * If you still see a red bar with the message "These database details don't appear to be correct." - check the Database Details section below your settings for specific errors and problems. Once you correct these problems, click "Recheck requirements" to verify your settings before continuing.
-    * If you are on a Windows machine and get the message "The user account used by your web-server needs to be granted write access to the following directory in order to configure the CiviCRM settings file: C:<drupal path>/sites/default" even after changing directory permission in Explorer, see [http://forum.civicrm.org/index.php/topic,5056.msg23720.html#msg23720](http://forum.civicrm.org/index.php/topic,5056.msg23720.html#msg23720) for instructions how to change the permissions using CMD.
+    * If you are on a Windows machine and get the message "The user account used by your web-server needs to be granted write access to the following directory in order to configure the CiviCRM settings file: C:<drupal path>/sites/default" even after changing directory permission in Explorer, see [https://forum.civicrm.org/index.php%3Ftopic=5056.15.html#msg23720](https://forum.civicrm.org/index.php%3Ftopic=5056.15.html#msg23720) for instructions how to change the permissions using CMD.
     * Once you see the green "You're ready to install!" message - you can click **Check Requirements and Install CiviCRM**
 
 ## Review Permissions {:#permissions}
