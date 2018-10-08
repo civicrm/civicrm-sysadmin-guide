@@ -166,10 +166,10 @@ configuration screen.
 
 The next time a user who's contact is in the CiviCRM group logs in, they will be granted the role that you have associated with the group. If you remove them from the group, the next time they log in, the role will be removed.
 
-!!!note
-   Unlike CiviMember Role Sync which has configureable options for when the synchronization happens, CiviGroup Role Sync
-   only  synchronizes on user login. What this means is that if you have really long cookies on your site, and don't close 
-   users sessions, a user could stay logged in and continue to have a role in drupal even after you have removed the user 
+!!! note
+    Unlike CiviMember Role Sync which has configureable options for when the synchronization happens, CiviGroup Role Sync
+    only  synchronizes on user login. What this means is that if you have really long cookies on your site, and don't close 
+     users sessions, a user could stay logged in and continue to have a role in drupal even after you have removed the user 
    from the associate group in CiviCRM.
 
 ## CiviMember Roles Sync
@@ -399,7 +399,7 @@ should occur by navigating to the CiviMember Role Sync Configure screen.
 
 Be sure to click **Save Configuration** after making any changes.
 
-!!!tip
-   Test this module by creating a test user with a test CiviCRM membership and an association rule for that type. 
-   Log in as that user to ensure you have been granted the appropriate role. Then take away the membership for this 
-   user in their CiviCRM record, log back in as the test user, and make sure you no longer have that role.
+!!! tip
+    Test this module by creating a test user with a test CiviCRM membership and an association rule for that type. 
+    Log in as that user to ensure you have been granted the appropriate role. Then take away the membership for this 
+    user in their CiviCRM record, log back in as the test user, and make sure you no longer have that role.
