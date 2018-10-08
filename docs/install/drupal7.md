@@ -2,7 +2,7 @@
 
 ## Scope of this guide and alternative installation methods
 
-This guide covers standard installation of CiviCRM with Drupal 7 for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+This guide covers standard installation of CiviCRM for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
 
 ## Before installing
 
