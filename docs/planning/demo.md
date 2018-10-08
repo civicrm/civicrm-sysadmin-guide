@@ -10,7 +10,7 @@ with CiviCRM, but be aware that they are publicly viewable so you
 shouldn't enter personal data.
 
 A list of the available demos can be found at
-[https://civicrm.org/go/demo](https://civicrm.org/go/demo).
+[https://civicrm.org/go/demo](https://civicrm.org/demo).
 
 The demo sites may be configured strangely, missing functionality or
 appear in different languages, as other people may be experimenting with
