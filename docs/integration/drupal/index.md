@@ -74,101 +74,6 @@ based on Drupal **Roles** are:
 - [Content Access](http://drupal.org/project/content_access)
 - [Taxonomy Access Control](http://drupal.org/project/taxonomy_access)
 
-## Drupal Views
-
-[Views](http://drupal.org/project/views) is a powerful Drupal module
-that allows you to display website content e.g. a list of latest news
-for the home page. CiviCRM integrates with Drupal Views and allows
-CiviCRM data to be shown on your website. For instance, if you wanted to
-create a page called 'Partner Organizations' and display it publicly you
-could:
-
-1. Select criteria for what Contact data will be displayed such as:
- * Organization contacts only
- * That are tagged 'Partner' in CiviCRM
- * That have a membership of status 'New' or 'Current'
-2. Choose which data will be shown such as:
-  * Organization name
-  * State/Province
-  * Website
-  * Phone number
-3. Choose to show the data in either table or paragraph format
-4. Allow the public to filter the results themselves by State/Province
-
-This is just a simple example, the possibilities of Drupal Views and
-CiviCRM are far reaching.
-
-### Configuration
-
-If you have your Drupal and CiviCRM in separate databases adding CiviCRM
-support to Views takes a small bit of configuration. Views must be told
-where to look for CiviCRM data. **Administer > System
-Settings > CMS Database Integration** shows some code that must be
-copied and pasted into the Drupal *settings.php* file after (but not
-replacing) the existing database connection code. If you have trouble
-consider asking for help in
-[Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org); or consider [hiring a
-consultant](https://civicrm.org/partners-contributors). If you are using Custom
-Data sets in CiviCRM, anytime you add a new data **set** (not just a
-field) you must repeat this process.
-
-### Creating Views Using CiviCRM Data
-
-Views are located in the **Structure** section of the Drupal
-administrative menu. When you create a View, give it a name and select
-what kind of data you wish to show.
-
-Generally speaking if your view is focused on Contacts (which most are)
-you will select Show: CiviCRM Contacts. If you wish to display details
-about other CiviCRM data such as events, relationships, contributions or
-activities there are additional options that might provide more data
-fields for those types.
-
-![Screenshot demonstrating the "Add new view" page](/img/Views-CiviCRM-Partner-1.png)
-
-After the View is created, edit the fields, filters, display and other
-configurations to show the data exactly how you'd prefer. Views does
-take some experimentation and/or training to get it right. Feel free to
-ask questions on [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org)
-&mdash; or [hire a
-consultant](https://civicrm.org/partners-contributors) if you become stuck.
-
-![Screenshot demonstrating the "Edit view" page](/img/Views-CiviCRM-Partner-3.png)  
-
-This is a sample configuration using Views 3 in a Drupal 7 environment.
-Your View will probably be slightly different, but this gives you some
-examples to get started with.
-
-### Other Things Views and CiviCRM Can Do
-
--   Lists of upcoming events
--   Building reports on contributions, activities or event registrants
--   Honor roll listing of recent donors
--   Staff, board of directors or committee lists
--   A list of current members
--   ...and more!
-
-## Webform CiviCRM Integration
-
-Just as Views can *output* data in virtually any way imaginable, this
-module allows you to have data *input* exactly the way you want. The
-webform CiviCRM integration is extensive and offers many different
-options for things that can happen as part of the form submission.
-
-You can create and update contacts, group subscriptions, tags,
-relationships, cases, custom data, activities, memberships, event
-participants and take payments online via webforms. They can offer
-greater flexibility when compared to standard CiviCRM Profiles.
-
-For example, you can create a form which adds a family with all
-relationships / you can add a new member form with a multi-page form
-which includes question logic / you can create a new activity when
-someone submits the form. Webform CiviCRM has extensive online
-documentation which you should read to make the most out of its
-functionality.
-
-For more information see [Webform](/integration/drupal/webform.md).
-
 ## CiviCRM Organic Groups Sync
 
 The [Organic Groups CiviCRM module](http://drupal.org/project/og_civicrm)
@@ -230,7 +135,6 @@ certain role with CiviCRM contacts in a certain group.
 
 ### Preparation
 
-
 Before using CiviGroup Roles Sync module you should have the following
 prepared:
 
@@ -260,11 +164,19 @@ screen.
 You can always edit or delete existing association rules from the same
 configuration screen.
 
+The next time a user who's contact is in the CiviCRM group logs in, they will be granted the role that you have associated with the group. If you remove them from the group, the next time they log in, the role will be removed.
+
+!!!note
+Unlike CiviMember Role Sync which has configureable options for when the synchronization happens, CiviGroup Role Sync only synchronizes on user login. What this means is that if you have really long cookies on your site, and don't close users sessions, a user could stay logged in and continue to have a role in drupal even after you have removed the user from the associate group in CiviCRM.
+
 ## CiviMember Roles Sync
 
+A common need is to synchronize your CiviCRM members to your Drupal roles to allow you to have, among other things, members' only content on your website that is only accessible to current members defined by the rules and types you have set up in CiviCRM.
+
+The CiviMember Roles Sync module is now part of the core Drupal CiviCRM package and includes this powerful feature.
 The CiviMember Roles Sync module allows administrators of Drupal
 Websites to streamline the user experience for organization members. The
-CiviMember Roles Sync module allows you to.
+CiviMember Roles Sync module allows you to:
 
 -   Automatically grant a Drupal Role to a user based on the type of
     membership he/she has with your organization and whether or not
@@ -327,6 +239,8 @@ Role Sync module. You can learn more about the CiviMember component by
 reviewing the **MEMBERSHIP** chapter.
 
 ### Configuring CiviMember Roles Sync
+
+
 
 Before using CiviMember Roles Sync module you should have the following
 prepared:
@@ -481,3 +395,6 @@ should occur by navigating to the CiviMember Role Sync Configure screen.
     on Synchronize CiviMember Membership Types to Drupal Roles Now.
 
 Be sure to click **Save Configuration** after making any changes.
+
+!!!tip
+Test this module by creating a test user with a test CiviCRM membership and an association rule for that type. Log in as that user to ensure you have been granted the appropriate role. Then take away the membership for this user in their CiviCRM record, log back in as the test user, and make sure you no longer have that role.
