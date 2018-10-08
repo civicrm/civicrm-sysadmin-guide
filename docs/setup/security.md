@@ -51,7 +51,9 @@ transaction before returning to your website) the risks are fairly low.
 However you should still be compliant, which involves completing a Self Assessment Questionnaire (SAQ),
 usually SAQ A, covering some technical points which go beyond using SSL 
 to secure your site, and just as importantly, covering good security practices in the way
-your organization is run. If credit card information *is* being processed or
+your organization is run.
+
+If credit card information *is* being processed or
 stored on your server, standards are higher, involving technical testing of your site, and ongoing monitoring
 of the way you manage both human and technical security risks,
 and you may need to engage a qualified assessor to help you meet a sufficient standard.
