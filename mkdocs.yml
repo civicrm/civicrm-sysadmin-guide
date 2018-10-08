@@ -65,11 +65,9 @@ pages:
   #- Custom development: customize/develop.md
 - Integration:
   - Drupal integration:
-    - Drupal integration: integration/drupal/index.md
+    - Drupal Users, Roles and Groups integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
     - Webform: integration/drupal/webform.md
-    - CiviGroup Roles Sync: integration/drupal/group-roles.md
-    - CiviMember Roles Sync: integration/drupal/member-roles.md
     - WYSIWYG integration: integration/drupal/wysiwyg.md
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md
