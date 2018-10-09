@@ -14,6 +14,12 @@ If your server meets all of the requirements described on this page, CiviCRM *sh
 
 In general, CiviCRM is a demanding web application which requires substantial server resources. It may not perform well on all hosting platforms. Learn more about [choosing your hosting platform](/planning/hosting.md).
 
+!!! danger
+    A .htaccess file inside certain directories, such as ConfigAndLog/, prevents their contents from being publicly readable, 
+    because that would be a security risk. When using nginx, which does not respect .htaccess files, a directive should be placed 
+    in the nginx configuration file to protect these directories.
+    An example can be found at [https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx](https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx#answer-67).
+
 ## CMS {:#cms}
 
 A CMS, or Content Management System, is a type of application which controls the manges the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
