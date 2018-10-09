@@ -18,7 +18,7 @@ In general, CiviCRM is a demanding web application which requires substantial se
     A .htaccess file inside certain directories, such as ConfigAndLog/, prevents their contents from being publicly readable, 
     because that would be a security risk. When using nginx, which does not respect .htaccess files, a directive should be placed 
     in the nginx configuration file to protect these directories.
-    An example can be found at [https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx](https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx#answer-67).
+    An example can be found at [https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx#answer-67](https://civicrm.stackexchange.com/questions/27/is-civicrm-compatible-with-nginx#answer-67).
 
 ## CMS {:#cms}
 
