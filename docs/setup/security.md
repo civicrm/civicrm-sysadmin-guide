@@ -143,6 +143,11 @@ examined:
     passwords are of a sufficient complexity and length (e.g. minimum 8
     characters, including letters and numbers), and must not be shared
     or divulged over insecure communications like email.
+    
+!!! note
+    CiviCRM implements PHPIDS, which checks the content of fields users are trying to save, and either prevents them being saved, 
+    or logs them, if they are suspected of being malicious. There is a little more detail in 
+    [the section on PHPIDS in the Developer Guide](https://docs.civicrm.org/dev/en/latest/security/inputs/#phpids).
 
 ## Filesystem permissions
 
