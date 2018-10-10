@@ -1,12 +1,12 @@
 # Tactics for staying off email blacklists
 
-When sending email from CiviMail, it is not unusual to have a signficant percentage of emails bounced as suspected spam, or delivered but marked by the recipient's email program as suspected spam. Usually paid bulk email services achieve better deliverability because they have experise in handling this problem. Blacklist services and spam filters rarely disclose the details of the rules they use to decide what is spam. However, when receiving a bounce report, often the email headers will give some indication of why the email has bounced. For example bounces from Google Mail addresses often mention that the the SPF record is not valid or missing, and others sometimes name a particular blacklist where your domain or IP address has appeared. In addition, there are some steps you can take to reduce the number of emails which are marked as spam.
+When sending email from CiviMail, it is not unusual to have a signficant percentage of emails bounced as suspected spam, or delivered but marked by the recipient's email program as suspected spam. Usually paid bulk email services achieve better deliverability because they have experise in handling this problem. Blacklist services and spam filters rarely disclose the details of the rules they use to decide what is spam. However, when receiving a bounce report, often the email headers will give some indication of why the email has bounced. For example bounces from Google Mail addresses often mention that the the SPF record is not valid or missing, and others sometimes name a particular blacklist where your domain or IP address has appeared.
 
 ## Basic steps
 
 1. Make sure all your mail servers accept [bounce messages](https://en.wikipedia.org/wiki/Bounce_message);
 1. Having an [SPF](http://www.openspf.org/) record on the DNS for your server which sends for outgoing messages is very valuable, and optimally also deploy [DKIM](http://www.dkim.org/) and [DMARC](https://dmarc.org/);
-1. Make sure that your mail servers has a reverse DNS [rDNS] entry: for most shared hosting, and for many private servers, only the server or hosting company can set up an rDNS entry, in which case you should raise a ticket requesting this;
+1. Make sure that your mail server has a reverse DNS [rDNS] entry: for most shared hosting, and for many private servers, only the server or hosting company can set up an rDNS entry, in which case you should raise a ticket requesting this;
 1. Make sure your email server complies with the [RFC rules](https://en.wikipedia.org/wiki/Anti-spam_techniques#Strict_enforcement_of_RFC_standards) regarding service configuration;
 1. There are various online tools, such as [http://espcoalition.org/senderid/](http://espcoalition.org/senderid/), which you can use to test your email settings.
 
