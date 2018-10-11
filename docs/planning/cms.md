@@ -1,6 +1,6 @@
 # Choosing your CMS
 
-CiviCRM works with the three most popular open source Content Management Systems (CMS)<sup><a href="#1">1</a></sup>.
+CiviCRM works with several popular open source Content Management Systems (CMS)<sup><a href="#1">1</a></sup>.
 
 -   Drupal
 -   Backdrop CMS
