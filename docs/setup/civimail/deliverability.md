@@ -2,6 +2,13 @@
 
 When sending email from CiviMail, it is not unusual to have a signficant percentage of emails bounced as suspected spam, or delivered but marked by the recipient's email program as suspected spam. Usually paid bulk email services achieve better deliverability because they have experise in handling this problem. Blacklist services and spam filters rarely disclose the details of the rules they use to decide what is spam. However, when receiving a bounce report, often the email headers will give some indication of why the email has bounced. For example bounces from Google Mail addresses often mention that the the SPF record is not valid or missing, and others sometimes name a particular blacklist where your domain or IP address has appeared.
 
+!!! note
+    A search will provide links to several 
+    email blacklist checkers. The results can point to you any lists of suspected spammers
+    which have blacklisted your domain or IP address. In many cases, a blacklisting is short-lived and requires no 
+    action provided the points above are fixed. Some blacklists provide a form which you can use to approach them directly 
+    to ask to be removed from their blacklist.
+
 ## Basic steps
 
 1. Make sure all your mail servers accept [bounce messages](https://en.wikipedia.org/wiki/Bounce_message);
@@ -11,11 +18,9 @@ When sending email from CiviMail, it is not unusual to have a signficant percent
 1. There are various online tools, such as [http://espcoalition.org/senderid/](http://espcoalition.org/senderid/), which you can use to test your email settings.
 
 !!! note
-    In addition to online tools for checking your email settings, a search will provide links to several 
-    email blacklist checkers. The results can point to you any lists of suspected spammers
-    which have blacklisted your domain or IP address. In many cases, a blacklisting is short-lived and requires no 
-    action provided the points above are fixed. Some blacklists provide a form which you can use to approach them directly 
-    to ask to be removed from their blacklist.
+    If your domain name already has an SPF record, make sure that it includes the IP address of your 
+    CiviCRM mail server (which might be a different from the host used for the web server or from your mail servers), 
+    and if it doesn't, add this IP address.
 
 ## Additional tools
 
