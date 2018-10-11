@@ -156,33 +156,11 @@ GRANT
   LOCK TABLES,
   TRIGGER,
   CREATE ROUTINE,
-  ALTER ROUTINE
+  ALTER ROUTINE,
+  REFERENCES 
 ON civicrm.*
 TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
-```
-
-#### MySQL 5.1.6 and below
-
-```sql
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE,
-  CREATE,
-  DROP,
-  INDEX,
-  ALTER,
-  CREATE TEMPORARY TABLES,
-  LOCK TABLES,
-  CREATE ROUTINE,
-  ALTER ROUTINE
-ON civicrm.*
-TO 'civicrm_user'@'localhost'
-IDENTIFIED BY 'realpasswordhere';
-
-GRANT SUPER ON *.* TO 'civicrm_user'@'localhost';
 ```
 
 #### Special permissions
