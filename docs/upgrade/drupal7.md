@@ -93,7 +93,7 @@ Choose one of the following methods:
 
 ## Clear cached files¶
 
-Delete all files in sites/default/files/civicrm/templates_c/, or clear the caches using one of the command line tools, such s 'cv flush' or 'drush cache-clear civicrm'.
+Delete all files in sites/default/files/civicrm/templates_c/, or clear the caches using one of the command line tools, such s `cv flush` or `drush cache-clear civicrm`.
 
     
 !!! note
