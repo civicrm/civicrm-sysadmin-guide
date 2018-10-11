@@ -122,27 +122,6 @@ They are several websites that help you testing whether you are in a
 DNSBL. A web search for "blacklisting email" will turn some up. Test
 regularly to find whether you are on a blacklist.
 
-## Configuring sender policy framework (SPF)
-
-By default, the Internet allows any mail server to send any email
-claiming to be from anyone. This makes it easy for spammers to forge
-addresses and send spam using your email address (or any other). SPF
-allows you to create a special DNS record listing the IP addresses of
-the mail servers that can legitimately send email from
-@*yourdomain.org*.
-
-If your domain name already has an SPF record, make sure that it
-includes the IP address of your CiviCRM mail server (which might be a
-different from the host used for the web server or from your mail
-servers), and if it doesn't, add this IP address.
-
-If you don't have an SPF record, consider adding one. You will need to
-add at least your mail server and CiviCRM server (if they are different)
-to the SPF record.
-
-You can read more about SPF at
-[http://www.openspf.org](http://www.openspf.org).
-
 ## Configuring inbound email processing
 
 This section explains configuration for bounce processing and auto
