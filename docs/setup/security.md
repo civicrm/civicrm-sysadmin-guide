@@ -175,9 +175,9 @@ _To continue the example, I'd look in that directory on the server, see that "So
 
 Refer to your server administrator or hosting organisation for support in configuring your webserver, as webserver configuration details differ between servers and hosting environments.
 
-CRM_Utils_Check_Security::checkUploadsAreNotAccessible() is defined in [CRM/Utils/Check/Security.php](https://github.com/civicrm/civicrm-core/blob/master/CRM/Utils/Check/Security.php#L168) - see this file for implementation details.
+`CRM_Utils_Check_Security::checkUploadsAreNotAccessible()` is defined in [CRM/Utils/Check/Security.php](https://github.com/civicrm/civicrm-core/blob/master/CRM/Utils/Check/Security.php#L168) - see this file for implementation details.
 
-See also CRM_Utils_Check_Security::checkDirectoriesAreNotBrowseable()
+See also `CRM_Utils_Check_Security::checkDirectoriesAreNotBrowseable()`
 
 This check was introduced in CivICRM 4.4.4. For details, see [https://civicrm.org/advisory/civi-sa-2014-001-risk-information-disclosure](https://civicrm.org/advisory/civi-sa-2014-001-risk-information-disclosure)
 
