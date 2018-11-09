@@ -57,6 +57,22 @@ This plugin adds integration for CiviCRM to contact form 7. With this plugin it 
 
 [Download](https://wordpress.org/plugins/contact-form-7-civicrm-integration/)
 
+### [CiviCRM Event Calendar](https://github.com/osseed/com.osseed.eventcalendar/)
+
+Event Calendar Extension allows you to show all CiviCRM events in a Calendar by month,day,week. The setting page allows you to select which events should be shown on Calendar with the color you want for particular event type. The setting page configuration for event types filters allows you to filter by particular event types on calendar and change colors.
+
+After installing the extension in CiviCRM - copy the folder "yourextensiondirectory/com.osseed.eventcalendar/wordpress/wordpress-event-calendar" to "wordpressdirectory/wp-content/plugins/" and activate the wordpress plugin.  You will then be able to add a shortcode to any page or post in which you would like to display a calendar of your events. 
+
+[Download](https://github.com/osseed/com.osseed.eventcalendar/releases)
+
+### [CiviEvent Widget](https://aghstrategies.com/civievent-widget)
+
+You can use the CiviEvent widget to add two types of widgets for upcoming public events from CiviCRM. There’s no limit to the number of widgets you can add of either type. You can include the widgets in the sidebar like normal, or you can include them via shortcodes in the body of your posts.
+
+The list functionality provides a basic, ﬂexible listing of upcoming events that are marked as public. You have options to customize the appearance and number of events. Can be used as a widget or embeded on a page/post.  There is the option to add the event’s city, state, and/or country to the listing if “Show location” is enabled on the event. The single event functionality allows you to embed a single public event from CiviCRM on a wordpress post or poage. 
+
+[Download](https://wordpress.org/plugins/civievent-widget/)
+
 ### [CiviCRM Event Organiser](https://github.com/christianwach/civicrm-event-organiser)
 
 A WordPress plugin for syncing Event Organiser plugin Events with CiviCRM Events. The plugin syncs Event Organiser Events, Venues and Event Categories to their corresponding entities in CiviCRM.
