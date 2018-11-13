@@ -625,7 +625,7 @@ There are four possible solutions for handling of the return channel.
 
 !!! warning
 
-    There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](http://forum.civicrm.org/index.php/topic,7553.msg38766.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
+    There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](https://forum.civicrm.org/index.php%3Ftopic=7553.0.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
 
 For Google Apps, however, see these [directions on setting up the return channel](/setup/civimail/inbound.md#return-channel-google-apps).
 
