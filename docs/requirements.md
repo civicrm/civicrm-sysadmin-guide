@@ -16,7 +16,7 @@ In general, CiviCRM is a demanding web application which requires substantial se
 
 ## CMS {:#cms}
 
-A CMS, or Content Management System, is a type of application which controls the manges the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
+A CMS, or Content Management System, is a type of application which controls and manages the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
 
 See our page on [choosing a CMS](/planning/cms.md) for more information about the advantages and disadvantages of each compatible CMS platform.
 
