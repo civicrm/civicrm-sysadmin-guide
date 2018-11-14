@@ -36,34 +36,38 @@ data from one point to another.
 Note: ensure passwords used by one person across several protocols are
 different, as each carry with it varying levels of control.
 
-## Should I use SSL (Secure Sockets Layer)? 
-
-### PCI compliance
+## PCI compliance
 
 American Express, Discover Financial Services, JCB International,
 MasterCard Worldwide, and Visa Inc. work together to form standards for
 online payment processing (see
-[https://www.pcisecuritystandards.org/organization_info/index.php](https://www.pcisecuritystandards.org/organization_info/index.php)).
+[https://www.pcisecuritystandards.org/about_us/](https://www.pcisecuritystandards.org/about_us/).
 
-Hosting for websites that accept payments using CiviContribute and
-CiviEvent should comply with their standards if the plug-in you are
-using does not route the user to external pages for payment processing
+Websites that accept payments, for example using CiviContribute and
+CiviEvent, should comply with their standards. If the plug-in you are
+using routes the user to external pages for payment processing
 (e.g. PayPal Standard redirects users to PayPal pages to make the
-transaction before returning to your website, and should therefore meet
-these standards). If credit card information *is* being processed or
-stored on your server, there are a number of PCI Payment Application
-Data Security Standards (PCI PA-DSS) which must be met, including the
-need to use SSL. Each CiviCRM installation must also be tested for PCI
-compliance every 4-12 months. Consider the payment processing method you
-intend to use carefully before implementing it, use SSL if you are using
-a credit card payment processor, and seek security consultation if you
+transaction before returning to your website) the risks are fairly low.
+However you should still be compliant, which involves completing a Self Assessment Questionnaire (SAQ),
+usually SAQ A, covering some technical points which go beyond using SSL 
+to secure your site, and just as importantly, covering good security practices in the way
+your organization is run.
+
+If credit card information *is* being processed or
+stored on your server, standards are higher, involving technical testing of your site, and ongoing monitoring
+of the way you manage both human and technical security risks,
+and you may need to engage a qualified assessor to help you meet a sufficient standard.
+The PCI Security Standards Council publishes [a table](https://www.pcisecuritystandards.org/pci_security/completing_self_assessment)
+for guidance about which level of compliance you require.
+Consider the payment processing method you intend to use carefully before 
+implementing it, and seek security consultation if you
 decide to store credit card information on your server (this is not
-recommended).
+recommended for smaller organizations because compliance is expensive).
 
 For further information, see:
-[https://www.pcisecuritystandards.org/merchants/index.php](https://www.pcisecuritystandards.org/merchants/index.php).
+[https://www.pcisecuritystandards.org/](https://www.pcisecuritystandards.org/).
 
-### Unauthorised data access
+## Unauthorised data access
 
 Aside from the potential need to meet PCI compliance, you should use SSL
 if you wish to ensure:
