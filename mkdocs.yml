@@ -63,7 +63,7 @@ pages:
   #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
   #- Custom development: customize/develop.md
-- Integration:
+- CMS Integration:
   - Drupal integration:
     - Drupal integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
