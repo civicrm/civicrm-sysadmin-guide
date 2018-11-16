@@ -1,5 +1,9 @@
 # Installing CiviCRM for Joomla
 
+## Scope of this guide and alternative installation methods
+
+This guide covers standard installation of CiviCRM for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
