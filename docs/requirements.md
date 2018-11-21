@@ -75,7 +75,6 @@ To install these extensions, you will typically install a separate package withi
 * Set `memory_limit` between 256 and 512 megabytes
 * Don't enable the deprecated `open_basedir` or `safemode` PHP directives. Otherwise you will have an error when automatically installing most of the extensions.
 * Don't use MAMP XCache - Several people have reported "white screen of death" trying to run CiviCRM with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
-* Don't use [eAccelerator](http://eaccelerator.net) - Several people have reported problems with this performance optimiser such as "white screen of death" and "snippet type is unrecognised".
 
 ## MySQL
 
@@ -157,33 +156,11 @@ GRANT
   LOCK TABLES,
   TRIGGER,
   CREATE ROUTINE,
-  ALTER ROUTINE
+  ALTER ROUTINE,
+  REFERENCES 
 ON civicrm.*
 TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
-```
-
-#### MySQL 5.1.6 and below
-
-```sql
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE,
-  CREATE,
-  DROP,
-  INDEX,
-  ALTER,
-  CREATE TEMPORARY TABLES,
-  LOCK TABLES,
-  CREATE ROUTINE,
-  ALTER ROUTINE
-ON civicrm.*
-TO 'civicrm_user'@'localhost'
-IDENTIFIED BY 'realpasswordhere';
-
-GRANT SUPER ON *.* TO 'civicrm_user'@'localhost';
 ```
 
 #### Special permissions
