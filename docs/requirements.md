@@ -86,7 +86,7 @@ Other database servers such as Postgres are not compatible with CiviCRM.
 
 ### MySQL version
 
-Your MySQL version must be **5.5 or greater**.
+Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it.  However MySQL 5.5 is not tested or supported.
 
 ### MySQL configuration
 
