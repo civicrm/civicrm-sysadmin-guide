@@ -25,21 +25,21 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 * Drupal 8 - Not yet supported
 
     !!! bug "Work in progress"
-        CiviCRM functions with Drupal 8 but (as of October 2018) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652). 
- 
+        CiviCRM functions with Drupal 8 but (as of October 2018) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652).
+
 * Drupal 7 - Compatible with CiviCRM 4.1 and higher.
 
-* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported. 
+* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported.
 
 ### WordPress
 
-* WordPress 3.4.x or newer is required. 
+* WordPress 3.4.x or newer is required.
 
 ### Joomla
 
 * Joomla 3.x.x is required.
 
-### Backdrop 
+### Backdrop
 
 * Backdrop 1.0 or newer is required.
 
@@ -47,7 +47,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-|  | CiviCRM 4.6.x | CiviCRM 5.x.x | 
+|  | CiviCRM 4.6.x | CiviCRM 5.x.x |
 | -- | -- | -- |
 | PHP 7.2 | **incompatible** | compatible and **recommended** with the proviso below*|
 | PHP 7.1 | **incompatible** | compatible and **recommended** |
@@ -80,14 +80,14 @@ To install these extensions, you will typically install a separate package withi
 
 CiviCRM requires MySQL (or compatible) database software.
 
-[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL. 
+[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL.
 
 Other database servers such as Postgres are not compatible with CiviCRM.
 
 ### MySQL version
 
-Your MySQL version must be **5.1.3 or greater**.
- 
+Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it.  However MySQL 5.5 is not tested or supported.
+
 ### MySQL configuration
 
 * Support for the `innodb` storage engine is required.
@@ -115,9 +115,7 @@ CiviCRM performs various operations based on dates and times – for example, de
 
 ### MySQL permissions
 
-The permissions you'll need to assign to the MySQL user that CiviCRM uses will **depend on your version of MySQL**. The following examples assume you have a database called `civicrm` and a MySQL user called `civicrm_user`.
-
-#### MySQL 5.7.6+
+The permissions you'll need to assign to the MySQL user that CiviCRM uses will **depend on your version of MySQL**. The following example assumes you have a database called `civicrm` and a MySQL user called `civicrm_user`.
 
 ```sql
 GRANT
@@ -134,40 +132,12 @@ GRANT
   TRIGGER,
   CREATE ROUTINE,
   ALTER ROUTINE,
-  REFERENCES 
-ON civicrm.* 
-TO 'civicrm_user'@'localhost' 
-IDENTIFIED BY 'realpasswordhere';
-```
-
-#### MySQL 5.1.6 - 5.7.6
-
-```sql
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE,
-  CREATE,
-  DROP,
-  INDEX,
-  ALTER,
-  CREATE TEMPORARY TABLES,
-  LOCK TABLES,
-  TRIGGER,
-  CREATE ROUTINE,
-  ALTER ROUTINE,
-  REFERENCES 
+  REFERENCES,
+  CREATE VIEW
 ON civicrm.*
 TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
 ```
-
-#### Special permissions
-
-##### CiviCase
-
-To use CiviCase you will also need the `CREATE VIEW` permission.
 
 ##### Binary logging
 
@@ -179,7 +149,7 @@ If you want to enable binary logging you will need to choose one of the followin
     ```
     log_bin_trust_function_creators = 1
     ```
-    
+
     (See the [MySQL manual reference](http://dev.mysql.com/doc/refman/5.1/en/server-system-variables.html#sysvar_log_bin_trust_function_creators) for more information.)
 
 * Or give the `SUPER` permission (even if your MySQL version is greater than 5.1.6).
@@ -187,6 +157,5 @@ If you want to enable binary logging you will need to choose one of the followin
     ```sql
     GRANT SUPER ON *.* TO 'civicrm_user'@'localhost';
     ```
-    
-    (More information on triggers is available in the MySQL documentation about [Binary Logging of Stored Programs](http://dev.mysql.com/doc/refman/5.1/en/stored-programs-logging.html).) 
 
+    (More information on triggers is available in the MySQL documentation about [Binary Logging of Stored Programs](http://dev.mysql.com/doc/refman/5.1/en/stored-programs-logging.html).)
