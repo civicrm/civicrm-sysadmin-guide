@@ -6,9 +6,13 @@ There are several plugins that have been developed to improve the integration be
 
 CiviCRM Admin Utilities modifies CiviCRM’s behaviour in single site and multisite installs. It does a number of useful things:
 
-* Modifies the styling of the CiviCRM menu to fix a number of issues
-* Allows you to choose which Post Types the CiviCRM shortcode button appears on
+* Provides quick links to miscellanuous CiviCRM tasks
+* Adds a handy CiviCRM Shortcuts menu to the WordPress Admin Bar
+* Resolves issues with the CiviCRM Menu and WordPress Access Control form 
+* Allows you to choose which Post Types the CiviCRM shortcode button appears
+* Allows you to prevent various CiviCRM & Shoreditch stylesheets from loading
 * In WordPress multisite, allows you to hide CiviCRM on sub-sites
+* Provides an option for Wordpress styling throughout CiviCRM - creating a more unified Wordpress/CiviCRM experience. 
 
 [Download](https://wordpress.org/plugins/civicrm-admin-utilities/)
 
