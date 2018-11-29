@@ -6,7 +6,7 @@ There are several plugins that have been developed to improve the integration be
 
 CiviCRM Admin Utilities modifies CiviCRM’s behaviour in single site and multisite installs. It does a number of useful things:
 
-* Provides quick links to miscellanuous CiviCRM tasks
+* Provides quick links to miscellaneous CiviCRM tasks
 * Adds a handy CiviCRM Shortcuts menu to the WordPress Admin Bar
 * Resolves issues with the CiviCRM Menu and WordPress Access Control form 
 * Allows you to choose which Post Types the CiviCRM shortcode button appears
