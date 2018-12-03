@@ -19,10 +19,13 @@ Detailed logging (aka "logging") allows you to maintain a full history of *all* 
 
 * Logging will _not_ destroy or change your existing data.
 
+## ARCHIVE vs INNODB
+
+The default storage engine for logging is ARCHIVE, which is optimised for fast writes and small size. That maybe what you want but note that consulting log tables is very slow with this storage engine. The [INNODB logging extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) swaps the table format for log tables from ARCHIVE to INNODB, speeding up querying the log tables at the expense of slightly slower writes and a larger log table.
 
 ## System requirements
 
-* **MySQL Storage Engines** - By Default CiviCRM uses the Archive storage engine to store the logging data. The Archive engine may not automatically be installed on your MySQL system. Depending on your installation you maybe able to [install the Archive Engine](https://stackoverflow.com/questions/26996618/install-mariadb-archive-engine). However if you cannot install the Archive engine, the best solution would be to look to install the [nz.co.fuzion.innodbtriggers](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) Extension.
+* **MySQL Storage Engines** - By Default CiviCRM uses the Archive storage engine to store the logging data. The Archive engine may not automatically be installed on your MySQL system. Depending on your installation you maybe able to [install the Archive Engine](https://stackoverflow.com/questions/26996618/install-mariadb-archive-engine). If you cannot install the Archive engine, consider using [nz.co.fuzion.innodbtriggers](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) Extension.
 
 * **MySQL database permissions** - Logging requires the usage of [MySQL Triggers](https://dev.mysql.com/doc/en/triggers.html), so your MySQL database user will need to have the correct permissions to use them. In most cases, you will need to grant the [Trigger Privilege](https://dev.mysql.com/doc/en/privileges-provided.html#priv_trigger). However, depending on your system or if you have enabled binary logging, you may need the [Super Privilege](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super).
 
