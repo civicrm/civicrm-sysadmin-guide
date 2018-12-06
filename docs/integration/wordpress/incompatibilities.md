@@ -180,3 +180,11 @@ Perhaps a useful thread - http://civicrm.stackexchange.com/questions/11946/deque
 
     See https://civicrm.stackexchange.com/a/24991/72
     
+## Elementor
+
+  * Information last updated on: 2018-12-05
+  * Reporter: samuelsov
+  * Problem:
+  
+    Some smarty variable don't get replaced. For example, on a contribution page, the profile list are all shown as <%= title =%>
+    
