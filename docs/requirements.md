@@ -47,17 +47,19 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-|  | CiviCRM 4.6.x | CiviCRM 5.x.x |
+|  | CiviCRM 5.7 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- |
-| PHP 7.2 | **incompatible** | compatible and **recommended** with the proviso below*|
-| PHP 7.1 | **incompatible** | compatible and **recommended** |
-| PHP 7.0 | **incompatible** | compatible |
-| PHP 5.6 | compatible and **recommended** | compatible |
-| PHP 5.5 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016  |compatible until end of 2018, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 |
-| PHP 5.4 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015 | **incompatible** |
-| PHP 5.3 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in August 2014 |  **incompatible** |
+| PHP 7.2 | compatible and **recommended** - but see note about resaving the SMTP password*| compatible and **recommended** but see note about resaving the SMTP password*|
+| PHP 7.1 | compatible | compatible |
+| PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   |
+| PHP 5.6 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in  Dec 2018  |
+| PHP 5.5 | compatible for patch versions prior to Feb 2019, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018 |incompatible as of 5.10.0|
+| PHP 5.4 | **incompatible** | **incompatible** |
+| PHP 5.3 | **incompatible**  |  **incompatible** |
 
-* 7.2 proviso - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will not be encrypted in the database.
+* 7.2 proviso - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
+
+** CiviCRM version 4.6 (the old LTS) is compatible with php versions 5.5 and 5.6.
 
 ### PHP extensions
 
