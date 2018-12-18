@@ -49,7 +49,8 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 |  | CiviCRM 5.7 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- |
-| PHP 7.2 | compatible and **recommended** - but see note about resaving the SMTP password*| compatible and **recommended** but see note about resaving the SMTP password*|
+| PHP 7.3 |testing incomplete but preliminary testing did not find any issues|testing incomplete but preliminary testing did not find any issues|
+| PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password|
 | PHP 7.1 | compatible | compatible |
 | PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   |
 | PHP 5.6 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in  Dec 2018  |
@@ -57,7 +58,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 | PHP 5.4 | **incompatible** | **incompatible** |
 | PHP 5.3 | **incompatible**  |  **incompatible** |
 
-* 7.2 proviso - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
+!!! 7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
 
 ** CiviCRM version 4.6 (the old LTS) is compatible with php versions 5.5 and 5.6.
 
