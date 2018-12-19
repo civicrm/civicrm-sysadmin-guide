@@ -112,6 +112,10 @@ consultant](https://civicrm.org/partners-contributors). If you are using Custom
 Data sets in CiviCRM, anytime you add a new data **set** (not just a
 field) you must repeat this process.
 
+!!! tip
+    If the settings are not shown on the **CMS Database Integration** page,
+    check that you have enabled the Drupal Views module.
+
 ### Creating Views Using CiviCRM Data
 
 Views are located in the **Structure** section of the Drupal
