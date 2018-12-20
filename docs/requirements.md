@@ -58,8 +58,6 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 | PHP 5.4 | **incompatible** | **incompatible** |
 | PHP 5.3 | **incompatible**  |  **incompatible** |
 
-!!! 7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
-
 ** CiviCRM version 4.6 (the old LTS) is compatible with php versions 5.5 and 5.6.
 
 ### PHP extensions
@@ -70,6 +68,10 @@ To install these extensions, you will typically install a separate package withi
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (In turn needed for the popular CiviSMTP service)
 * [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
 * [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add Mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
+
+    !!! warning "PHP7.2 Compatability"
+        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
+
 * [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
 * [PHP Zip](http://php.net/manual/en/book.zip.php) - Required for unzipping auto-downloaded extensions so they can be installed from the browser.
 
