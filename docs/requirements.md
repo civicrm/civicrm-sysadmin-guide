@@ -69,7 +69,7 @@ To install these extensions, you will typically install a separate package withi
 * [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
 * [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add Mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
 
-    !!! warning "PHP7.2 Compatability"
+    !!! warning "PHP 7.2 Compatibility"
         7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
 
 * [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
