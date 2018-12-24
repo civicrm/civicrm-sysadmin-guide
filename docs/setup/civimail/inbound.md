@@ -34,7 +34,7 @@ Here is a list from the database of the different types of bounces, and how many
 | id | name | description | `hold_threshold` |
 | -- | -- | -- | -- |
 | 1 | AOL | AOL Terms of Service complaint | 1 |
-| 2 | Away | Recipient is on vacation | 3 |
+| 2 | Away | Recipient is on vacation | 30 |
 | 3 | DNS | Unable to resolve recipient domain | 3 |
 | 4 | Host | Unable to deliver to destination mail server | 3 |
 | 5 | Inactive | User account is no longer active | 1 |
@@ -48,13 +48,11 @@ Here is a list from the database of the different types of bounces, and how many
 
 ### Removing Hold
 
-After running a Search, choose **Email - unhold addresses** 
+1. After running a Search, choose from Actions: **Email - unhold addresses** 
 
-You can also remove **on hold** from a single contact by manually editing that contact.
+2. You can also remove **on hold** from a single contact by manually editing that contact.
 
-Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.
-
-Hold status is recorded in the `civicrm_email` table as column `on_hold`. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
+3. Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.  Hold status is recorded in the `civicrm_email` table as column `on_hold`. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
 
 ```sql
 UPDATE civicrm_email SET on_hold = 0;
