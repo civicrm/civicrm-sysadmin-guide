@@ -14,7 +14,7 @@ Detailed logging (aka "logging") allows you to maintain a full history of *all* 
 * The log tables have some extra columns `log_user_id`, `log_conn_id`, `log_action`, to describe which user performed the action, the MySQL connection ID, and the action that was taken.
 
     !!! note "Further Information"
-       More information on changes to what is stored in the `log_conn_id` column can be found in the associated [blog](https://civicrm.org/blog/eileen/who-did-what-when) on this subject 
+        More information on changes to what is stored in the `log_conn_id` column can be found in the associated [blog](https://civicrm.org/blog/eileen/who-did-what-when) on this subject
 
 * The log tables will begin by storing the initial values of your CiviCRM tables. Then each time a row in a CiviCRM table is added, deleted, or changed, the logging system will add a new row the appropriate log table to fully describe the change.
 
@@ -79,11 +79,12 @@ If you want to turn on logging again, after it's been off for some time, you can
 
 While INNODB is a better option for most sites and the changed `log_conn_id` methodology is better for all it wasn't a change that was implemented in the upgrade script, for the simple reason it could take a while. Converting and altering all the log tables on a large site is likely to require a planned outage - so instead of imposing that change we settled for
 
-To enable InnoDB table format, install the [InnoDB Triggers extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) before enabling logging. To convert an existing site where logging is already enabled, install the extension, then run the ```php civicrm_api3('System', 'updatelogtables', array())``` API command.
+To enable InnoDB table format, install the [InnoDB Triggers extension](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) before enabling logging. To convert an existing site where logging is already enabled, install the extension, then run the ```civicrm_api3('System', 'updatelogtables', array());``` API command.
 
 Sites that wish to revert to ARCHIVE would need to do that through mysql - there is no process for this & it seems unlikely to be a good idea.
 
-It should be noted that switching to INNODB is likely to increase the storage required by your MySQL database.
+!!! warning "Disk Space Usage"
+    It should be noted that switching to INNODB is likely to increase the storage required by your MySQL database.
 
 ## Reporting on multiple changes
 
