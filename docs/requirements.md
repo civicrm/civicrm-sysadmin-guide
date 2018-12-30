@@ -16,7 +16,7 @@ In general, CiviCRM is a demanding web application which requires substantial se
 
 ## CMS {:#cms}
 
-A CMS, or Content Management System, is a type of application which controls the manges the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
+A CMS, or Content Management System, is a type of application which controls and manages the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
 
 See our page on [choosing a CMS](/planning/cms.md) for more information about the advantages and disadvantages of each compatible CMS platform.
 
@@ -25,21 +25,21 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 * Drupal 8 - Not yet supported
 
     !!! bug "Work in progress"
-        CiviCRM functions with Drupal 8 but (as of October 2017) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652). 
- 
+        CiviCRM functions with Drupal 8 but (as of October 2018) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652).
+
 * Drupal 7 - Compatible with CiviCRM 4.1 and higher.
 
-* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported. 
+* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported.
 
 ### WordPress
 
-* WordPress 3.4.x or newer is required. 
+* WordPress 3.4.x or newer is required.
 
 ### Joomla
 
 * Joomla 3.x.x is required.
 
-### Backdrop 
+### Backdrop
 
 * Backdrop 1.0 or newer is required.
 
@@ -47,17 +47,18 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ### PHP version
 
-|  | CiviCRM 4.6.x | CiviCRM 5.x.x | 
+|  | CiviCRM 5.7 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- |
-| PHP 7.2 | **incompatible** | compatible and **recommended** with the proviso below*|
-| PHP 7.1 | **incompatible** | compatible and **recommended** |
-| PHP 7.0 | **incompatible** | compatible |
-| PHP 5.6 | compatible and **recommended** | compatible |
-| PHP 5.5 | compatible, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016  |compatible until end of 2018, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in July 2016 |
-| PHP 5.4 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Sept 2015 | **incompatible** |
-| PHP 5.3 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in August 2014 |  **incompatible** |
+| PHP 7.3 |testing incomplete but preliminary testing did not find any issues|testing incomplete but preliminary testing did not find any issues|
+| PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password|
+| PHP 7.1 | compatible | compatible |
+| PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   |
+| PHP 5.6 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in  Dec 2018  |
+| PHP 5.5 | compatible for patch versions prior to Feb 2019, but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018 |incompatible as of 5.10.0|
+| PHP 5.4 | **incompatible** | **incompatible** |
+| PHP 5.3 | **incompatible**  |  **incompatible** |
 
-* 7.2 proviso - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will not be encrypted in the database.
+** CiviCRM version 4.6 (the old LTS) is compatible with php versions 5.5 and 5.6.
 
 ### PHP extensions
 
@@ -67,27 +68,31 @@ To install these extensions, you will typically install a separate package withi
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (In turn needed for the popular CiviSMTP service)
 * [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
 * [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add Mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
+
+    !!! warning "PHP 7.2 Compatibility"
+        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
+
 * [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
+* [PHP Zip](http://php.net/manual/en/book.zip.php) - Required for unzipping auto-downloaded extensions so they can be installed from the browser.
 
 ### PHP configuration
 
 * Set `memory_limit` between 256 and 512 megabytes
 * Don't enable the deprecated `open_basedir` or `safemode` PHP directives. Otherwise you will have an error when automatically installing most of the extensions.
 * Don't use MAMP XCache - Several people have reported "white screen of death" trying to run CiviCRM with MAMP's XCache enabled (check MAMP > Preferences > PHP > Cache).
-* Don't use [eAccelerator](http://eaccelerator.net) - Several people have reported problems with this performance optimiser such as "white screen of death" and "snippet type is unrecognised".
 
 ## MySQL
 
 CiviCRM requires MySQL (or compatible) database software.
 
-[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL. 
+[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL.
 
 Other database servers such as Postgres are not compatible with CiviCRM.
 
 ### MySQL version
 
-Your MySQL version must be **5.1.3 or greater**.
- 
+Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it.  However MySQL 5.5 is not tested or supported.
+
 ### MySQL configuration
 
 * Support for the `innodb` storage engine is required.
@@ -115,9 +120,7 @@ CiviCRM performs various operations based on dates and times – for example, de
 
 ### MySQL permissions
 
-The permissions you'll need to assign to the MySQL user that CiviCRM uses will **depend on your version of MySQL**. The following examples assume you have a database called `civicrm` and a MySQL user called `civicrm_user`.
-
-#### MySQL 5.7.6+
+The permissions you'll need to assign to the MySQL user that CiviCRM uses will **depend on your version of MySQL**. The following example assumes you have a database called `civicrm` and a MySQL user called `civicrm_user`.
 
 ```sql
 GRANT
@@ -134,62 +137,12 @@ GRANT
   TRIGGER,
   CREATE ROUTINE,
   ALTER ROUTINE,
-  REFERENCES 
-ON civicrm.* 
-TO 'civicrm_user'@'localhost' 
-IDENTIFIED BY 'realpasswordhere';
-```
-
-#### MySQL 5.1.6 - 5.7.6
-
-```sql
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE,
-  CREATE,
-  DROP,
-  INDEX,
-  ALTER,
-  CREATE TEMPORARY TABLES,
-  LOCK TABLES,
-  TRIGGER,
-  CREATE ROUTINE,
-  ALTER ROUTINE
+  REFERENCES,
+  CREATE VIEW
 ON civicrm.*
 TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
 ```
-
-#### MySQL 5.1.6 and below
-
-```sql
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE,
-  CREATE,
-  DROP,
-  INDEX,
-  ALTER,
-  CREATE TEMPORARY TABLES,
-  LOCK TABLES,
-  CREATE ROUTINE,
-  ALTER ROUTINE
-ON civicrm.*
-TO 'civicrm_user'@'localhost'
-IDENTIFIED BY 'realpasswordhere';
-
-GRANT SUPER ON *.* TO 'civicrm_user'@'localhost';
-```
-
-#### Special permissions
-
-##### CiviCase
-
-To use CiviCase you will also need the `CREATE VIEW` permission.
 
 ##### Binary logging
 
@@ -201,7 +154,7 @@ If you want to enable binary logging you will need to choose one of the followin
     ```
     log_bin_trust_function_creators = 1
     ```
-    
+
     (See the [MySQL manual reference](http://dev.mysql.com/doc/refman/5.1/en/server-system-variables.html#sysvar_log_bin_trust_function_creators) for more information.)
 
 * Or give the `SUPER` permission (even if your MySQL version is greater than 5.1.6).
@@ -209,6 +162,5 @@ If you want to enable binary logging you will need to choose one of the followin
     ```sql
     GRANT SUPER ON *.* TO 'civicrm_user'@'localhost';
     ```
-    
-    (More information on triggers is available in the MySQL documentation about [Binary Logging of Stored Programs](http://dev.mysql.com/doc/refman/5.1/en/stored-programs-logging.html).) 
 
+    (More information on triggers is available in the MySQL documentation about [Binary Logging of Stored Programs](http://dev.mysql.com/doc/refman/5.1/en/stored-programs-logging.html).)

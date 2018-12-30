@@ -28,7 +28,7 @@ CiviCRM are far reaching.
 
 #### Drupal 7
 
-These instructions assume CiviCRM and Drupal are on separate databases located on the same physical host.
+These instructions assume CiviCRM and Drupal are on separate databases located on the same physical host. If your CiviCRM and Drupal are located within the same database the 12 steps below are not required. 
 
 1. Before making any changes, it is _strongly_ advised that you make backups of your mysql databases and settings.php file.
 1. If you have different database users for your CiviCRM and Drupal databases, then you need to grant `SELECT` access for the Drupal user to all the CiviCRM tables.
@@ -39,13 +39,12 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
     ![Screenshot showing the "Drupal Integration" page, with output of settings to be placed into settings.php](/img/views3integration-1.png)
 
 1. Copy this setting output, including the trailing `);`
-1. Open `/sites/default/settings.php` for editing from the root directory of the site, typically `public_html` on most servers.
+1. Open the file `/sites/default/settings.php` for editing from the root directory of the site, typically `public_html` on most servers.
 
     !!! note
         This assumes you have a single site installation. The location of the settings file might be different depending on whether or not you have multiple sites
 
-1. Find the database connector array. This is where Drupal stores the information regarding the MySQL database and the necessary credentials to connect to it. The array beings with `$databases = array (` then goes on to include the location and MySQL credentials, as well as additional options.
-1. Paste your previously-copied settings output here. Be sure to paste it _after_ the trailing `);`
+1. Go to the bottom of the file and paste in your previously-copied settings output here. If the settings.php file already includes an earlier version of the output please remove the earlier version before pasting the new output. 
 
     ![Screenshot demonstrating the output of database settings](/img/views3integration-2.png)
  
@@ -58,8 +57,11 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 
     ![Screenshot demonstrating where to add a table prefix in your settings](/img/views3integration-4.png)
     
-1. Save the file. You might want to clear your site cache at this point.
-1. You should now be able to create views based on CiviCRM data.
+1. Save the file settings.php. You might want to clear your site cache at this point.
+1. You should now be able to create Drupal Views based on CiviCRM data.
+
+ !!! note
+        If you add a new set of custom fields to CiviCRM you will need to re-do these steps again. So any new fields in the field set can be accessed by Drupal Views. 
 
 #### Drupal 6
 

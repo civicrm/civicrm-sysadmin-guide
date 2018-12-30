@@ -1,5 +1,9 @@
 # WordPress Installation Guide for CiviCRM
 
+## Scope of this guide and alternative installation methods
+
+This guide covers standard installation of CiviCRM for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
@@ -71,7 +75,7 @@ Follow these steps to download and install the files that contain strings for la
             ```
 
 
-* Un-tar (unpack) the language files into the wordpress/wp-content/plugins directory.
+* Un-tar (unpack) the language files into the wordpress/wp-content/plugins/civicrm directory.
 
     1. Move to the wordpress/wp-content/plugins/civicrm directory (if not already there)
         ```

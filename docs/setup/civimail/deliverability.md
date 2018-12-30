@@ -1,63 +1,43 @@
-# CiviMail Tactics for Staying Off The Black List
+# Tactics for staying off email blacklists
 
-This is to share on how to prevent the problem of ending up in these email providers Spam folders. Using CiviCRM contact mail link and Civimail, I have continually ended up in these folders.
+When sending email from CiviMail, it is not unusual to have a signficant percentage of emails bounced as suspected spam, or delivered but marked by the recipient's email program as suspected spam. Usually paid bulk email services achieve better deliverability because they have experise in handling this problem. Blacklist services and spam filters rarely disclose the details of the rules they use to decide what is spam. However, when receiving a bounce report, often the email headers will give some indication of why the email has bounced. For example bounces from Google Mail addresses often mention that the the SPF record is not valid or missing, and others sometimes name a particular blacklist where your domain or IP address has appeared.
 
-I will touch on Yahoo first then come back later to Gmail and Hotmail
+!!! note
+    A search will provide links to several email blacklist checkers. The results can point to you any lists of suspected spammers
+    which have blacklisted your domain or IP address. In many cases, a blacklisting is short-lived and requires no 
+    action provided the points above are fixed. Some blacklists provide a form which you can use to approach them directly 
+    to ask to be removed from their blacklist.
 
-## Yahoo
+## Basic steps
 
-1. Add SPF to your TXT Zone file for DNS. To me this meant going to Godaddy and following their very easy to use instructions. I also use Networksolutions for another Domain and they where NO help so I need to figure out what to do with them.
-1. FIRST go here to test [http://espcoalition.org/senderid/](http://espcoalition.org/senderid/) then you will see, most likely you are missing some settings.
-1. Then this site will help you find you SPF settings [http://old.openspf.org/wizard.html](http://old.openspf.org/wizard.html)
-1. Once done try the test site again and you will see better results. Now you will also see your email go into the Yahoo Inbox.
+1. Make sure all your mail servers accept [bounce messages](https://en.wikipedia.org/wiki/Bounce_message);
+1. Having an [SPF](http://www.openspf.org/) record on the DNS for your server which sends for outgoing messages is very valuable, and optimally also deploy [DKIM](http://www.dkim.org/) and [DMARC](https://dmarc.org/);
+1. Make sure that your mail server has a reverse DNS [rDNS] entry: for most shared hosting, and for many private servers, only the server or hosting company can set up an rDNS entry, in which case you should raise a ticket requesting this;
+1. Make sure your email server complies with the [RFC rules](https://en.wikipedia.org/wiki/Anti-spam_techniques#Strict_enforcement_of_RFC_standards) regarding service configuration;
+1. There are various online tools, such as [http://espcoalition.org/senderid/](http://espcoalition.org/senderid/), which you can use to test your email settings.
 
-Yahoo also has a form you can get to get you off the list [http://help.yahoo.com/l/us/yahoo/mail/postmaster/forms_index.html](http://help.yahoo.com/l/us/yahoo/mail/postmaster/forms_index.html)
+!!! note
+    If your domain name already has an SPF record, make sure that it includes the IP address of your 
+    CiviCRM mail server (which might be a different from the host used for the web server or from your mail servers), 
+    and if it doesn't, add this IP address.
 
-Let them know what you want and you will get a form like [http://forum.civicrm.org/index.php/topic,1484.msg6480.html#msg6480](http://forum.civicrm.org/index.php/topic,1484.msg6480.html#msg6480)
+## Additional tools
 
-You will see there the form they sent me and the good advice given.
+Some leading email providers have additional tools or guidance on improving deliverability. A few examples follow.
 
-## GMail
+### Yahoo
 
-1. Following the above is a good start. This helped overall with my email to Google.
- Coming soon more on this.
+Bulk senders can also improve their reputation with Yahoo by completing the form linked from  [the Yahoo FAQ on deliverability](https://help.yahoo.com/kb/postmaster/yahoo-mail-deliverability-faqs-sln24439.html). Some guidance on completing an earlier iteration of Yahoo's form, which may still be useful, can be found at [https://forum.civicrm.org/index.php%3Ftopic=1484.0#msg6479](https://forum.civicrm.org/index.php%3Ftopic=1484.0#msg6479).
 
-## Hotmail
+### GMail
 
-Hotmail have a Junk eMail Reporting Program (JMRP). When a user click on the "Spam" button in a Hotmail account, the faulty email is forwarded back to you. You can then exclude the email from your lists. This help to stay off the Spam folder.
+Google provides several pages of guidance on email deliverability to Google Mail addresses, for example [https://support.google.com/mail/answer/81126](https://support.google.com/mail/answer/81126).
 
-1. Subscribe to JMRP : [https://support.msn.com/eform.aspx?productKey=edfsjmrpp&ct=eformts](https://support.msn.com/eform.aspx?productKey=edfsjmrpp&ct=eformts) (use "RFC822 Attachment" if asked for a format).
-1. Forward complaint email to your Bounce handling address (you can find this address in civicrm/admin/mailSettings?reset=1).
-1. Add a entry in the bounce pattern table (for version before v4.4) by executing the following SQL command :
+### Outlook Live
 
-    ```sql
-    INSERT INTO civicrm_mailing_bounce_pattern (
-      bounce_type_id,
-      pattern)
-    SELECT
-      id,
-      "X-HmXmrOriginalRecipient"
-    FROM civicrm_mailing_bounce_type
-    WHERE name = "Spam";
-    ```
+MS Outlook Live mail (formerly also called Hotmail) have a Junk Mail Reporting Program (JMRP). When a user click on the "Spam" button in a Hotmail account or moves an item to their junk folder, a report is forwarded back to you. You can then exclude that recipient from your lists. This amy help your emails to maintain a good reputation with Microsoft's spam filter. Subscribe to JMRP by visiting [https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx](https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx) (requires a Microsoft login) and completing the form.
 
-This should suspend any reported emails. Be aware this is not an opt-out. If you want an opt-out, you could use a shell script and the API (with drush civicrm-api or via REST) to opt-out the user.
+Be aware this is not an opt-out. If you want to opt-out contacts who mark your emails as "Spam" or "Junk", you could use a shell script and the API (with drush civicrm-api or via REST) to opt-out contacts who have marked your email as spam.
 
-See also :
+See also [https://sendersupport.olc.protection.outlook.com/pm/services.aspx](https://sendersupport.olc.protection.outlook.com/pm/services.aspx).
 
-* [http://www.microsoft.com/mscorp/safety/content/technologies/senderid/wizard/](http://www.microsoft.com/mscorp/safety/content/technologies/senderid/wizard/)
-* [http://mail.live.com/mail/services.aspx](http://mail.live.com/mail/services.aspx)
-
-## Others
-
-* [http://spf.pobox.com](http://spf.pobox.com)
-* [htp://spam.abuse.net/userhelp/howtocomplain.shtml](http://spam.abuse.net/userhelp/howtocomplain.shtml)
-* [http://www.openspf.org/](http://www.openspf.org/)
-* DKIM
-
-## Later
-
-1. Make sure all your mail servers accept mail from: delivery notifications (NDR)
-1. Make sure your DNS is properly set up and that you are complying with the RFC rules regarding service configuration;
-1. Deploy Domain Keys and SPF for outgoing messages;
-1. Make sure that your mail servers has a reverse DNS entry. Some servers will reject mail without a valid reverse entry specified

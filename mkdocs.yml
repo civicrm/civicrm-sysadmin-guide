@@ -63,7 +63,7 @@ pages:
   #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
   #- Custom development: customize/develop.md
-- Integration:
+- CMS Integration:
   - Drupal integration:
     - Drupal Users, Roles and Groups integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
@@ -77,6 +77,7 @@ pages:
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
+    - Plugin Integration: integration/wordpress/plugins.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
   - Joomla integration:
     - Joomla integration: integration/joomla/index.md
