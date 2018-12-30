@@ -98,22 +98,8 @@ If you have a public-facing website, note that when switching traffic from (for 
 
 ## Backups and their security
 
-All computer systems are prone to failures - both hardware and software.
-It is advisable to create periodic backups of all existing data (and
-possibly the software) to fulfil two important purposes: recovery and
-retention. In regards to recovery, the organisation can ensure that the
-data gathered and stored in its database is not lost in the event of
-failure. Backups can also aid in the strengthening of service
-continuity. In some situations it is essential that data gathering or
-analysis operations do not cease, and the ability to build a working
-tool from a backup (while the issue is being addressed) minimises
-downtime. Conversely, retention is useful when the organisation needs to
-check the state of data gathered at a given time in the past.
-
-Once made, the backups themselves must also be secured from natural
-disasters, fire, vandalism and theft. It is good practice to encrypt
-backups and duplicate them, keeping one copy on premises, and sending
-the other to storage at another external location.
+Hackers are as likely to steal data from backups as from production sites. 
+The security of backups is covered on the [backups page of this guide](/sysadmin/en/latest/setup/backups/).
 
 ## Data storage jurisdiction
 
