@@ -236,7 +236,7 @@ Once you have added the Recurring feature to your existing Paypal Pro account, c
 * Log in to your Paypal account, click "Profile" in the top navigation
 * Look to the bottom of the page, click "Instant Payment Notification preferences"
 * Enter your URL for your `ipn.php` page where x is the payment processor id
-    * For Drupal: `http://example.org/sites/all/modules/civicrm/payment/ipn/x
+    * For Drupal: `http://example.org/civicrm/payment/ipn/x
     * For Joomla: `http://example.org/administrator/components/com_civicrm/civicrm/payment/ipn/x
     * For WordPress: `http://example.org/wp-content/plugins/civicrm/civicrm/payment/ipn/x
 
