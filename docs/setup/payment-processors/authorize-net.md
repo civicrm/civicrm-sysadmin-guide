@@ -96,15 +96,11 @@ If you would like to use an Authorize.net Developer Test Account, you can sign u
 
 Authorize.net offers a recurring payment system called Automated Recurring Billing (ARB) for an additional fee. Your **Settings - Payment Processor** page will automatically populate with the standard Recurring Payments URL, but you will need to enable the ARB service in order for recurring contributions to work.
 
-CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**. Within CiviCRM, get the ID number of your payment processor by looking at the URL of the form for editing your payment processor: it should read "&id=" followed by a number. That number is your ID. Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the URL (the following examples are for payment processor ID 2):
+CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**.
 
-```
-Drupal: http://example.org/civicrm/payment/ipn/2
+Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use.
 
-Joomla!: http://example.org/index.php?option=com_civicrm&task=civicrm/payment/ipn/2
-
-WordPress: http://example.org/?page=CiviCRM&q=civicrm/payment/ipn/2
-```
+Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the appropriate IPN / Webhook URL.
 
 If you fail to do this, one-time contributions will succeed normally, and recurring contributions will be processed successfully by Authorize.net, but the contribution status will be stuck at Pending.
 

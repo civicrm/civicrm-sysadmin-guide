@@ -37,6 +37,7 @@ pages:
     - Deliverability: setup/civimail/deliverability.md
   - Payment processors:
     - Payment processors: setup/payment-processors/index.md
+    - Recurring Payments: setup/payment-processors/recurring.md
     - Authorize.net: setup/payment-processors/authorize-net.md
     - Card Access: setup/payment-processors/card-access.md
     - First Data: setup/payment-processors/first-data.md
