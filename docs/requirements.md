@@ -138,7 +138,8 @@ GRANT
   CREATE ROUTINE,
   ALTER ROUTINE,
   REFERENCES,
-  CREATE VIEW
+  CREATE VIEW,
+  SHOW VIEW
 ON civicrm.*
 TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
