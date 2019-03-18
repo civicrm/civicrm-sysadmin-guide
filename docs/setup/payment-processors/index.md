@@ -22,8 +22,8 @@ Optionally provide a description for the payment processor, and indicate if the 
 
 | Processor Name                                                   | In        | Type     | Recurring? | Countries  | Merchant? |
 | ---                                                              | ---       | ---      | ---        | ---        | ---       |
-| Dummy (for testing)                                              | Core      |          |            |            |           |
-| [Authorize.net](/setup/payment-processors/authorize-net.md)      | Core      | SSL      | Yes        |            | Yes       |
+| Dummy (for testing only)                                         | Core      |          |            |            |           |
+| [Authorize.net](/setup/payment-processors/authorize-net.md)      | Core      | SSL      | Yes        | Many       | Yes       |
 | [PayPal_Standard](/setup/payment-processors/paypal-standard.md)  | Core      | External | Yes        | Many       | No        |
 | [PayPal Pro](/setup/payment-processors/paypal-pro.md)            | Core      | SSL      | Yes        | Many       |           |
 | [Paypal Express](/setup/payment-processors/paypal-pro.md)        | Core      |          | Partial    | Many       |           |
@@ -64,7 +64,7 @@ Optionally provide a description for the payment processor, and indicate if the 
 
 ### Notes
 
-* **Authorize.net**: Recurring contributions require ARB support, which is an additional monthly fee. Possibly cheaper through a re-seller than direct (unconfirmed rumour). Only AIM and ARB methods (not SIM) are supported.
+* **Authorize.net**: Recurring contributions require ARB support, which is an additional monthly fee. Possibly cheaper through a re-seller than direct. Only AIM and ARB methods (not SIM) are supported.
 
 * **PayPal_Standard**: Accepted Paypal payments too. Can be confusing for users who only want to pay by credit cards. High abandon rate There is a delay in withdrawing funds of 3-5 days and withdrawals need to be manually actioned
 
