@@ -73,8 +73,10 @@ pages:
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md
     - Incompatible modules: integration/drupal/incompatibilities.md
-  #- Backdrop integration:
-    #- Backdrop integration: integration/backdrop/index.md
+  - Backdrop integration:
+    - Backdrop Users, Roles and Groups integration: integration/backdrop/index.md
+    - Backdrop Views: integration/backdrop/views.md
+    - Webform: integration/backdrop/webform.md
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
