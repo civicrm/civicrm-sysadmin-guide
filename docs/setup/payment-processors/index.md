@@ -31,10 +31,9 @@ Optionally provide a description for the payment processor, and indicate if the 
 | [Moneris](/setup/payment-processors/moneris.md)                  | Extension | SSL      |            |            |           |
 | [PayJunction](/setup/payment-processors/payjunction.md)          | Extension | SSL      |            |            |           |
 | [iATS Payments](/setup/payment-processors/iats.md)               | Extension | SSL      | Yes        | Many       | No        |
-| Payment Express (DPS)                                            | Extension | External | Partial    | Many       | Yes       |
-| Paymex                                                           | Extension | External | No         | NZ         | No        |
+| Payment Express (DPS)                                            | Extension | External | Yes        | Many       | Yes       |
 | [Ogone](/setup/payment-processors/ogone.md)                      | Extension |          |            |            | No        |
-| eWay                                                             | Extension | SSL      | Partial    | AU         |           |
+| eWay                                                             | Extension | SSL      | Yes        | AU         |           |
 | [First Data](/setup/payment-processors/first-data.md)            | Extension | SSL      | No         |            |           |
 | Elavon / Nova                                                    | Extension | SSL      | No         |            |           |
 | World Pay                                                        | Extension |          |            |            |           |
@@ -73,8 +72,6 @@ Optionally provide a description for the payment processor, and indicate if the 
 * **iATS Payments**: iATS Payments only services non-profits and gets a better rate because of that. They have separate North American and UK based servers. Support for ACH/EFT, Recurring contributions using tokens, UK DIrect Debit, and swipe devices. Active development and support from iATS themselves for the extension. <http://home.iatspayments.com/> <https://civicrm.org/extensions/iats-payments> <https://civicrm.org/extensions/iats-payments> Community contributed (Alan Dixon, Karin Gerritsen) 
 
 * **Payment Express (DPS)**: This option is a good one if you do a lot of transactions (e.g. $1000-$2000 per month) You can expect to pay a monthly rate for this and possibly a monthy fee to DPS - depending on your bank's package. If you are in New Zealand Westpac sells this as its WIPS plus product. At time of writing this was cheaper than the other banks.We found that although they told us we needed to have other accounts with Westpac this was primarily a credibility issue and they were prepared to trust us based on our personal history with them. Both pxaccess & pxpay methods are supported. <http://www.paymentexpress.com/index.html> Community contributed (Eileen & Lucas Baker) 
-
-* **Paymex**: Good kiwi option for low volume. 3.25% & no set up fees but you do need to withdraw your money manually Paymex have written the code and it is available from their site 
 
 * **eWay**: In Core Community Contributed (Peter Barwell of Dolphin Software, Henare Degan, Chris Ward) 
 
