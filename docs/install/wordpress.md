@@ -14,25 +14,25 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Download and Un-zip CiviCRM Code
 
-All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
+All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('zips'). Follow these steps to download and install the codebase:
 
-* Download the appropriate tarball file from [here](https://civicrm.org/download) with your browser. Tarball file-names include the CiviCRM version. For example, **civicrm-x.x.x-wordpress.zip.**
+* Download the appropriate zips file from [here](https://civicrm.org/download) with your browser. The zip file-names include the CiviCRM version. For example, **civicrm-x.x.x-wordpress.zip.**
 
-* Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins/civicrm` directory to allow for "Write" Access. Just remember to change it back to default when done.
+* Copy or ftp the zip file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins/civicrm` directory to allow for "Write" Access. Just remember to change it back to default when done.
 * You can upload the zip file that was downloaded via your WordPress admin panel at `wp-admin/plugin-install.php`
 
 * Create the `<wordpress path>/wp-content/plugins/files/` directory and ensure it is writable. CiviCRM for versions 4.6 and prior uses this directory for temporary and uploaded files.
 
     !!! information "Downloading Directly to Your Server with wget"
     
-        If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
+        If you have command-line access, you may prefer to download the zip file directly to your server using wget:
         
         1. Move into WordPress's plugin directory
             ```
             $ cd /var/www/wordpress/wp-content/plugins
             ```
         
-        1. wget the file (modify this line to use the current tarball file name for the version you want)
+        1. wget the file (modify this line to use the current zip file name for the version you want)
             ```
             wget https://download.civicrm.org/civicrm-x.x.x-wordpress.zip
             ```
