@@ -61,4 +61,4 @@ For a full list of settings, see [https://github.com/civicrm/civicrm-core/tree/m
 
 !!! notice "HTTP Timeout Setting"
 
-    From CiviCRM 5.15 onwards there is a hidden setting to determine how long http requests that CiviCRM application geneartes should last for. The default for this is 5s, Sites may want to lower this as it may impact on users. The setting number is expressed in the number of seconds the timeout should last for.
+    From CiviCRM 5.15 onwards there is a hidden setting for the HTTP request timeout in seconds. The default for this is 5 seconds. Adjusting the timeout will affect both the page load times (lower time, pages will load faster), too low a timeout and CiviCRM status checks may not complete in time resulting in users seeing an incorrect status alert check failed warning message.
