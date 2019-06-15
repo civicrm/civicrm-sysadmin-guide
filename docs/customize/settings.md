@@ -51,7 +51,9 @@ The table below shows some of the settings file "constants" which will override 
 | **Extensions Resource URL** (System Settings > Resource URLs) | $civicrm_setting['URL Preferences']['extensionsURL'] = '[http://example.com/](http://example.com/)pathtoextensiondir' |
 | **Disable display of Community Messages on home dashboard** | $civicrm_setting['CiviCRM Preferences']['communityMessagesUrl'] = false; |
 | **Disable automatic download / installation of extensions** | $civicrm_setting['Extension Preferences']['ext_repo_url'] = false; |
-| **Set How long HTTP Requests could last for before timing out** | $civicrm_setting['CiviCRM Preferences']['http_timeout'] = '0.5'; | 
+| **Set How long HTTP Requests could last for before timing out** | $civicrm_setting['CiviCRM Preferences']['http_timeout'] = '0.5'; |
+| **Enable SSL** | $civicrm_setting['CiviCRM Preferences']['enableSSL'] = false; |
+| **Verify SSL** | $civicrm_setting['CiviCRM Preferences']['verifySSL'] = false; |
 
 For a full list of settings, see [https://github.com/civicrm/civicrm-core/tree/master/settings](https://github.com/civicrm/civicrm-core/tree/master/settings)
 
