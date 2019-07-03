@@ -25,6 +25,7 @@ SMTP Username - If your SMTP server requires authentication, enter your Username
 SMTP Password - The password associated with the Username entered in the previous field.
 
 !!! Joomla
+
     For Joomla! installs, you will need to update both the Admin and Front-end copies of civicrm.settings.php.
 
 
