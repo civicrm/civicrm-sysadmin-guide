@@ -95,7 +95,7 @@ In particular:
 *  "Received: from" header should correspond to your mail server and be
 properly configured. It might contain information about your hosting
 provider instead of your domain name. This is not a problem as long as
-the mail server is properly configured. If you have a dedicated IP
+the mail server is properly configured. If you have a [dedicated IP](https://hosting.review/web-hosting-glossary/#11)
 address for your server, you should try to configure a reverse DNS that
 represents your organization instead of the default name.
 
