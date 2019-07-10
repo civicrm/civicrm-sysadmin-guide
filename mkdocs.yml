@@ -49,6 +49,7 @@ pages:
     - PayPal Pro and Express: setup/payment-processors/paypal-pro.md
     - Ogone: setup/payment-processors/ogone.md
   - Detailed logging: setup/logging.md
+  - Optimizations: setup/optimizations.md
 - Upgrades:
   - Upgrades: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
