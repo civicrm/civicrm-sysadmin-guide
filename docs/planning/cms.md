@@ -27,7 +27,7 @@ between users on your website and your CRM, then Drupal might be the CMS
 for you. The main negative is that this flexibility makes it harder for
 new site builders to get to grips with.
 
-**Backdrop CMS** is very similar to Drupal 7, with many improvments making 
+**Backdrop CMS** is very similar to Drupal 7, with many improvements making 
 it slick and lightweight. It started as a fork (that is, a copy) of Drupal 7, 
 aimed at users for whom Drupal 8 was likely to be too complex either to use, 
 or to migrate to from Drupal 7. Drupal 7 modules and themes require 
