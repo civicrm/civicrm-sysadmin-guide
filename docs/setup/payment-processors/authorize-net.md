@@ -150,10 +150,6 @@ Note that you must modify the URL to match your own web site and various other p
 ```bash
 #!/bin/bash
 
-# for development, you can go bare-metal with this URL:
-# no payment processor ID necessary:
-# THE_URL=http://awesome.org/sites/all/modules/civicrm/extern/authorizeIPN.php
-
 # Confirm the URL to use in the Authorize.net Silent-Post URL:
 # last URL segment is the payment processor ID
 THE_URL="https://awesome.org/civicrm/payment/ipn/1"
