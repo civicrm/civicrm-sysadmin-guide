@@ -7,3 +7,4 @@ config/error-handling https://docs.civicrm.org/user/en/latest/initial-set-up/err
 config/directories setup/directories
 setup/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
 config/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
+misc/switch-cms misc/switching-cms/switch-cms
