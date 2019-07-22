@@ -4,7 +4,7 @@ This section provides instructions for moving your CiviCRM installation from bei
 
 The subpages in this section are named in the following "format": 
 
-    **Current CMS** to **New CMS**
+**Current CMS** to **New CMS**
 
 We currently have guides for:
 
