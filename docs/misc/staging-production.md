@@ -4,7 +4,7 @@ Many websites have production and staging/development/test instances. When copyi
 
 The following explains support that has been added in CiviCRM 4.7.25+ to better support disabling production activities when moving a CiviCRM instance from production to non-production.
 
-## Changing your Environment
+### Changing your Environment
 
 1. By default, 'Environment' is Production. Other options values can be defined, with 'Staging' and 'Development' defined by default.
 
@@ -12,7 +12,7 @@ The following explains support that has been added in CiviCRM 4.7.25+ to better 
 
 1. You can also set the Environment in `civicrm.settings.php`.  Newer installs of CiviCRM have `global $civicrm_setting` at the top of the file and `$civicrm_setting['domain']['environment'] = 'Production';` commented out.  If you have upgraded from an older version of CiviCRM, you can add these manually to `civicrm.settings.php`.
 
-## Effects of changing your Environment
+### Effects of changing your Environment
 
 1. The outbound email will be set to “Disable Outbound Email”. Logging of mails will not be done until user explicitly sets the value in `civicrm.settings.php` and changes the outbound setting to `mail()`.
      1. This does NOT happen if you have set your Environment via `civicrm.settings.php`.
