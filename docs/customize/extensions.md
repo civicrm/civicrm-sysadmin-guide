@@ -27,7 +27,7 @@ Configure the extensions directory:
 
 Remembering that mysite == default for most single site installs:
 
-<docroot>/sites/mysite/files/civicrm/ext
+`<docroot>/sites/mysite/files/civicrm/ext`
 
 #### Joomla
 
