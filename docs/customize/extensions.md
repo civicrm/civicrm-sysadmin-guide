@@ -41,7 +41,7 @@ Remembering that mysite == default for most single site installs:
 Configure the extensions resource url:
  This is the base url through which resources (css, js) of your extensions are accessible to the web.
 
-* Go to *Administer » System Settings » Resource URLs*.
+* Go to **Administer » System Settings » Resource URLs**.
 * Fill in "<label for="extensionsURL">Extension Resource URL</label>," and click "Save".
  Note that this URL corresponds to the same location as the "Extensions Directory" above.
 
