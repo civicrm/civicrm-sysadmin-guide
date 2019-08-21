@@ -27,25 +27,21 @@ Configure the extensions directory:
 
 Remembering that mysite == default for most single site installs:
 
-<docroot>/sites/mysite/files/civicrm/custom_ext
-
-This puts it beside the custom_php and custom_tpl directories that many people place in <docroot>/sites/mysite/files/civicrm/. The benefit of being under the files directory here is that it is the standard place for a writeable directory. However, it might be good to move the custom_php and custom_tpl directories out of the files subdirectory and put all of three them beside the files directory in order to prevent things like file uploader extensions from overwriting files in these directories. In other words:
-
-<docroot>/sites/mysite/custom_ext
+<docroot>/sites/mysite/files/civicrm/ext
 
 #### Joomla
 
-<docroot>/media/civicrm/custom_ext
+<docroot>/media/civicrm/ext
 
 #### WordPress
 
-<docroot>/wp-content/plugins/files/civicrm/custom_ext
+<docroot>/wp-content/uploads/civicrm/ext
 
 
 Configure the extensions resource url:
  This is the base url through which resources (css, js) of your extensions are accessible to the web.
 
-* Go to "Administer » System Settings » Resouce URLs".
+* Go to "Administer » System Settings » Resource URLs".
 * Fill in "<label for="extensionsURL">Extension Resource URL</label>," and click "Save".
  Note that this URL corresponds to the same location as the "Extensions Directory" above.
 
