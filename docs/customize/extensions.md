@@ -31,7 +31,7 @@ Remembering that mysite == default for most single site installs:
 
 #### Joomla
 
-<docroot>/media/civicrm/ext
+`<docroot>/media/civicrm/ext`
 
 #### WordPress
 
