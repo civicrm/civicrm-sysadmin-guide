@@ -35,7 +35,7 @@ Remembering that mysite == default for most single site installs:
 
 #### WordPress
 
-<docroot>/wp-content/uploads/civicrm/ext
+`<docroot>/wp-content/uploads/civicrm/ext`
 
 
 Configure the extensions resource url:
