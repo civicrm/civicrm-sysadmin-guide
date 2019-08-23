@@ -22,7 +22,10 @@ Detailed logging (aka "logging") allows you to maintain a full history of *all* 
 
 ## System requirements
 
-* **MySQL Storage Engines** - By Default CiviCRM uses the Archive storage engine to store the logging data. The Archive engine may not automatically be installed on your MySQL system. Depending on your installation you maybe able to [install the Archive Engine](https://stackoverflow.com/questions/26996618/install-mariadb-archive-engine). However if you cannot install the Archive engine, the best solution would be to look to install the [nz.co.fuzion.innodbtriggers](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) Extension.
+* **MySQL Storage Engines** - Starting with version 5.16, CiviCRM uses the InnoDB storage engine to store logging data. Prior to 5.16, the Archive engine was used. Existing installations may continue to use the Archive engine, but migration to InnoDB is recommended for performance and relability reasons. Existing systems can be migrated using the `System.updatelogtables` API with the `forceEngineMigration` parameter set.
+
+!!! warning
+    Migrating existing log tables may take a long time especially on larger installations. Disk usage may also increase significantly when switching from Archive to InnoDB as data is not compressed. Refer to [Advanced Options](#advanced-options) for solutions that enable compression.
 
 * **MySQL database permissions** - Logging requires the usage of [MySQL Triggers](https://dev.mysql.com/doc/en/triggers.html), so your MySQL database user will need to have the correct permissions to use them. In most cases, you will need to grant the [Trigger Privilege](https://dev.mysql.com/doc/en/privileges-provided.html#priv_trigger). However, depending on your system or if you have enabled binary logging, you may need the [Super Privilege](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super).
 
@@ -85,3 +88,12 @@ If you want to turn on logging again, after it's been off for some time, you can
 ### Extensions
 
 * The [Extended Logging Report](http://civicrm.org/extensions/extended-logging-report) offers some additional features over the built in reports which are designed to find out about individual transactions and don't cope with Batch or long running transactions. The extended logging report allows you to view all email address changes made this month (for example) or to see the changes made by an import job.
+
+## Advanced Options
+
+In its default configuration, detailed logging uses no compression for log tables and does not create indexes on any columns. For larger sites, this could cause log tables to use large amounts of disk space and might lead to performance issues for change log reports.
+
+CiviCRM allows extensions developers to modify the schema definition of log tables, making it possible to solve some of these problems:
+
+* The [nz.co.fuzion.innodbtriggers](https://github.com/eileenmcnaughton/nz.co.fuzion.innodbtriggers) extension can be used to enable InnoDB table compression as well as to create indexes on a number of columns that improve performance of built-in change log reports.
+* [at.greenpeace.advancedlogtables](https://github.com/greenpeace-cee/at.greenpeace.advancedlogtables) works like nz.co.fuzion.innodbtriggers and ships with the same defaults, but allows dynamic configuration of table engine, engine configuration and indexes via settings. This extension can be used to restore the storage engine to Archive (the previous default which had some performance and durability issues) or to use more specialized engines like TokuDB.
