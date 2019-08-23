@@ -92,7 +92,11 @@ pages:
   #- Switching installation directories: misc/directories.md
   #- Switching domain names: misc/domain-names.md
   - Switching servers: misc/switch-servers.md
-  - Switching CMS platforms: misc/switch-cms.md
+  - Switching CMS:
+    - Switch CMS: misc/switching-cms/switch-cms.md
+    - Switch from Drupal to Backdrop: misc/switching-cms/drupal-to-backdrop.md
+    - Switch from Drupal to Wordpress: misc/switching-cms/drupal-to-wordpress.md
+    - Switch from Joomla to Drupal: misc/switching-cms/joomla-to-drupal.md 
   #- Data redaction: misc/redaction.md
 
 markdown_extensions:
