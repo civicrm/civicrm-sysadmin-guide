@@ -30,6 +30,17 @@ This enables you to have, among other things, members-only content on your websi
 
 [Download](https://wordpress.org/plugins/civicrm-wp-member-sync/)
 
+### [CiviCRM Groups Sync](https://develop.tadpole.cc/plugins/civicrm-groups-sync)
+
+*CiviCRM Groups Sync* is a WordPress plugin that keeps Contacts in CiviCRM Groups in sync with WordPress Users in groups provided by the [Groups plugin](https://wordpress.org/plugins/groups/).
+
+This allows you to create new Wordpress / CiviCRM groups and synchronise them in both directions.
+It is not currently possible to disable the synchronisation or synchronise an existing group.
+
+[Documentation](https://develop.tadpole.cc/plugins/civicrm-groups-sync/blob/master/README.md)
+
+[Download](https://develop.tadpole.cc/plugins/civicrm-groups-sync)
+
 ### [Caldera Forms CiviCRM](https://github.com/mecachisenros/caldera-forms-civicrm)
 
 A WordPress plugin that integrates the [Caldera Forms plugin](https://wordpress.org/plugins/caldera-forms/) with CiviCRM.
