@@ -20,7 +20,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
 * Upload this file to a folder in your root Joomla directory. Recommended location: `JOOMLA_ROOT/tmp/`.
 * Unzip the package, which will create a directory called: `com_civicrm`. On cPanel, you can use the File Manager's Extract function to unzip the file you uploaded.
 
-Note: when installing a new version over an old one, please check first "5. Trouble-shooting resources" below
+Note: when installing a new version over an old one, please first check [Trouble-shooting resources](#troubleshooting) below.
 
 ## Run the Installer {:#installer}
 
