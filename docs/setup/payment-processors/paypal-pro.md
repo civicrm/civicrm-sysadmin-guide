@@ -233,10 +233,11 @@ To take advantage of recurring and one-time contributions on the same CiviCRM Co
 
 Once you have added the Recurring feature to your existing Paypal Pro account, configure your IPN settings in Paypal so CiviCRM can receive updates on the recurring contributions:
 
-* Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use.
-* Log in to your Paypal account, click "Profile" in the top navigation.
-* Look to the bottom of the page, click "Instant Payment Notification preferences".
-* Enter your URL for your IPN/Webhook where x is the payment processor id.
+* Log in to your Paypal account
+* Click Settings (Gear icon)
+* Click Account Settings > Website Payments > Instant Payment Notifications
+* Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use
+* Enter the URL and save
 
 !!! note
     You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
