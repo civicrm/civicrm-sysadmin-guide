@@ -65,6 +65,7 @@ pages:
   #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
   #- Custom development: customize/develop.md
+  - Theme information: customize/theme.md
 - CMS Integration:
   - Drupal integration:
     - Drupal Users, Roles and Groups integration: integration/drupal/index.md
