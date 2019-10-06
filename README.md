@@ -2,7 +2,7 @@
 
 A documentation guide for people who install, upgrade, and maintain [CiviCRM](https://civicrm.org) for an organization.
 
--   [Read published version](http://docs.civicrm.org/dev/en/master)
+-   [Read published version](http://docs.civicrm.org/sysadmin/en/latest)
 -   [Learn how to edit](https://docs.civicrm.org/dev/en/master/documentation/#how-to-edit)
 
 # Docs Infrastructure Links
