@@ -184,6 +184,7 @@ if (!defined('CIVICRM_CLEANURL')) {
   }
 }
 ```
+* You will need to go to https://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1Go and make sure the base page points to an existing WP page (usually /civicrm)
 
 * You will need  to flush rewrite rules in WordPress for clean URLs to work. Visit the Permalinks settings page to trigger this Go to Settings —> permalinks The URL will be  https://example.org/wp-admin/options-permalink.php
 
