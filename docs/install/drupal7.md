@@ -44,14 +44,14 @@ In the above example:
 
 First, download CiviCRM and install the files like you would any other module:
 
-* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the drupal modules page to see the **Install New Module** link.
+* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the Drupal modules page to see the **Install New Module** link.
 * Alternatively, you can upload and extract the file in `<DRUPAL ROOT>/sites/all/modules`
 
 The result will be that the CiviCRM directory will be at `<DRUPAL ROOT>/sites/all/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
+The most up-to-date version of CiviCRM is always available at [https://civicrm.org/download](https://civicrm.org/download)
 
-**Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
+**Do NOT** activate the module yet - that will happen automatically when you run the installer.
 
 ## Install localization files (only for non-English sites) {:#i18n}
 
@@ -65,7 +65,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Point your web browser to the following URL:
 
     `http://example.org/sites/all/modules/civicrm/install/index.php`
-    
+
 * You should see the **CiviCRM Installer** screen.
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.
     * If you see other errors, check the **Requirements** details at the bottom of the page for more information. You will need to correct any issues before continuing.
