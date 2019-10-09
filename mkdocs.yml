@@ -26,8 +26,10 @@ pages:
   #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
+  - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Directories: setup/directories.md
+  - Caches: setup/cache.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
     - Outbound mail: setup/civimail/outbound.md
@@ -35,6 +37,7 @@ pages:
     - Deliverability: setup/civimail/deliverability.md
   - Payment processors:
     - Payment processors: setup/payment-processors/index.md
+    - Recurring Payments: setup/payment-processors/recurring.md
     - Authorize.net: setup/payment-processors/authorize-net.md
     - Card Access: setup/payment-processors/card-access.md
     - First Data: setup/payment-processors/first-data.md
@@ -46,6 +49,7 @@ pages:
     - PayPal Pro and Express: setup/payment-processors/paypal-pro.md
     - Ogone: setup/payment-processors/ogone.md
   - Detailed logging: setup/logging.md
+  - Optimizations: setup/optimizations.md
 - Upgrades:
   - Upgrades: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
@@ -61,22 +65,24 @@ pages:
   #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
   #- Custom development: customize/develop.md
-- Integration:
+  - Theme information: customize/theme.md
+- CMS Integration:
   - Drupal integration:
-    - Drupal integration: integration/drupal/index.md
+    - Drupal Users, Roles and Groups integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
     - Webform: integration/drupal/webform.md
-    - CiviGroup Roles Sync: integration/drupal/group-roles.md
-    - CiviMeber Roles Sync: integration/drupal/member-roles.md
     - WYSIWYG integration: integration/drupal/wysiwyg.md
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md
     - Incompatible modules: integration/drupal/incompatibilities.md
-  #- Backdrop integration:
-    #- Backdrop integration: integration/backdrop/index.md
+  - Backdrop integration:
+    - Backdrop Users, Roles and Groups integration: integration/backdrop/index.md
+    - Backdrop Views: integration/backdrop/views.md
+    - Webform: integration/backdrop/webform.md
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
     - Forms in WordPress: integration/wordpress/forms.md
+    - Plugin Integration: integration/wordpress/plugins.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
   - Joomla integration:
     - Joomla integration: integration/joomla/index.md
@@ -87,7 +93,11 @@ pages:
   #- Switching installation directories: misc/directories.md
   #- Switching domain names: misc/domain-names.md
   - Switching servers: misc/switch-servers.md
-  - Switching CMS platforms: misc/switch-cms.md
+  - Switching CMS:
+    - Switch CMS: misc/switching-cms/switch-cms.md
+    - Switch from Drupal to Backdrop: misc/switching-cms/drupal-to-backdrop.md
+    - Switch from Drupal to Wordpress: misc/switching-cms/drupal-to-wordpress.md
+    - Switch from Joomla to Drupal: misc/switching-cms/joomla-to-drupal.md 
   #- Data redaction: misc/redaction.md
 
 markdown_extensions:

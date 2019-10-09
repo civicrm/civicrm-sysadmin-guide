@@ -18,12 +18,10 @@ To get this working you need to:
 * Configure a mail account for bounce handling in CiviCRM Mail Accounts
 * Configure mailings to use VERP or not
 
-### Finding "on hold" contacts
+### Finding "On Hold" contacts
 
-You can use the Search Builder to find those contacts with an email **on hold** and look at the bounce report of a CiviMail sent message.
-
-1. From the CiviCRM menu, choose **Search > Search Builder**.
-1. Then choose **Contacts, On Hold, Primary, =, Yes**
+1. From **Search > Advanced Search** and choose **Email On Hold** from the Basic Criteria section at the top
+1. Use **Search > Search Builder**.  Then choose **Contacts, On Hold, Primary, =, Yes**
 
 ### Causes of e-mail address bounces
 
@@ -36,7 +34,7 @@ Here is a list from the database of the different types of bounces, and how many
 | id | name | description | `hold_threshold` |
 | -- | -- | -- | -- |
 | 1 | AOL | AOL Terms of Service complaint | 1 |
-| 2 | Away | Recipient is on vacation | 3 |
+| 2 | Away | Recipient is on vacation | 30 |
 | 3 | DNS | Unable to resolve recipient domain | 3 |
 | 4 | Host | Unable to deliver to destination mail server | 3 |
 | 5 | Inactive | User account is no longer active | 1 |
@@ -50,11 +48,11 @@ Here is a list from the database of the different types of bounces, and how many
 
 ### Removing Hold
 
-You can remove **on hold** from a contact by manually editing the contact record.
+1. After running a Search, choose from Actions: **Email - unhold addresses** 
 
-Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.
+2. You can also remove **on hold** from a single contact by manually editing that contact.
 
-Hold status is recorded in the `civicrm_email` table as column `on_hold`. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
+3. Alternatively, you could execute a series of SQL queries aimed at searching for Contacts with **on hold** status and/or batch removing hold status.  Hold status is recorded in the `civicrm_email` table as column `on_hold`. The most basic way of batch removing **on hold** status is by use of a simple query such as this one:
 
 ```sql
 UPDATE civicrm_email SET on_hold = 0;
@@ -68,128 +66,17 @@ A more nuanced query might be something like:
 
 ```sql
 UPDATE civicrm_email ce
-INNER JOIN civicrm_contact c ON ( c.id = ce.contact_id )
-LEFT JOIN civicrm_group_contact gc ON ( gc.contact_id = c.id and gc.status = 'Added' )
+LEFT JOIN civicrm_group_contact gc ON ( gc.contact_id = ce.contact_id AND gc.status = 'Added' )
 INNER JOIN civicrm_group gr ON ( gr.id = gc.group_id )
 SET ce.on_hold = 0
 WHERE gr.name = 'give your contact group name';
 ```
+### Using a Google Apps account for the return address
 
-### Variable Envelope Return Path (VERP)
-
-CiviCRM Bounce handling depends on using Variable Envelope Return Path (VERP). If your email server doesn't support VERP you will only be able to properly support bounce requests if you can set up a catch all email.
-
-If you cannot setup a catch all email and your server does not support VERP you will need to edit packages/Mail/smtp.php as follows near line 275:
-
-```
-//if (!empty($headers['Return-Path'])) {
-       // $from = $headers['Return-Path'];
-       //}
-```
-
-## Step-by-step Return Channel on Drupal - Google Apps {:#return-channel-google-apps}
-
-### Steps to configure Return Channel with Drupal and Google Apps
-
-1. Set up Google Apps account: return@example.com
-1. Add the Google Apps return@example.com to CiviCRM
-1. Configure CiviCRM outbound email
-1. Enable corresponding scheduled job
-1. Set Filters on return@example.com
-1. Check the report
-1. Configure SPF
-
-### Set up Google Apps account: [return@example.com](mailto:return@example.com)
-
-The purpose of this step is to create an email account in your Google Apps that will be used for sending emails from CiviCRM and for bounce processing
-
-1. Log in to your Google Apps account
-1. Organizations & users -> Create a new user
-    1. First name: Return
-    1. Last name: CiviMail
-    1. Email address: return (the @example.com part is filled in automatically)
-    1. Give the user a long password (30 characters)
-        1. It is a machine and can easily remamber a long password
-        1. Record the password
-    1. (This account does NOT need to be a catch-all, Google understands +)
-1. Go to your email (click 'inbox' in the upper right hand corner)
-    1. Send your new return@example.com account an email
-1. Log out of Google Apps
 1. Log in to your new return@example.com Google Apps account to check that the new account/password works
     1. Check that the account received the email you sent as an admin.
  (You may wish to [set filters](#filters) at this point.)
 1. Google has tightened down secure access to their systems. To get CiviCRM bounce processing to work you need to loosen security for the email account. To do this, make sure you are logged into this bounce email account and go to [https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps) and change the setting to **allow less restrictive access** , otherwise you will receive the following error when testing the bounce processing email in CiviCRM: (code: 534, response: 5.7.14 Please log in via your web browser and 5.7.14 then try again. 5.7.14 Learn more at 5.7.14 which means that Gmail blocked access from "a less secure app" (as per [https://support.google.com/accounts/answer/6010255)](https://support.google.com/accounts/answer/6010255))
-
-### Configure CiviCRM bounce processing email account
-
-1. Log in to CiviCRM
-1. Administer -> CiviMail -> Mail Accounts
-1. Edit the default as follows:
-    * Name: return
-    * Server: imap.googlemail.com
-    * Username: return@example.com
-    * Password: (return's password for Google Apps)
-    * Localpart: return+
-    * Email domain: example.com
-    * Return-Path: (leave blank)
-    * Protocol: IMAP
-    * Source: (leave blank)
-    * Use SSL?: tick the box
-    * Default Option?: Bounce Processing
-1. Save
-
-### Configure CiviCRM outbound email account
-
-1. You are still logged in to CiviCRM
-1. Set CiviCRM's default FROM address
-    1. Administer -> CiviMail -> From Email Address
-        1. Your FROM address should be an email address that works and that a human reads
-        1. This will be the originating email address for CiviMail's email
-1. Select the Mailer
-    1. Administer -> Configure -> Global settings -> Outbound Email (SMPT/Sendmail)
-        1. Select: mail()
-        1. Save
-1. Send a test email to return@example.com and confirm it arrived
-    1. CiviCRM won't let you send an email to an address that is not in the DB
-    1. Create a new contact named 'Return CiviMail' with return@example.com for an email
-        1. Contacts -> New Individual
-    1. Send return@example.com an email
-        1. Contacts -> New Email
-    1. Log in to Google Apps as return@example.com and confirm the email arrived
-
-### Enable Corresponding Scheduled Job
-
-1. This assumes you have already configured your scheduled jobs cron job according to: [Managing Scheduled Jobs](/setup/jobs.md).
-1. Enable the 'Fetch Bounces' job to run with the frequency setting set to 'Every time cron job is run'.
-
-### Set filters on return@example.com {:#filters}
-
-1. Go to your return@example.com Google Apps account Spam folder
-1. Go to email
-1. Click the 4 more -> Spam link
-1. Find the the test email, select it and click the More actions -> Filter messages like these link
-    1. This email needs to be addressed from your server.
-    1. The whole idea is that if your server sends an email to a broken address, and the receiving server bounces the email back, that error email must not go into the spam folder. It needs to stay in the Inbox so CiviCRM can read it and determine which address in your CiviCRM bounced.
-1. Click 'Next Step'
-1. Tick the 'Never send it to Spam' box
-1. Click 'Create Filter'
-1. You may need to create other filters, as Google Mail has a tendency to send Mailer Daemon and Postmaster emails to the spam, and bounces can have a variety of 'from' sources. See example below for suggestions
-
-    ![](/img/gmail-filters.png)
-
-### Check the report
-
-1. Send another test mailing
-1. Rerun your con jobs manually
-1. Mailings -> Scheduled and Sent Mailings
-1. Click the Report link for your test mailing
-1. Your bounce should show in the report
-1. If you open an email, it should show in the report
-
-### Configuring Sender Policy Framework (SPF)
-
-* You can read more about SPF at [http://www.openspf.org](http://www.openspf.org)
-
 
 ## Autofiling email activities via EmailProcessor
 

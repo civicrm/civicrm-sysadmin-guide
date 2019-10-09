@@ -19,7 +19,9 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
 1. One important change is the need to delete a more file called Config.IDS.ini. This WILL break CiviCRM if you don't do this. See below for details.
 
 
-## Steps
+## Steps for non-Composer installations
+
+See below if you have a Drupal 8 composer installation, or other composer installs.
 
 1. Make a note of which CiviCRM modules are enabled on the original CMS.
 1. Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy later on in these steps. You can check this using the menu option "Administer >> System Settings >> Directories".
@@ -92,6 +94,18 @@ If you are using Joomla, Akeeba backup is a handy plugin to create complete back
         $ mysql -u mysql_username -p joomla_db_name < dump_file_name_of_your_choice.sql
         ```
     
+!!! note
+    The above two steps, exporting the database from the source and importing to the target, 
+    can also be performed in phpMyAdmin, although for exporting or importing a large database phpMyAdmin tends to time out
+    and using command line is more reliable. The steps to export and import the database in phpMyAdmin are as follows:
+    1. In the PHPMyAdmin interface, select your existing civiCRM database and then select the export feature.
+    1. Under Export Method, select 'Quick' with format 'SQL.'
+    1. Click the submit button to export your database which should then download somewhere onto your computer.
+    1. Import the data by navigating to the new website's PHPMyAdmin system and doing a simple, 
+    no frills import, using the data you just downloaded. The import should be into a new database created for CiviCRM 
+    (or an existing database which has been emptied by deleting all tables), with suitable permissions for the database user 
+    configured in the new sites civicrm.settings.php.
+
 1. Delete files with cached settings
 
     * Drupal:
@@ -170,6 +184,63 @@ As a result of your migration, many of your site's other configuration settings 
 
 Your site should now be properly configured for its new location.
 
+## Steps for Composer installations
+
+This documentation covers the general steps to move a CiviCRM instance in a Drupal 8 website to a new server or location. Refer to Drupal documentation for instructions on how to move the rest of the Drupal 8 site.
+
+Some settings in the CiviCRM database relate to a physical location, such as a server file path or a public URL. These settings are usually stored as relative paths (with respect to the default file container, eg sites/default/files/civicrm or media/civicrm), and this is the recommended best practice. But sometimes an administrator user can customise them to use an absolute path. If you have any absolute paths, then you must change these when moving an existing CiviCRM installation to a new server as described below.
+
+Following are the instructions to migrate an existing CiviCRM instance to a New Server/Location:
+
+Make a note of where your original sites' custom directories are and check if you have have any custom code you will need to copy later on in these steps. You can check this using the CiviCRM menu option "Administer >> System Settings >> Directories".
+
+Make a note of which CiviCRM dependent modules are enabled on the original CMS.
+
+Unlike in Drupal 7, Drupal 8 does not allow a module to be disabled without uninstalling it and removing all of its database entries (for more details see here). We have not tested the best approach for migrating sites that have Drupal modules dependent on CIviCRM enabled, like CiviCRM Group Roles, CiviCRM Member Roles, CiviCRM Views, CiviCRM Entity etc. For now you might want to try copying both the Drupal and CiviCRM systems at the same time so they stay in sync, and at worst assume you’ll need to uninstall the modules and later rebuild their configurations on the new instance.
+
+Copy the entire codebase from the old to the new location. (We hope at some point to rebuild it from composer.json and composer.lock using composer, but at present the install uses composer, bower and node_dependencies and more work is needed to deal with bower and node_dependencies.) Make sure to review the file paths in sites/default/files/civicrm/civicrm.settings.php, such as civicrm_root, CIVICRM_UF_BASEURL and CIVICRM_TEMPLATE_COMPILEDIR etc. This can be done by tar’ing or gzip'ing up the code, moving it to the new server/location, and untar’ing or gunzip’ing. The default locations to copy are:
+
+docroot/vendor/civicrm
+
+docroot/default/files/civicrm
+
+Make sure any CiviCRM dependent modules used in the old install are installed in the new location.
+
+Make sure CiviCRM package is present in vendor directory.
+
+Copy your database via command line (there are some cache tables you could skip the contents of, but it’s usually more trouble than it’s worth to do that):
+
+On the old server:
+$ mysqldump -u mysql_username -p drupal_db_name > drupal_dump_file_name_of_your_choice.sql
+$ mysqldump -u mysql_username -p civicrm_db_name > civi_dump_file_name_of_your_choice.sql
+8. Load your database(s) into to the new MySQL server
+
+On the new server:
+$ mysql -u mysql_username -p drupal_db_name < drupal_dump_file_name_of_your_choice.sql
+$ mysql -u mysql_username -p civicrm_db_name < civi_dump_file_name_of_your_choice.sql
+NOTE: You can find the DB credentials of Drupal 8 and CiviCRM in civicrm.settings.php, check CIVICRM_UF_DSN for D8 and CIVICRM_DSN for Civi.
+
+9. Delete files with cached settings:
+a. /sites/default/files/civicrm/templates_c/* (cached versions of Smarty templates that will be rebuilt)
+
+b. /sites/default/files/civicrm/ConfigAndLog/Config.IDS.ini
+
+c. /sites/default/files/civicrm/ConfigAndLog/* (You can clear all the logs if you get an error about parsing XML)
+d. /cache/* (Only if you get errors after clearing the caches via the GUI) (See http://example.org/civicrm/admin/setting/path?reset=1 for location of custom extension folder)
+
+10. Login to new Drupal8 site.
+11. Clear caches (and rebuild the menus) and Reset Paths by navigating to Administer > Cleanup Caches and Update Paths (https://www.example.com/civicrm/admin/setting/updateConfigBackend?reset=1). Click the Cleanup Caches and Reset Paths buttons in turn.
+
+12. You may also have to modify some of the other System Paths to non-default values. Click on the Directories button or navigate to Administer > System Settings > Directories Navigate to Administer > System Settings > Directories (https://www.example.com/civicrm/admin/setting/path?reset=1). If you had to copy custom hooks, reports etc. in a previous step look carefully at the "Custom PHP Path Directory" and "Custom Templates" path.
+
+13. You may need to adjust URLs if the directories above changed. Navigate to Administer > System Settings > Resource URLs (https://www.example.com/civicrm/admin/setting/url?reset=1). The help icon at the end of the introductory paragraph provides a useful explanation of how to configure relative URLs. Review the recommended modified URL and paths in the form - they should reflect the new Base Directory, Base URL. If these values do NOT look correct, then recheck the changes you made to civicrm.settings.php.
+
+14. If you made any non-CiviCRM changes to your site (e.g. exposed profiles on the Drupal nav bar) don't forget to fix them (e.g. at Drupal: Administer >> Site building >> Menus >> Navigation).
+
+15. On an operating command line or in a Control Panel, etc., ensure that your cron is working on your new server. Depending on how it was installed and whether you are decommissioning the previous server, you may find that decommissioning the old server is appropriate when it stops working. Note that it is often a best practice to NOT run cron jobs on staging and dev sites when production databases are copied down to them. This can result in non-production sites sending additional copies of CiviMails, and submitting additional payment requests (eg for certain payment processors with integration software not intended for easy and safe use in dev/staging/prod setups, eg iATS). Also, some sites that email reports or execute other similar jobs need to have multiple crons setup.
+
+16. After initial setup there should not be a need to make changes at Administer > System Settings > CMS Database Integration: https://www.example.com/civicrm/admin/setting/uf?reset=1
+
 ## Trouble-shooting
 
 ### Only the front page of your site can be displayed - Drupal
@@ -218,75 +289,3 @@ This seems to be caused by the database backup and restore not copying the funct
 The solution is to run `http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1` which fixes the trigger and function definitions in the database.
 
 On Joomla sites run `http://example.org/administrator/?option=com_civicrm&task=civicrm/menu/rebuild&reset=1&triggerRebuild=1`
-
-
-
-## Moving the database using phpMyAdmin
-
-This is an alternate method for moving a civiCRM installation from one server to another. This method has worked well for moving Drupal/CiviCRM based websites from development servers to production servers and uses the Backup and Migrate module for transferring the Drupal data and PHPMyAdmin for the civiCRM data.
-
-### Preliminary Setup
-
-These are the steps I take to prepare a new installation of Drupal and civiCRM for taking on the content and CRM data of an existing production site or moving a site from a development environment to a live production server:
-
-1. Before moving the site make sure that the Drupal/CiviCRM development site is up to date with core and contributed modules.
-
-1. On the new server install a fresh installation of Drupal using the same version as that of the site you are transferring. I start fresh with files from Drupal.org rather than transferring my files from the development server to ensure that they have not been compromised somewhere during the development process.
-
-1. Once an empty Drupal site is installed and working correctly, I move my `/sites/all` directories into the Drupal installation. This gives me my themes, modules and libraries.
-**Note:** I _don't move_ `/sites/all/modules/civicrm because` I am more comfortable using a new copy from the civiCRM website, just in case something has been compromised during development or transferring.
-
-1. I also move select directories from my `/sites/default/files` directory.
-**Note:** I _don't move_ any of the cached directories under `/sites/default/files` and I don't move `/sites/default/files/civicrm`
-
-1. Next, I install a brand new copy of civiCRM into the website by running the standard installation script from within `/sites/all/modules/civicrm/install/`
-**Note:** Go thorough the configuration checklist just to make sure everything appears to be correct but don't spend a lot of time on it because it will be overwritten when you transfer the data.
-
-1. At this point, the new site should be an empty canvas with all of the components of the site that you are moving but without any of the data, design or structure yet. Make sure that you have the site theme on hand and that all of the modules that are present in the site that you are moving. Also, have a look at the site and server reports to ensure that everything is functioning as it should without any errors or resource problems.
-
-
-### Export/Transfer Drupal CMS Data
-
-For transferring Drupal site data I like to use the excellent Backup and Migrate module ([http://drupal.org/project/backup_migrate](http://drupal.org/project/backup_migrate)) but you can use PHPMyAdmin if that makes you more comfortable. Transferring the Drupal data for a Drupal/civiCRM website is no different than any other Drupal site but do not use the Backup and Migrate module for moving the civiCRM data. In my experience it will not work.
-
-At this point I transfer my Drupal data and the site should have all of the CMS data, navigation and theming intact. Only CRM data is missing now.
-
-### Export/Transfer civiCRM Data
-
-Exporting the civiCRM data can be a bit tricky because civiCRM seems intimately aware of its server/database environment. There are a number of areas established during installation where civiCRM keeps track of its surroundings and if we aren't careful we will overwrite them and then we'll have to start from scratch. It's not that bad but it gets a little tedious once you've gotten to the 80% done part and have to start over.
-
-The following points cover how I export data using PHPMyAdmin and avoid tripping myself up:
-
-1. In the PHPMyAdmin interface, select your existing civiCRM database and then select the export feature.
-
-1. Under Export Method, select: _**"Custom - display all possible options"**_
-
-1. In the tables area deselect (hold down control or option depending on OS and deselect the following 5 tables):
-
-    1. civicrm_acl_cache
-    1. civicrm_acl_contact_cache
-    1. civicrm_cache
-    1. civicrm_domain
-    1. civicrm_group_contact_cache
-
-1. Make sure that you check the "Disable foreign key checks" option.
-1. Under Object Creation Options check the "Add DROP TABLE / VIEW / PROCEDURE / FUNCTION / EVENT statement" option
-1. Click the submit button to export your table which should then download somewhere onto your computer.
-1. Import the data by navigating to the new website's PHPMyAdmin system and doing a simple, no frills import using the data you just downloaded. It should just import the data and overwrite the existing tables with your civiCRM data.
-
-### Post Import Activities
-
-After you have imported the civiCRM data, there are some tasks that need to be done in order to flush out caches and provide a clean slate for civiCRM and Drupal to work together.
-
-1. I always run the following SQL queries that I gleaned from the civiCRM support Forums
-    * On your civiCRM Database Run
-        1. truncate civicrm_uf_match;
-        1. update civicrm_domain set config_backend = null;
-
-    * On your Drupal Database run:
-        1. truncate sessions;
-
-1. In /sites/default/files/civicrm, delete or rename the folder `templates_c`. A new one will be created when civiCRM is run.
-1. Navigate to the civiCRM Configuration Checklist ([www.example.com/civicrm/admin/configtask?reset=1)](http://www.example.com/civicrm/admin/configtask?reset=1%29) and review the setting to make sure that they are correct. More than likely the settings for language, default country and other regional settings will be incorrect. Take extra care to ensure that your directories are set up correctly, especially if you use custom templates for one reason or another.
-1. **Very Important:** If you have custom data profiles set up in your civiCRM, they may be present but for some unknown reason not be active. Go to your Administer >> Customize >> Custom Data and select _**"View and Edit Custom Fields"**_. Select **_"Edit Field"_** for any one of the custom fields in the group and save it without making any changes. This will make civiCRM aware of the custom data fields and everything should be back on track.
-1. If you have Drupal user Profiles that relate to the civiCRM contacts, you will want to run **_"Synchronize Users to Contacts"_**. It can be found at Administer >> Manage >> Synchronize Users to Contacts

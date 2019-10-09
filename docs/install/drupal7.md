@@ -1,5 +1,9 @@
 # Installing CiviCRM for Drupal 7
 
+## Scope of this guide and alternative installation methods
+
+This guide covers standard installation of CiviCRM for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
@@ -8,12 +12,6 @@
 ## Determine Drupal Database Settings {:#db-settings}
 
 You will need to know the database settings for your Drupal installation prior to running the CiviCRM installer: You can look up these values in your Drupal `settings.php` file (located by default in your `<drupal_root>/sites/default directory`) be looking for the following code:
-
-```
-$db_url = 'mysql://dbuser:dbpassword@localhost/drupal';
-```
-
-or
 
 ```php
 $databases = array (
@@ -46,14 +44,14 @@ In the above example:
 
 First, download CiviCRM and install the files like you would any other module:
 
-* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the drupal modules page to see the **Install New Module** link.
+* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the Drupal modules page to see the **Install New Module** link.
 * Alternatively, you can upload and extract the file in `<DRUPAL ROOT>/sites/all/modules`
 
 The result will be that the CiviCRM directory will be at `<DRUPAL ROOT>/sites/all/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
+The most up-to-date version of CiviCRM is always available at [https://civicrm.org/download](https://civicrm.org/download)
 
-**Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
+**Do NOT** activate the module yet - that will happen automatically when you run the installer.
 
 ## Install localization files (only for non-English sites) {:#i18n}
 
@@ -67,7 +65,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Point your web browser to the following URL:
 
     `http://example.org/sites/all/modules/civicrm/install/index.php`
-    
+
 * You should see the **CiviCRM Installer** screen.
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.
     * If you see other errors, check the **Requirements** details at the bottom of the page for more information. You will need to correct any issues before continuing.
@@ -93,6 +91,9 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 !!! check ""
 
     Note that Drupal tries to create the `/files/` directory (and make it writeable), but only when saving `admin/settings`. Same holds for `/temp` directory, and a `/uploads/` directory in the CiviCRM module root. On a brand-new Drupal install, this directory may be missing. Even on an existing installation, if file permissions are not set properly, the directory may be missing. If enabling the **civicrm** module generates errors regarding the files directory, you must create it (writeable) manually.
+
+* Go to the CiviCRM dashboard to see the CiviCRM menus:
+http://example.org/civicrm (or http://example.org/index.php?q=civicrm if you don't have Clean URLs enabled)
 
 * Go to **Administer » User management » Permissions**
 
@@ -132,10 +133,5 @@ There should now be a **CiviCRM** link in your Drupal menu. Click that link and 
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
-
-You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,6.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html), and you can check out the Installation section of our FAQs.
-
-If you don't find an answer to your problem in those places, the next step is to [post a support request on the forum](http://forum.civicrm.org/index.php/board,6.0.html).
-
-To check compatibility with other Drupal modules see: [Drupal modules incompatible with CiviCRM](/integration/drupal/incompatibilities.md)
+* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
+* To check compatibility with other Drupal modules see: [Drupal modules incompatible with CiviCRM](/integration/drupal/incompatibilities.md)

@@ -1,5 +1,9 @@
 # Installing CiviCRM for Joomla
 
+## Scope of this guide and alternative installation methods
+
+This guide covers standard installation of CiviCRM for production use. For installing a development environment, refer to the [section on Buildkit in the Developer Documentation](https://docs.civicrm.org/dev/en/latest/tools/buildkit/).
+
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
@@ -16,7 +20,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
 * Upload this file to a folder in your root Joomla directory. Recommended location: `JOOMLA_ROOT/tmp/`.
 * Unzip the package, which will create a directory called: `com_civicrm`. On cPanel, you can use the File Manager's Extract function to unzip the file you uploaded.
 
-Note: when installing a new version over an old one, please check first "5. Trouble-shooting resources" below
+Note: when installing a new version over an old one, please first check [Trouble-shooting resources](#troubleshooting) below.
 
 ## Run the Installer {:#installer}
 
@@ -46,30 +50,27 @@ When CiviCRM is installed on top of an existing Joomla site, a special CiviCRM A
 
 ## Troubleshooting Resources {:#troubleshooting}
 
-If the CiviCRM component does not install correctly (for example you get a blank screen instead of the confirmation page), delete the `~/components/com_civicrm` and `~/administrator/components/com_civicrm` and `~/media/civicrm directories` manually and then try each of the following before attempting to reinstall:
+* If the CiviCRM component does not install correctly (for example you get a blank screen instead of the confirmation page), delete the `~/components/com_civicrm` and `~/administrator/components/com_civicrm` and `~/media/civicrm directories` manually and then try each of the following before attempting to reinstall:
 
-* In your `php.ini` file or in `.htaccess` file in the Joomla root folder (if your server allows it), increase the `max_execution_time` to `600` and memory limit to more than 64M. Add the following to the `.htaccess` file in your Joomla root folder
-
-    ```
-    php_value memory_limit 128M
-    php_value register_globals off
-    php_value max_execution_time 600
-    ```
+    * In your `php.ini` file or in `.htaccess` file in the Joomla root folder (if your server allows it), increase the `max_execution_time` to `600` and memory limit to more than 64M. Add the following to the `.htaccess` file in your Joomla root folder
     
-    Or if you can't change the `.htaccess` file you can add a php.ini (or `.user.ini`) file in Joomla root folder or all directories, depending on your web server or hosting company.
+        ```
+        php_value memory_limit 128M
+        php_value register_globals off
+        php_value max_execution_time 600
+        ```
+        
+        Or if you can't change the `.htaccess` file you can add a php.ini (or `.user.ini`) file in Joomla root folder or all directories, depending on your web server or hosting company.
+        
+        ```
+        memory_limit = 128M
+        register_globals = off
+        max_execution_time = 600
+        ```
     
-    ```
-    memory_limit = 128M
-    register_globals = off
-    max_execution_time = 600
-    ```
+    * CiviCRM is packaged with all the libraries (PEAR etc) that it uses. However a misconfigured or overly restrictive `open_basedir` directive on your web server might interfere with CiviCRM's ability to access some required files or directories. To turn `open_basedir` off, add this to your `vhost.conf` file: `php_admin_value open_basedir none` or ask your host to either turn it off or ensure that it is not preventing access to required directories (e.g. if you move configuration files or temp folders outside your web root). The configuration of sub domains might cause related issues: try installing in the main domain root or a sub folder instead.
 
-* CiviCRM is packaged with all the libraries (PEAR etc) that it uses. However a misconfigured or overly restrictive `open_basedir` directive on your web server might interfere with CiviCRM's ability to access some required files or directories. To turn `open_basedir` off, add this to your `vhost.conf` file: `php_admin_value open_basedir none` or ask your host to either turn it off or ensure that it is not preventing access to required directories (e.g. if you move configuration files or temp folders outside your web root). The configuration of sub domains might cause related issues: try installing in the main domain root or a sub folder instead.
+* If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`
 
-If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`
+* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
 
-Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
-
-You can often find solutions to your issue by searching the [installation support section of the community forum](http://forum.civicrm.org/index.php/board,2.0.html) OR the [community mailing list archives](http://www.nabble.com/CiviCRM-Community-Mailing-List-Archives-f15986.html), and you can check out the Installation section of our FAQs.
-
-If you don't find an answer to your problem in those places, the next step is to [post a support request on the forum](http://forum.civicrm.org/index.php/board,2.0.html).

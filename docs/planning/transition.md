@@ -1,11 +1,11 @@
 # Transitioning to CiviCRM
 
-This chapter outlines the parts that typically make up a CiviCRM project
-and should be read by people about to embark on such a project. Some of
-this information may be obvious to experienced project managers. A
-comprehensive guide to project management is beyond the scope of one
-chapter but we have outlined things that are typically encountered in a
-CiviCRM project and provided pointers on some things to watch out for.
+Here you'll find information on the phases of a typical CiviCRM project.
+
+We have outlined things that are typically encountered in a CiviCRM project and
+provided pointers on some things to watch out for, but don't rely on this guide
+for a complete project management solution! Consider seeking expert guidance
+through the process if you can.
 
 First, some pop philosophy courtesy of Cynthia Tarasco:
 
@@ -31,7 +31,7 @@ thinking about:
 
 ## People and the project team
 
-Including a wide range of people that represent the different parts of
+Including a representative range of people from the different parts of
 your organisation will help with delivery of your project. A mixture of
 management and day-to-day staff helps the team to keep an eye on the big
 picture as well as ensure that the project is ultimately useful to
@@ -53,9 +53,9 @@ consideration.
 
 ## Goals
 
-You should have a good idea of the goals for implementing CiviCRM. This
-could be something like: reduce administrative work in managing events
-by 25% or increase donations by 25% with the same staff. The goals
+You should have a clear idea of your goals for implementing CiviCRM. This
+could be goals such as: _reduce administrative work in managing events
+by 25%_ or _increase donations by 25% with the same staff_. The goals
 should be SMART (specific, measurable, attainable, relevant, timely)!
 
 These business goals will help you in directing and managing your
@@ -92,7 +92,7 @@ important differences between a CMS and a CRM.
 
 ### Pilot projects
 
-Pilots help to reduce risk during a project implementation. For example,
+Pilot projects help to reduce risk during a project implementation. For example,
 rather than moving your organisation's entire event management
 infrastructure to CiviCRM, run one pilot event using CiviCRM and
 evaluate it. You can then incorporate the learning back into the
@@ -103,7 +103,7 @@ development process.
 It is a mistake to think about a CiviCRM project as a one-off
 development that will meet the needs of your organisation for the
 foreseeable future. Organisations constantly change and evolve and your
-CRM should evolve with you, otherwise it will eventually become
+CRM should evolve with you. If not, it will eventually become
 out-of-sync with the organisation.
 
 Once you have been using CiviCRM for a while and staff are comfortable
@@ -119,7 +119,7 @@ support implications, including:
 -   upgrading to the latest version of CiviCRM (not necessary, but
     CiviCRM is improving all the time and your users will thank you for
     the improved usability and functionality each time you upgrade)
--   upgrading the CMS 
+-   upgrading the CMS
 -   hosting
 
 ## Training
@@ -133,7 +133,7 @@ CiviCRM's range of functionality can be overwhelming at first
 (especially to the less technically-minded). Remember that staff who
 were not involved in the project's early stages will need to have
 concepts explained clearly to them - things that are obvious to you may
-be quite foreign to others.
+be quite unfamiliar to others.
 
 Trying to cover everything in one training session probably won't be
 effective; your staff will need time to digest the new ideas. Instead,
@@ -141,12 +141,12 @@ hold smaller training sessions that introduce concepts and specific
 functionality, followed by periods of testing, piloting and feedback.
 Tailor your training for your audience: not everyone needs to sit
 through a two-hour training session on how to manage events if there is
-a single person responsible for event management and planning. And where
+a single person responsible for event management and planning. Where
 possible, involve staff in training other staff members as this
 increases the sense of ownership and helps to embed learning.
 
-Training is also ongoing. New staff will need to be trained, users
-familiar with the system can benefit from learning about more advanced
+Training will be ongoing. New staff will need to be trained, users
+familiar with the system benefit from learning about more advanced
 topics, and staff will need further training when there are significant
 upgrades or new functionality added. If you plan to use CiviCRM for any
 large or mission-critical events, allow adequate time for additional
@@ -158,9 +158,9 @@ Hosting is a key aspect of any CiviCRM project. You will need to provide
 maintenance of the server on which CiviCRM is stored, and have someone
 available to fix problems that inevitably occur from time to time. If
 your site needs to be accessible 24 hours a day, you should have a
-support agreement with your ISP that covers this. Ensure that your
+support agreement with your hosting provider to ensure this. Ensure that your
 budget is sufficient for appropriate hosting, and that effective backup
-procedures and policies are in place.
+procedures, data security measures, and policies are in place.
 
 Keep in mind that in the hosting provider world, you get what you pay
 for. In many cases, cheap hosting providers keep their prices down by
@@ -172,7 +172,7 @@ are powerful enough to provide a good experience with CiviCRM.
 ## Change management
 
 Introducing a new (or the first) CRM will cause changes in work flow and
-processes at your organisation. These changes may be "political",
+processes at your organisation. These changes may be organizational,
 practical or technical. Either way, a lot of change at the same time can
 be difficult and stressful.
 
@@ -184,9 +184,13 @@ understanding of the system grows. Show staff how the new system will
 make their work easier and where their feedback has been incorporated.
 
 Good planning can minimise the risks around change, but it is important
-to be flexible within your plan; unforeseen things often occur, and a
+to be flexible within your plan; unforeseen things do occur, and a
 rigid plan could prevent you from reaching the best solution.
 
 ## Choosing a consultant/service provider
 
-For many projects have a trusted outside partner is very important. Outside partners are experts in CiviCRM and will listen to you to learn about your organization and how to best match your needs to CiviCRM. There are many [providers](https://civicrm.org/partners-contributors) that participate in the CiviCRM community and can help you with your implementation. 
+For many projects having a trusted outside partner is very important. Outside
+partners are experts in CiviCRM and will listen to you to learn about your
+organization and how to best match your needs to CiviCRM. There are many
+[providers](https://civicrm.org/partners-contributors) that participate in the
+CiviCRM community and can help you with your implementation.

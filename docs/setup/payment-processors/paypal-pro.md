@@ -231,17 +231,19 @@ The differences between Paypal Standard Subscriptions and Paypal Pro Recurring C
 
 To take advantage of recurring and one-time contributions on the same CiviCRM Contribution page, you must have the Pro Recurring add on. You cannot process Pro one-time donations and Standard Subscriptions from the same Contribution page.
 
-Once you have added the Recurring feature to your existing Paypal Pro account, configure your IPN settings in Paypal so CiviCRM can receive updates on the recurring contributions in this manner:
+Once you have added the Recurring feature to your existing Paypal Pro account, configure your IPN settings in Paypal so CiviCRM can receive updates on the recurring contributions:
 
-* Log in to your Paypal account, click "Profile" in the top navigation
-* Look to the bottom of the page, click "Instant Payment Notification preferences"
-* Enter your URL for your `ipn.php` page
-    * For Drupal: `http://example.org/sites/all/modules/civicrm/extern/ipn.php`
-    * For Joomla: `http://example.org/administrator/components/com_civicrm/civicrm/extern/ipn.php`
-    * For WordPress: `http://example.org/wp-content/plugins/civicrm/civicrm/extern/ipn.php`
+* Log in to your Paypal account
+* Click Settings (Gear icon)
+* Click Account Settings > Website Payments > Instant Payment Notifications
+* Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use
+* Enter the URL and save
 
 !!! note
     You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
+
+!!! tip
+    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL details can be found here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL)
 
 **Expected Behavior**
 

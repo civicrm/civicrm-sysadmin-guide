@@ -24,13 +24,7 @@ SMTP Username - If your SMTP server requires authentication, enter your Username
 
 SMTP Password - The password associated with the Username entered in the previous field.
 
-!!! note
-
-    **If you are running CiviCRM 1.9 or earlier releases** , the SMTP password must be entered / updated in your CiviCRM settings file (civicrm.settings.php).
-
-    ```
-    define( 'CIVICRM_SMTP_PASSWORD', '' );
-    ```
+!!! Joomla
 
     For Joomla! installs, you will need to update both the Admin and Front-end copies of civicrm.settings.php.
 

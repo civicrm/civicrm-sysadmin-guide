@@ -6,6 +6,11 @@ Here you will find special steps needed when your upgrade crosses certain CiviCR
 
 For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions. 
 
+## CiviCRM 5.0
+
+### Flush CiviCRM cache
+
+After upgrading from CiviCRM 4.7.31, the cache must be flushed to resolve a mailing bug in the generated javascript. The upgrade web interface will take care of this automatically, but if you are running the database migration on the command-line, run `cv flush` to cleanup caches.
 
 ## CiviCRM 4.3
 

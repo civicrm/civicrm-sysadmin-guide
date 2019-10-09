@@ -41,13 +41,13 @@ are sent.
 
 Outbound email settings are configured at: **Administer > System
 Settings > Outbound Email (SMTP/Sendmail)**. The choices here are:
+!!! note
+    Consult your server administrator to find out which one is best for your system.
 
--   **mail()**: This is the default option and if it works for you, you
-    should use it.
+-   **mail()**: This is the default option.
 -   **SMTP**: If you have a dedicated external mail server, specify its
     details here. Bounce messages generated with SMTP are slightly more
-    complete than the ones from mail(), but there is no practical
-    benefit to using SMTP if you can use mail().
+    complete than the ones from mail().
 -   **Sendmail**: This option is kept for compatibility with older CiviCRM
     versions.
 -   **Disable Outbound Email**: Works as expected.
@@ -122,27 +122,6 @@ They are several websites that help you testing whether you are in a
 DNSBL. A web search for "blacklisting email" will turn some up. Test
 regularly to find whether you are on a blacklist.
 
-## Configuring sender policy framework (SPF)
-
-By default, the Internet allows any mail server to send any email
-claiming to be from anyone. This makes it easy for spammers to forge
-addresses and send spam using your email address (or any other). SPF
-allows you to create a special DNS record listing the IP addresses of
-the mail servers that can legitimately send email from
-@*yourdomain.org*.
-
-If your domain name already has an SPF record, make sure that it
-includes the IP address of your CiviCRM mail server (which might be a
-different from the host used for the web server or from your mail
-servers), and if it doesn't, add this IP address.
-
-If you don't have an SPF record, consider adding one. You will need to
-add at least your mail server and CiviCRM server (if they are different)
-to the SPF record.
-
-You can read more about SPF at
-[http://www.openspf.org](http://www.openspf.org).
-
 ## Configuring inbound email processing
 
 This section explains configuration for bounce processing and auto
@@ -208,7 +187,7 @@ it as an email activity against contacts of type Individual corresponding to
 sender and recipients of the email. New individual contacts are created for
 email addresses not already assigned to individuals in the database.
 
-**NOTE**: This features only works for the Individual contact type. If the
+**NOTE**: These features only work for the Individual contact type. If the
 incoming email comes from an email address already recorded against an
 organization, a new individual contact with that same email address will be
 created and the activity will be recorded against that new individual contact,
@@ -226,6 +205,22 @@ time):
     drag emails that you want filed in CiviCRM. This works with both
     inbound and outbound emails (this requires that your email be set
     up using IMAP.)
+
+### Allowing users to edit inbound e-mails
+
+Activities created by CiviCRM as a result of email-to-activity processing 
+are not editable by users, as there is a restriction enforced on the Inbound 
+Email activity type. To allow users to be able to edit these activities, an
+administrator can enable the **CiviCRM: edit inbound email basic information** 
+or **CiviCRM: edit inbound email basic information and content** permissions
+for the roles that should be able to edit the activities.
+
+**CiviCRM: edit inbound email basic information** will allow users to edit every
+field of the activity, except the original message, stored int the activity's 
+details.
+
+**CiviCRM: edit inbound email basic information and content** will allow users
+to edit every field of the activity, including the original message's content.
 
 ### Special email address for incoming email
 
@@ -609,7 +604,7 @@ There are four possible solutions for handling of the return channel.
 
 !!! warning
 
-    There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](http://forum.civicrm.org/index.php/topic,7553.msg38766.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
+    There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](https://forum.civicrm.org/index.php%3Ftopic=7553.0.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
 
 For Google Apps, however, see these [directions on setting up the return channel](/setup/civimail/inbound.md#return-channel-google-apps).
 

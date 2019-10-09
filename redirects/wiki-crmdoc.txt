@@ -14,6 +14,7 @@ Installing+CiviCRM+for+Drupal+7 install/drupal7
 Installing+CiviCRM+for+Joomla install/joomla
 Multi+Site+Installation install/multi-site
 Installing+CiviCRM+for+WordPress install/wordpress
+Installing+CiviCRM+for+Wordpress install/wordpress
 WordPress+Installation+Guide+for+CiviCRM install/wordpress
 The+Bootstrap+Base+Theme integration/drupal/bootstrap-css
 CiviGroup+Roles+Sync integration/drupal/group-roles
@@ -79,9 +80,11 @@ Upgrading+CiviCRM+for+Drupal+7 upgrade/drupal7
 Upgrading+CiviCRM+for+Joomla upgrade/joomla
 Updating+System+Workflow+Message+Templates+after+Upgrades+-+method+1+-+kdiff upgrade/misc
 Upgrade+WordPress+Sites+to+4.7 upgrade/wordpress
+Upgrade+Wordpress+Sites+to+4.7 upgrade/wordpress
 Upgrading+CiviCRM+for+WordPress upgrade/wordpress
 Installation+and+Upgrades index.html
 CiviMail+Admin setup/civimail
 Drupal integration/drupal
 WordPress integration/wordpress
 Drupal+Integration+Modules integration/drupal
+Drupal+Installation+Guide+for+CiviCRM+4.5+-+Drupal+7 install/drupal7

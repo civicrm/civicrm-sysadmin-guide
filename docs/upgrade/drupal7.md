@@ -21,28 +21,11 @@ If using localization, also download the latest version of the localization file
 ### Take the site offline
 
 When upgrading a production site, it is recommended that you take your site offline during the upgrade process.
-**Administration » Configuration » Development » Maintenance mode**
-
-### Ensure that CiviCRM is not your Drupal homepage
-
-Due to changes in Dashboard files from 3.0 to 3.1, you need to ensure that your Drupal homepage is not the CiviCRM homepage. If your site does use CiviCRM as its front page, change it by clicking on:
-**Administration » Configuration » System » Site Information**
- Then ensure that the "Default front page" value is not civicrm (change it to node if necessary). If you made a change, click Save configuration
+**Administration » Configuration » Development » Maintenance mode**. Taking the site offline is especially recommended if your site is publicly accessible, for example to accept donations or email signups, since any actions being taken while the upgrade is in progress may fail, and additionally if the site is in use during the upgrade, the database may become corrupt.
 
 !!! warning
-    There are a variety of modules that may affect the Drupal homepage. Consult the appropriate module's documentation if you are using them to set the homepage to civicrm for the administrative action required to change to a different non-CiviCRM homepage for the upgrade process.
-
-### Disable all CiviCRM integration modules
-
-If you have Drupal modules installed in your site that integrate with or extend CiviCRM's functionality, you should disable them prior to running the upgrade script. This will prevent modules that are not compatible with the new version from triggering errors in the upgrade process.
-
-1. In Drupal, go to **Administration » Modules**
-
-1. Note which modules in the CiviCRM section of the modules listing are currently enabled (taking a screenshot is one easy way to do this). Now un-check the Enabled box for ALL modules in the CiviCRM section of the modules listing _except_ for CiviCRM itself. Click Save.
-
-    !!! warning
-        Do NOT disable CiviCRM itself. Only disable other modules in the CiviCRM section of the modules page. The upgrade will NOT run if CiviCRM is disabled.
-
+    Sometimes Drupal modules, paticularly those which integrate with CiviCRM, are not compatible with the latest version of CiviCRM. In this case the update to CiviCRM may trigger errors. Although this problem is rare, unless you are confident and about handling such errors, the safest workflow is to disable all Drupal modules which integrate with CiviCRM before performing the upgrade, and to re-enable them after the upgrade is complete.
+    
 ## Upgrade the filesystem
 
 ### Delete all previous version code files
@@ -81,10 +64,6 @@ $ find . -type f -exec chmod 0644 {} \;
 $ chmod -R u+rw files
 ```
 
-### Clear cached files
-
-Delete all files in `sites/default/files/civicrm/templates_c/`
-
 ## Upgrade the database
 
 Choose one of the following methods:
@@ -94,49 +73,28 @@ Choose one of the following methods:
     ```bash
     $ drush civicrm-upgrade-db 
     ```
-
+    
 * Or, point your web browser to the following URL and follow the on-screen instructions.
     
     ```
     http://example.org/civicrm/upgrade?reset=1
     ```
     
-    !!! note
-        This page loads on a drupal maintenance page. If you use a custom `maintenance.tpl.php` file you may wish to temporarily disable that file and use Drupal's default.
+* Or, run the following `cv` command from within your site:
+
+    ```bash
+    $ cv upgrade:db 
+    ```
+    
+!!! note
+    The `cv upgrade:db` command accepts a --dry-run option to show what changes will be made before committing them to the database. 
+    For the maximum level of verbosity use `cv upgrade:db --dry-run -vv`.
     
 
-## Clean up
+## Clear cached files¶
 
-### Re-enable compatible CiviCRM integration modules
+Delete all files in sites/default/files/civicrm/templates_c/, or clear the caches using one of the command line tools, such s `cv flush` or `drush cache-clear civicrm`.
 
-1. In Drupal, go to **Administration » Modules**
-
-1. Go through your list of CiviCRM integration modules and confirm compatibility with the new release if applicable. (If you've downloaded the module from Drupal.org - check the module's page for compatibility information.)
-
-1. Re-enable all compatible modules by re-checking the Enabled box. You may want to do this "one at a time" if you're unsure of compatibility.
-
-1. If you wish to use a different theme for CiviCRM administrative pages than the public pages on your site, enable the **CiviCRM Theme** module that now is included and then set the theme at `admin/appearance`.
-
-### Review and update Drupal permissions settings
-
-It's a good idea to verify Drupal role-based permissions which were added in recent releases. You can review and update these at **Administer CiviCRM » Users and Permissions » Permissions (Access Control) » Drupal Access Control**:
-
-### Clear the views cache
-
-If you were using Views integration prior to this upgrade, you will need to go to **Administration » Structure » Views » Settings » Advanced** and press "Clear Views cache" for Views to capture changes in the CiviCRM Views integration code.
-
-### Restore CiviCRM as the Drupal homepage if appropriate
-
-If you changed the default Drupal homepage from CiviCRM, now is the time to restore it. You can do this by navigating to:
-**Administration » Configuration » System » Site Information**
- then change the Default front page to civicrm, and click Save configuration.
-
-### Put the site online
-
-Toggle the following feature, and put your site back online:
-
-**Administration » Configuration » Development » Site Maintenance**
-
-## Post upgrade
-
-See these steps to take [after upgrading](/upgrade/index.md#after-upgrading).
+    
+!!! note
+    If you disabled modules, or placed the site in maintenance mode, remember to reverse those steps after the upgrade.

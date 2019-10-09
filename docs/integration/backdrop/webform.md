@@ -4,13 +4,13 @@
 
 [![Video from CiviTeacher.org](https://drupal.org/files/Webform-CiviCRM-Intro.jpg)](http://civiteacher.com/video/introducing-civicrm-drupal-webform-integration "Video from CiviTeacher.org")
 
-These instructions relate to the [Webform CiviCRM module](https://www.drupal.org/project/webform_civicrm) and assume you are already familiar with CiviCRM and the Drupal [Webform module](https://drupal.org/project/webform). Read those manuals first.
+These instructions relate to the [Webform CiviCRM module](https://backdropcms.org/project/webform_civicrm) and assume you are already familiar with CiviCRM and the Backdrop [Webform module](https://backdropcms.org/project/webform). Read those manuals first. The video above is from the Drupal version of Webform CiviCRM but everything is substantially similar.
 
-This module enhances Drupal Webforms to create a smart form builder and processor for CiviCRM. With it you can make user-friendly forms that create and update information about contacts, relationships, cases, activities, event participants, group subscriptions, tags, memberships, contributions, grants, file attachments and custom data.
+This module enhances Backdrop Webforms to create a smart form builder and processor for CiviCRM. With it you can make user-friendly forms that create and update information about contacts, relationships, cases, activities, event participants, group subscriptions, tags, memberships, contributions, grants, file attachments and custom data.
 
 ### Getting Started
 
-* Start with [CiviCRM](http://civicrm.org) installed in Drupal. Download and enable this module, plus its dependencies: [Webform](https://drupal.org/project/webform), [Views](https://www.drupal.org/project/views), [Ctools](https://www.drupal.org/project/ctools), [Options Element](https://www.drupal.org/project/options_element). (dependencies will be automatically fetched if you install via drush).
+* Start with [CiviCRM](http://civicrm.org) installed in Backdrop. Download and enable this module: [Webform](https://backdropcms.org/project/webform). [Instructions on installing modules are here if needed](https://backdropcms.org/user-guide/modules).
 * Configure permissions
 * Create a new webform (or go to edit an existing one).
 * Click on the CiviCRM tab.
@@ -19,7 +19,7 @@ This module enhances Drupal Webforms to create a smart form builder and processo
 
 ### Features
 
-* Expose contacts and related CiviCRM data to be created or edited via Drupal Webforms.
+* Expose contacts and related CiviCRM data to be created or edited via Backdrop Webforms.
 * A form can be configured to pre-fill or select existing contacts based on a number of criteria.
 * Create or update activities, grants, and cases upon form submission.
 * Register contacts for events in a more flexible way than allowed by CiviCRM alone.
@@ -34,7 +34,7 @@ CiviCRM has the ability to embed a "profile" (set of CRM fields) on a page (i.e.
 * Can be multi-valued. While profiles can only work with one contact (or one event, or one membership, etc.) at a time, webforms have no such limitations. A webform can register multiple contacts for multiple events _and_ create/renew one or more memberships _and_ create/update one or more activities, _and_ grants, _and_ cases, _and_ relationships etc. all on the same form.
 * Store submission results, which can be displayed with Views
 * Have advanced features like conditional fields, page breaks, tokens, "save draft," etc.
-* Have numerous [add-on modules](https://www.drupal.org/node/1526208) for spam control, layout, and other features.
+* Have add-on modules for spam control, layout, and other features.
 
 Conversely, webform_civicrm forms have a few limitations:
 
@@ -57,8 +57,8 @@ Contribution Pages offer:
 
 These are not directly supported by Webforms, but there are some workarounds.
 
-* The social "sharing block" can be either recreated as a Drupal Block, borrow code from the template or use [many social modules](http://bit.ly/1FBAHHg).
-* Offering an "Other" amount can be quite useful and [there is a module for that](https://www.drupal.org/project/select_or_other).
+* The social "sharing block" can be either recreated as a Backdrop Block, borrow code from the template or use [many social modules](http://bit.ly/1FBAHHg).
+* Offering an "Other" amount can be quite useful and [there is a module for that](https://www.backdropcms.org/project/select_or_other).
 * The tell-a-friend block can be added to the webform confirmation page using a donation page for "eid": /civicrm/friend?reset=1&eid=1&pcomponent=contribute
 * The Progress widget code can be used in a view or block - note if you just need the contribution amount it is returned in json (which needs to be parsed) from: /sites/all/modules/civicrm//extern/widget.php?cpageId=1&widgetId=1&format=3 where "cpageId" is the contribution page ID.
 * Similarly, the PCP link is /civicrm/contribute/campaign?action=add&reset=1&pageId=1&component=contribute where pageId is the contribution page ID.
@@ -74,7 +74,7 @@ There is a [request in the issue queue to support recurring contributions](https
 
 ## Working with Existing Contacts
 
-![Existing Contact FIeld](https://drupal.org/files/webform_civicrm4.png)Enabling the "Existing Contact" field gives you many options for how a contact can be autofilled or selected:
+![Existing Contact Field](https://drupal.org/files/webform_civicrm4.png)Enabling the "Existing Contact" field gives you many options for how a contact can be autofilled or selected:
 
 * **Widget:** Allows you to determine whether to expose this field to the form as an autocomplete or select element, or hide it and set the value yourself.
 
@@ -121,8 +121,7 @@ Note: The this will only work if the current contact has permission to view orga
 
 The module can also be used to generate new Contact records from information provided in the webform.
 
-Creating Drupal users at the same time can be achieved using the CiviCRM Entity module, with rules integration, as described in this blog post:
-[https://civicrm.org/blogs/petednz/creating-drupal-users-made-easy-single-or-multiple-contacts-civi-imports-and-webforms](https://civicrm.org/blogs/petednz/creating-drupal-users-made-easy-single-or-multiple-contacts-civi-imports-and-webforms)
+Creating Backdrop users at the same time can be achieved using the [Webform Registration](https://github.com/backdrop-contrib/webform_registration) module.
 
 ## Autofilling Forms from URL Arguments
 
@@ -222,7 +221,7 @@ This module allows you to tag contacts and add them to groups when they submit t
 
 ## Custom Data
 
-This module can handle any custom fields you have created for contacts, addresses, event participants, cases, relationships, or activities. Note that not every type of widget exists in the webform module, or behaves exactly the same as its CiviCRM counterpart, for example the "advanced multiselect" becomes a simple "multiselect," "rich text area" becomes a plain text area, and a "datetime" field is split into sepearte "date" and "time" Webform fields. There are some good add-on modules to give more options, e.g. [Chosen](https://drupal.org/project/chosen), [Webform Autocomplete](https://drupal.org/project/webform_autocomplete), and [Webform Html Textarea](https://drupal.org/project/webform_html_textarea)."
+This module can handle any custom fields you have created for contacts, addresses, event participants, cases, relationships, or activities. Note that not every type of widget exists in the webform module, or behaves exactly the same as its CiviCRM counterpart, for example the "advanced multiselect" becomes a simple "multiselect," "rich text area" becomes a plain text area, and a "datetime" field is split into separate "date" and "time" Webform fields. There are some good add-on modules to give more options, e.g. [Chosen](https://drupal.org/project/chosen), [Webform Autocomplete](https://drupal.org/project/webform_autocomplete), and [Webform Html Textarea](https://drupal.org/project/webform_html_textarea)."
 
 ## Event Registration
 
@@ -248,7 +247,7 @@ Using Webforms, you can accept online payments for contributions, events and mem
 
 ### Unsupported payment processors
 
-Most major payment processors compatible with CiviCRM should also work with this module. If you are having trouble with the processor of your choice you can [search for an open issue](https://www.drupal.org/project/issues/webform_civicrm?text=payment) on the drupal.org issue tracker or file a new one if you don't find one already open. Note that software development is not free and you will likely need to contribute your own time or funding toward a fix.
+Most major payment processors compatible with CiviCRM should also work with this module. If you are having trouble with the processor of your choice you can [search for an open issue](https://www.drupal.org/project/issues/webform_civicrm?text=payment) on the drupal.org issue tracker or file a new one if you don't find one already open. Note that software development is not free and you will likely need to contribute your own time or funding toward a fix. Development occurs primarily on the Drupal version and is then ported into the Backdrop version of this module.
 
 ### Accepting payments through a webform
 
