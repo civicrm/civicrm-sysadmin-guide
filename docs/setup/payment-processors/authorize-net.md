@@ -96,19 +96,19 @@ If you would like to use an Authorize.net Developer Test Account, you can sign u
 
 Authorize.net offers a recurring payment system called Automated Recurring Billing (ARB) for an additional fee. Your **Settings - Payment Processor** page will automatically populate with the standard Recurring Payments URL, but you will need to enable the ARB service in order for recurring contributions to work.
 
-CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**. Within CiviCRM, get the ID number of your payment processor by looking at the URL of the form for editing your payment processor: it should read "&id=" followed by a number. That number is your ID. Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the URL (the following examples are for payment processor ID 2):
+CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**.
 
-```
-Drupal: http://example.org/civicrm/payment/ipn/2
+Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use.
 
-Joomla!: http://example.org/index.php?option=com_civicrm&task=civicrm/payment/ipn/2
-
-WordPress: http://example.org/?page=CiviCRM&q=civicrm/payment/ipn/2
-```
+Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the appropriate IPN / Webhook URL.
 
 If you fail to do this, one-time contributions will succeed normally, and recurring contributions will be processed successfully by Authorize.net, but the contribution status will be stuck at Pending.
 
 Important: if you are using a different domain for sandbox/staging or a local installation, you can create test transactions from your local that will be handled by Auth.net (hopefully you're doing this under one of the various test configurations described above), but note that Auth.net will attempt to use the above URL (your production site) to notify CiviCRM, so your staging/local installation will never hear back from CiviCRM unless you change the URL in Auth.net (which you probably don't want to do if you have a live site running).
+
+!!! note
+
+    The Authorize.net Silent-Post is pretty simplistic, so you should confirm the URL you configure. For instance, you do not want to use a URL that will require a redirect for SSL (https) or that enforces the use of "www". See below on [Testing Recurring Transactions](#testing-of-recurring-transactions) to confirm you have the correct URL to use.
 
 ## Other Authorize.Net settings
 
@@ -144,12 +144,27 @@ Developers can use a shell script like the one below to call the authorizeIPN.ph
 Note that you must modify the URL to match your own web site and various other parameters to match an actual existing recurring transaction on your site:
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 
-curl http://example.org/sites/all/modules/civicrm/extern/authorizeIPN.php -d x_amount=1.00 -d x_cust_id=104 -d x_invoice_num=13468 -d x_trans_id=6456235754test
+# Confirm the URL to use in the Authorize.net Silent-Post URL:
+# last URL segment is the payment processor ID
+THE_URL="https://awesome.org/civicrm/payment/ipn/1"
+
+X_AMOUNT="5.00"
+X_CUST_ID="3430"  # cvicrm contact id
+X_INVOICE_NUM="6692"  # civicrm contribution id
+X_SUBSCRIPTION_ID="40018319"
+X_TRANS_ID="40926580513"     # x_trans_id is a unique number that authorize.net returns to identify this transaction
+
+curl $THE_URL -d x_response_code=1 \
+    -d x_subscription_id=$X_SUBSCRIPTION_ID \
+    -d x_cust_id=$X_CUST_ID \
+    -d x_amount=$X_AMOUNT \
+    -d x_invoice_num=$X_INVOICE_NUM \
+    -d x_trans_id=$X_TRANS_IDtest
 ```
 
-_Note that the script above has not been tested and will need some work to determine the exact parameters needed. See alternate testing method below for an idea of what the parameters should look like._
+_Note See alternate testing method below for examples of other parameters that can be included._
 
 ### Online form testing method
 

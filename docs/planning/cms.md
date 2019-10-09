@@ -27,10 +27,12 @@ between users on your website and your CRM, then Drupal might be the CMS
 for you. The main negative is that this flexibility makes it harder for
 new site builders to get to grips with.
 
-**Backdrop CMS** is very similar to Drupal 7, with a few improvments. Drupal 7
-modules and themes require modifications to work with Backdrop CMS. It started as a fork
-(that is, a copy) of Drupal 7, aimed at users for whom Drupal 8 was likely to be
-too complex either to use, or to migrate to from Drupal 7.
+**Backdrop CMS** is very similar to Drupal 7, with many improvements making 
+it slick and lightweight. It started as a fork (that is, a copy) of Drupal 7, 
+aimed at users for whom Drupal 8 was likely to be too complex either to use, 
+or to migrate to from Drupal 7. Drupal 7 modules and themes require 
+modifications to work with Backdrop CMS, though many have already been ported 
+and are actively maintained.
 
 **Joomla** isn't as popular as WordPress, though it is more popular than
 Drupal. Joomla is easier to learn than Drupal. The amount of integration

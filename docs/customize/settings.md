@@ -51,9 +51,16 @@ The table below shows some of the settings file "constants" which will override 
 | **Extensions Resource URL** (System Settings > Resource URLs) | $civicrm_setting['URL Preferences']['extensionsURL'] = '[http://example.com/](http://example.com/)pathtoextensiondir' |
 | **Disable display of Community Messages on home dashboard** | $civicrm_setting['CiviCRM Preferences']['communityMessagesUrl'] = false; |
 | **Disable automatic download / installation of extensions** | $civicrm_setting['Extension Preferences']['ext_repo_url'] = false; |
+| **Set How long HTTP Requests could last for before timing out** | $civicrm_setting['CiviCRM Preferences']['http_timeout'] = '0.5'; |
+| **Enable SSL** | $civicrm_setting['CiviCRM Preferences']['enableSSL'] = false; |
+| **Verify SSL** | $civicrm_setting['CiviCRM Preferences']['verifySSL'] = false; |
 
 For a full list of settings, see [https://github.com/civicrm/civicrm-core/tree/master/settings](https://github.com/civicrm/civicrm-core/tree/master/settings)
 
 !!! warning "Incorrect Paths May Cause Unexpected Behaviors"
 
     Review the path values you are saving to these override constants carefully before saving the file. Incorrect path definitions may cause display issues and / or other unexpected behavior in CiviCRM pages and forms. If you've browsed to your site when an incorrect Resource URL or Custom CSS value has been set, you'll probably need to do a forced refresh with your browser. You may also need to empty the browser cache to make sure the correct CSS and Javascript files get loaded.
+
+!!! notice "HTTP Timeout Setting"
+
+    From CiviCRM 5.15 onwards there is a hidden setting for the HTTP request timeout in seconds. The default for this is 5 seconds. Adjusting the timeout will affect both the page load times (lower time, pages will load faster), too low a timeout and CiviCRM status checks may not complete in time resulting in users seeing an incorrect status alert check failed warning message.

@@ -7,7 +7,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 ## Before installing
 
 1. Ensure that your system meets the [requirements](/requirements.md).
-1. Install Backdrop by referring to the [Backdrop Installation Guide](http://backdropcms.org/getting-started) if needed.
+1. Install Backdrop by referring to the [Backdrop Installation Guide](http://backdropcms.org/installation) if needed.
 
 ## Determine Backdrop Database Settings {:#db-settings}
 
