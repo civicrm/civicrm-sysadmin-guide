@@ -15,7 +15,7 @@ Before starting a project you should consider how you plan to use CiviCRM both n
 1. How much information from CiviCRM do we want to display on our website (e.g. A live list of our current members)?
 2. What information, collected through our website, do we want to store in CiviCRM (e.g. Family data from a public form with the family relationships automatically added).
 
-This is known as integration. How much integration you require will help you determine which is the best CMS for you.
+This is known as integration. The type of integration you require may help you determine which is the best CMS for you.
 
 ## Availability of Extensions
 
