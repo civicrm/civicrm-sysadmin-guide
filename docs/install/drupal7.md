@@ -13,12 +13,6 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 You will need to know the database settings for your Drupal installation prior to running the CiviCRM installer: You can look up these values in your Drupal `settings.php` file (located by default in your `<drupal_root>/sites/default directory`) be looking for the following code:
 
-```
-$db_url = 'mysql://dbuser:dbpassword@localhost/drupal';
-```
-
-or
-
 ```php
 $databases = array (
   'default' =>
