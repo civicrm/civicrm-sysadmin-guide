@@ -8,7 +8,7 @@ If you are curious what technologies other organizations are using to run CiviCR
 
 ### Operating system {:#os}
 
-If your server meets all of the requirements described on this page, CiviCRM *should* function correctly. There are no explicit operating system requirements. However, it's worth noting that CiviCRM is far more widely deployed and tested on UNIX-based operating systems, in particular Linux system (e.g. Ubuntu, Debian, etc.), than it is with Microsoft Windows. Nothing in theory should prevent you from running CiviCRM on a Windows server. But in practice, with a Windows server, you will be more likely to run into problems and less likely to find assistance from other CiviCRM community members.
+If your server meets all of the requirements described on this page, CiviCRM *should* function correctly. There are no explicit operating system requirements. However, it's worth noting that CiviCRM is far more widely deployed and tested on UNIX-based operating systems, in particular Linux (e.g. Ubuntu, Debian, etc.), than with Microsoft Windows. You can still use CiviCRM fine from Windows desktops when the hosting environment runs Linux.
 
 ### Hosting
 
@@ -25,11 +25,11 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 * Drupal 8 - Not yet officially supported
 
     !!! bug "Work in progress"
-        CiviCRM functions with Drupal 8 but (as of October 2018) it has some minor bugs, and doesn't have an official release, relying instead on some unofficial tools and processes. See [the integration module](https://github.com/civicrm/civicrm-drupal-8/blob/master/README.md) for more information.
+        CiviCRM functions with Drupal 8 but (as of October 2019) it has some minor bugs, and doesn't have an official release, relying instead on some unofficial tools and processes. See [the integration module](https://github.com/civicrm/civicrm-drupal-8/blob/master/README.md) for more information.
 
 * Drupal 7 - Compatible with CiviCRM 4.1 and higher.
 
-* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported.
+* Drupal 6 - No longer supported.
 
 ### WordPress
 
@@ -85,13 +85,13 @@ To install these extensions, you will typically install a separate package withi
 
 CiviCRM requires MySQL (or compatible) database software.
 
-[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL.
+[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can be used as drop-in replacements for MySQL.
 
-Other database servers such as Postgres are not compatible with CiviCRM.
+Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 ### MySQL version
 
-Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it.  However MySQL 5.5 is not tested or supported.
+Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it, however MySQL 5.5 is not tested or supported.
 
 ### MySQL configuration
 
@@ -107,7 +107,7 @@ Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current ver
     * See also:
         * A popular [Stack Exchange question](https://stackoverflow.com/a/36033983/895563) discussing this issue
         * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
-* If you plan to have multiple lanaguages used in your CiviCRM installation it is strongly recomemnded that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To Alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
+* If you plan to have multiple lanaguages used in your CiviCRM installation it is strongly recommended that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To Alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
 * In order to support a future data migration from `utf8` to the `utf8mb4` character set, it is recommended, though not yet required, to add the following configuration directives on MySQL 5.5 or 5.6 (these are the default values on MySQL 5.7):
     ```
     [mysqld]

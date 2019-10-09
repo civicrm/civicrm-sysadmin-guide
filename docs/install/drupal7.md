@@ -55,9 +55,9 @@ First, download CiviCRM and install the files like you would any other module:
 
 The result will be that the CiviCRM directory will be at `<DRUPAL ROOT>/sites/all/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
+The most up-to-date version of CiviCRM is always available at [https://civicrm.org/download](https://civicrm.org/download)
 
-**Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
+**Do NOT** activate the module yet - that will happen automatically when you run the installer.
 
 ## Install localization files (only for non-English sites) {:#i18n}
 

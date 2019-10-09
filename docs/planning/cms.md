@@ -38,21 +38,19 @@ and are actively maintained.
 Drupal. Joomla is easier to learn than Drupal. The amount of integration
 available is lower than then when using Drupal.
 
-**WordPress** is by a wide margin the most popular of the three CMS's.
+**WordPress** is by a wide margin the most popular of the four options.
 It is considered to be very easy to build sites using WordPress,
 especially for people that are not familiar with web technology. A lot
 of people know WordPress as a blogging platform rather than a CMS, but
 it is becoming more powerful and flexible with each release. The amount
 of integration available is lower than when using Drupal.
 
-The following chapters in this section go into more detail about what is
-offered for each CMS.
+Differences at a CMS level are mentioned elsewhere through this guide.
 
 ## Users and Contacts
 
-Anonymous site visitors and those with a website login are
-website **Users** 
-Individuals and organisations with a CiviCRM record are **Contacts** 
+* Anonymous site visitors and those with a website login are website **Users**
+* Individuals and organisations with a CiviCRM record are **Contacts**
 
 
 <sup><a name="1">1</a></sup> Usage of content management systems for websites, [Link](https://w3techs.com/technologies/overview/content_management/all).
