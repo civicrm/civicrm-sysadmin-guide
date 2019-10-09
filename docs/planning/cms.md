@@ -36,7 +36,11 @@ The installers are a bit different - web-based installation is easier in Joomla,
 
 ## Testing
 
-The core system is the same across all CMS options, but occasionally there are bugs in the CMS integration code. Our most robust testing is performed on Drupal/CiviCRM which also benefits from the testing inherent in a higher install base, therefore it may take a bit longer to identify/resolve bugs in the WordPress and Joomla integrations but automated testing on these platforms is being continually improved.
+The core system is the same across all CMS options, but occasionally there are bugs in the CMS integration code. For historical reasons, the most robust automated testing is performed on Drupal7 though as of 2019 there are very active WordPress manual testers and a growing numbers of WordPress tests are being added. 
+
+The size of the install base shown at http://stats.civicrm.org/?tab=sites also affects how well reported issues are and how quickly fixes are tested and merged. While trends are subject to change, as of 2019, Joomla shows the least growth and WordPress the most.
+
+Therefore it may take a bit longer to identify/resolve bugs in the BackDrop, Drupal8, Joomla and WordPress integrations but automated testing on these platforms is being continually improved.
 
 The following chapters in this section go into more detail about what is offered for each CMS.
 
