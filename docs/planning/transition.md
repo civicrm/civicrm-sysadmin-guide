@@ -119,7 +119,7 @@ support implications, including:
 -   upgrading to the latest version of CiviCRM (not necessary, but
     CiviCRM is improving all the time and your users will thank you for
     the improved usability and functionality each time you upgrade)
--   upgrading the CMS 
+-   upgrading the CMS
 -   hosting
 
 ## Training
