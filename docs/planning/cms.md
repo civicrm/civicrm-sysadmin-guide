@@ -27,7 +27,8 @@ Broadly there are some differences which arise because of distinctive features/n
 
 * In WordPress, it's pretty common to embed content in your web-pages using short-codes. CiviCRM has several short-codes in WP.
 * In Backdrop CMS/Drupal 7/Drupal 8, it's pretty common to embed content in your web-pages using blocks. CiviCRM has several blocks in Drupal.
-* In Backdrop CMS/Drupal 7/Drupal 8, the core CMS has decent support for "roles" and "permissions", so CiviCRM uses this. In Joomla/WordPress, these are regarded more as "hidden/advanced" functionality, so CiviCRM has to fill in some gaps.
+* In Backdrop CMS/Drupal 7/Drupal 8, CiviCRM makes use of the CMS's "roles" and "permissions" using the CMS's interfaces and approaches, and there are modules to synchronize CiviCRM groups and membership types to them.
+* In Joomla/WordPress, "roles" and "permissions" can also be managed using the CMS's interfaces and approaches, and there are plugins to synchronize groups and membership types to them.
 
 ## Installation Process
 
