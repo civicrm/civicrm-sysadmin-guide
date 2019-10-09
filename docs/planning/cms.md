@@ -1,5 +1,7 @@
 # Choosing your CMS
 
+In general you should probably choose a CMS because you already know how to use it or it is already used by your organisation. Each CMS has different advantages and disadvantages and different people will give you views on which is better. This chapter is aimed at giving you the requisite information to choose the best CMS for you.
+
 CiviCRM works with several popular open source Content Management Systems (CMS).
 
 * Backdrop CMS
@@ -22,8 +24,6 @@ This is known as integration. The type of integration you require may help you d
 There are historical reasons why different CMS options have different levels of integration with CiviCRM. In 2005, CiviCRM launched without its own extension mechanism, but it was possible to write custom integrations in the form of Drupal modules or Joomla plugins, the two CMSes supported at that time. Partly as a result of the ethos of the Drupal community members participating in the CiviCRM ecosystem, a larger variety of Drupal modules to integrate with CiviCRM were created and matured. 
 
 Support for running CiviCRM with WordPress was added in 2012, which allowed WordPress plugins to implement custom integrations. 2012 also saw CiviCRM roll out its own native extension system: flexible, cross-CMS support aiming to reduce the development and maintenance effort involved in creating customizations to extend and modify core CiviCRM functionality. In recent years a large number of CiviCRM native extensions have been released, though there continue to be CMS-specific integrations, particularly around permissions and forms. So the reasons for choosing one CMS over another based on the available functionality and integration levels continue to decline.
-
-You may also choose a CMS because you already know how to use it or it is already used by your organisation. Each CMS has different advantages and disadvantages and different people will give you views on which is better. This chapter is aimed at giving you the requisite information to choose the best CMS for you.
 
 ## Integration Features
 
@@ -48,7 +48,3 @@ Therefore it may take a bit longer to identify/resolve bugs in the BackDrop, Dru
 
 The following chapters in this section go into more detail about what is offered for each CMS.
 
-## Users and Contacts
-
-Anonymous site visitors and those with a website login are website **Users**.
-Individuals and organisations with a CiviCRM record are **Contacts**.
