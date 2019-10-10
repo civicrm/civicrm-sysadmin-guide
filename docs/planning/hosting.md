@@ -23,32 +23,25 @@ background, you may wish to host CiviCRM internally. To do this, you
 will need:
 
 -   Servers or dedicated PC hardware available to run as a web server,
-    24-7.
+    24x7.
 -   A space on premises to permanently store the hardware, possibly air
     conditioned.
 -   An un-interrupted power supply (UPS) to ensure the server is still
     available during power outages.
--   Either a stable internet connection with a static IP address and an
-    SLA (Service Level Agreement) for high availability, or a leased
-    line. It is important to note that should the Internet connectivity
-    to the building in which your server resides goes down, only users
-    on internal network will be able to access it. External visitors
-    will not be able to access your website, including logging into
-    CiviCRM and accessing online contribution forms. Widgets posted on
-    other sites will also become unavailable. The bandwidth is also an
-    important factor, as it must be high enough to serve the amount of
-    traffic your website receives.
+-   An internet connection suitable for hosting a website (static IP, sufficient
+    bandwidth, etc).
 
-There are other aspects to address too. If you have an internal network,
-the web server should be partitioned from the other computers and
-servers to enhance security (e.g. in a Virtual Private Network or DMZ).
-A web server could, potentially, introduce vulnerabilities that an
-external individual, script or bot could use as a gateway into your
-otherwise private, non-Internet facing systems. It is also a good idea
-to research the maintenance and daily running costs of having an
-internal server, and compare it to that of using an external host.
+If hosting internally, it is important to note that the system will be dependent
+on internet connectivity to your server, and that in event of an outage only
+external users and visitors will lose access. This might prevent visitors
+accessing contribution forms or widgets embedded on external sites.
 
-## External hosting 
+Other considerations are the secure partitioning of this internally-hosted
+website from other services on the same machine, security of network, and other
+factors including the cost of management and maintenance. It's recommended to
+have some expert guidance on doing this right.
+
+## External hosting
 
 With internal expertise you could manage the install and configuration
 in-house, but host CiviCRM with an external provider. In this instance,
@@ -94,10 +87,8 @@ a second account on a host capable of running CiviCRM, and run the two
 systems alongside each other.
 
 In this instance, you would use a CNAME DNS record to point to a second
-copy of the CMS and CiviCRM on the other host (e.g.
-civicrm.yourwebsite.com; the CNAME effectively adds a prefix to your
-website's address), and link to it from your website, perhaps in form of
-a log-in button.
+copy of the CMS and CiviCRM on the other host (e.g. `civicrm.example.org`),
+and link to it from your website, perhaps in form of a log-in button.
 
 Aside from paying a second bill, one of the limitations to this approach
 is the need to clone the style of your website on the second host to

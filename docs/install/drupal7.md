@@ -13,12 +13,6 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 You will need to know the database settings for your Drupal installation prior to running the CiviCRM installer: You can look up these values in your Drupal `settings.php` file (located by default in your `<drupal_root>/sites/default directory`) be looking for the following code:
 
-```
-$db_url = 'mysql://dbuser:dbpassword@localhost/drupal';
-```
-
-or
-
 ```php
 $databases = array (
   'default' =>
@@ -50,14 +44,14 @@ In the above example:
 
 First, download CiviCRM and install the files like you would any other module:
 
-* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the drupal modules page to see the **Install New Module** link.
+* As administrator in Drupal, go to Modules, click on **Install New Module** , and it will ask you to fill in the URL of the module. It will then fetch it and install it for you. You will need to enable the **Update Manager** module in the Drupal modules page to see the **Install New Module** link.
 * Alternatively, you can upload and extract the file in `<DRUPAL ROOT>/sites/all/modules`
 
 The result will be that the CiviCRM directory will be at `<DRUPAL ROOT>/sites/all/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download) (though you may have to endure a fundraising pitch).
+The most up-to-date version of CiviCRM is always available at [https://civicrm.org/download](https://civicrm.org/download)
 
-**Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
+**Do NOT** activate the module yet - that will happen automatically when you run the installer.
 
 ## Install localization files (only for non-English sites) {:#i18n}
 
@@ -71,7 +65,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Point your web browser to the following URL:
 
     `http://example.org/sites/all/modules/civicrm/install/index.php`
-    
+
 * You should see the **CiviCRM Installer** screen.
     * Initially, you will see a red bar with the message "These database details don't appear to be correct." This is expected as you haven't entered your database settings yet.
     * If you see other errors, check the **Requirements** details at the bottom of the page for more information. You will need to correct any issues before continuing.
@@ -89,7 +83,7 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Click the **Check Requirements and Install CiviCRM** button.
     * The installer will configure your databases, create the settings file and redirect you to your Drupal Home page.
     * If you still see a red bar with the message "These database details don't appear to be correct." - check the Database Details section below your settings for specific errors and problems. Once you correct these problems, click "Recheck requirements" to verify your settings before continuing.
-    * If you are on a Windows machine and get the message "The user account used by your web-server needs to be granted write access to the following directory in order to configure the CiviCRM settings file: C:<drupal path>/sites/default" even after changing directory permission in Explorer, see [https://forum.civicrm.org/index.php%3Ftopic=5056.15.html#msg23720](https://forum.civicrm.org/index.php%3Ftopic=5056.15.html#msg23720) for instructions how to change the permissions using CMD.
+    * If you are on a Windows machine and get the message "The user account used by your web-server needs to be granted write access to the following directory in order to configure the CiviCRM settings file: C:<drupal path>/sites/default" even after changing directory permission in Explorer, see [this forum post](https://forum.civicrm.org/index.php%3Ftopic=5056.15.html#msg_23720) for instructions how to change the permissions using CMD.
     * Once you see the green "You're ready to install!" message - you can click **Check Requirements and Install CiviCRM**
 
 ## Review Permissions {:#permissions}

@@ -3,12 +3,11 @@
 This chapter covers some basic strategies for identifying your
 organizational needs, and how they could be met by CiviCRM. It doesn't
 go into detail about CiviCRM functionality or how CiviCRM stores data
-(you will find that in other chapters). Instead, we encourage you to
+- you will find that in other chapters. Instead, we encourage you to
 first take a step back and think about your organisation.
 
 Building internal support for a new Constituent Relationship Management
-(CRM) solution is a complex task that, when done thoughtfully, can yield
-great rewards.
+(CRM) solution is a complex task can yield great rewards if done right.
 
 Some organizations are comfortable appointing a team to do this
 internally while others rely on outside consultants. Following are our
@@ -36,42 +35,38 @@ information (collecting, updating, sharing and using contact
 information).
 
 **Identify specific inefficiencies** that could be addressed by a
-comprehensive Constituent Relationship Management solution.
+comprehensive CRM solution.
 
 **Enumerate the resulting lost productivity**. For example:
 
--   **Incoherent view of our constituents.** We are unable to see a
+-   **Incoherent view of our constituents.** _We are unable to see a
     holistic record of our constituents eg: who is a donor, volunteer
-    and e-newsletter subscriber.
+    and e-newsletter subscriber._
 -   **Inability to include all prospective donors in all outreach
-    efforts.** With fractured constituent lists we are unable to include
+    efforts.** _With fractured constituent lists we are unable to include
     all constituents in our efforts to raise funds, awareness and
-    promote events.
--   **Inefficient use of staff.** Redundant staff time is spent re-keying
+    promote events._
+-   **Inefficient use of staff.** _Staff time is not used well when re-keying
     information originally received digitally, importing, exporting and
-    de-duping records.
--   **Lack of communication.** Inability to communicate across
-    departments about our various interactions with the same
-    constituent.
--   **Data vulnerability.** Inability to make reliable backups of all
-    data and protect it against malicious or accidental loss.
-
+    de-duping records._
+-   **Lack of communication.** _We struggle to communicate consistently across
+    departments about their various interactions with the same constituent._
+-   **Data vulnerability.** _When contact data is distributed across systems, it
+    is a challenge to reliably protect our complete dataset against loss, and we
+    challenges ensuring data is secure when held in multiple systems._
 
 **Lastly, inventory current data sources** that could be consolidated
 and shared across departments. For example:
 
--   **Owner / Department / Count / Constituent / Description /
-    filename**
--   Kris / Comms / 245 / short-lead media contacts / comms campaigns /
-    comms2010.doc
--   Katie /Dev / 79,000 / donors / donors active since 2005 /
-    donors2005-2010.xls
--   Martha /Marketing / 233 / corporate partners / active partners /
-    (Outlook)
--   Dan /Marketing / 134 / grassroots partners / all grassroots partners
-    / grasspartners05-10 (Google docs)
--   Carole / Volunteers / 3450 / volunteers / all MLK day volunteers,
-    skills / mlk_volunteers_10.xls
+Owner  | Department | Count  | Constituents              | Description / filename
+-------|------------|--------|---------------------------|------------------------
+Kris   | Comms      | 245    | short-lead media contacts | comms campaigns / comms2010.doc
+Katie  | Dev        | 79,000 | donors                    | donors active since 2005 / donors2005-2010.xls
+Martha | Marketing  | 233    | corporate partners        | active partners / (Outlook)
+Dan    | Marketing  | 134    | grassroots partners       | all grassroots partners / grasspartners05-10 (Google docs)
+Carole | Volunteers | 3450   | volunteers                | all MLK day volunteers, skills / mlk_volunteers_10.xls
+
+This initial inventory will help you identify common sources, but when consolidating or migrating data you should plan for discovery of other existing sources in your organization along the way!
 
 ## Benefits
 
@@ -111,5 +106,3 @@ contemplates:
 -   incremental data backups
 -   operating system and software upgrades
 -   ongoing training
-
-
