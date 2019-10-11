@@ -16,21 +16,21 @@ A CMS, or Content Management System, is a type of application which controls the
 * Drupal 8 - Not yet supported
 
     !!! bug "Work in progress"
-        CiviCRM functions with Drupal 8 but (as of October 2017) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652). 
- 
+        CiviCRM functions with Drupal 8 but (as of October 2017) it has some unresolved issues, in particular [CRM-17652](https://issues.civicrm.org/jira/browse/CRM-17652).
+
 * Drupal 7 - Compatible with CiviCRM 4.1 and higher.
 
-* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported. 
+* Drupal 6 - No longer compatible (as of CiviCRM 4.3). It *might* work, but it's not supported.
 
 ### WordPress
 
-WordPress 3.4.x or newer is required. 
+WordPress 3.4.x or newer is required.
 
 ### Joomla
 
 Joomla 2.5.x or 3.x.x is required.
 
-### Backdrop 
+### Backdrop
 
 Backdrop 1.0 or newer is required.
 
@@ -75,7 +75,7 @@ To install these extensions, you will typically install a separate package withi
 
 ### MySQL alternatives
 
-[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL. 
+[MariaDB](https://mariadb.org/) and [Percona](https://www.percona.com/software/mysql-database/percona-server) are forks of the MySQL project and can mostly be used as drop-in replacements for MySQL.
 
 Other database servers such as Postgres are not compatible with CiviCRM.
 

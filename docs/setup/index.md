@@ -2,15 +2,15 @@
 
 ## CiviCRM system status
 
-Starting in 4.7, the CiviCRM System Status screen shows you a view of the current status of your CiviCRM installation. It is found at **Administer > Administration Console > System Status**. 
+Starting in 4.7, the CiviCRM System Status screen shows you a view of the current status of your CiviCRM installation. It is found at **Administer > Administration Console > System Status**.
 
 ![Screen Shot of CiviCRM System Status](/img/system-status.png)
 
 Items in *Red* need to be addressed as soon as possible. An item in red generally indicates something broken that will stop CiviCRM from working normally.
 
-Items in *Orange* should be addressed as soon as you can and may stop you from completing key CiviCRM tasks.  
+Items in *Orange* should be addressed as soon as you can and may stop you from completing key CiviCRM tasks. 
 
-Items in *Green* are set up correctly and are on the screen for information only.  
+Items in *Green* are set up correctly and are on the screen for information only. 
 
 ### Fixing issues
 

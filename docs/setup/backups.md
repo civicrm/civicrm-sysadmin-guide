@@ -12,7 +12,7 @@ Your CiviCRM data is primarily stored in the MySQL database you've configured fo
     ```
     define( 'CIVICRM_DSN', 'mysql://db_user:user_passord@db_server/db_name?new_link=true' );
     ```
-    
+   
 If you use a hosting provider, they may be able to offer regular backups as part of your service. It is advisable to inquire as to the disaster contingency plans in place (redundancy, offsite / multiple location storage of backups, etc.).
 
 If you are setting up the backups yourself, there are a number of tool such as **mysqldump** or **phpMyAdmin** which can be used. Searching on _"mysql backup"_ will give you options and links to procedures.

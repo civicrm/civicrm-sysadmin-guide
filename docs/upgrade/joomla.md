@@ -30,13 +30,13 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
 
 * `<joomla_root>/components/com_civicrm/civicrm.settings.php`
 * `<joomla_root>/administrator/components/com_civicrm/civicrm.settings.php`
-    
+   
 Copy these files to a location outside your Joomla project.
 
 ## Install the Extension
 
 1. Login to your Joomla Administrator site.
-1. From the menu choose Extensions » Manage » Install 
+1. From the menu choose Extensions » Manage » Install
 1. Use the **Install from Folder** tab and enter the full path to the un-zipped **com_civicrm** directory, which should be something like **JOOMLA.x_ROOT/tmp/com_civicrm**. If your temp directory is configured correctly you should only need to add "com_civicrm" to the prepopulated path.
 1. You should see "CiviCRM successfully installed" message.
 

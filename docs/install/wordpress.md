@@ -24,14 +24,14 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
 * Create the `<wordpress path>/wp-content/plugins/files/` directory and ensure it is writable. CiviCRM for versions 4.6 and prior uses this directory for temporary and uploaded files.
 
     !!! information "Downloading Directly to Your Server with wget"
-    
+   
         If you have command-line access, you may prefer to download the zip file directly to your server using wget:
-        
+       
         1. Move into WordPress's plugin directory
             ```
             $ cd /var/www/wordpress/wp-content/plugins
             ```
-        
+       
         1. wget the file (modify this line to use the current zip file name for the version you want)
             ```
             wget https://download.civicrm.org/civicrm-x.x.x-wordpress.zip
@@ -44,7 +44,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
         ```
         $ cd /var/www/wordpress/wp-content/plugins
         ```
-    
+   
     1. Un-zip the file (modify this line with the actual downloaded filename)
         ```
         unzip civicrm_download_file.zip
@@ -61,14 +61,14 @@ Follow these steps to download and install the files that contain strings for la
 * Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins` directory to allow for "Write" Access. Just remember to change it back to default when done.
 
     !!! note "Downloading Directly to Your Server with wget"
-    
+   
         If you have command-line access, you may prefer to download the tarball file directly to your server using wget:
-        
+       
         1. Move into WordPress's modules directory and then into the civicrm subdirectory
             ```
             $ cd /var/www/wordpress/wp-content/plugins/civicrm
             ```
-        
+       
         1. wget the file (modify this line to use the current tarball file name for the version you want)
             ```
             $ wget https://download.civicrm.org/civicrm-x.x.xx-l10n.tar.gz
@@ -81,7 +81,7 @@ Follow these steps to download and install the files that contain strings for la
         ```
         $ cd /var/www/wordpress/wp-content/plugins/civicrm
         ```
-    
+   
     1. Un-tar the file (modify this line with the actual downloaded filename)
         ```
         $ tar -zxvf civicrm_download_file.tgz
@@ -100,13 +100,13 @@ The installer will verify that you've downloaded the correct version of CiviCRM,
 * Click the **Activate** link to activate the CiviCRM plugin.
 
 * Then go to Settings > CiviCRM Installer: `http://example.org/wp-admin/options-general.php?page=civicrm-install`
-    
+   
 * In version 4.7 and above you will see a link on the wp-admin page to the Installer screen
-    
+   
 * You should see the **CiviCRM Installer** screen.
 
     * If you see any errors, check the **Requirements** details at the bottom of the page for more information. You will need to correct any issues before continuing.
-    
+   
 * CiviCRM Database Settings.
 
     * Initially, the installer will default to using the existing WP database for the CiviCRM data.  You can change this if you want
@@ -141,8 +141,8 @@ Should an upgrade fail, you will need this backup copy to restore your site.
 
 * Starting in Version 5.13.x CiviCRM now can support "Clean URLs" for WordPress
 * By default CiviCRM URLs are in the format of https://example.org/civicrm?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1 for a Contribution Page.  Enabling Cleaner URLs will enable URLs in the format of
-  * A Contribution Page will have the format of https://example.org/civicrm/contribute/transact/?reset=1&id=1  
-  * Profile Pages can be accessed at https://example.org/civicrm/profile/edit/?gid=1&reset=1 or https://wpcvrc.tadpole.cc/civicrm/profile/create/?gid=1&reset=1 
+  * A Contribution Page will have the format of https://example.org/civicrm/contribute/transact/?reset=1&id=1 
+  * Profile Pages can be accessed at https://example.org/civicrm/profile/edit/?gid=1&reset=1 or https://wpcvrc.tadpole.cc/civicrm/profile/create/?gid=1&reset=1
   * Listings would be at https://example.org/civicrm/profile/?gid=1&reset=1
   * The User's Contact Dashboard can be accessed at https://example.org/civicrm/user/?reset=1
 * To Enable Cleaner URLs , start by backing up your `Civicrm.settings.php` file as detailed in the "Locate and Backup the CiviCRM settings file" section above.
