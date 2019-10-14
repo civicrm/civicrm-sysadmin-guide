@@ -11,7 +11,7 @@ Use this document to upgrade CiviCRM installations on Backdrop CMS to the latest
 1. Select the latest currently available CiviCRM tarball for Backdrop.
 
     Example: `civicrm-x.x.x-backdrop.tar.gz`
-    
+   
 1. Save this file in `<backdrop_root>/modules`.
 
 If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
@@ -92,18 +92,18 @@ Choose one of the following methods:
 * Run the following `drush` command from within your site:
 
     ```bash
-    $ drush civicrm-upgrade-db 
+    $ drush civicrm-upgrade-db
     ```
 
 * Or, point your web browser to the following URL and follow the on-screen instructions.
-    
+   
     ```
     http://example.org/civicrm/upgrade?reset=1
     ```
-    
+   
     !!! note
         This page loads on a Backdrop maintenance page. If you use a custom `maintenance.tpl.php` file you may wish to temporarily disable that file and use Backdrop's default.
-    
+   
 
 ## Clean up
 

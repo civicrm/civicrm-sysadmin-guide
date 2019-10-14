@@ -15,7 +15,7 @@ However, if you'd like to *improve the performance of the system*, you may insta
     ```
 
     With the default, pure-MySQL configuration, the mean response time was ~460ms.  With Redis, this decreased by ~60ms (~13%) to ~400ms.
-    
+   
     Note, though, the local copy of MySQL on this laptop is probably faster than a typical MySQL because it stores *everything* in ram-disk (rather than HDD or SSD). Compared to a typical, self-hosted MySQL, the Redis/Memcache advantage is probably wider.
 
 !!! note "What data (exactly) is stored where (exactly)?"
@@ -86,7 +86,7 @@ define('CIVICRM_DB_CACHE_PREFIX', 'example.com');
 
 ### Example: Redis and civibuild {:#config-redis-civibuild}
 
-If you are a developer using `civibuild` to manage several local dev sites, you can create one file `/etc/civicrm.settings.d/pre.d/100-cache.php` to activate Redis on all sites.  
+If you are a developer using `civibuild` to manage several local dev sites, you can create one file `/etc/civicrm.settings.d/pre.d/100-cache.php` to activate Redis on all sites. 
 
 ```php
 if (!defined('CIVICRM_TEST') || !(getenv('CIVICRM_UF') === 'UnitTests')) {

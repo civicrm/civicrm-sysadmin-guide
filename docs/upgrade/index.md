@@ -83,7 +83,7 @@ For each version upgrade you perform, follow these steps to merge your template 
     For each of these templates with conflicting changes, perform the remaining steps.
 
     !!! note
-        Each message template has _two_ separate pieces of text &mdash; the HTML version and the text version. Take note of conflicting changes to each of these types, as you'll need to process them separately.   
+        Each message template has _two_ separate pieces of text &mdash; the HTML version and the text version. Take note of conflicting changes to each of these types, as you'll need to process them separately.  
 
 1. Let's pause here and explain a little theory...
 

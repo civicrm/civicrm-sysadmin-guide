@@ -4,7 +4,7 @@ In general the steps to upgrade CiviCRM are identical no matter which version yo
 
 Here you will find special steps needed when your upgrade crosses certain CiviCRM versions.
 
-For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions. 
+For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions.
 
 ## CiviCRM 5.0
 

@@ -53,21 +53,21 @@ When CiviCRM is installed on top of an existing Joomla site, a special CiviCRM A
 * If the CiviCRM component does not install correctly (for example you get a blank screen instead of the confirmation page), delete the `~/components/com_civicrm` and `~/administrator/components/com_civicrm` and `~/media/civicrm directories` manually and then try each of the following before attempting to reinstall:
 
     * In your `php.ini` file or in `.htaccess` file in the Joomla root folder (if your server allows it), increase the `max_execution_time` to `600` and memory limit to more than 64M. Add the following to the `.htaccess` file in your Joomla root folder
-    
+   
         ```
         php_value memory_limit 128M
         php_value register_globals off
         php_value max_execution_time 600
         ```
-        
+       
         Or if you can't change the `.htaccess` file you can add a php.ini (or `.user.ini`) file in Joomla root folder or all directories, depending on your web server or hosting company.
-        
+       
         ```
         memory_limit = 128M
         register_globals = off
         max_execution_time = 600
         ```
-    
+   
     * CiviCRM is packaged with all the libraries (PEAR etc) that it uses. However a misconfigured or overly restrictive `open_basedir` directive on your web server might interfere with CiviCRM's ability to access some required files or directories. To turn `open_basedir` off, add this to your `vhost.conf` file: `php_admin_value open_basedir none` or ask your host to either turn it off or ensure that it is not preventing access to required directories (e.g. if you move configuration files or temp folders outside your web root). The configuration of sub domains might cause related issues: try installing in the main domain root or a sub folder instead.
 
 * If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`

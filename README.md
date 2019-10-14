@@ -10,4 +10,4 @@ A documentation guide for people who install, upgrade, and maintain [CiviCRM](ht
 -   [Docs Publisher system and issue queue](https://lab.civicrm.org/documentation/docs-publisher)
 -   [Docs Book definitions for the Docs Publisher](https://lab.civicrm.org/documentation/docs-books)
 -   [Docs Working Group meta issue queue](https://lab.civicrm.org/documentation/meta)
- 
+

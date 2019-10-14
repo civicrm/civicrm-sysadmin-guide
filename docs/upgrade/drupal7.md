@@ -11,7 +11,7 @@ Use this document to upgrade CiviCRM installations on Drupal 7 to the latest Civ
 1. Select the latest currently available CiviCRM tarball for Drupal.
 
     Example: `civicrm-x.x.x-drupal.tar.gz`
-    
+   
 1. Save this file in `<drupal_root>/sites/all/modules`.
 
 If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
@@ -25,7 +25,7 @@ When upgrading a production site, it is recommended that you take your site offl
 
 !!! warning
     Sometimes Drupal modules, paticularly those which integrate with CiviCRM, are not compatible with the latest version of CiviCRM. In this case the update to CiviCRM may trigger errors. Although this problem is rare, unless you are confident and about handling such errors, the safest workflow is to disable all Drupal modules which integrate with CiviCRM before performing the upgrade, and to re-enable them after the upgrade is complete.
-    
+   
 ## Upgrade the filesystem
 
 ### Delete all previous version code files
@@ -71,30 +71,30 @@ Choose one of the following methods:
 * Run the following `drush` command from within your site:
 
     ```bash
-    $ drush civicrm-upgrade-db 
+    $ drush civicrm-upgrade-db
     ```
-    
+   
 * Or, point your web browser to the following URL and follow the on-screen instructions.
-    
+   
     ```
     http://example.org/civicrm/upgrade?reset=1
     ```
-    
+   
 * Or, run the following `cv` command from within your site:
 
     ```bash
-    $ cv upgrade:db 
+    $ cv upgrade:db
     ```
-    
+   
 !!! note
-    The `cv upgrade:db` command accepts a --dry-run option to show what changes will be made before committing them to the database. 
+    The `cv upgrade:db` command accepts a --dry-run option to show what changes will be made before committing them to the database.
     For the maximum level of verbosity use `cv upgrade:db --dry-run -vv`.
-    
+   
 
 ## Clear cached files¶
 
 Delete all files in sites/default/files/civicrm/templates_c/, or clear the caches using one of the command line tools, such s `cv flush` or `drush cache-clear civicrm`.
 
-    
+   
 !!! note
     If you disabled modules, or placed the site in maintenance mode, remember to reverse those steps after the upgrade.

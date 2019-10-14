@@ -4,14 +4,14 @@ This page provides instructions on setting up scheduled jobs to run automaticall
 
 !!! tip "More info in the User Guide"
     See the [scheduled jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs) page in the User Guide to learn more about how scheduled jobs work and why they are important.
-    
+   
 ## Process overview
 
-A typical CiviCRM installation uses the following process to execute scheduled jobs: 
+A typical CiviCRM installation uses the following process to execute scheduled jobs:
 
 1. A CiviCRM administrative user configures scheduled jobs via CiviCRM's UI.
 1. A cron job (outside of CiviCRM) executes CiviCRM's `Job.execute` API call regularly (e.g. every 5 minutes).
-1. The `Job.execute` API call runs all the configured scheduled jobs which are necessary at that point in time. 
+1. The `Job.execute` API call runs all the configured scheduled jobs which are necessary at that point in time.
 1. Each scheduled job executes its own API call (e.g. `Job.geocode`) and passes any parameters to this call as configured in the UI.
 
 ## Setup overview
@@ -21,7 +21,7 @@ To get scheduled jobs working you'll need to perform the following setup tasks:
 1. Configure and enable at least one scheduled job from within the UI. _([Instructions in the User Guide](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs/#configuring))_
 
     * For example, a default job exists in new CiviCRM installations called "CiviCRM Update Check" which runs `Job.version_check`. This is an easy job to use while testing your schedule jobs setup. For the purposes of testing your setup, it will be helpful to modify the frequency of this job so that it runs every time cron runs.
-    
+   
 1. Manually execute your scheduled job from within the UI to ensure that it completes without error. View the job log if necessary. _([Instructions in the User Guide](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs/#manual-execution))_
 
 1. Choose a method of executing the `Job.execute` API call from the command line. _([Instructions below](#choosing-a-method))_
@@ -31,11 +31,11 @@ To get scheduled jobs working you'll need to perform the following setup tasks:
 1. Set up a cron job to run the command regularly. _([Instructions below](#cron))_
 
     1. Test that your cron job works by viewing the job log after it should have run.
-    
+   
 1. Choose more scheduled jobs to enable to meet your needs. _([Instructions in the User Guide](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs/#specific-jobs))_
 
 
-## Preparing 
+## Preparing
 
 ### Choosing a command {:#choosing-a-method}
 
@@ -61,7 +61,7 @@ Some of these methods require a valid username and password (for a CMS user who 
     * View all contacts
     * Access CiviCRM
     * Access CiviMail
-        
+       
 ## Commands to call `Job.execute` {:#commands}
 
 ### cv method {:#cv}
@@ -74,7 +74,7 @@ cv api job.execute --user=admin --cwd=/var/www/example.org
 
 Notes:
 
-* If `cv` only works when you run it from a shell and not from cron you may need to invoke it by calling it with an absolute path to php and to CV. 
+* If `cv` only works when you run it from a shell and not from cron you may need to invoke it by calling it with an absolute path to php and to CV.
 
 ```example
 /full/path/to/php /full/path/to/cv api job.execute --user=admin --cwd=/var/www/example.org
@@ -108,7 +108,7 @@ $ /path/to/wp-cli \
   civicrm api job.execute auth=0
 ```
 
-Notes: 
+Notes:
 
 * `wp-cli` only works for WordPress
 * See [wp-cli.org](http://wp-cli.org/) for more info about this tool.
@@ -141,7 +141,7 @@ You can use either the [REST interface](https://docs.civicrm.org/dev/en/latest/a
 The URL you need to call depends on the CMS you are using.  In the examples below, replace `<cron-url>` with one of the following (using `http` or `https` as appropriate).
 
 * Drupal:
-    
+   
     ```
     https://example.org/sites/all/modules/civicrm/bin/cron.php
     ```
@@ -157,7 +157,7 @@ The URL you need to call depends on the CMS you are using.  In the examples belo
     ```
     https://example.org/<CONTENT-DIR>/plugins/civicrm/civicrm/bin/cron.php
     ```
-    
+   
     (Make sure to replace `<CONTENT-DIR>` with your own value.)
 
 #### Parameters to pass to `cron.php`
@@ -183,13 +183,13 @@ $ wget -O - -q -t 1 '<cron-url>?name=<username>&pass=<password>&key=<site-key>'
 Use `wget` to send queued CiviMail mailings:
 
 1. Create a file named `civicrm-wgetrc` that contains this line:
-    
+   
     ```
     post-data=name=<username>&pass=<password>&key=<site-key>&job=process_mailing
     ```
 
 1. Create a script that contains these lines:
-    
+   
     ```bash
     export WGETRC=civicrm-wgetrc
     wget -O - -q -t 1 <cron-url>
@@ -233,8 +233,8 @@ Check the [curl documentation](http://curl.haxx.se/docs/) for information about 
 In order for the scheduled jobs configured within the CiviCRM UI to run automatically, you'll need to configure a cron job which executes the `Job.execute` API call.
 
 !!! note
-    The System Status screen `/civicrm/a#/status` will only report "Cron running OK" if your cron job invokes `Job.execute`. The System Status page will complain that cron is "not running" if your cron only invokes particular jobs such as `process_mailing` or `fetch_bounces`. 
-    
+    The System Status screen `/civicrm/a#/status` will only report "Cron running OK" if your cron job invokes `Job.execute`. The System Status page will complain that cron is "not running" if your cron only invokes particular jobs such as `process_mailing` or `fetch_bounces`.
+   
 ### crontab {:#crontab}
 
 1. Make sure you have chosen (and tested) one of the [commands to call `Job.execute`](#commands). In the following examples, we will refer to your command as `<command>`.
@@ -244,12 +244,12 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
     $ crontab -e
     ```
 
-1. Place the following line in your crontab to run your command every 5 minutes. 
+1. Place the following line in your crontab to run your command every 5 minutes.
 
     ```
     */5 * * * * <command>
     ```
-    
+   
 ### webcron
 
 Another way to set up your cron job is to use a webcron like [easycron](https://www.easycron.com).
@@ -276,13 +276,13 @@ If you are using the [Aegir](http://www.aegirproject.org) hosting environment, w
 
 ## Running specific jobs via cron {:#specific-jobs-via-cron}
 
-In the [commands](#commands) section above, we describe the various methods for executing the `Job.execute` API call, which in turn runs all the scheduled jobs necessary at that moment. 
+In the [commands](#commands) section above, we describe the various methods for executing the `Job.execute` API call, which in turn runs all the scheduled jobs necessary at that moment.
 
 But if you want more control over the scheduling of your jobs you can use software like [crontab](#cronb) to execute specific jobs. For example, maybe you want to run `Job.mail_report` on the first Monday of the month. CiviCRM's Scheduled Jobs interface does not allow this level of granularity and control.
 
 With all of the commands above, you can replace `Job.execute` with the API of the job of your choosing. Refer to the [list of all jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs/#specific-jobs) in the User Guide to find the right API call.
 
-When using `cron.php` you can only execute API from "job" entity. This means that if an extension has defined an API action like `Foo.process` you won't be able to call this action from `cron.php` because its entity is `Foo` instead of `Job`. 
+When using `cron.php` you can only execute API from "job" entity. This means that if an extension has defined an API action like `Foo.process` you won't be able to call this action from `cron.php` because its entity is `Foo` instead of `Job`.
 
 ## Troubleshooting
 

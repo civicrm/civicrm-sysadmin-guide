@@ -55,7 +55,7 @@ In some testing there hasn't been any indication of any significant performance 
            'mysql://user:pass@localhost/db_name?new_link=true'
         );
         ```
-        
+       
 1. Go to **Administer › System Settings - Misc (Undelete, PDFs, Limits, Logging, Captcha, etc.)**
 
 1. Set Logging to **Yes**.
@@ -95,7 +95,7 @@ Sites that wish to revert to ARCHIVE would need to do that through mysql - there
 
 1. Go to **Administer > CiviReport > Create New Report From Template**.
 
-1. With logging turned on, two new report templates are available: 
+1. With logging turned on, two new report templates are available:
     * Contact Logging Report (Summary)
     * Contact Logging Report (Detail)
 

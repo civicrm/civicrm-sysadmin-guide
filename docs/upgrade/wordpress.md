@@ -11,7 +11,7 @@ Use this document to upgrade CiviCRM installations on WordPress to the latest Ci
 1. Select the latest currently available CiviCRM tarball for WordPress.
 
     Example: `civicrm-x.x.x-wordpress.zip`
-    
+   
 1. Save this file in `<wordpress_root>/wp-content/plugins/`.
 
 If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
@@ -34,7 +34,7 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
     `<wordpress_root>/content-dir/uploads/civicrm/civicrm.settings.php`
 
     *The installer in 4.7 and above does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)*
-    
+   
 1. Copy this file to a location outside your WordPress project. You may need to restore it after upgrading.
 1. Also, if you are using the `<wordpress_root>/wp-content/plugins/civicrm/civicrm/settings_location.php` file in your implementation, make a copy of this as well as you will need to restore it after upgrading.
 
@@ -100,9 +100,9 @@ If you don't have SSH access and your IP panel does not recognize tar files, you
 
 Delete all files in your `templates_c` directory
 
-* In CiviCRM 4.7 and above: 
+* In CiviCRM 4.7 and above:
     `<wordpress_root>/<content-dir>/uploads/civicrm/templates_c`
-    
+   
 !!! caution "For CiviCRM 4.6 and older:"
     `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c`
 
@@ -118,7 +118,7 @@ Delete all files in your `templates_c` directory
 1. If you are ready to upgrade, click the **Upgrade Now** button.
 1. You should see the message **Upgrade successful** when the upgrade completes.
     * If you receive any errors during the process, please note down the exact error message, and check for solutions on [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org).
-    
+   
 1. Now click the **Return to CiviCRM home page** link. This will rebuild CiviCRM menus automatically and return you to the CiviCRM home dashboard.
 
 

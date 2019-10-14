@@ -49,7 +49,7 @@ using routes the user to external pages for payment processing
 (e.g. PayPal Standard redirects users to PayPal pages to make the
 transaction before returning to your website) the risks are fairly low.
 However you should still be compliant, which involves completing a Self Assessment Questionnaire (SAQ),
-usually SAQ A, covering some technical points which go beyond using SSL 
+usually SAQ A, covering some technical points which go beyond using SSL
 to secure your site, and just as importantly, covering good security practices in the way
 your organization is run.
 
@@ -59,7 +59,7 @@ of the way you manage both human and technical security risks,
 and you may need to engage a qualified assessor to help you meet a sufficient standard.
 The PCI Security Standards Council publishes [a table](https://www.pcisecuritystandards.org/pci_security/completing_self_assessment)
 for guidance about which level of compliance you require.
-Consider the payment processing method you intend to use carefully before 
+Consider the payment processing method you intend to use carefully before
 implementing it, and seek security consultation if you
 decide to store credit card information on your server (this is not
 recommended for smaller organizations because compliance is expensive).
@@ -98,7 +98,7 @@ If you have a public-facing website, note that when switching traffic from (for 
 
 ## Backups and their security
 
-Hackers are as likely to steal data from backups as from production sites. 
+Hackers are as likely to steal data from backups as from production sites.
 The security of backups is covered on the [backups page of this guide](/sysadmin/en/latest/setup/backups/).
 
 ## Data storage jurisdiction
@@ -125,10 +125,10 @@ examined:
     passwords are of a sufficient complexity and length (e.g. minimum 8
     characters, including letters and numbers), and must not be shared
     or divulged over insecure communications like email.
-    
+   
 !!! note
-    CiviCRM implements PHPIDS, which checks the content of fields users are trying to save, and either prevents them being saved, 
-    or logs them, if they are suspected of being malicious. There is a little more detail in 
+    CiviCRM implements PHPIDS, which checks the content of fields users are trying to save, and either prevents them being saved,
+    or logs them, if they are suspected of being malicious. There is a little more detail in
     [the section on PHPIDS in the Developer Guide](https://docs.civicrm.org/dev/en/latest/security/inputs/#phpids).
 
 ## Filesystem permissions
@@ -136,13 +136,13 @@ examined:
 !!! tip
     There is a [detailed post on Stack Exchange about CiviCRM file permissions]
     (https://civicrm.stackexchange.com/questions/168/are-there-recommended-directory-ownership-and-permission-settings-for-civicrm-fi#answer-11640). In particular it points out that allowing the code to be writable by the web server
-    greatly increases the risk of a hack. However, if the directories in the file system containing PHP code are not writable by the 
-    web server, then installation of extensions via the browser UI may fail (as will updates of the CMS 
+    greatly increases the risk of a hack. However, if the directories in the file system containing PHP code are not writable by the
+    web server, then installation of extensions via the browser UI may fail (as will updates of the CMS
     via the browser, such as WordPress offers). Besides, on shared hosting it may not
-    be possible to make the codebase unwritable. In short, if the hosting allows you to make your codebase unwritable, and 
-    losing the possibility of updating or installation of extensions via the browser is acceptable, 
+    be possible to make the codebase unwritable. In short, if the hosting allows you to make your codebase unwritable, and
+    losing the possibility of updating or installation of extensions via the browser is acceptable,
     then doing so offers a considerable improvement in security.
-    
+   
 ### Directories should not be browsable
 
 In its default configuration, CiviCRM places some uploaded and server-generated data in the CMS's data folder (such as Drupal's "sites/default/files" or Joomla's "media"). This folder is web-accessible, but many of the documents processed by CiviCRM should not be web-accessible. If CiviCRM's data folders are not suitably protected from web access, then sensitive information may be disclosed.
