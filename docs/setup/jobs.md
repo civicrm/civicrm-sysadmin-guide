@@ -132,7 +132,7 @@ $ /path/to/php /path/to/civcrm/bin/cli.php \
 Notes:
 
 * The `-s` parameter is the site name, and defaults to `localhost`. It should be set to the FQDN (fully qualified domain name) of your site (eg, `example.org`). Some jobs rely on this being set (in certain cases, the CiviMail mailing scheduler uses this FQDN to generate absolute URLs when relative URLs are in the email).
-* Replace ```cronuser``` and ```cronuserpassword``` with the CMS user and password you choose in the previous step.
+* Replace ```cronuser``` and ```cronuserpassword``` with the CMS user and password you chose in the previous step.
 
 ### HTTP method {:#http}
 
