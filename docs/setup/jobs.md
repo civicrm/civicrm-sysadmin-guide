@@ -114,7 +114,7 @@ Notes:
 
 * `wp-cli` only works for WordPress
 * See [wp-cli.org](http://wp-cli.org/) for more info about this tool.
-* Replace ```cronuser``` with the CMS user you choose in the previous step.
+* Replace ```cronuser``` with the CMS user you chose in the previous step.
 * Add the `--skip-plugins=<plugin>` option to stop a plugin from loading. This is needed if a certain plugin causes the cron job to fail.
 * Add the `--timezone=<timezone_identifier>` option to control the timezone. If you don't do this, then `wp-cli` will use the timezone set in your wordpress site. Here are the [valid timezone identifiers](http://php.net/manual/en/timezones.php).
 
