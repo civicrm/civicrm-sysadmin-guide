@@ -96,7 +96,7 @@ Notes:
 
 * `drush` only works for Drupal sites.
 * See [drush.org](http://www.drush.org/) for more info about this tool.
-* Replace ```cronuser``` with the CMS user you choose in the previous step.
+* Replace ```cronuser``` with the CMS user you chose in the previous step.
 * If successful, this command will output a key/value array with a `error = 0`.
 * The final step to adding a Drush command to your system cron is to add the `--quiet` option to Drush. This is to suppress the non-error output that would otherwise fill up your cron mail feedback.
 
