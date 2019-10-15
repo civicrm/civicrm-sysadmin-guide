@@ -252,7 +252,7 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
     
    b. Alternatively, run:
 
-    ```
+    ```bash
     sudo crontab -e -u os_user
     ```
 
