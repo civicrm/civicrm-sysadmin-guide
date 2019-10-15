@@ -242,7 +242,7 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
 ### crontab {:#crontab}
 
 1. Make sure you have chosen (and tested) one of the [commands to call `Job.execute`](#commands). In the following examples, we will refer to your command as `<command>`.
-1. You need to edit the crontab of the OS User you deermined earlier.
+1. You need to edit the crontab of the OS User you determined earlier.
 
    a. If you are logged in as that user, run:
 
