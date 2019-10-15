@@ -247,7 +247,7 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
    a. If you are logged in as that user, run:
 
     ```bash
-    $ crontab -e
+    crontab -e
     ```
     
    b. Alternatively, run:
