@@ -121,7 +121,7 @@ Notes:
 ### cli.php method {:#php-cli}
 
 ```bash
-$ /path/to/php /path/to/civcrm/bin/cli.php \
+/path/to/php /path/to/civcrm/bin/cli.php \
   -s example.org \
   -u cronuser \
   -p cronuserpassword \
