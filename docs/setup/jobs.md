@@ -43,13 +43,13 @@ Due to the flexibility of CiviCRM's API, there are several different methods ([l
 
 ### Choosing an OS user
 
-When you run one of the commands below to execute `Job.execute`, it's important to pay attention to the file permission of the operating system user that the command runs as. Typically you'll want to run the command as the same user as Apache (i.e. `www-data`, `apache`, or `nobody` are the most likely candidates).
+In most situations, you will want to run the commands to execute `Job.execute` as the user that runs the web server (e.g. Apache).  This is typically `www-data`, `apache`, or `nobody`.
 
-CiviCRM needs read and write access to some directories to operate normally, and can experience issues if "run" by multiple users simultaneously. If your CiviCRM runs on the web as user `www-data`, you need either to execute CiviCRM CLI tasks as the same user *or* to make special provision to ensure filesystem permissions do not interfere with normal operation. See [this StackExchange question](https://civicrm.stackexchange.com/questions/2923/civicrm-does-not-have-permission-to-write-temp-files) for more discussion on this.
+More advanced configurations may want to run the commands as other users.  CiviCRM needs read and write access to some directories to operate normally, and can experience issues if "run" by multiple users simultaneously. If your CiviCRM runs on the web as user `www-data`, you need either to execute CiviCRM CLI tasks as the same user *or* to make special provision to ensure filesystem permissions do not interfere with normal operation. See [this StackExchange question](https://civicrm.stackexchange.com/questions/2923/civicrm-does-not-have-permission-to-write-temp-files) for more discussion on this.
 
 ### Choosing a CMS user
 
-Some of these methods require a valid username and password (for a CMS user who has adequate permissions for the job or jobs being run).
+Some of these methods require a valid username and password (for a CMS user who has adequate permissions for the job or jobs being run).  You can use an existing user but it is usually better to create a new user for this purpose - e.g. 'cronuser'.
 
 * Make sure there that there are no reserved or unsafe URL characters in your username or password. These include spaces as well as the following characters:
 
@@ -69,7 +69,7 @@ Some of these methods require a valid username and password (for a CMS user who 
 [`cv`](https://github.com/civicrm/cv) is a CLI utility for CiviCRM, like [`drush`](http://www.drush.org/en/master/) is to Drupal, [`wp-cli`](http://wp-cli.org/) to WordPress, and [Joomlatools Console](https://www.joomlatools.com/developer/tools/console/) to Joomla. Once you have `cv` installed, you can execute CiviCRM's scheduled jobs with this command:
 
 ```
-cv api job.execute --user=admin --cwd=/var/www/example.org
+cv api job.execute --user=cronuser --cwd=/var/www/example.org
 ```
 
 Notes:
@@ -79,6 +79,7 @@ Notes:
 ```example
 /full/path/to/php /full/path/to/cv api job.execute --user=admin --cwd=/var/www/example.org
 ```
+* Replace ```cronuser``` with the CMS user you chose in the previous step.
 * Once you have it working, add the `--quiet` flag to silence non-error output.
 
 ### Drush method {:#drush}
@@ -87,7 +88,7 @@ Notes:
 $ drush \
   -r /var/www/example.org \
   -l https://example.org \
-  -u myusername \
+  -u cronuser \
   civicrm-api job.execute
 ```
 
@@ -95,6 +96,7 @@ Notes:
 
 * `drush` only works for Drupal sites.
 * See [drush.org](http://www.drush.org/) for more info about this tool.
+* Replace ```cronuser``` with the CMS user you chose in the previous step.
 * If successful, this command will output a key/value array with a `error = 0`.
 * The final step to adding a Drush command to your system cron is to add the `--quiet` option to Drush. This is to suppress the non-error output that would otherwise fill up your cron mail feedback.
 
@@ -102,7 +104,7 @@ Notes:
 
 ```
 $ /path/to/wp-cli \
-  --user=myusername \
+  --user=cronuser \
   --url=http://example.org \
   --path=/var/www/example.org/ \
   civicrm api job.execute auth=0
@@ -112,16 +114,17 @@ Notes:
 
 * `wp-cli` only works for WordPress
 * See [wp-cli.org](http://wp-cli.org/) for more info about this tool.
+* Replace ```cronuser``` with the CMS user you chose in the previous step.
 * Add the `--skip-plugins=<plugin>` option to stop a plugin from loading. This is needed if a certain plugin causes the cron job to fail.
 * Add the `--timezone=<timezone_identifier>` option to control the timezone. If you don't do this, then `wp-cli` will use the timezone set in your wordpress site. Here are the [valid timezone identifiers](http://php.net/manual/en/timezones.php).
 
 ### cli.php method {:#php-cli}
 
-```
-$ /path/to/php /path/to/civcrm/bin/cli.php \
+```bash
+/path/to/php /path/to/civcrm/bin/cli.php \
   -s example.org \
-  -u myusername \
-  -p mypassword \
+  -u cronuser \
+  -p cronuserpassword \
   -e Job \
   -a execute
 ```
@@ -129,6 +132,7 @@ $ /path/to/php /path/to/civcrm/bin/cli.php \
 Notes:
 
 * The `-s` parameter is the site name, and defaults to `localhost`. It should be set to the FQDN (fully qualified domain name) of your site (eg, `example.org`). Some jobs rely on this being set (in certain cases, the CiviMail mailing scheduler uses this FQDN to generate absolute URLs when relative URLs are in the email).
+* Replace ```cronuser``` and ```cronuserpassword``` with the CMS user and password you chose in the previous step.
 
 ### HTTP method {:#http}
 
@@ -238,12 +242,21 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
 ### crontab {:#crontab}
 
 1. Make sure you have chosen (and tested) one of the [commands to call `Job.execute`](#commands). In the following examples, we will refer to your command as `<command>`.
-1. Run the following command to edit your crontab:
+1. You need to edit the crontab of the OS User you determined earlier.
 
+   a. If you are logged in as that user, run:
+
+    ```bash
+    crontab -e
     ```
-    $ crontab -e
+    
+   b. Alternatively, run:
+
+    ```bash
+    sudo crontab -e -u os_user
     ```
 
+    and substitute the chosen OS user for os_user (eg 'www-data')
 1. Place the following line in your crontab to run your command every 5 minutes.
 
     ```
