@@ -49,7 +49,7 @@ Optionally provide a description for the payment processor, and indicate if the 
 
 ### Key
 
-Note: Core* -> Extension that ships with Core.
+Core* -> Extension that ships with Core.
 
 * **Type**
     * SSL - Users submit their credit card directly on your site
