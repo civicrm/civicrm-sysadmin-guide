@@ -27,10 +27,10 @@ Optionally provide a description for the payment processor, and indicate if the 
 | [PayPal_Standard](/setup/payment-processors/paypal-standard.md)  | Core      | External | Yes        | Many       | No        |
 | [PayPal Pro](/setup/payment-processors/paypal-pro.md)            | Core      | SSL      | Yes        | Many       |           |
 | [Paypal Express](/setup/payment-processors/paypal-pro.md)        | Core      |          | Partial    | Many       |           |
+| [iATS Payments](/setup/payment-processors/iats.md)               | Core*     | SSL      | Yes        | Many       | No        |
 | [Card Access](/setup/payment-processors/card-access.md)          | Extension |          |            |            |           |
 | [Moneris](/setup/payment-processors/moneris.md)                  | Extension | SSL      |            |            |           |
 | [PayJunction](/setup/payment-processors/payjunction.md)          | Extension | SSL      |            |            |           |
-| [iATS Payments](/setup/payment-processors/iats.md)               | Extension | SSL      | Yes        | Many       | No        |
 | Payment Express (DPS)                                            | Extension | External | Yes        | Many       | Yes       |
 | [Ogone](/setup/payment-processors/ogone.md)                      | Extension |          |            |            | No        |
 | eWay                                                             | Extension | SSL      | Yes        | AU         |           |
@@ -48,6 +48,8 @@ Optionally provide a description for the payment processor, and indicate if the 
 | clickandpledge                                                   | Extension | SSL      | No         | US         | No        |
 
 ### Key
+
+Core* -> Extension that ships with Core.
 
 * **Type**
     * SSL - Users submit their credit card directly on your site
