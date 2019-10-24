@@ -18,10 +18,7 @@ There are many different approaches to incorporating bootstrap into CiviCRM that
 
 These changes will work regardless of which CMS (Drupal, WordPress, Joomla) you are using.
 
-As a SoC project, a student has documented how to use the Drupal Bootstrap base theme for a Drupal/CiviCRM site. Here are related links for that project:
-[https://civicrm.org/blog/teja/bootstrap-ui-one-small-step-for-civicrm
-](https://civicrm.org/blog/teja/bootstrap-ui-one-small-step-for-civicrm)[Bootstrap UI for CiviCRM
-](https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+UI+for+CiviCRM)[https://github.com/amilineni/civicrm-core](https://github.com/amilineni/civicrm-core/)
+For a 2014 Google Summer of Code (GSoC) project, a student documented how to use the Drupal Bootstrap base theme for a Drupal/CiviCRM site. See the [CiviCRM blog post](https://civicrm.org/blog/teja/bootstrap-ui-one-small-step-for-civicrm) about that project, a CiviCRM wiki entry, [Bootstrap UI for CiviCRM](https://wiki.civicrm.org/confluence/display/CRMDOC/Bootstrap+UI+for+CiviCRM) and the [GitHub repo](https://github.com/amilineni/civicrm-core/).
 
 ## Drupal
 
