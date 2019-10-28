@@ -64,7 +64,7 @@ To install these extensions, you will typically install a separate package withi
 
 #### Required for CiviCRM Core
 
-* [PHP BCMath](https://www.php.net/bcmath) - required for calculating financial values in CiviCRM Core and many payment processors.
+* [PHP BCMath](https://www.php.net/bcmath) - required for calculating financial values in CiviCRM Core.
 * [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet.
 * [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase.
 * [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - required for internationalisation and proper encoding of fields.
