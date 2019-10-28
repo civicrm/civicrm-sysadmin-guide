@@ -62,17 +62,24 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 To install these extensions, you will typically install a separate package within your server's package manager (e.g. `apt-get` on Ubuntu).
 
-* [PHP BCMath](https://www.php.net/bcmath) - required for many payment processors (including Stripe).
-* [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet
+#### Required for CiviCRM Core
+
+* [PHP BCMath](https://www.php.net/bcmath) - required for many payment processors.
+* [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet.
+* [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase.
+* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - required for internationalisation and proper encoding of fields.
+* [PHP Zip](http://php.net/manual/en/book.zip.php) - required for unzipping auto-downloaded extensions so they can be installed from the browser.
+
+#### Required for third-party functionality or CiviCRM Extensions
+
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (required for the CiviSMTP service)
-* [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
-* [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
+
+#### Historical Requirements - See notes
+
+* [PHP MCrypt](http://php.net/manual/en/intro.mcrypt.php) - the MCrypt extension is no longer recommended for new installations.
 
     !!! warning "PHP 7.2 Compatibility"
-        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
-
-* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
-* [PHP Zip](http://php.net/manual/en/book.zip.php) - Required for unzipping auto-downloaded extensions so they can be installed from the browser.
+        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2.
 
 ### PHP configuration
 
