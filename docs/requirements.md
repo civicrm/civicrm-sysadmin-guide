@@ -4,9 +4,9 @@ Ensure that your system meets the following requirements before installing or up
 
 If you are curious what technologies other organizations are using to run CiviCRM, you can look at the [CiviCRM Stats](https://stats.civicrm.org/?tab=technology).
 
-## Server environment {:#server}
+## Server Environment {:#server}
 
-### Operating system {:#os}
+### Operating System {:#os}
 
 If your server meets all of the requirements described on this page, CiviCRM *should* function correctly. There are no explicit operating system requirements. However, it's worth noting that CiviCRM is far more widely deployed and tested on UNIX-based operating systems, in particular Linux (e.g. Ubuntu, Debian, etc.), than with Microsoft Windows. You can still use CiviCRM fine from Windows desktops when the hosting environment runs Linux.
 
@@ -45,7 +45,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 ## PHP {:#php}
 
-### PHP version
+### PHP Version
 
 |  | CiviCRM 5.13 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- |
@@ -58,23 +58,30 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 | PHP 5.4 | **incompatible** | **incompatible** |
 | PHP 5.3 | **incompatible**  |  **incompatible** |
 
-### PHP extensions
+### PHP Extensions
 
 To install these extensions, you will typically install a separate package within your server's package manager (e.g. `apt-get` on Ubuntu).
 
-* [PHP BCMath](https://www.php.net/bcmath) - required for many payment processors (including Stripe).
-* [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet
+#### Required for CiviCRM Core
+
+* [PHP BCMath](https://www.php.net/bcmath) - required for calculating financial values in CiviCRM Core.
+* [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet.
+* [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase.
+* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - required for internationalisation and proper encoding of fields.
+* [PHP Zip](http://php.net/manual/en/book.zip.php) - required for unzipping auto-downloaded extensions so they can be installed from the browser.
+
+#### Required for Third-Party Functionality or CiviCRM Extensions
+
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (required for the CiviSMTP service)
-* [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase
-* [PHP Mcrypt](http://php.net/manual/en/intro.mcrypt.php) - Required for SMTP credentials and other credentials in the database. If you add mcrypt on after running CiviCRM for a while you will need to re-save your passwords to the database.
+
+#### Historical Requirements - See Notes
+
+* [PHP MCrypt](http://php.net/manual/en/intro.mcrypt.php) - the MCrypt extension is no longer recommended for new installations.
 
     !!! warning "PHP 7.2 Compatibility"
-        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2
+        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2.
 
-* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - Required for internationalisation and proper encoding of fields.
-* [PHP Zip](http://php.net/manual/en/book.zip.php) - Required for unzipping auto-downloaded extensions so they can be installed from the browser.
-
-### PHP configuration
+### PHP Configuration
 
 * Set `memory_limit` between 256 and 512 megabytes
 * Don't enable the deprecated `open_basedir` or `safemode` PHP directives. Otherwise you will have an error when automatically installing most of the extensions.
@@ -88,11 +95,11 @@ CiviCRM requires MySQL (or compatible) database software.
 
 Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
-### MySQL version
+### MySQL Version
 
 Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it, however MySQL 5.5 is not tested or supported.
 
-### MySQL configuration
+### MySQL Configuration
 
 * Support for the `innodb` storage engine is required.
 * The `thread_stack` configuration variable should be set to 192k or higher.
@@ -115,7 +122,7 @@ Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current ver
     innodb_file_per_table=true
     ```
 
-#### MySQL time
+#### MySQL Time
 
 CiviCRM performs various operations based on dates and times – for example, deactivating expired records or triggering scheduled reminders. To perform these operations correctly, the dates and times reported by PHP and MySQL should match. If the dates or times are mismatched, then one or more of the following may be the problem:
 
@@ -124,7 +131,7 @@ CiviCRM performs various operations based on dates and times – for example, de
 * The content management system (Drupal, Joomla, or WordPress) or one of its plugins may manipulate the timezone settings without informing CiviCRM's. You may wish to post to [Stack Exchange](https://civicrm.stackexchange.com/) or [Mattermost](https://chat.civicrm.org) about your problem. Please include any available details about the timezone settings in the operating system, PHP, MySQL, and the CMS; if you have any special CMS plugins or configuration options which may affect timezones, please report them.
 
 
-### MySQL permissions
+### MySQL Permissions
 
 The permissions you'll need to assign to the MySQL user that CiviCRM uses will **depend on your version of MySQL**. The following example assumes you have a database called `civicrm` and a MySQL user called `civicrm_user`.
 
@@ -151,7 +158,7 @@ TO 'civicrm_user'@'localhost'
 IDENTIFIED BY 'realpasswordhere';
 ```
 
-##### Binary logging
+##### Binary Logging
 
 If you want to enable binary logging you will need to choose one of the following. Either:
 
