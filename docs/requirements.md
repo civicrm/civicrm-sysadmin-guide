@@ -49,12 +49,12 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 
 |  | CiviCRM 5.13 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- |
-| PHP 7.3 |testing incomplete but preliminary testing did not find any issues|testing incomplete but preliminary testing did not find any issues|
+| PHP 7.3 |testing incomplete but preliminary testing did not find any issues|compatible and **recommended**|
 | PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password|
 | PHP 7.1 | compatible | compatible |
 | PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   |
 | PHP 5.6 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | incompatible as of 5.15.1 |
-| PHP 5.5 | **incompatible** | **incompatiable** |
+| PHP 5.5 | **incompatible** | **incompatible** |
 | PHP 5.4 | **incompatible** | **incompatible** |
 | PHP 5.3 | **incompatible**  |  **incompatible** |
 
@@ -97,14 +97,14 @@ Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 ### MySQL Version
 
-Your MySQL version must be **5.6 or greater**.  MySQL 5.5 works with current versions of CiviCRM and there are no (currently) planned changes that would break it, however MySQL 5.5 is not tested or supported.
+Your MySQL version should be **5.7.5 or greater** or for MariaDB **10.0.2 or greater**.  CiviCRM does still work on older versions but there is some functionality missing, notably around ensuring various database actions don't compete for the same resources.
 
 ### MySQL Configuration
 
 * Support for the `innodb` storage engine is required.
 * The `thread_stack` configuration variable should be set to 192k or higher.
 * Trigger support is required.
-* The `ONLY_FULL_GROUP_BY` mode should be turned off.
+* The `ONLY_FULL_GROUP_BY` mode should be turned off on production sites - although this is mostly precautionary now.
     * In MySQL 5.7+ the SQL mode `ONLY_FULL_GROUP_BY` is enabled by default which causes some errors due to some of CiviCRM's SQL queries that were written with the assumption that this mode would be disabled.
     * Administrators are advised to turn off this SQL mode by removing the string `ONLY_FULL_GROUP_BY` from the `sql_mode` variable. The following SQL query will do the trick.
         ```sql
