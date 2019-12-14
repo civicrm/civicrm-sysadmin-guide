@@ -50,6 +50,7 @@ pages:
     - Ogone: setup/payment-processors/ogone.md
   - Detailed logging: setup/logging.md
   - Optimizations: setup/optimizations.md
+  - Multisite: setup/multisite.md
 - Upgrades:
   - Upgrades: upgrade/index.md
   #- Upgrade in Drupal 8: upgrade/drupal8.md
