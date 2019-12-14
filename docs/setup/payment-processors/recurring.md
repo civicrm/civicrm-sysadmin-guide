@@ -19,13 +19,7 @@ At this point, you need to figure out the "URL to be called" value. To do this, 
 
 To determine the ID, go back to CiviCRM and click `Administer -> System Settings -> Payment Processor`
 
-Click Edit next to the payment processor you are setting up.
-
-Then, check the Address bar. You should see something like the following:
-
-https://example.com/civicrm/admin/paymentProcessor?action=update&id=3&reset=1
-
-The end of the address contains id=3. That means that this Payment Processor id is 3.
+Check the id column next to the relevant payment processor e.g. 3. Note do not use the Test ID, that is the id of the Test Processor unless you are interacting with a sandbox site on your payment processor.
 
 Therefore the call back address for your site will be:
 
