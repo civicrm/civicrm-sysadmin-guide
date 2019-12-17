@@ -40,6 +40,9 @@ The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe step
 
 #### CiviCRM files and database
 1. Backup your existing <wordpress>/wp-content/plugins/civicrm directory by creating an archive or FTPing it to your local computer.
+
+!!! note: It's important at the very least to backup your extensions directory prior to the upgrade. This will be removed in the next few steps. Your extensions folder can be found at **Administer menu » System Settings » Directories**. Make a note of this location for later.
+
 1. Backup your existing database using your Control Panel or other method so that you can recreate the database if required.
 
 ## Now upgrade the filesystem
@@ -105,6 +108,9 @@ Delete all files in your `templates_c` directory
    
 !!! caution "For CiviCRM 4.6 and older:"
     `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c`
+
+## Copy back your extensions
+1. Restore the extensions that were previously backed up into the folder where you originally backed up your extensions at the start of the upgrade process.
 
 ## Upgrade the database
 
