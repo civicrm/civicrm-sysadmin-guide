@@ -61,7 +61,7 @@ $ cd <drupal_root>/sites/default/files
 $ chown -R www-data: .
 $ find . -type d -exec chmod 0755 {} \;
 $ find . -type f -exec chmod 0644 {} \;
-$ chmod -R u+rw files
+$ chmod -R u+rw .
 ```
 
 ## Upgrade the database
