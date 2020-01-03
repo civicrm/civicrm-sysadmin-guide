@@ -101,7 +101,7 @@ Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater
 
 #### MySQL 8
 
-CiviCRM is currently not known to work with MySQL 8, there is an open issue for [MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) with open issues in regards to MySQL 8 support. WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appears to be compatible with MySQL 8.
+CiviCRM is currently not known to work with MySQL 8, there is an open issue for [MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) with open issues in regards to MySQL 8 support. [Drupal 8](https://www.drupal.org/docs/8/system-requirements/database-server) as of 8.6 as per this [issue](https://www.drupal.org/project/drupal/issues/2966523), WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appears to be compatible with MySQL 8.
 
 ### MySQL Configuration
 
