@@ -99,6 +99,10 @@ Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  CiviCRM does still work on older versions but there is some functionality missing, notably around ensuring various database actions don't compete for the same resources.
 
+#### MySQL 8
+
+CiviCRM is currently not known to work with MySQL 8, there is an open issue for [MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) with open issues in regards to MySQL 8 support. WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appears to be compatible with MySQL 8.
+
 ### MySQL Configuration
 
 * Support for the `innodb` storage engine is required.
@@ -121,6 +125,12 @@ Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater
     innodb_file_format=barracuda
     innodb_file_per_table=true
     ```
+* In MySQL 8 the default authentication plugin changes from `mysql_native_password` to `caching_sha2_password`. This may cause issues with your PHP layer. Fortunatly you can revert this back by specifying in your MySQL configuration as follows:
+  ```
+   [mysqld]
+   default-authentication-plugin=mysql_native_password
+  ```
+  Also in MySQL 8 importantly the following variables have been removed `innodb_large_prefix`, `innodb_file_format`.
 
 #### MySQL Time
 
