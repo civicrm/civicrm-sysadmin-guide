@@ -125,10 +125,10 @@ CiviCRM is currently not known to work with MySQL 8, there is an open issue for 
     innodb_file_format=barracuda
     innodb_file_per_table=true
     ```
-* In MySQL 8 the default authentication plugin changes from `mysql_native_password` to `caching_sha2_password`. This may cause issues with your PHP layer. Fortunatly you can revert this back by specifying in your MySQL configuration as follows:
+* In MySQL 8 the default authentication plugin changes from `mysql_native_password` to `caching_sha2_password`. This may cause issues with your PHP layer. Fortunately you can revert this back by specifying in your MySQL configuration as follows:
   ```
    [mysqld]
-   default-authentication-plugin=mysql_native_password
+   default_authentication_plugin=mysql_native_password
   ```
   Also in MySQL 8 importantly the following variables have been removed `innodb_large_prefix`, `innodb_file_format`.
 
