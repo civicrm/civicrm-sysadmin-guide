@@ -130,7 +130,11 @@ CiviCRM is currently not known to work with MySQL 8, there is an open issue for 
    [mysqld]
    default_authentication_plugin=mysql_native_password
   ```
-  Also in MySQL 8 importantly the following variables have been removed `innodb_large_prefix`, `innodb_file_format`.
+  Also in MySQL 8 importantly the following variables have been removed `innodb_large_prefix`, `innodb_file_format`. In MySQL 8 Binary logging is also turned on by default which many users may want to turn off, this can be done by adding to your MySQL configuration file
+  ```
+   [mysqld]
+   skip-log-bin
+  ```
 
 #### MySQL Time
 
