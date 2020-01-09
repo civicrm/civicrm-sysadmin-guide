@@ -51,7 +51,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 | -- | -- | -- |
 | PHP 7.3 |testing incomplete but preliminary testing did not find any issues|compatible and **recommended**|
 | PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password|
-| PHP 7.1 | compatible | compatible |
+| PHP 7.1 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 |
 | PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   |
 | PHP 5.6 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | incompatible as of 5.15.1 |
 | PHP 5.5 | **incompatible** | **incompatible** |
