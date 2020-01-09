@@ -73,15 +73,6 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
     SET `config_backend` = NULL
     WHERE `civicrm_domain`.`id` = 1 LIMIT 1;
     ```
-
-## WordPress table prefixes
-
-If you have table prefixes on your Drupal database you'll also need to do the following to allow CiviMail cronjobs to run, etc.
-
-* Go to **http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1**
-    * Update WordPress Users Table Name with your_table_prefix_users (eg. `wp_users`) You may have changed this in accordance with WordPress best practices to have a different prefix other than `wp_`.
-    * Click **Save**
-
 ## Update the changed URL in your user data
 
 When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".
