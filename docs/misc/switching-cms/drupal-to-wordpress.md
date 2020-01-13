@@ -25,14 +25,20 @@
 * The installation process would have set up new database tables for CiviCRM. If this is where you want your CiviCRM database to be, then you may overwrite these tables by restoring your old database over it.
 * Alternatively you can restore your CiviCRM database somewhere else and modify **CIVICRM_DSN** in _<drupal_root>/sites/default/civicrm.settings.php_ to point to this new database.
 
-!!! It's possible that the import will fail due to the following error //Cannot delete or update a parent row: a foreign key constraint fails//. You can modify your sql import script to include (at the start):
+!!! warning "Import failure issues"
 
-``` 
+It's possible that the import will fail due to the following error :
+
+> Cannot delete or update a parent row: a foreign key constraint fails.
+
+You can modify your sql import script to include (at the start):
+
+``` SQL
 SET FOREIGN_KEY_CHECKS=0;
 ```
 and the following at the very end:
 
-``` 
+``` SQL
 SET FOREIGN_KEY_CHECKS=1;
 ```
 
