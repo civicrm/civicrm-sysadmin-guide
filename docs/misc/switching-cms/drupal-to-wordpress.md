@@ -33,12 +33,12 @@ It's possible that the import will fail due to the following error :
 
 You can modify your sql import script to include (at the start):
 
-``` SQL
+``` sql
 SET FOREIGN_KEY_CHECKS=0;
 ```
 and the following at the very end:
 
-``` SQL
+``` sql
 SET FOREIGN_KEY_CHECKS=1;
 ```
 
