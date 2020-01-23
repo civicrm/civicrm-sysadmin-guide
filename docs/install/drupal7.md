@@ -119,7 +119,7 @@ When CiviCRM is installed on top of an existing Drupal site, a special CiviCRM A
 
 * Login to your Drupal site with an administrator-level login
 * Click the **CiviCRM** link in the main navigation block
-* If your Drupal site makes use of the `db_prefix` setting (in `settings.php`), in de top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the Drupal Users Table Name so that it includes the prefix.
+* If your Drupal site makes use of the `db_prefix` setting (in `settings.php`), in the top bar click **Administer » System Settings » CMS Database Integration** , and update the box for the Drupal Users Table Name so that it includes the prefix.
 * Click **Administer** in the menu bar
 * Click **Users and Permissions** from the drop-down menu, then select **Synchronize Users to Contacts**
 
