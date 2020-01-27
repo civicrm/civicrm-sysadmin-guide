@@ -9,6 +9,7 @@ CiviCRM works with several popular open source Content Management Systems (CMS).
 * Drupal 8
 * Joomla
 * WordPress
+
 There are lots of resources that help guide organizations in their selection of the best CMS for their content strategy and website. There continue to be significant changes in the popularity of the CMSes over time given changes in the capabilities of the CMSes and the needs of the market, as seen by [https://w3techs.com/technologies/history_overview/content_management/ms/y](https://w3techs.com/technologies/history_overview/content_management/ms/y).
 
 The choice of which CMS to use with CiviCRM is generally appropriately determined by factors other than differences in how CiviCRM integrates with each CMS. For example, your website may already be built using one of these CMS and there may be no need to go to the expense and hassle of reimplementing it in a different CMS. Or your CMS project may have good reasons for preferring one CMS over another. This page discusses how there may be some factors relating to your use of CiviCRM that may affect or be crucial to your decision on which CMS to use, even if many organizations find these points do not play a significant role.
