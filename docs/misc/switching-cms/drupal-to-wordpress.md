@@ -18,12 +18,30 @@
 
 
 !!! tip "WordPress Admin Account"
-    When you set up WordPress, make sure you use the same Administrator account name as the Drupal Administrator account. Otherwise, you might encounter DB errors and/or Foreign Constraint issues due to the WordPress account not being associated with the CRM Accounts. If you have no choice, make sure you synchronize your accounts prior to trying to edit anything else.
+    When you set up WordPress, make sure you use the same Administrator account name as the Drupal Administrator account. Otherwise, you  might encounter DB errors and/or Foreign Constraint issues due to the WordPress account not being associated with the CRM Accounts. If you have no choice, make sure you synchronize your accounts prior to trying to edit anything else.
 
 ## Restore the CiviCRM database backup to the desired location
 
 * The installation process would have set up new database tables for CiviCRM. If this is where you want your CiviCRM database to be, then you may overwrite these tables by restoring your old database over it.
 * Alternatively you can restore your CiviCRM database somewhere else and modify **CIVICRM_DSN** in _<drupal_root>/sites/default/civicrm.settings.php_ to point to this new database.
+
+!!! warning "Import failure issues"
+    It's possible that the import will fail due to the following error:
+    > Cannot delete or update a parent row: a foreign key constraint fails.
+
+    You can modify your sql import script to include (at the start):
+    
+    ``` sql
+    SET FOREIGN_KEY_CHECKS=0;
+    ```
+    
+    and the following at the very end:
+
+    ``` sql
+    SET FOREIGN_KEY_CHECKS=1;
+    ```
+
+    This disables the foreign key checks and allows all your tables to properly be recreated and the data to be imported. This check is then re-enabled at the end of the script.
 
 ## Empty the `civicrm_uf_match` table
 
