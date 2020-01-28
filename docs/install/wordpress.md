@@ -139,7 +139,7 @@ Should an upgrade fail, you will need this backup copy to restore your site.
 
 ## Enabling Cleaner URLs for WordPress
 
-* Starting in Version 5.13.x CiviCRM now can support "Clean URLs" for WordPress
+* Starting in Version 5.13.x CiviCRM now can support "Clean URLs" for WordPress front-end (user-facing) pages.
 * By default CiviCRM URLs are in the format of https://example.org/civicrm?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1 for a Contribution Page.  Enabling Cleaner URLs will enable URLs in the format of
   * A Contribution Page will have the format of https://example.org/civicrm/contribute/transact/?reset=1&id=1 
   * Profile Pages can be accessed at https://example.org/civicrm/profile/edit/?gid=1&reset=1 or https://wpcvrc.tadpole.cc/civicrm/profile/create/?gid=1&reset=1
