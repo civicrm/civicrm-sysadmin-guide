@@ -99,6 +99,10 @@ Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  CiviCRM does still work on older versions but there is some functionality missing, notably around ensuring various database actions don't compete for the same resources.
 
+#### MySQL 8
+
+CiviCRM is currently not known to work with MySQL 8, there is an [open issue for MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) have open issues with regards to MySQL 8 support. [Drupal 8](https://www.drupal.org/docs/8/system-requirements/database-server) supports MySQL 8 as of version 8.6 as per [this issue](https://www.drupal.org/project/drupal/issues/2966523), Current versions of WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appear to be compatible with MySQL 8
+
 ### MySQL Configuration
 
 * Support for the `innodb` storage engine is required.
@@ -115,12 +119,24 @@ Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater
         * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
 * If you plan to have multiple lanaguages used in your CiviCRM installation it is strongly recommended that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
 * In order to support a future data migration from `utf8` to the `utf8mb4` character set, it is recommended, though not yet required, to add the following configuration directives on MySQL 5.5 or 5.6 (these are the default values on MySQL 5.7):
-    ```
+    ```ini
     [mysqld]
     innodb_large_prefix=true
     innodb_file_format=barracuda
     innodb_file_per_table=true
     ```
+* In MySQL 8 the default authentication plugin changes from `mysql_native_password` to `caching_sha2_password`. This may cause issues with your PHP layer. Fortunately you can revert this change by specifying your chosen authentication plugin in your MySQL configuration:
+  
+  ```ini
+   [mysqld]
+   default_authentication_plugin=mysql_native_password
+  ```
+  Also in MySQL 8 the following variables, used fairly extensively in CiviCRM installs, have been removed `innodb_large_prefix` and `innodb_file_format`. In MySQL 8 binary logging is also turned on by default which many users may want to turn off, this can be achieved by adding to your MySQL configuration file:
+
+  ```ini
+   [mysqld]
+   skip-log-bin
+  ```
 
 #### MySQL Time
 
