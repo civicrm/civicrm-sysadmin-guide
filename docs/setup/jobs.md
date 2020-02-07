@@ -77,7 +77,7 @@ Notes:
 * If `cv` only works when you run it from a shell and not from cron you may need to invoke it by calling it with an absolute path to php and to CV.
 
 ```example
-/full/path/to/php /full/path/to/cv api job.execute --user=admin --cwd=/var/www/example.org
+/full/path/to/php /full/path/to/cv api job.execute --user=cronuser --cwd=/var/www/example.org
 ```
 * Replace ```cronuser``` with the CMS user you chose in the previous step.
 * Once you have it working, add the `--quiet` flag to silence non-error output.
