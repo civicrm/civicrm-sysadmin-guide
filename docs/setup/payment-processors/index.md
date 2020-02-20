@@ -16,7 +16,7 @@ Optionally provide a description for the payment processor, and indicate if the 
 
 ### Chart
 
-!!! note "Needs updating"
+!!! warning "Needs updating"
 
     A lot of this information is out of date and needs updating.
 
