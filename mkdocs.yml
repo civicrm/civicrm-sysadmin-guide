@@ -65,6 +65,7 @@ pages:
   - Extensions: customize/extensions.md
   #- Other languages: customize/i18n.md
   - Override settings: customize/settings.md
+  - Override paths: customize/paths.md
   #- Custom development: customize/develop.md
   - Theme information: customize/theme.md
 - CMS Integration:
