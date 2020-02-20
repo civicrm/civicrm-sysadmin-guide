@@ -4,10 +4,6 @@ CiviContribute can be used to record and manage payments accepted through channe
 
 Plugins are available to enable CiviCRM to process payments directly via several payment processors. Their features, the countries they are available in, their costs, their ease of use by your users, and whether you need a Merchant account a bank or an SSL certificate for you website vary by payment processor. This information is tabulated below for your reference.
 
-!!! note "SEPA for the European Union countries that use SEPA"
-
-    If you need to do anything with payments in the European Union you are likely to come across [SEPA](https://en.wikipedia.org/wiki/Single_Euro_Payments_Area). If you need to deal with SEPA payments, there is an extension that supports this: [CiviSepa](https://civicrm.org/extensions/civisepa-sepa-direct-debit-extension)
-
 ## Setup and Configuration
 
 To setup a new payment processor, click on Administer > System Settings > Payment Processors, Add Payment Processor.
@@ -19,6 +15,15 @@ Optionally provide a description for the payment processor, and indicate if the 
 ## Comparison
 
 ### Chart
+
+!!! warning "Needs updating"
+
+    A lot of this information is out of date and needs updating.
+
+!!! note "SEPA for the European Union countries that use SEPA"
+
+    If you need to do anything with payments in the European Union you are likely to come across [SEPA](https://en.wikipedia.org/wiki/Single_Euro_Payments_Area). If you need to deal with SEPA payments, there is an extension that supports this: [CiviSepa](https://civicrm.org/extensions/civisepa-sepa-direct-debit-extension)
+
 
 | Processor Name                                                   | In        | Type     | Recurring? | Countries  | Merchant? |
 | ---                                                              | ---       | ---      | ---        | ---        | ---       |
@@ -44,7 +49,7 @@ Optionally provide a description for the payment processor, and indicate if the 
 | Barclays                                                         | Extension | SSL      |            |            |           |
 | Card Access Services                                             | Extension | External | No         | AU         | Yes       |
 | Vanco                                                            | Extension | SSL      | Yes        |            | Yes       |
-| Stripe                                                           | Extension | SSL      | Yes        | US, CA, UK | Yes       |
+| [Stripe](https://docs.civicrm.org/stripe/en/latest/)             | Extension | SSL      | Yes        | Many       | Yes       |
 | clickandpledge                                                   | Extension | SSL      | No         | US         | No        |
 
 ### Key
@@ -97,7 +102,7 @@ Core* -> Extension that ships with Core.
 
 * **Vanco**: Requires Drupal module. Includes ACH (electronic check) capabilities [https://drupal.org/project/vanco_payment](https://drupal.org/project/vanco_payment) BackOffice Thinking 
 
-* **Stripe**: Extremely fast & easy merchant account setup. All you need is an email address & bank account you want the money to go to. PCI compliance is a breeze because card numbers aren't used. Stripe uses javascript which 'tokenizes' the card data just before form submission. Provider: [https://stripe.com/](https://stripe.com/) Developer: [http://drastikbydesign.com/](http://drastikbydesign.com/) Community Contributed (drastik-jw) 
+* **Stripe**: Extremely fast & easy merchant account setup. All you need is an email address & bank account you want the money to go to. PCI compliance is a breeze because card numbers aren't used. Stripe uses javascript which 'tokenizes' the card data just before form submission so PCI compliance is much easier to achieve. Provider: [https://stripe.com/](https://stripe.com/). See https://lab.civicrm.org/extensions/stripe
 
 * **clickandpledge**: Provided by clickandpledge [https://github.com/ClickandPledge](https://github.com/ClickandPledge) 
 
