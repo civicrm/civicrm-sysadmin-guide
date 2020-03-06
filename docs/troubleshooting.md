@@ -116,13 +116,13 @@ If CiviCRM is installed on a server behind a firewall with NAT, you'll need to a
 
 Sometimes it helps to rebuild the menu/admin dashboard by visiting the following URL:
 
-`http://example.org.org/civicrm/menu/rebuild?reset=1`
+`http://example.org/civicrm/menu/rebuild?reset=1`
 
 ### Rebuild database triggers {:#trigger-rebuild}
 
 If you need to rebuild your database triggers, navigate to the following url:
 
-`http://example.org.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
+`http://example.org/civicrm/menu/rebuild?reset=1&triggerRebuild=1`
 
 Note the `&triggerRebuild=1` key-value pair.
 
@@ -130,7 +130,7 @@ Note the `&triggerRebuild=1` key-value pair.
 
 You can re-build the menu/admin dashboard by visiting the following url
 
-`http://example.org.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1`
+`http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/menu/rebuild&reset=1`
 
 ### Reset config_backend
 
