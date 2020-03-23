@@ -71,11 +71,9 @@ INNER JOIN civicrm_group gr ON ( gr.id = gc.group_id )
 SET ce.on_hold = 0
 WHERE gr.name = 'give your contact group name';
 ```
-### Using a Google Apps account for the return address
+### Using a Google Suite account for the return address
 
-1. Log in to your new return@example.com Google Apps account to check that the new account/password works
-    1. Check that the account received the email you sent as an admin.
- (You may wish to [set filters](#filters) at this point.)
+1. To prevent bounce emails from being classified as spam you need to [create a filter](https://support.google.com/mail/answer/6579?hl=en) on the settings of your bounce gmail account. Filter can be defined for example setting *Has the words:* as 'is:spam' and ticking *Never send to spam*.
 1. Google has tightened down secure access to their systems. To get CiviCRM bounce processing to work you need to loosen security for the email account. To do this, make sure you are logged into this bounce email account and go to [https://www.google.com/settings/security/lesssecureapps](https://www.google.com/settings/security/lesssecureapps) and change the setting to **allow less restrictive access** , otherwise you will receive the following error when testing the bounce processing email in CiviCRM: (code: 534, response: 5.7.14 Please log in via your web browser and 5.7.14 then try again. 5.7.14 Learn more at 5.7.14 which means that Gmail blocked access from "a less secure app" (as per [https://support.google.com/accounts/answer/6010255)](https://support.google.com/accounts/answer/6010255))
 
 ## Autofiling email activities via EmailProcessor
