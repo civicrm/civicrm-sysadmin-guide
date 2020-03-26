@@ -53,7 +53,7 @@ See our page on [choosing a CMS](/planning/cms.md) for more information about th
 | PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password |
 | PHP 7.1 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 |  compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 |
 | PHP 7.0 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | incompatible as of 5.25.0 |
-| PHP 5.6 | **incomaptible** | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | **incompatible as of 5.15.1** |
+| PHP 5.6 | **incompatible** | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2018   | **incompatible as of 5.15.1** |
 | PHP 5.5 | **incompatible** | **incompatible** | **incompatible** |
 | PHP 5.4 | **incompatible** | **incompatible** | **incompatible** |
 | PHP 5.3 | **incompatible**  |  **incompatible** | **incompatible** |
@@ -117,7 +117,7 @@ CiviCRM is currently not known to work with MySQL 8, there is an [open issue for
     * See also:
         * A popular [Stack Exchange question](https://stackoverflow.com/a/36033983/895563) discussing this issue
         * [MySQL documentation on `sql_mode`](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-setting)
-* If you plan to have multiple lanaguages used in your CiviCRM installation it is strongly recommended that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
+* If you plan to have multiple languages used in your CiviCRM installation it is strongly recommended that you ensure that `locale` is set to a UTF8 locale and also ensure that you set utf8 as the standard encoding for MySQL. To alter locale you can configure as per [Ubuntu instructions](https://www.thomas-krenn.com/en/wiki/Configure_Locales_in_Ubuntu), [Debian](https://wiki.debian.org/Locale), [CentOS](https://www.rosehosting.com/blog/how-to-set-up-system-locale-on-centos-7/). To set the default encoding for MySQL you should follow the steps provided in this [Stack Overflow post](https://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf-8-in-my-cnf)
 * In order to support a future data migration from `utf8` to the `utf8mb4` character set, it is recommended, though not yet required, to add the following configuration directives on MySQL 5.5 or 5.6 (these are the default values on MySQL 5.7):
     ```ini
     [mysqld]
