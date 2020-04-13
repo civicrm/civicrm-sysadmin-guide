@@ -2,7 +2,8 @@ site_name: System Administrator Guide
 repo_url: https://github.com/civicrm/civicrm-sysadmin-guide
 site_description: A guide for CiviCRM system administrators.
 site_author: The CiviCRM community
-theme: material
+theme: 
+  name: material
 
 nav:
 - Home: index.md
