@@ -4,7 +4,7 @@ site_description: A guide for CiviCRM system administrators.
 site_author: The CiviCRM community
 theme: material
 
-pages:
+nav:
 - Home: index.md
 - Planning your site:
   - Identifying your needs: planning/index.md
