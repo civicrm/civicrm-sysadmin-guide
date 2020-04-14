@@ -3,7 +3,7 @@
 Use this document to upgrade CiviCRM installations on Joomla to the latest CiviCRM release.
 
 !!! caution "Before upgrading"
-    Make sure you have done the steps listed in ["Before upgrading"](upgrade/index.md#before-upgrading) first.
+    Make sure you have done the steps listed in [before upgrading](index.md#before-upgrading) first.
 
 !!! bug "Known Issues"
     If using a version prior to 4.7.29 you need to apply the following two PRs after installation but before running the upgrader:
@@ -13,7 +13,7 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 
 ## Download the latest code
 
-1. Go to [civicrm.org/download](https://civicrm.org/download)
+1. Go to the [CiviCRM website](https://civicrm.org/download)
 1. Select the latest currently available CiviCRM tarball for Joomla.
 
     Example: `civicrm-x.x.x-joomla.zip`
@@ -26,7 +26,7 @@ Use this document to upgrade CiviCRM installations on Joomla to the latest CiviC
 
 ## Backup your settings files
 
-The ["Before upgrading"](upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade.  In particular, note that Joomla has two settings files for CiviCRM and they should both be backed up:
+The [before upgrading](index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade.  In particular, note that Joomla has two settings files for CiviCRM and they should both be backed up:
 
 * `<joomla_root>/components/com_civicrm/civicrm.settings.php`
 * `<joomla_root>/administrator/components/com_civicrm/civicrm.settings.php`
@@ -78,4 +78,4 @@ Review the backup versions of the files below and compare them with the new vers
 
 ## Post upgrade
 
-See these steps to take [after upgrading](upgrade/index.md#after-upgrading).
+See these steps to take [after upgrading](index.md#after-upgrading).

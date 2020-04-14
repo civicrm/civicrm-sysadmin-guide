@@ -170,7 +170,7 @@ You will need to pass the following parameters to `cron.php`.  Replace as approp
 
 * `<username>` = the CMS username - see [Choosing a CMS User](#choosing-a-cms-user)
 * `<password>` = the pasword for the CMS user
-* `<site-key>` = your site key - see [Configuring your site key](setup/site-key.md)
+* `<site-key>` = your site key - see [Configuring your site key](../setup/site-key.md)
 
 #### GET vs POST
 

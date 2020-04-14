@@ -3,11 +3,11 @@
 Use this document to upgrade CiviCRM installations on Drupal 7 to the latest CiviCRM release.
 
 !!! caution "Before upgrading"
-    Make sure you have done the steps listed in ["Before upgrading"](upgrade/index.md#before-upgrading) first.
+    Make sure you have done the steps listed in [before upgrading](index.md#before-upgrading) first.
 
 ## Download the latest code
 
-1. Go to [civicrm.org/download](https://civicrm.org/download)
+1. Go to the [CiviCRM website](https://civicrm.org/download)
 1. Select the latest currently available CiviCRM tarball for Drupal.
 
     Example: `civicrm-x.x.x-drupal.tar.gz`

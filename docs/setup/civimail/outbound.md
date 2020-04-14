@@ -68,4 +68,4 @@ Assumptions: The scheduled task "Mailings scheduler" is set to run "always" and 
 
 For example the attached image shows an Excel pivot table/chart that shows a server that is frquently having problems delivering up to it's limit of 70 emails.
 
-![Excel Pivot Table](img/mailer_batch_limit_check.png)
+![Excel Pivot Table](../../img/mailer_batch_limit_check.png)

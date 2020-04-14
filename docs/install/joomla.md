@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](requirements.md).
+1. Ensure that your system meets the [requirements](../requirements.md).
 1. Install Joomla by referring to the [Joomla Installation Guide](https://docs.joomla.org/J3.x:Installing_Joomla) if needed.
 
 !!! note "Path for Joomla"
@@ -16,11 +16,11 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('tarballs'). Follow these steps to download and install the codebase:
 
-* Download the appropriate tarball file from [civicrm.org/download](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version. For example, `civicrm-x.x.x-joomla.zip`. If you have command line access to your server, use `wget` and the URL of the file to pull a copy directly to your server. Then you can skip the next step.
+* Download the appropriate tarball file from the [CiviCRM website](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version. For example, `civicrm-x.x.x-joomla.zip`. If you have command line access to your server, use `wget` and the URL of the file to pull a copy directly to your server. Then you can skip the next step.
 * Upload this file to a folder in your root Joomla directory. Recommended location: `JOOMLA_ROOT/tmp/`.
 * Unzip the package, which will create a directory called: `com_civicrm`. On cPanel, you can use the File Manager's Extract function to unzip the file you uploaded.
 
-Note: when installing a new version over an old one, please first check [Trouble-shooting resources](#troubleshooting) below.
+Note: when installing a new version over an old one, please first check [troubleshooting resources](#troubleshooting) below.
 
 ## Run the Installer {:#installer}
 
@@ -72,5 +72,5 @@ When CiviCRM is installed on top of an existing Joomla site, a special CiviCRM A
 
 * If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`
 
-* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.
+* Review the [Troubleshooting](../troubleshooting.md) page for help with problems you may encounter during the installation.
 

@@ -23,12 +23,12 @@ Check the id column next to the relevant payment processor e.g. 3. Note do not u
 
 Therefore the call back address for your site will be:
 
-    civicrm/payment/ipn/3
+    `civicrm/payment/ipn/3`
 
 See below for the full address to add to the endpoint (replace NN with your actual ID number):
 
-* For Drupal and Backdrop:  https://example.com/civicrm/payment/ipn/NN
-* For Joomla:  https://example.com/?option=com_civicrm&task=civicrm/payment/ipn/NN
-* For Wordpress:  https://example.com/?page=CiviCRM&q=civicrm/payment/ipn/NN
+* For Drupal and Backdrop:  `https://example.com/civicrm/payment/ipn/NN`
+* For Joomla:  `https://example.com/?option=com_civicrm&task=civicrm/payment/ipn/NN`
+* For WordPress:  `https://example.com/?page=CiviCRM&q=civicrm/payment/ipn/NN`
 
 Typically, you only need to configure the end point to send live transactions and you want it to send all events.
