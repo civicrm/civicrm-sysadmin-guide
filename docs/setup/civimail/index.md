@@ -52,7 +52,7 @@ Settings > Outbound Email (SMTP/Sendmail)**. The choices here are:
     versions.
 -   **Disable Outbound Email**: Works as expected.
 -   **Redirect to Database**: All emails will be recorded as archived mailings
-    instead of being sent out. They can be found in the civicrm\_mailing_spool
+    instead of being sent out. They can be found in the civicrm_mailing_spool
     table in the CiviCRM database.
 -   Other options can appear here by installing extensions to support additional
     mail providers - check the [CiviCRM Extensions Directory](https://civicrm.org/extensions/)
@@ -163,7 +163,7 @@ Hold. For transient failures, CiviCRM waits for several bounces before
 setting the contact's email On Hold.
 
 The specific [threshold for each bounce
-type](setup/civimail/inbound.md#bounce-handling)
+type](inbound.md#bounce-handling)
 can be found in the civicrm_mailing_bounce_pattern and
 civicrm_mailing_bounce_type. Multiple different bounce reply patterns
 are linked to a given type and threshold.
@@ -282,7 +282,7 @@ regular basis.
 ## Scheduling inbound and outbound mail processing
 
 As discussed in the earlier chapter, mail processing and other jobs may
-be automated through the [Scheduled Jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs) administrative page, [cron](setup/jobs.md#cron) or a
+be automated through the [Scheduled Jobs](https://docs.civicrm.org/user/en/latest/initial-set-up/scheduled-jobs) administrative page, [cron](../jobs.md#cron) or a
 combination of both. Below are specific examples for enabling CiviCRM mail processing.
 
 ### Scheduling using the Scheduled Jobs administrative page
@@ -298,7 +298,7 @@ installations. Then select **more > Enable** for each.
 
 In this example using the jobs' default frequency and [cron configured
 to run at 15 minute
-intervals](setup/jobs.md),
+intervals](../jobs.md),
 scheduled mailings would be sent every 15 minutes and bounces would be
 fetched and processed hourly.
 
@@ -435,7 +435,7 @@ Outbound email setting are configured at: Administer > System Settings > Outboun
 
 ### Setting Up the Cron Job
 
-To have your mailing actually send, set up a cron job that will periodically poke CiviMail to send all of the mailings that are past their scheduled date. **See [Managing Scheduled Jobs](setup/jobs.md) for more details**.
+To have your mailing actually send, set up a cron job that will periodically poke CiviMail to send all of the mailings that are past their scheduled date. **See [Managing Scheduled Jobs](../jobs.md) for more details**.
 
 There are two methods to run the cron: From a Control Panel or from a command line interface (CLI) which is the preferred way.
 
@@ -510,7 +510,7 @@ You don't have to run both scripts at the same frequency. The preceding crontab 
 1. The site you used, which is **-sdefault**. If you run multiple CiviCRM sites (applicable for Drupal) on a single server, you need to specify your site's domain, such as **-sexample.org**.
 1. The user login account ( **-u mailprocess** ).
 1. The password you defined ( **-p password** ).
-1. [The scheduled job](setup/jobs.md) (-a)
+1. [The scheduled job](../jobs.md) (-a)
 
 #### Using wget via Crontab
 
@@ -606,12 +606,12 @@ There are four possible solutions for handling of the return channel.
 
     There are two important limitations on your ability to track bounces via return channel. First, as gleaned from [this forum thread](https://forum.civicrm.org/index.php%3Ftopic=7553.0.html#msg38766), bounce tracking does not work when using the **sendmail** delivery method. Second, some SMTP services (notably google) insert their own **Return-Path** address headers, superseding the headers set by civiMail and effectively disabling bounce tracking.
 
-For Google Apps, however, see these [directions on setting up the return channel](setup/civimail/inbound.md#return-channel-google-apps).
+For Google Apps, however, see these [directions on setting up the return channel](inbound.md#return-channel-google-apps).
 
 
 ## Troubleshooting
 
-* The page on [Managing Scheduled Jobs](setup/jobs.md) has a troubleshooting section with solutions for common problems that arise.
+* The page on [Managing Scheduled Jobs](../jobs.md) has a troubleshooting section with solutions for common problems that arise.
 * Not receiving the test email? Make sure your FROM address (Administer > CiviMail > From Email Addresses) matches your domain or is recognized as an email account by your ISP.
 
 

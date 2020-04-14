@@ -82,7 +82,7 @@ There is a [request in the issue queue to support recurring contributions](https
 
 * **Filters:** Limits the list of available choices from which this contact may be autofilled or selected.
 **Note:** The "check permissions" filter is enabled by default and will verify that the acting user has permission to view and edit a given contact. In rare cases you will wish to disable this permission check, for example to display a list of schools. You'll generally want to combine doing so with some filters or node-based permissions on the webform. Only disable "check permissions" if you know what you are doing!
-**Also note** that, as of CiviCRM 4.2 and later, if you want the 'permissions' check to evaluate contact relationships correctly, you must download and enable the [Related Permissions](https://civicrm.org/extensions/relationship-permissions-acls) CiviCRM extension, which makes permissioned relationships behave like ACLs. This allows, for example, an authenticated user to use the autocomplete widget to search for contacts, but the search will be limited to those contacts for which a permissioned relationship exists in CiviCRM. To enable CiviCRM extensions, refer to the [CiviCRM documentation](customize/extensions.md).
+**Also note** that, as of CiviCRM 4.2 and later, if you want the 'permissions' check to evaluate contact relationships correctly, you must download and enable the [Related Permissions](https://civicrm.org/extensions/relationship-permissions-acls) CiviCRM extension, which makes permissioned relationships behave like ACLs. This allows, for example, an authenticated user to use the autocomplete widget to search for contacts, but the search will be limited to those contacts for which a permissioned relationship exists in CiviCRM. To enable CiviCRM extensions, refer to the [CiviCRM documentation](../../customize/extensions.md).
 
 * **Show/Hide fields:** When an existing contact is selected, you can control which fields the user is allowed to edit and which will be hidden. For example, hiding a contact's name fields will only show them when "Create New Contact" is selected, and makes for a nice select/add combo UX which keeps contacts from getting accidentally renamed.
 
@@ -128,7 +128,7 @@ Creating Backdrop users at the same time can be achieved using the [Webform Regi
 This module can autofill and update contacts and activities based on ids supplied in the url. Supported arguments:
 
 * **cid1** =xxx: contact 1's ID; you can also supply cid2 and so on as long as those contacts have an "Existing Contact" field). For backward compatibility, cid works as a substitute for cid1.
-* **cs1** =yyy: checksum hash allowing non-privledged users to view a specified contact. Ensure that the cs number matches cid number (i.e. [example.org/my-form?cid2=xxx&cs2=yyy](http://example.org/my-form?cid2=xxx&cs2=yyy)). For backward compatibility, cs works as a substitute for cs1.
+* **cs1** =yyy: checksum hash allowing non-privledged users to view a specified contact. Ensure that the cs number matches cid number (i.e. `example.org/my-form?cid2=xxx&cs2=yyy`.) For backward compatibility, cs works as a substitute for cs1.
 * **aid** =zzz: ID of the activity to autofill and update -- specifying an activity from a case works too
 
 ### Notes about url arguments:
@@ -169,7 +169,7 @@ This module provides 3 tokens that can be used after submitting the webform , th
 * `[submission:activity-link:?]`
 * `[submission:case-link:?]`
 
-Where ? can be replaced with the number of contact, activity or case that the webform is going to create or update starting from 1 (where 1 refers to the first contact/activity or case , 2 refers to the second contact/activity or case ..etc) . Each of these tokens will show a link to the specified contact , activity or case.
+Where ? can be replaced with the number of contact, activity or case that the webform is going to create or update starting from 1 (where 1 refers to the first contact/activity or case , 2 refers to the second contact/activity or case etc) . Each of these tokens will show a link to the specified contact , activity or case.
 
 E.g ) If your webform is configured to create two contacts and two cases , then you can use all or any of the following tokens inside your post webform submission message :
 
