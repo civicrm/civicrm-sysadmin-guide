@@ -5,7 +5,7 @@ Keeping CiviCRM up-to-date helps you take advantage of new features but is criti
 In general:
 
 * The upgrade steps are different depending on your CMS.
-* The upgrade steps are the same no matter which versions of CiviCRM you are moving _from_ and _to_ ([with some exceptions](/upgrade/version-specific.md))
+* The upgrade steps are the same no matter which versions of CiviCRM you are moving _from_ and _to_ ([with some exceptions](upgrade/version-specific.md))
 * The upgrade steps are the same for small upgrades (e.g. 4.7.10 to 4.7.11) as they are for large upgrades (4.6.7 to 4.7.12).
 * You can make big jumps in one upgrade (e.g. 4.5.2 to 4.7.20) without needing to apply all the upgrades in between.
 * If you are starting from a version prior to 4.2.9 you should upgrade to the [latest 4.2 version](https://sourceforge.net/projects/civicrm/files/civicrm-stable/4.2.19/) as an interim step, as the latest version does not contain upgrade code going back that far.
@@ -16,17 +16,17 @@ This page provides some of the steps to do before and after an upgrade, but leav
 
 Before upgrading CiviCRM, follow these steps to ensure the process goes a smoothly as possible.
 
-1. Ensure that your system meets all the [requirements](/requirements.md) for the CiviCRM version to which you are upgrading.
+1. Ensure that your system meets all the [requirements](requirements.md) for the CiviCRM version to which you are upgrading.
 
-1. Check for any [version-specific upgrade instructions](/upgrade/version-specific.md).
+1. Check for any [version-specific upgrade instructions](upgrade/version-specific.md).
 
-1. **[Backup your site](/setup/backups.md). Very important!**
+1. **[Backup your site](setup/backups.md). Very important!**
 
 1. Use your backup to create a _copy_ of your site (directories and database), and ensure that this copied site works correctly. This step is important both for (a) testing that your backup/restore procedure works, and (b) allowing you to test the upgrade in a low-stakes environment.
 
 1. Test the upgrade process on your _copied site_ to ensure that it succeeds.
 
-1. [Troubleshoot](/troubleshooting.md) any upgrade problems.
+1. [Troubleshoot](troubleshooting.md) any upgrade problems.
 
 1. Once you have performed a successful *test* upgrade, *then* apply the same steps on your live site.
 
@@ -69,7 +69,7 @@ For each version upgrade you perform, follow these steps to merge your template 
 
         Identify any customized templates by looking for rows which display *"Revert to default"* and *"View Default"* links.
 
-        ![System workflow templates screen showing user-customized templates which have "Revert to default" links next to them](/img/TemplatesToUpdate.jpg)
+        ![System workflow templates screen showing user-customized templates which have "Revert to default" links next to them](img/TemplatesToUpdate.jpg)
 
     * See which templates _CiviCRM_ has changed.
 
@@ -103,7 +103,7 @@ For each version upgrade you perform, follow these steps to merge your template 
 
     Within the Message Templates screen click **Edit** next to the customized template.
 
-    ![Screenshot of the Edit Message Template screen](/img/edit-message-template.png)
+    ![Screenshot of the Edit Message Template screen](img/edit-message-template.png)
 
     Copy the text from this template into a temporary file on your computer.
 
@@ -111,7 +111,7 @@ For each version upgrade you perform, follow these steps to merge your template 
 
 1. Load all three files into your diff/merge program.
 
-    ![Screenshot of opening three files in KDiff3](/img/KDiff3-open-files.png)
+    ![Screenshot of opening three files in KDiff3](img/KDiff3-open-files.png)
 
     In KDiff3, it's helpful to check the **Merge** box and specify an output file, as shown in the screenshot above.
 
@@ -119,6 +119,6 @@ For each version upgrade you perform, follow these steps to merge your template 
 
     When you're done merging changes (either automatically or manually), you'll have an output which you can save to a separate file.
 
-    ![Screenshot of KDiff3 displaying the result of a three-way merge](/img/KDiff3-merge.png)
+    ![Screenshot of KDiff3 displaying the result of a three-way merge](img/KDiff3-merge.png)
 
 1. Finally, copy the output of the merge back into Message Template screen within CiviCRM, and save.

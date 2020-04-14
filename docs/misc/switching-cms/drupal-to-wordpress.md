@@ -14,7 +14,7 @@
     !!! tip
         When downloading the CiviCRM package get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
     
-     Refer to the [WordPress Installation Guide](/install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
+     Refer to the [WordPress Installation Guide](install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
 
 
 !!! tip "WordPress Admin Account"
@@ -93,7 +93,7 @@ The menu links in the civicrm_menu table contains URLs for the menu links. These
     ```
 ## Update the changed URL in your user data
 
-When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](/misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".
+When switching CMSes, your URLs will ALWAYS be changed. Please review the documentation on [this page](misc/switch-servers.md) under the heading "Additional Steps if your URL has changed".
 
 ## Problems
 

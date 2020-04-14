@@ -28,24 +28,24 @@ Optionally provide a description for the payment processor, and indicate if the 
 | Processor Name                                                   | In        | Type     | Recurring? | Countries  | Merchant? |
 | ---                                                              | ---       | ---      | ---        | ---        | ---       |
 | Dummy (for testing only)                                         | Core      |          |            |            |           |
-| [Authorize.net](/setup/payment-processors/authorize-net.md)      | Core      | SSL      | Yes        | Many       | Yes       |
-| [PayPal_Standard](/setup/payment-processors/paypal-standard.md)  | Core      | External | Yes        | Many       | No        |
-| [PayPal Pro](/setup/payment-processors/paypal-pro.md)            | Core      | SSL      | Yes        | Many       |           |
-| [Paypal Express](/setup/payment-processors/paypal-pro.md)        | Core      |          | Partial    | Many       |           |
-| [iATS Payments](/setup/payment-processors/iats.md)               | Core*     | SSL      | Yes        | Many       | No        |
-| [Card Access](/setup/payment-processors/card-access.md)          | Extension |          |            |            |           |
-| [Moneris](/setup/payment-processors/moneris.md)                  | Extension | SSL      |            |            |           |
-| [PayJunction](/setup/payment-processors/payjunction.md)          | Extension | SSL      |            |            |           |
+| [Authorize.net](setup/payment-processors/authorize-net.md)      | Core      | SSL      | Yes        | Many       | Yes       |
+| [PayPal_Standard](setup/payment-processors/paypal-standard.md)  | Core      | External | Yes        | Many       | No        |
+| [PayPal Pro](setup/payment-processors/paypal-pro.md)            | Core      | SSL      | Yes        | Many       |           |
+| [Paypal Express](setup/payment-processors/paypal-pro.md)        | Core      |          | Partial    | Many       |           |
+| [iATS Payments](setup/payment-processors/iats.md)               | Core*     | SSL      | Yes        | Many       | No        |
+| [Card Access](setup/payment-processors/card-access.md)          | Extension |          |            |            |           |
+| [Moneris](setup/payment-processors/moneris.md)                  | Extension | SSL      |            |            |           |
+| [PayJunction](setup/payment-processors/payjunction.md)          | Extension | SSL      |            |            |           |
 | Payment Express (DPS)                                            | Extension | External | Yes        | Many       | Yes       |
-| [Ogone](/setup/payment-processors/ogone.md)                      | Extension |          |            |            | No        |
+| [Ogone](setup/payment-processors/ogone.md)                      | Extension |          |            |            | No        |
 | eWay                                                             | Extension | SSL      | Yes        | AU         |           |
-| [First Data](/setup/payment-processors/first-data.md)            | Extension | SSL      | No         |            |           |
+| [First Data](setup/payment-processors/first-data.md)            | Extension | SSL      | No         |            |           |
 | Elavon / Nova                                                    | Extension | SSL      | No         |            |           |
 | World Pay                                                        | Extension |          |            |            |           |
 | Sogenactif                                                       | Extension | External |            |            |           |
 | eProcessing Network                                              | Extension | SSL      | No         |            | Yes       |
 | Quickbooks Merchant Services                                     | Extension | SSL      | No         |            | Yes       |
-| [Payflow Pro](/setup/payment-processors/payflow.md)              | Extension | SSL      | No         |            |           |
+| [Payflow Pro](setup/payment-processors/payflow.md)              | Extension | SSL      | No         |            |           |
 | Barclays                                                         | Extension | SSL      |            |            |           |
 | Card Access Services                                             | Extension | External | No         | AU         | Yes       |
 | Vanco                                                            | Extension | SSL      | Yes        |            | Yes       |

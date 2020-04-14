@@ -15,7 +15,7 @@ If you receive a CiviCRM fatal error, you can find a more detailed error in one 
 
 CiviCRM fatal errors are characterized by a yellow background:
 
-![Fatal error screenshot without debug/backtrace enabled](/img/fatal-error.jpg)
+![Fatal error screenshot without debug/backtrace enabled](img/fatal-error.jpg)
 
 ### Review the CiviCRM log
 
@@ -30,7 +30,7 @@ Go to **Administer menu > System Settings > Debugging and Error Handling**, sele
 
 Example with debug/backtrace enabled:
 
-![Fatal error screenshot with debug/backtrace enabled](/img/backtrace.png)
+![Fatal error screenshot with debug/backtrace enabled](img/backtrace.png)
 
 
 ## Symptoms
@@ -91,7 +91,7 @@ On this settings page you can:
 * Clear the cache
 * View and update the value that CiviCRM has determined for your Base Url and site name.
 
-    ![Screenshot demonstrating the "Cleanup Caches" screen](/img/clean-up-caches.png)
+    ![Screenshot demonstrating the "Cleanup Caches" screen](img/clean-up-caches.png)
 
 Although you enter your Base URL in `civicrm.settings.php` the value shown here reflects additional attempts by CiviCRM to automatically detect the correct base url in various environments - for example in multilingual sites.
 

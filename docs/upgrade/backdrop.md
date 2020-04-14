@@ -3,7 +3,7 @@
 Use this document to upgrade CiviCRM installations on Backdrop CMS to the latest CiviCRM release.
 
 !!! caution "Before upgrading"
-    Make sure you have done the steps listed in ["Before upgrading"](/upgrade/index.md#before-upgrading) first.
+    Make sure you have done the steps listed in ["Before upgrading"](upgrade/index.md#before-upgrading) first.
 
 ## Download the latest code
 
@@ -139,4 +139,4 @@ Toggle the following feature, and put your site back online:
 
 ## Post upgrade
 
-See these steps to take [after upgrading](/upgrade/index.md#after-upgrading).
+See these steps to take [after upgrading](upgrade/index.md#after-upgrading).

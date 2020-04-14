@@ -12,13 +12,13 @@ If your server meets all of the requirements described on this page, CiviCRM *sh
 
 ### Hosting
 
-In general, CiviCRM is a demanding web application which requires substantial server resources. It may not perform well on all hosting platforms. Learn more about [choosing your hosting platform](/planning/hosting.md).
+In general, CiviCRM is a demanding web application which requires substantial server resources. It may not perform well on all hosting platforms. Learn more about [choosing your hosting platform](planning/hosting.md).
 
 ## CMS {:#cms}
 
 A CMS, or Content Management System, is a type of application which controls and manages the content of a website. CiviCRM must be installed within one of these compatible CMS platforms.
 
-See our page on [choosing a CMS](/planning/cms.md) for more information about the advantages and disadvantages of each compatible CMS platform.
+See our page on [choosing a CMS](planning/cms.md) for more information about the advantages and disadvantages of each compatible CMS platform.
 
 ### Drupal
 

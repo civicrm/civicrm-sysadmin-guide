@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](/requirements.md).
+1. Ensure that your system meets the [requirements](requirements.md).
 1. Install Joomla by referring to the [Joomla Installation Guide](https://docs.joomla.org/J3.x:Installing_Joomla) if needed.
 
 !!! note "Path for Joomla"
@@ -72,5 +72,5 @@ When CiviCRM is installed on top of an existing Joomla site, a special CiviCRM A
 
 * If CiviCRM screens are not displaying properly and/or javascript widgets are not functioning, check your CiviCRM Resource URL (Administer >> System Settings >> Resource URLs). For Joomla installs, it should be something like: `http://example.org/administrator/components/com_civicrm/civicrm`
 
-* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
+* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.
 

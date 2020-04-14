@@ -3,7 +3,7 @@
 Use this document to upgrade CiviCRM installations on Drupal 7 to the latest CiviCRM release.
 
 !!! caution "Before upgrading"
-    Make sure you have done the steps listed in ["Before upgrading"](/upgrade/index.md#before-upgrading) first.
+    Make sure you have done the steps listed in ["Before upgrading"](upgrade/index.md#before-upgrading) first.
 
 ## Download the latest code
 

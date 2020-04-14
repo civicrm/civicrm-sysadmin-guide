@@ -15,7 +15,7 @@ Administer > System Settings > Resource URLs
 
 ## Hidden Settings
 
-There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](/customize/extensions.md) for more details).
+There are also some settings which can not be set from the administration user interface - but which can be overridden using this same technique. These include the Community Messages URL, and whether or not to allow users to download extensions (refer to [Disable automatic installation of extensions](customize/extensions.md) for more details).
 
 ## Override settings in civicrm.settings.php
 

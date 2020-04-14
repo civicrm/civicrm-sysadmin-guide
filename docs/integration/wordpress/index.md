@@ -16,7 +16,7 @@ WordPress shortcodes enable a user to be able to very easily display dynamic con
 
 To add a shortcode either create a new post or new page. If you are using the classic editor (as opposed to the new Gutenberg editor) you will now see a CiviCRM button next to Add Media.
 
-![Screenshot demonstrating the "CiviCRM" button after "Add Media"](/img/wordpress_shortcode_insert.png)
+![Screenshot demonstrating the "CiviCRM" button after "Add Media"](img/wordpress_shortcode_insert.png)
 
 After you click on CiviCRM, you will be able to choose the type of content to display. (The options correspond to the types of content in the list above.)
 

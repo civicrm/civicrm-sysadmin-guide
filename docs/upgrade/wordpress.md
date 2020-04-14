@@ -3,7 +3,7 @@
 Use this document to upgrade CiviCRM installations on WordPress to the latest CiviCRM release.
 
 !!! caution "Before upgrading"
-    Make sure you have done the steps listed in ["Before upgrading"](/upgrade/index.md#before-upgrading) first.
+    Make sure you have done the steps listed in ["Before upgrading"](upgrade/index.md#before-upgrading) first.
 
 ## Download the latest code
 
@@ -25,7 +25,7 @@ Make sure you have logged in to WordPress as an administrator. Do not log out un
 ### Settings files
 #### civicrm.settings.php
 
-The ["Before upgrading"](/upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ the `civicrm.settings.php` settings file, as it is, during the upgrade.
+The ["Before upgrading"](upgrade/index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ the `civicrm.settings.php` settings file, as it is, during the upgrade.
 
 !!! note For **CiviCRM 4.6** and older:
     `<wordpress_root>/wp-content/plugins/civicrm/civicrm.settings.php`
@@ -130,4 +130,4 @@ Delete all files in your `templates_c` directory
 
 ## Post upgrade
 
-See these steps to take [after upgrading](/upgrade/index.md#after-upgrading).
+See these steps to take [after upgrading](upgrade/index.md#after-upgrading).

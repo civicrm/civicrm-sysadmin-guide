@@ -59,11 +59,11 @@ CiviCRM can receive feedback from Paypal after the contribution is made. This re
 
 * To configure Instant Payments Notification (IPN) for your PayPal account Click: Profile, under Selling preferences click "Instant Payment Notification preferences"
 * Enable Instant Payments Notification (Select "Receive IPN messages (Enabled)")
-* Your specific IPN will vary with you domain address, your CMS, and which payment processor ID CiviCRM has for this PayPal processor. Use the approach at [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to determine the right address, then put in as the Notification URL. (CiviContribute will also pass the exact IPN 'listener' URL to PayPal automatically during each transaction, but there are reports in June 2019 this was insufficient.)
+* Your specific IPN will vary with you domain address, your CMS, and which payment processor ID CiviCRM has for this PayPal processor. Use the approach at [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL) to determine the right address, then put in as the Notification URL. (CiviContribute will also pass the exact IPN 'listener' URL to PayPal automatically during each transaction, but there are reports in June 2019 this was insufficient.)
 * Click Save
 
 !!! tip
-    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL as detailed at [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL)
+    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL as detailed at [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL)
 
 #### Then Set the Auto Return So the Contributor Goes Back to Your Site
 

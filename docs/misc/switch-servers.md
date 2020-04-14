@@ -2,7 +2,7 @@
 
 Some settings in the CiviCRM database relate to a physical location, such as a server file path or a public URL. These settings are usually stored as relative paths (with respect to the default file container, eg `sites/default/files/civicrm` or `media/civicrm`), but sometimes an admin customizes them to use an absolute path. If you have any absolute paths, then you must usually change these when moving an existing CiviCRM installation to a new server. This documentation covers the general steps.
 
-**If you regularly copy a production database to a test server, you can [use a settings override](/customize/settings.md) to avoid having to "fix" the directory and URL-based settings each time you copy the database over.**
+**If you regularly copy a production database to a test server, you can [use a settings override](customize/settings.md) to avoid having to "fix" the directory and URL-based settings each time you copy the database over.**
 
 _Older versions of CiviCRM included a script which performed a heuristic search-replace against file paths and URLs. The script had various interfaces (e.g. `doSiteMove()`, `civicrm/admin/setting/updateConfigBackend`, `bin/migrate/move.php`, `drush civicrm-update-cfg`, `wp civicrm update-cfg`.) But it was not maintained well and was removed in 4.7. Best advice: stick to relative paths under the default file container, or use a settings-override for absolute paths. (See also: [forum discussion](https://forum.civicrm.org/index.php?topic=36692.msg155904#msg155904))_
 

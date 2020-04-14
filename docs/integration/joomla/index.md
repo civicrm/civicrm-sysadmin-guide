@@ -12,13 +12,13 @@ CiviCRM content can be displayed on your website in a couple of
 different ways. The primary way is to create a specific Menu Item that
 pulls in CiviCRM data. Within your Joomla! menu navigate to **Menu > YourMenu > Add New Menu Item**.
 
-![Screenshot demonstrating the "New menu item" page. "Menu Item Type" is the first field on the page.](/img/joomla-menu-item-type.png)
+![Screenshot demonstrating the "New menu item" page. "Menu Item Type" is the first field on the page.](img/joomla-menu-item-type.png)
 
 Once you are inside of the Edit Menu item screen you will then have the
 option to select the menu item type. There will be a subsection called
 civicrm with the below options.
 
-![Screenshot demonstrating the CiviCRM options when adding a new menu item](/img/joomla-civi-options.png)
+![Screenshot demonstrating the CiviCRM options when adding a new menu item](img/joomla-civi-options.png)
 
 After choosing one of the below you will then need to go to **Basic
 Options**and select the corresponding CiviCRM page you wish to display.

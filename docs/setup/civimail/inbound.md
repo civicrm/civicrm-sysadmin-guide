@@ -88,7 +88,7 @@ The email processor is a function and scheduled job that will attempt to parse e
 1. Under Administer CiviCRM >> CiviMail >> Mail Accounts, configure one or more email accounts. In the "Used For" field select Email-to-Activity Processing.
 1. Test it by executing the job under Administer >> System Settings >> Scheduled Jobs >> select "Process Incoming Emails" (API: **fetch_activities** ) and "Execute now."
 1. The first time you run the script you should see folders created in your email account to designate processed and ignored emails. After testing, visit the contact record you emailed to and confirm the presence of the email activity.
-1. Optionally set it up to run regularly via [scheduled jobs](/setup/jobs.md).
+1. Optionally set it up to run regularly via [scheduled jobs](setup/jobs.md).
 
 !!! note "Important note on bounce processing and processing incoming emails"
     Because the bounce handling and EmailProcessor routines both process emails and then file them under "processed" and "ignored" emails, they cannot be used on the same email account. That is, you cannot use one email account for both bounce processing and email-to-activity processing. You need to set two separate accounts, one for bounce processing, and one for email-to-activity processing.

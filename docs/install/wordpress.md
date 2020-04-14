@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](/requirements.md).
+1. Ensure that your system meets the [requirements](requirements.md).
 1. Install WordPress by referring to the [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress) if needed.
 
 !!! note "Path for WordPress"
@@ -214,4 +214,4 @@ There should now be a **CiviCRM** link in your WordPress menu. Click that link a
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-* Review the [Troubleshooting](/troubleshooting.md) page for help with problems you may encounter during the installation.
+* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.

@@ -236,14 +236,14 @@ Once you have added the Recurring feature to your existing Paypal Pro account, c
 * Log in to your Paypal account
 * Click Settings (Gear icon)
 * Click Account Settings > Website Payments > Instant Payment Notifications
-* Follow the instructions here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use
+* Follow the instructions here: [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use
 * Enter the URL and save
 
 !!! note
     You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
 
 !!! tip
-    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL details can be found here: [IPN Notify URL](/setup/payment-processors/recurring.md#IPN%20notify%20URL)
+    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL details can be found here: [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL)
 
 **Expected Behavior**
 
