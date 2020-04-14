@@ -2,7 +2,7 @@
 
 Detailed logging (aka "logging") allows you to maintain a full history of *all* changes made to *everything* in CiviCRM. It's a powerful feature which is turned *off* be default &mdash; because it's a bit overkill for most organizations, and it comes with some downsides too.
 
-![Screenshot of report showing field differences within one update](img/detailed-logging-report.png)
+![Screenshot of report showing field differences within one update](../img/detailed-logging-report.png)
 
 
 ## How logging works

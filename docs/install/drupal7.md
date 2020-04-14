@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](requirements.md).
+1. Ensure that your system meets the [requirements](../requirements.md).
 1. Install Drupal by referring to the [Drupal Installation Guide](http://drupal.org/getting-started) if needed.
 
 ## Determine Drupal Database Settings {:#db-settings}
@@ -49,7 +49,7 @@ First, download CiviCRM and install the files like you would any other module:
 
 The result will be that the CiviCRM directory will be at `<DRUPAL ROOT>/sites/all/modules/civicrm`
 
-The most up-to-date version of CiviCRM is always available at [https://civicrm.org/download](https://civicrm.org/download)
+The most up-to-date version of CiviCRM is always available from the [CiviCRM website](https://civicrm.org/download)
 
 **Do NOT** activate the module yet - that will happen automatically when you run the installer.
 
@@ -133,5 +133,5 @@ There should now be a **CiviCRM** link in your Drupal menu. Click that link and 
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.
-* To check compatibility with other Drupal modules see: [Drupal modules incompatible with CiviCRM](integration/drupal/incompatibilities.md)
+* Review the [Troubleshooting](../troubleshooting.md) page for help with problems you may encounter during the installation.
+* To check compatibility with other Drupal modules see: [Drupal modules incompatible with CiviCRM](../integration/drupal/incompatibilities.md)

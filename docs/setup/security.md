@@ -99,7 +99,7 @@ If you have a public-facing website, note that when switching traffic from (for 
 ## Backups and their security
 
 Hackers are as likely to steal data from backups as from production sites.
-The security of backups is covered on the [backups page of this guide](sysadmin/en/latest/setup/backups/).
+The security of backups is covered on the [backups page of this guide](backups.md).
 
 ## Data storage jurisdiction
 

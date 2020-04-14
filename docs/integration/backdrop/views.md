@@ -34,7 +34,7 @@ These instructions assume CiviCRM and Backdrop are on separate databases located
 1. In the CiviCRM admin menu, visit **Administer > System Settings > CMS Database Integration** (`http://example.org/civicrm/admin/setting/uf?reset=1`)
 1. You should see a page with output that begins with: `$databases['default']['default']['prefix']= array(`
 
-    ![Screenshot showing the "Integration" page, with output of settings to be placed into settings.php](img/views3integration-1.png)
+    ![Screenshot showing the "Integration" page, with output of settings to be placed into settings.php](../../img/views3integration-1.png)
 
 1. Copy this setting output, including the trailing `);`
 1. Open the file `/settings.php` for editing from the root directory of the site, typically `public_html` on most servers.
@@ -62,7 +62,7 @@ These instructions assume CiviCRM and Backdrop are on separate databases located
 
     ...you need to include an additional line, `'default' => '<drupaltableprefix>'`, in your `settings.php` just after `$database ['default']['default']['prefix']= array(`. You can find more information on this error in [this forum post](http://forum.civicrm.org/index.php?topic=20910.0).
 
-    ![Screenshot demonstrating where to add a table prefix in your settings](img/views3integration-4.png)
+    ![Screenshot demonstrating where to add a table prefix in your settings](../../img/views3integration-4.png)
     
 1. Save the file settings.php. You might want to clear your site cache at this point.
 1. You should now be able to create Backdrop Views based on CiviCRM data.
@@ -87,7 +87,7 @@ about other CiviCRM data such as events, relationships, contributions or
 activities there are additional options that might provide more data
 fields for those types.
 
-![Screenshot demonstrating the "Add new view" page](img/Views-CiviCRM-Partner-1.png)
+![Screenshot demonstrating the "Add new view" page](../../img/Views-CiviCRM-Partner-1.png)
 
 After the View is created, edit the fields, filters, display and other
 configurations to show the data exactly how you'd prefer. Views does

@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](requirements.md).
+1. Ensure that your system meets the [requirements](../requirements.md).
 1. Install WordPress by referring to the [WordPress Installation Guide](http://codex.wordpress.org/Installing_WordPress) if needed.
 
 !!! note "Path for WordPress"
@@ -16,7 +16,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are included in the compressed CiviCRM distribution files ('zips'). Follow these steps to download and install the codebase:
 
-* Download the appropriate zips file from [here](https://civicrm.org/download) with your browser. The zip file-names include the CiviCRM version. For example, **civicrm-x.x.x-wordpress.zip.**
+* Download the appropriate zip file from the [CiviCRM website](https://civicrm.org/download) with your browser. The zip file-names include the CiviCRM version. For example, **civicrm-x.x.x-wordpress.zip.**
 
 * Copy or ftp the zip file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins/civicrm` directory to allow for "Write" Access. Just remember to change it back to default when done.
 * You can upload the zip file that was downloaded via your WordPress admin panel at `wp-admin/plugin-install.php`
@@ -56,7 +56,7 @@ All CiviCRM code and packages used by CiviCRM (such as PEAR libraries) are inclu
 
 Follow these steps to download and install the files that contain strings for languages other than American English:
 
-* Download the appropriate tarball file from [civicrm.org/download](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version, and `l10n`. For example, `civicrm-4.5.x-l10n.tar.gz`.
+* Download the appropriate tarball file from the [CiviCRM website](https://civicrm.org/download) within your browser. Tarball file-names include the CiviCRM version, and `l10n`. For example, `civicrm-4.5.x-l10n.tar.gz`.
 
 * Copy or ftp the tarball file to your WordPress installation's `/wp-content/plugins` directory. You may have to change the "File Permissions" setting of `/wp-content/plugins` directory to allow for "Write" Access. Just remember to change it back to default when done.
 
@@ -212,6 +212,6 @@ The **Configuration Checklist** provides a convenient way to work through the se
 
 There should now be a **CiviCRM** link in your WordPress menu. Click that link and the CiviCRM Menu, Shortcuts, Search and New Individual Blocks should appear. You can now explore CiviCRM end-user features and begin configuring CiviCRM for your site/organization needs.
 
-## Trouble-shooting Resources {:#troubleshooting}
+## Troubleshooting Resources {:#troubleshooting}
 
-* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.
+* Review the [troubleshooting](../troubleshooting.md) page for help with problems you may encounter during the installation.

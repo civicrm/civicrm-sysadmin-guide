@@ -24,7 +24,7 @@ Password = the password you have been supplied
 
 There are obviously a lot of things you can configure but the ones I am going to cover are under service settings/ configuration. Also refer to [https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm)
 
-![](img/payflow-config.jpg)
+![](../../img/payflow-config.jpg)
 
 1. Return URL Method - you must set this to POST
 1. Return URL - the standard drupal URL looks something like this. `http://example.org/sites/all/modules/civicrm/extern/payFlowLinkIPN.php`. If you put the URL in your browser you should see "Failure: Missing Parameter"
@@ -34,13 +34,13 @@ There are obviously a lot of things you can configure but the ones I am going to
 1. Billing information - the customer will be required to fill out the required fields and given the option of filling out the editable fields
 1. Shipping information - unless you are shipping product leave these unchecked
 
-    ![](img/payflow-options.jpg)
+    ![](../../img/payflow-options.jpg)
 
     There are various presentation options that should be fairly self-explanatory - try here for more [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm).
  
 Security
 
-![](img/payflow-security.jpg)
+![](../../img/payflow-security.jpg)
 
 Once again the [paypal config](https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/configuration.htm) page is a good source of info but note that at the moment csc checking and AVS checking are not supported in that a transaction that fails due to either of these security measures will be voided at Payflow but will be treated as a success by CiviCRM (see proposed improvements). CSC checking is checking the 3 numbers on the credit card. AVS is checking the address supplied against the credit card address.
 
@@ -56,7 +56,7 @@ visa
 
 any future date
 
-![](img/payflow-result-codes.jpg)
+![](../../img/payflow-result-codes.jpg)
 
 ## Limitations / Proposed improvements
 

@@ -16,11 +16,11 @@ Use phpInfo() to check for these extensions. The easiest way to do this is to cr
 
 Go to [your_website_url]/info.php. The phpinfo function returns **a lot** of information. Use your browser's search function to look for:
 
-![Screenshot of curl support indicated in phpinfo](img/phpinfo-curl.png)
+![Screenshot of curl support indicated in phpinfo](../../img/phpinfo-curl.png)
 
 and
 
-![Screenshot of PCRE support indicated in phpinfo](img/phpinfo-pcre.png)
+![Screenshot of PCRE support indicated in phpinfo](../../img/phpinfo-pcre.png)
 
 These represent the following lines of code:
 
@@ -98,7 +98,7 @@ Authorize.net offers a recurring payment system called Automated Recurring Billi
 
 CiviCRM will need to be notified of the success of recurring contributions via a **Silent Post URL**.
 
-Follow the instructions here: [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use.
+Follow the instructions here: [IPN Notify URL](recurring.md#IPN%20notify%20URL) to work out the correct URL to use.
 
 Within Authorize.net, go to **Account > Settings > Silent Post URL** (within the Transaction Format Settings section). On that page, enter the appropriate IPN / Webhook URL.
 
