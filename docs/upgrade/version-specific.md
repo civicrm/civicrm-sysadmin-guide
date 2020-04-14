@@ -43,5 +43,5 @@ If you are running scheduled jobs using `CLI.php`, you will need to reconfigure 
 
 ## CiviCRM 4.2
 
-All CiviCRM-related cron jobs will stop working as soon as any site is upgraded from 4.1.x and below. If you are upgrading from a version prior to 4.2, cron jobs will need to be reconfigured using the new [Scheduled Jobs](setup/jobs.md) method.
+All CiviCRM-related cron jobs will stop working as soon as any site is upgraded from 4.1.x and below. If you are upgrading from a version prior to 4.2, cron jobs will need to be reconfigured using the new [Scheduled Jobs](../setup/jobs.md) method.
 

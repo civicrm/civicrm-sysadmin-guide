@@ -41,10 +41,6 @@ You can use [themekey](https://www.drupal.org/project/themekey) (and [themekey_c
 
 In addition, PTP has developed a base subtheme, available here that is specifically focused on ensuring public facing pages work well and is designed to be sub-themed to match a variety of different layouts: git clone git://git.progressivetech.org/powerbase/civiresponsive.git
 
-### The Whole Enchilada
-
-PTP tried to create a Drupal base theme of Bootstrap that worked with the CiviCRM admin interface (see `git clone [git://git.progressivetech.org/powerbase/powerbase](git://git.progressivetech.org/powerbase/powerbase)`), however, we abandoned it as too difficult without changing CiviCRM Core
-
 ## WordPress
 
 No activity to date.

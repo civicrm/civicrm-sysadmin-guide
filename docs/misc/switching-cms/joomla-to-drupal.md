@@ -14,7 +14,7 @@
         !!! check
             When downloading the CiviCRM package get the same version of the CiviCRM package for Drupal as the version you used in Joomla. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
-        Refer to the [Drupal Installation Guide](install/drupal7.md) for details on obtaining and setting up CiviCRM for Drupal.
+        Refer to the [Drupal Installation Guide](../../install/drupal7.md) for details on obtaining and setting up CiviCRM for Drupal.
 
 ## Restore the CiviCRM database backup to the desired location
 

@@ -26,7 +26,7 @@ In order to restore a complete copy of your site, you may also need to do regula
 * If you have created **custom template(s)** to replace standard CiviCRM screen(s) - then you need to backup the **Custom Templates Directory**.
 * If you have modified core files in the CiviCRM codebase - then you should also have a backup of those files.
 
-One way to test whether your backup is sufficient is to [re-create your CiviCRM database on another machine](misc/switch-servers.md).
+One way to test whether your backup is sufficient is to [re-create your CiviCRM database on another machine](../misc/switch-servers.md).
 
 ## Security of backups
 

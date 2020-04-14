@@ -11,7 +11,7 @@ have been configured.
 
 Some parts of the configuration are core CiviCRM functionality (basic
 sending and receiving of emails) whereas others (mass mailings) require
-that the CiviMAIL component be enabled.
+that the CiviMail component be enabled.
 
 You will need to be able to change the configuration of your DNS, create
 email accounts, configure a cron job, read the headers of email
@@ -85,7 +85,7 @@ Received: from yourmailserver.example.org (xxx.example.org
 by mx.google.com with ESMTP id e31si4519230wej.3.2010.04.26.00.38.16;
 Mon, 26 Apr 2010 00:38:17 -0700 (PDT) Received-SPF: pass
 google.com: best guess record for domain of
-[youremail@example.org](mailto:youremail@example.org) designates
+youremail@example.org designates
 12.45.120.30 as permitted sender) client-ip=12.45.120.30
 
 ```

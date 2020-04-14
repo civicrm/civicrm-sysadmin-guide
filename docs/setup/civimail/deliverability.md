@@ -35,7 +35,7 @@ Google provides several pages of guidance on email deliverability to Google Mail
 
 ### Outlook Live
 
-MS Outlook Live mail (formerly also called Hotmail) have a Junk Mail Reporting Program (JMRP). When a user click on the "Spam" button in a Hotmail account or moves an item to their junk folder, a report is forwarded back to you. You can then exclude that recipient from your lists. This amy help your emails to maintain a good reputation with Microsoft's spam filter. Subscribe to JMRP by visiting [https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx](https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx) (requires a Microsoft login) and completing the form.
+MS Outlook Live mail (formerly also called Hotmail) have a Junk Mail Reporting Program (JMRP). When a user click on the "Spam" button in a Hotmail account or moves an item to their junk folder, a report is forwarded back to you. You can then exclude that recipient from your lists. This may help your emails to maintain a good reputation with Microsoft's spam filter. Subscribe to JMRP by visiting [https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx](https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx) (requires a Microsoft login) and completing the form.
 
 Be aware this is not an opt-out. If you want to opt-out contacts who mark your emails as "Spam" or "Junk", you could use a shell script and the API (with drush civicrm-api or via REST) to opt-out contacts who have marked your email as spam.
 

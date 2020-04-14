@@ -6,7 +6,7 @@ This guide covers standard installation of CiviCRM for production use. For insta
 
 ## Before installing
 
-1. Ensure that your system meets the [requirements](requirements.md).
+1. Ensure that your system meets the [requirements](../requirements.md).
 1. Install Backdrop by referring to the [Backdrop Installation Guide](http://backdropcms.org/installation) if needed.
 
 ## Determine Backdrop Database Settings {:#db-settings}
@@ -47,7 +47,7 @@ First, download CiviCRM and install the files like you would any other module:
 
 The result will be that the CiviCRM directory will be at `<BACKDROP ROOT>/modules/civicrm`
 
-The most up-to-date version of CiviCRM will always be available at [https://civicrm.org/download](https://civicrm.org/download).
+The most up-to-date version of CiviCRM will always be available from the [CiviCRM website](https://civicrm.org/download).
 
 **Do NOT** proceed to "activate" the module - that will happen automatically when you run the installer.
 
@@ -128,4 +128,4 @@ There should now be a **CiviCRM** link in your Backdrop menu. Click that link an
 
 ## Trouble-shooting Resources {:#troubleshooting}
 
-* Review the [Troubleshooting](troubleshooting.md) page for help with problems you may encounter during the installation.
+* Review the [Troubleshooting](../troubleshooting.md) page for help with problems you may encounter during the installation.
