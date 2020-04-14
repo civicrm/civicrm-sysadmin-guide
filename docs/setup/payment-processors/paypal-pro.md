@@ -236,14 +236,14 @@ Once you have added the Recurring feature to your existing Paypal Pro account, c
 * Log in to your Paypal account
 * Click Settings (Gear icon)
 * Click Account Settings > Website Payments > Instant Payment Notifications
-* Follow the instructions here: [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL) to work out the correct URL to use
+* Follow the instructions here: [IPN Notify URL](recurring.md#IPN%20notify%20URL) to work out the correct URL to use
 * Enter the URL and save
 
 !!! note
     You can re-send an IPN message from this area by using the IPN search. This is good if you have had it set to the wrong URL & want to resend them once you've fixed it
 
 !!! tip
-    If you are still using the deprecated https://example.com/civicrm/extern/ipn.php you should switch to the standard CiviCRM URL details can be found here: [IPN Notify URL](setup/payment-processors/recurring.md#IPN%20notify%20URL)
+    If you are still using the deprecated `https://example.com/civicrm/extern/ipn.php` you should switch to the standard CiviCRM URL details can be found here: [IPN Notify URL](recurring.md#IPN%20notify%20URL)
 
 **Expected Behavior**
 
@@ -271,7 +271,9 @@ Once you have your LIVE account configured, it is important that you submit a fe
 
 If you change the PayPal setting so that PayPal calculates and adds taxes, then the total amount charged by PayPal will no longer match that in CiviCRM. When PayPal calls back to CiviCRM saying it has received payment for $Total including taxes this doesn't match CiviCRM's $Total that excludes taxes. If you check your CiviCRM log file (generally under files/civicrm/ConfigAndLog/) you'll find an error similar to
 
+```
 Nov 04 10:12:57 [info] Amount values don't match between database and IPN request
+```
 
 The solution is to turn off the PayPal Sales Tax option.
 

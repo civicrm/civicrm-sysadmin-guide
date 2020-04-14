@@ -20,7 +20,7 @@ Here is a brief description of how you go about setting up Moneris Hosted to wor
 
 2. You should now be able to view the following screen when you set up extension for Moneris Hosted Payment Processor.
 
-    ![](img/moneris-01.png)
+    ![](../../img/moneris-01.png)
 
 3. The next thing is to configure Moneris eSELECT Plus Hosted Paypage . The following configuration steps are required under your Moneris eSELECT Plus merchant account.Please ensure you have your merchant account set up on moneris before continuing.
 
