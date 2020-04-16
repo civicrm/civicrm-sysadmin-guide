@@ -96,7 +96,7 @@ If you don't have SSH access and your IP panel does not recognize tar files, you
 
 Delete all files in your `templates_c` directory
 
-!!! note In CiviCRM 4.7 and above:
+!!! note "For CiviCRM 4.7 and later"
     `<wordpress_root>/<content-dir>/uploads/civicrm/templates_c`
 
 !!! note For CiviCRM 4.6 and older:	
