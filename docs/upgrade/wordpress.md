@@ -64,7 +64,7 @@ CiviCRM will not run properly if files from previous version are present after t
     ```
 
 !!! note "Restoring the CiviCRM settings file."
-    __For 4.6 and earlier__ : You should restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory. For later versions, your `civicrm.settings.php` should be located in the uploads directory it is not necessary to restore this file, but you should check that it exists and has the correct settings.
+    **For 4.6 and earlier** you should restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory. For later versions, your `civicrm.settings.php` should be located in the uploads directory it is not necessary to restore this file, but you should check that it exists and has the correct settings.
 
 1. If you are using the `<wordpress_root>/<content-dir>/plugins/civicrm/civicrm/settings_location.php` file in your implementation, restore this file from your back-up.
 
