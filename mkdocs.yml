@@ -16,9 +16,9 @@ markdown_extensions:
       guess_lang: true
       extend_pygments_lang:
         - name: php
-          lang: php
-          options:
-            startinline: true
+            lang: php
+            options:
+              startinline: true
   - pymdownx.superfences:
       css_class: codehilite
   - pymdownx.inlinehilite:
