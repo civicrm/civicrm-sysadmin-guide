@@ -27,9 +27,6 @@ Make sure you have logged in to WordPress as an administrator. Do not log out un
 
 The [before upgrading](index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ the `civicrm.settings.php` settings file, as it is, during the upgrade.
 
-!!! note For **CiviCRM 4.6** and older:
-    `<wordpress_root>/wp-content/plugins/civicrm/civicrm.settings.php`
-
 !!! note For **CiviCRM 4.7+**:
     `<wordpress_root>/content-dir/uploads/civicrm/civicrm.settings.php`
 
@@ -64,7 +61,7 @@ CiviCRM will not run properly if files from previous version are present after t
     ```
 
 !!! note "Restoring the CiviCRM settings file."
-    If you're upgrading from 4.6 or earlier you should restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory. For later versions, your `civicrm.settings.php` should be located in the uploads directory it is not necessary to restore this file, but you should check that it exists and has the correct settings.
+    __Only for 4.6 and earlier__ : If you're upgrading from 4.6 or earlier you should restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory. For later versions, your `civicrm.settings.php` should be located in the uploads directory it is not necessary to restore this file, but you should check that it exists and has the correct settings.
 
 1. If you are using the `<wordpress_root>/<content-dir>/plugins/civicrm/civicrm/settings_location.php` file in your implementation, restore this file from your back-up.
 
@@ -99,9 +96,6 @@ Delete all files in your `templates_c` directory
 * In CiviCRM 4.7 and above:
     `<wordpress_root>/<content-dir>/uploads/civicrm/templates_c`
    
-!!! caution "For CiviCRM 4.6 and older:"
-    `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c`
-
 ## Copy back your extensions
 1. Restore the extensions that were previously backed up into the folder where you originally backed up your extensions at the start of the upgrade process.
 
