@@ -63,18 +63,8 @@ CiviCRM will not run properly if files from previous version are present after t
     $ unzip <civicrm_download_file>.zip
     ```
 
-!!! caution **Upgrading from CiviCRM 4.1**:
-    If you have upgraded from a CiviCRM 4.1 version, check the contents of `civicrm.settings.php`. Make sure at the very end of the file these 2 lines exist, and if not, add them.
-    ```php
-    require_once 'CRM/Core/ClassLoader.php';
-    CRM_Core_ClassLoader::singleton()->register();
-    ```
-
-!!! note For **CiviCRM 4.6** and older:
-    For Versions installed prior to 4.7 - Restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory.
-    
-!!! note For **CiviCRM 4.7+**:
-    If your `civicrm.settings.php` is located in your uploads directory it is not necesasry to restore this file.
+!!! note "Restoring the CiviCRM settings file."
+    If you're upgrading from 4.6 or earlier you should restore the original `civicrm.settings.php` file from your backup into the `<wordpress_root>/wp-content/plugins/civicrm/` directory. For later versions, your `civicrm.settings.php` should be located in the uploads directory it is not necessary to restore this file, but you should check that it exists and has the correct settings.
 
 1. If you are using the `<wordpress_root>/<content-dir>/plugins/civicrm/civicrm/settings_location.php` file in your implementation, restore this file from your back-up.
 
