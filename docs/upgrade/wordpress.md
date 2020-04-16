@@ -16,7 +16,6 @@ Use this document to upgrade CiviCRM installations on WordPress to the latest Ci
 
 If using localization, also download the latest version of the localization files. See the [CiviCRM Localisation](https://wiki.civicrm.org/confluence/display/CRMDOC/i18n+Administrator%27s+Guide%3A+Using+CiviCRM+in+your+own+language) page about how to install files for running CiviCRM in languages other than American English.
 
-
 ## Prepare WordPress
 
 Make sure you have logged in to WordPress as an administrator. Do not log out until the entire process is complete.
@@ -27,13 +26,13 @@ Make sure you have logged in to WordPress as an administrator. Do not log out un
 
 The [before upgrading](index.md#before-upgrading) steps describe steps for backing _everything_ up in case something goes wrong during the upgrade. In addition to this important safeguard, we also need to actually _use_ the `civicrm.settings.php` settings file, as it is, during the upgrade.
 
-!!! note For **CiviCRM 4.7+**:
+!!! note "For **CiviCRM 4.7+**"
     `<wordpress_root>/content-dir/uploads/civicrm/civicrm.settings.php`
 
-!!! note For **CiviCRM 4.6** and older:	
+!!! note "For **CiviCRM 4.6** and older"	
     `<wordpress_root>/wp-content/plugins/civicrm/civicrm.settings.php`	
 
-    *The installer in 4.7 and above does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)*
+The installer in 4.7 and above does not assume that the content-dir is wp-content. It probably is, but can be renamed/moved as detailed [here](https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder)
    
 1. Copy this file to a location outside your WordPress project. You may need to restore it after upgrading.
 1. Also, if you are using the `<wordpress_root>/wp-content/plugins/civicrm/civicrm/settings_location.php` file in your implementation, make a copy of this as well as you will need to restore it after upgrading.
