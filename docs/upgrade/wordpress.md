@@ -99,7 +99,7 @@ Delete all files in your `templates_c` directory
 !!! note "For CiviCRM 4.7 and later"
     `<wordpress_root>/<content-dir>/uploads/civicrm/templates_c`
 
-!!! note For CiviCRM 4.6 and older:	
+!!! note "For CiviCRM 4.6 and older"	
     `<wordpress_root>/<content-dir>/plugins/files/civicrm/templates_c`
     
 ## Copy back your extensions
