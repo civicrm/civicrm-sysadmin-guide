@@ -6,6 +6,31 @@ site_author: The CiviCRM community
 theme: 
   name: material
 
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      guess_lang: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences:
+      css_class: codehilite
+  - pymdownx.inlinehilite:
+      css_class: codehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
+
+plugins:
+  - search:
+      lang: en
+
 nav:
 - Home: index.md
 - Planning your site:
@@ -103,24 +128,3 @@ nav:
     - Switch from Drupal to Wordpress: misc/switching-cms/drupal-to-wordpress.md
     - Switch from Joomla to Drupal: misc/switching-cms/joomla-to-drupal.md 
   #- Data redaction: misc/redaction.md
-
-markdown_extensions:
-  - attr_list
-  - admonition
-  - def_list
-  - toc:
-      permalink: true
-  - pymdownx.highlight:
-      guess_lang: true
-      extend_pygments_lang:
-        - name: php
-          lang: php
-          options:
-            startinline: true
-  - pymdownx.superfences:
-      css_class: codehilite
-  - pymdownx.inlinehilite:
-      css_class: codehilite
-  - pymdownx.tilde
-  - pymdownx.betterem
-  - pymdownx.mark
