@@ -3,14 +3,20 @@
 ## Demonstration sites
 
 CiviCRM hosts several demo sites - there is at least one for each of the
-supported **Content Management Systems** (CMS) - Drupal, Joomla, and
-WordPress. The demo sites present a working copy of the latest stable
-version of CiviCRM with sample data. You can use them to play around
-with CiviCRM, but be aware that they are publicly viewable so you
+supported **Content Management Systems** (CMS) - Backdrop, Drupal 7, Joomla, and
+WordPress. The demo sites present a working copy of the latest master of CiviCRM with sample data. 
+You can use them to play around with CiviCRM, 
+but be aware that they are publicly viewable so you
 shouldn't enter personal data.
 
+!!! note
+    These sites run on `master` for the most part (some CMSs are harder to automate!)
+    the code is bleeding edge and the "official" demo sites are intended for issue reproduction
+    and testing purposes - whilst they do demonstrate the functionality of CiviCRM this is not their
+    primary purpose and they should be considered **sandboxes** rather than demos.
+
 A list of the available demos can be found at
-[https://civicrm.org/go/demo](https://civicrm.org/demo).
+[https://civicrm.org/demo](https://civicrm.org/demo).
 
 As these are public demo sites, you may from time to time find that they are
 configured unexpectedly, miss some functionality, or appear in different
