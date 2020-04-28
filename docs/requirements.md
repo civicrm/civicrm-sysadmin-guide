@@ -49,6 +49,8 @@ See our page on [choosing a CMS](planning/cms.md) for more information about the
 
 The PHP version used on the command line is important and should match the version used by the web server. Using PHP 7.1 (or lower) on the command line and using PHP 7.2 (or higher) on the web server can cause issues.
 
+It is also important to ensure that the same PHP extensions/modules are loaded on the command line and the web server.
+
 ### PHP Version
 
 |  | CiviCRM 5.21 ESR | CiviCRM 5.13 ESR | CiviCRM 5.x.x stable |
