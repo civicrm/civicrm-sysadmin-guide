@@ -45,6 +45,12 @@ See our page on [choosing a CMS](planning/cms.md) for more information about the
 
 ## PHP {:#php}
 
+### PHP Version on the Command Line
+
+The PHP version used on the command line is important and should match the version used by the web server. Using PHP 7.1 (or lower) on the command line and using PHP 7.2 (or higher) on the web server can cause issues.
+
+It is also important to ensure that the same PHP extensions/modules are loaded on the command line and the web server.
+
 ### PHP Version
 
 |  | CiviCRM 5.21 ESR | CiviCRM 5.13 ESR | CiviCRM 5.x.x stable |
@@ -74,12 +80,14 @@ To install these extensions, you will typically install a separate package withi
 
 * [PHP SOAP](http://www.php.net/soap) - required to use the SOAP processor (required for the CiviSMTP service)
 
-#### Historical Requirements - See Notes
+#### PHP 7.1 and the MCrypt library
 
 * [PHP MCrypt](http://php.net/manual/en/intro.mcrypt.php) - the MCrypt extension is no longer recommended for new installations.
 
     !!! warning "PHP 7.2 Compatibility"
-        7.2 upgrade warning - 7.2 does not support mcrypt and if mcrypt is not installed the smtp password (if entered) will need to be re-saved once you update your php version to 7.2.
+        7.2 upgrade warning - 7.2 does not support MCrypt and if MCrypt is not installed the SMTP password (if entered) will need to be re-saved once you update your PHP version to 7.2.
+    !!! warning "PHP 7.1 cannot access SMTP credentials"
+        CiviCRM will incorrectly attempt to decrypt the SMTP password using the MCrypt library when executed using PHP 7.1. If PHP 7.2 or higher was used to save the SMTP password. This can occur if the PHP version on the command line does not match the web server version.
 
 ### PHP Configuration
 
