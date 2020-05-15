@@ -105,11 +105,11 @@ Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 ### MySQL Version
 
-Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  CiviCRM does still work on older versions but there is some functionality missing, notably around ensuring various database actions don't compete for the same resources.
+Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  As of version 5.26 the minimum install version for CiviCRM is 5.5, users on versions before that are advised to upgrade their MySQL instance to a recommended version. 
 
 #### MySQL 8
 
-CiviCRM is currently not known to work with MySQL 8, there is an [open issue for MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) have open issues with regards to MySQL 8 support. [Drupal 8](https://www.drupal.org/docs/8/system-requirements/database-server) supports MySQL 8 as of version 8.6 as per [this issue](https://www.drupal.org/project/drupal/issues/2966523), Current versions of WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appear to be compatible with MySQL 8
+CiviCRM versions as of 5.24 has been shown to be able to run on MySQL 8 through the execution of our test matrix. It is not yet recommended as not all of the Content Management Systems support MySQL 8, CiviCRM MySQL 8 support is being tracked in the following issue: [open issue for MySQL 8 support](https://lab.civicrm.org/dev/core/issues/392). It is also worth knowing that both [Backdrop](https://forum.backdropcms.org/forum/installing-backdrop-1126-mysql-8-sqlmode-cant-be-set-value-noautocreateuser) and [Drupal 7](https://www.drupal.org/project/drupal/issues/2978575) have open issues with regards to MySQL 8 support. [Drupal 8](https://www.drupal.org/docs/8/system-requirements/database-server) supports MySQL 8 as of version 8.6 as per [this issue](https://www.drupal.org/project/drupal/issues/2966523), Current versions of WordPress and [Joomla](https://docs.joomla.org/Joomla_and_MySQL_8) appear to be compatible with MySQL 8
 
 ### MySQL Configuration
 
