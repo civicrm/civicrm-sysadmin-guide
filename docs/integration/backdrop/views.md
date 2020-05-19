@@ -60,7 +60,7 @@ These instructions assume CiviCRM and Backdrop are on separate databases located
     !!! error ""
         PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'kckruppc_every.semaphore' doesn't exist: SELECT ...
 
-    ...you need to include an additional line, `'default' => '<drupaltableprefix>'`, in your `settings.php` just after `$database_prefx = array(`. You can find more information on this error in [this forum post](http://forum.civicrm.org/index.php?topic=20910.0).
+    ...you need to include an additional line, `'default' => '<backdroptableprefix>'`, in your `settings.php` just after `$database_prefix = array(`. You can find more information on this error in [this forum post](http://forum.civicrm.org/index.php?topic=20910.0).
 
     ![Screenshot demonstrating where to add a table prefix in your settings](../../img/backdrop-views-settings.png)
     
@@ -104,4 +104,3 @@ consultant](https://civicrm.org/partners-contributors) if you become stuck.
 -   Staff, board of directors or committee lists
 -   A list of current members
 -   ...and more!
-
