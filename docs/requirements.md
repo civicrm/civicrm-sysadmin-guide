@@ -105,7 +105,7 @@ Other database servers (such as PostgreSQL) are not compatible with CiviCRM.
 
 ### MySQL Version
 
-Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  As of version 5.26 the minimum install version for CiviCRM is 5.5, users on versions before that are advised to upgrade their MySQL instance to a recommended version. 
+Your MySQL version should be **5.7.5 or greater** or MariaDB **10.0.2 or greater**.  As of version 5.26 the minimum install version for CiviCRM is 5.5, users on versions before that are advised to upgrade their MySQL instance to a recommended version. CiviCRM may not run correctly on MySQL 5.5 and/or 5.6 as these versions don't support some of the functionality CiviCRM uses to ensure that database actions don't compete for the same resources.
 
 #### MySQL 8
 
