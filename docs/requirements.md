@@ -22,18 +22,13 @@ See our page on [choosing a CMS](planning/cms.md) for more information about the
 
 ### Drupal
 
-* Drupal 8 - Not yet officially supported
+* Drupal 8
 
-    !!! bug "Work in progress"
-        CiviCRM functions with Drupal 8 but (as of October 2019) it has some minor bugs, and doesn't have an official release, relying instead on some unofficial tools and processes. See [the integration module](https://github.com/civicrm/civicrm-drupal-8/blob/master/README.md) for more information.
-
-* Drupal 7 - Compatible with CiviCRM 4.1 and higher.
-
-* Drupal 6 - No longer supported.
+* Drupal 7
 
 ### WordPress
 
-* WordPress 3.4.x or newer is required.
+* WordPress 4.9 or newer is required.
 
 ### Joomla
 
