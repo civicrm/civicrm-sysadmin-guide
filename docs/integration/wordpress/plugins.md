@@ -102,6 +102,16 @@ It also requires:
 
 [Download](https://github.com/christianwach/civicrm-event-organiser)
 
+### [Content Views CiviCRM with CiviCRM Data Processor](https://github.com/agileware/content-views-civicrm-data-processor)
+
+Plugin for integrating [Content Views](https://wordpress.org/plugins/content-views-query-and-display-post-page/) with [CiviCRM](https://civicrm.org) using the [CiviCRM Data Processor](https://lab.civicrm.org/extensions/dataprocessor) as the data source.
+
+Requires:
+* [CiviCRM Data Processor](https://lab.civicrm.org/extensions/dataprocessor) extension to be installed in CiviCRM
+* [Content Views](https://wordpress.org/plugins/content-views-query-and-display-post-page/) plugin to be installed in WordPress
+
+[Download](https://github.com/agileware/content-views-civicrm-data-processor)
+
 
 ## Widgets
 
