@@ -41,6 +41,22 @@ It is not currently possible to disable the synchronisation or synchronise an ex
 
 [Download](https://develop.tadpole.cc/plugins/civicrm-groups-sync)
 
+### [CiviCRM ACF Integration](https://github.com/christianwach/civicrm-acf-integration)
+
+CiviCRM ACF (Advanced Custom Fields) Integration is a WordPress plugin that enables integration between CiviCRM Entities and WordPress Entities with data synced via [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin.
+
+[Documentation](https://github.com/christianwach/civicrm-acf-integration/blob/master/README.md)
+
+[Download](https://github.com/christianwach/civicrm-acf-integration)
+
+**Requirements**
+
+To use this plugin, the following is needed:
+
+* WordPress
+* CiviCRM 5.x and above
+* [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin installed
+
 ### [Caldera Forms CiviCRM](https://github.com/mecachisenros/caldera-forms-civicrm)
 
 A WordPress plugin that integrates the [Caldera Forms plugin](https://wordpress.org/plugins/caldera-forms/) with CiviCRM.
