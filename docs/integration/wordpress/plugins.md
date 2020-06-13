@@ -16,6 +16,15 @@ CiviCRM Admin Utilities modifies CiviCRM’s behaviour in single site and multis
 
 [Download](https://wordpress.org/plugins/civicrm-admin-utilities/)
 
+### [WordPress CiviCRM UX](https://github.com/agileware/wp-civicrm-ux)
+
+WordPress CiviCRM UX - A better user experience for integrating WordPress and CiviCRM.
+This plugin adds many useful shortcodes, some new Caldera Forms smart tags and provides additional functionality to improve the user experience for integrating CiviCRM with a WordPress site.
+
+Read the [WordPress CiviCRM UX usage documentation](https://github.com/agileware/wp-civicrm-ux/blob/master/USAGE.md) for more details.
+
+[Download](https://github.com/agileware/wp-civicrm-ux/)
+
 ### [CiviCRM WordPress Profile Sync](https://wordpress.org/plugins/civicrm-wp-profile-sync/)
 
 The CiviCRM WordPress Profile Sync plugin keeps the “First Name”, “Last Name”, “Email Address” and “Website” fields of a WordPress (and BuddyPress) user profile in sync with the corresponding fields of a CiviCRM contact. The synchronisation takes place regardless of whether the changes are made in WordPress, BuddyPress or CiviCRM.
