@@ -202,7 +202,7 @@ Scroll to the bottom, find where it says **Miscellaneous Utilities**.
 
 Once you have that, you should be good to go!
 
-HOWEVER...
+**However...**
 
 If you still experience errors or problems at this point, make sure to clear your browser cache. If to no avail, try private/incognito browsing. Finally, as a last point, clear your DNS cache.
 
