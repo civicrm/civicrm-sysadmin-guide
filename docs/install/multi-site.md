@@ -109,7 +109,7 @@ if ( ! defined( 'CIVICRM_SETTINGS_PATH' ) ) {
 
 This will define the path for all websites on the multisite and when enabled they will access the CiviCRM instance defined by the path settings and access is managed through the `civicrm.settings.php` as this example outlines.
 
-#####Subdomain Wordpress Multisite
+##### WordPress Multisite using Subdomains
 If you have your multisite set up as subdomains, follow these steps.
 
 !!! Change your `civicrm.settings.php` file
