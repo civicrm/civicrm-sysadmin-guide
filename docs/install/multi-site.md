@@ -94,7 +94,7 @@ Depending on how you would like to install civicrm for site 2, proceed to one of
 
 * The sites can share a single instance of the civicrm code in `sites/all/modules/` directory.
 
-#### WordPress multisites
+#### WordPress Multisites
 
 If using a WordPress multisite when CiviCRM is activated the `civicrm.settings.php` file is added within the [uploads directory for that site](https://codex.wordpress.org/Multisite_Network_Administration#Uploaded_File_Path). Site 1, generally the main site of the multisite, uses the default upload path `/wp-content/uploads/civicrm`.
 
