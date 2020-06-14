@@ -183,7 +183,7 @@ You do NOT need to do the **Create the domain record** step (stated above) if yo
 
 `wp cv api MultisiteDomain.create debug=1 sequential=1 name="Sub1ExampleOrg" is_transactional=0 group_id="2" contact_id="4"`
 
-!!! Important Note
+!!! note "Important Note"
 `group_id`: This can be found as the `group_id` column in the table called `civicrm_group_organization`. 
 `contact_id`: This can be found as the `organization_id` column in the table called `civicrm_group_organization`.
 
