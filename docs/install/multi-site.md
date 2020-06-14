@@ -128,15 +128,15 @@ Find the block of code that resembles this:
 	// Define CiviCRM Multisite Domain data.
 	$data = array(
 
-		'https://domain.org' => array(
+		'https://example.org' => array(
 			'domain_id' => 1,
 			'domain_group_id' => 7,
 			'domain_org_id' => 1,
-			//'wp.frontend.base.url' => 'https://domain.org/',
-			//'wp.backend.base.url' => 'https://domain.org/wp-admin/',
-			'extensionsDir' => '/home/customer/www/domain.org/public_html/extensions',
-			'extensionsURL' => 'https://domain.org/extensions',
-			'userFrameworkResourceURL' => 'https://domain.org/wp-content/plugins/civicrm/civicrm/',
+			//'wp.frontend.base.url' => 'https://example.org/',
+			//'wp.backend.base.url' => 'https://example.org/wp-admin/',
+			'extensionsDir' => '/var/www/example.org/web/extensions',
+			'extensionsURL' => 'https://example.org/extensions',
+			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
     ),
     
 		'https://sub2.lpnevada.org' => array(
