@@ -121,7 +121,7 @@ Find the block of code that resembles this:
     define('CIVICRM_UF_BASEURL' , home_url());
     ```
 
-REMOVE IT ENTIRELY, and replace it with the following code:
+**Remove it entirely**, and replace it with the following code:
 ```php
  function civicrm_multisite_get_domain_data() {
 
