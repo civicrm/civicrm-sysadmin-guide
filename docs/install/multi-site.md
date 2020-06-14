@@ -181,7 +181,7 @@ Big thanks to **haystack** for [this code](https://gist.github.com/christianwach
 
 You do NOT need to do the **Create the domain record** step (stated above) if you use [this](https://github.com/eileenmcnaughton/org.civicrm.multisite) extension. It is recommended you copy and paste the following command into your shell/terminal (just updating it a little bit here from the repo's original README.md):
 
-`wp cv api MultisiteDomain.create debug=1 sequential=1 name="Bobita" is_transactional=0 group_id="2" contact_id="4"`
+`wp cv api MultisiteDomain.create debug=1 sequential=1 name="Sub1ExampleOrg" is_transactional=0 group_id="2" contact_id="4"`
 
 !!! Important Note
 `group_id`: This can be found as the `group_id` column in the table called `civicrm_group_organization`. 
