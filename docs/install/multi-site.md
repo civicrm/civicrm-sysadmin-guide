@@ -113,7 +113,7 @@ This will define the path for all websites on the multisite and when enabled the
 If you have your multisite set up as subdomains, follow these steps.
 
 !!! Change your `civicrm.settings.php` file
-Keep in mind, you should ONLY change the `civicrm.settings.php` file that lives in `wp-content/uploads/civicrm` (the parent/main site's uploads folder).
+Keep in mind, you should **only** change the `civicrm.settings.php` file that lives in `wp-content/uploads/civicrm` (the parent/main site's uploads folder).
 
 Find the block of code that resembles this:
     ```php
