@@ -189,7 +189,7 @@ You do NOT need to do the **Create the domain record** step (stated above) if yo
 
 **You will need to do this for each subdomain, so keyboard shortcuts are strongly encouraged.**
 
-After you've done this, if you don't have it already, download and install the [CiviCRM Admin Utilities extension](https://wordpress.org/plugins/civicrm-admin-utilities/) plugin for WordPress. **Make sure it (and CiviCRM itself) is Network Activated!** You will need it in a second.
+After you've done this, if you don't have it already, download and install the [CiviCRM Admin Utilities plugin for WordPress](https://wordpress.org/plugins/civicrm-admin-utilities/). **Make sure it (and CiviCRM itself) is Network Activated!** You will need it in a second.
 
 Go to one of your subdomains via its address, i.e. http://sub1.domain.org. 
 
