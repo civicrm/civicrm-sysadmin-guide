@@ -196,6 +196,7 @@ Go to one of your subdomains via its address, i.e. http://sub1.domain.org.
 Along your left menu, find **Settings**, and hover over it. Click **CiviCRM Admin Utilities** when the menu pops out.
 
 Scroll to the bottom, find where it says **Miscellaneous Utilities**.
+
 1. Check the box next to **Clear Caches**.
 2. Once it refreshes the page, return to the CiviCRM Admin Utilities page. Click the link that says **Click this to rebuild the CiviCRM menu.**
 3. Again, once it refreshes, return to the CiviCRM Admin Utilities page. Click the last link that says **Click this to rebuild the triggers in the CiviCRM database.**
