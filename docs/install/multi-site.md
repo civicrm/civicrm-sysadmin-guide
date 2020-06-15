@@ -179,7 +179,7 @@ Rinse and repeat for any additional subdomains.
 
 Big thanks to **haystack** for [this code](https://gist.github.com/christianwach/5ca120670152df3dbfb8d3ca42079a96), which was adapted to fit subdomain setup.
 
-You do NOT need to do the **Create the domain record** step (stated above) if you use [this](https://github.com/eileenmcnaughton/org.civicrm.multisite) extension. It is recommended you copy and paste the following command into your shell/terminal (just updating it a little bit here from the repo's original README.md):
+You do **not** need to do the **Create the domain record** step (stated above) if you use [the multisite extension](https://github.com/eileenmcnaughton/org.civicrm.multisite). It is recommended you copy and paste the following command into your shell/terminal:
 
 `wp cv api MultisiteDomain.create debug=1 sequential=1 name="Sub1ExampleOrg" is_transactional=0 group_id="2" contact_id="4"`
 
