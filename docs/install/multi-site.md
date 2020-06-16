@@ -139,15 +139,15 @@ Find the block of code that resembles this:
 			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
     ),
     
-		'https://sub2.lpnevada.org' => array(
+		'https://sub.example.org' => array(
 			'domain_id' => 21,
 			'domain_group_id' => 13,
 			'domain_org_id' => 35603,
-			//'wp.frontend.base.url' => 'https://sub1.domain.org/',
-			//'wp.backend.base.url' => 'https://sub1.domain.org/wp-admin/',
-			'extensionsDir' => '/home/customer/www/domain.org/public_html/extensions',
-			'extensionsURL' => 'https://domain.org/extentions',
-			'userFrameworkResourceURL' => 'https://domain.org/wp-content/plugins/civicrm/civicrm/',
+			//'wp.frontend.base.url' => 'https://sub.example.org/',
+			//'wp.backend.base.url' => 'https://sub.example.org/wp-admin/',
+			'extensionsDir' => '/var/www/example.org/web/extensions',
+			'extensionsURL' => 'https://example.org/extensions',
+			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
 		),
 
 		'https://sub0.example.org' => array(
