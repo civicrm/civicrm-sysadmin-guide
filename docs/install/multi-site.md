@@ -161,19 +161,6 @@ Find the block of code that resembles this:
 			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
     ),
     
-		'https://sub3.domain.org' => array(
-			'domain_id' => 22,
-			'domain_group_id' => 24,
-			'domain_org_id' => 35605,
-			//'wp.frontend.base.url' => 'https://sub3.domain.org/',
-			//'wp.backend.base.url' => 'https://sub3.domain.org/wp-admin/',
-			'extensionsDir' => '/home/customer/www/domain.org/public_html/extensions',
-			'extensionsURL' => 'https://domain.org/extentions',
-			'userFrameworkResourceURL' => 'https://domain.org/wp-content/plugins/civicrm/civicrm/',
-    ),
-
-	);
-```
 
 Rinse and repeat for any additional subdomains.
 
