@@ -98,7 +98,7 @@ Depending on how you would like to install civicrm for site 2, proceed to one of
 
 If using a WordPress multisite when CiviCRM is activated the `civicrm.settings.php` file is added within the [uploads directory for that site](https://codex.wordpress.org/Multisite_Network_Administration#Uploaded_File_Path). Site 1, generally the main site of the multisite, uses the default upload path `/wp-content/uploads/civicrm`.
 
-If you are looking to share one CiviCRM database across multiple websites, for a chapter like setup, the following needs to be added to your `wp-config.php` file (lives in `public_html/example.com` or `example.com/public_html`, depending on your host).
+If you are looking to share one CiviCRM database across multiple websites, for a chapter like setup, the following needs to be added to your `wp-config.php` file.
 
 ~~~
 // define CiviCRM constants here
