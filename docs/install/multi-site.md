@@ -150,15 +150,15 @@ Find the block of code that resembles this:
 			'userFrameworkResourceURL' => 'https://domain.org/wp-content/plugins/civicrm/civicrm/',
 		),
 
-		'https://sub2.domain.org' => array(
+		'https://sub0.example.org' => array(
 			'domain_id' => 20,
 			'domain_group_id' => 23,
 			'domain_org_id' => 35604,
-			//'wp.frontend.base.url' => 'https://sub2.domain.org/',
-			//'wp.backend.base.url' => 'https://sub2.domain.org/wp-admin/',
-			'extensionsDir' => '/home/customer/www/lpnevada.org/public_html/extensions',
-			'extensionsURL' => 'https://domain.org/extentions',
-			'userFrameworkResourceURL' => 'https://domain.org/wp-content/plugins/civicrm/civicrm/',
+			//'wp.frontend.base.url' => 'https://sub0.example.org/',
+			//'wp.backend.base.url' => 'https://sub0.example.org/wp-admin/',
+			'extensionsDir' => '`<path to extensions folder>`',
+			'extensionsURL' => '`<URL to extensions directory>`',
+			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
     ),
     
 		'https://sub3.domain.org' => array(
