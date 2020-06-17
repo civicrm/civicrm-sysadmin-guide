@@ -123,7 +123,7 @@ cv: 4.5 
     Causes conflict with Backbone JQuery calls, mainly noticed in Events -> Manage -> Online Registration
     
 * Workaround:  
-* Other comments:  
+* Other comments:  Fixed somewhere around 4.7.29.
 
 ## LDD Directory  Lite
 
