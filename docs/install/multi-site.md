@@ -206,51 +206,50 @@ Keep in mind, you should **only** change the `civicrm.settings.php` file that li
 Find the block of code that resembles this:
     
 ```php
-echo "you need to configure site : " . home_url();
-define('CIVICRM_UF_BASEURL' , home_url());
+if (!defined('CIVICRM_UF_BASEURL')) {
+  define( 'CIVICRM_UF_BASEURL'      , 'http://example.org/');
+}
 ```
 
 **Remove it entirely**, and replace it with the following code:
 
 ```php
- function civicrm_multisite_get_domain_data() {
-
-	// Define CiviCRM Multisite Domain data.
-	$data = array(
-
-		'https://example.org' => array(
-			'domain_id' => 1,
-			'domain_group_id' => 7,
-			'domain_org_id' => 1,
-			//'wp.frontend.base.url' => 'https://example.org/',
-			//'wp.backend.base.url' => 'https://example.org/wp-admin/',
-			'extensionsDir' => '<path to extensions folder>',
-			'extensionsURL' => '<URL to extensions directory>',
-			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
-    ),
-    
-		'https://sub.example.org' => array(
-			'domain_id' => 21,
-			'domain_group_id' => 13,
-			'domain_org_id' => 35603,
-			//'wp.frontend.base.url' => 'https://sub.example.org/',
-			//'wp.backend.base.url' => 'https://sub.example.org/wp-admin/',
-			'extensionsDir' => '/var/www/example.org/web/extensions',
-			'extensionsURL' => 'https://example.org/extensions',
-			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
-		),
-
-		'https://sub0.example.org' => array(
-			'domain_id' => 20,
-			'domain_group_id' => 23,
-			'domain_org_id' => 35604,
-			//'wp.frontend.base.url' => 'https://sub0.example.org/',
-			//'wp.backend.base.url' => 'https://sub0.example.org/wp-admin/',
-			'extensionsDir' => '<path to extensions folder>',
-			'extensionsURL' => '<URL to extensions directory>',
-			'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
-    ),
-```    
+function civicrm_multisite_get_domain_data() {
+    // Define CiviCRM Multisite Domain data.
+    $data = array(
+        'https://example.org' => array(
+	    'domain_id' => 1,
+	    'domain_group_id' => 7,
+	    'domain_org_id' => 1,
+	    //'wp.frontend.base.url' => 'https://example.org/',
+	    //'wp.backend.base.url' => 'https://example.org/wp-admin/',
+	    'extensionsDir' => '<path to extensions folder>',
+	    'extensionsURL' => '<URL to extensions directory>',
+	    'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
+        ),
+	'https://sub.example.org' => array(
+	    'domain_id' => 21,
+	    'domain_group_id' => 13,
+	    'domain_org_id' => 35603,
+	    //'wp.frontend.base.url' => 'https://sub.example.org/',
+	    //'wp.backend.base.url' => 'https://sub.example.org/wp-admin/',
+	    'extensionsDir' => '<path to extensions folder>',
+	    'extensionsURL' => '<URL to extensions directory>',
+	    'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
+	),
+	'https://sub0.example.org' => array(
+	    'domain_id' => 20,
+	    'domain_group_id' => 23,
+	    'domain_org_id' => 35604,
+	    //'wp.frontend.base.url' => 'https://sub0.example.org/',
+	    //'wp.backend.base.url' => 'https://sub0.example.org/wp-admin/',
+	    'extensionsDir' => '<path to extensions folder>',
+	    'extensionsURL' => '<URL to extensions directory>',
+	    'userFrameworkResourceURL' => 'https://example.org/wp-content/plugins/civicrm/civicrm/',
+        ), 
+    )
+}
+```   
 
 Rinse and repeat for any additional subdomains.
 
