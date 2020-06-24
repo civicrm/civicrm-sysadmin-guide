@@ -28,12 +28,17 @@ global $civicrm_setting;
 
 To override the Temporary Files directory for a test site, add these lines to _civicrm.settings.php_:
 
-Note the array key 'domain' is purely a placeholder and could be anything. The key value is no longer meaningful.
-
 ```
 // Override the Temporary Files directory
 $civicrm_setting['domain']['customFileUploadDir'] = '/var/www/testing/sites/default/files/civicrm/upload';
 ```
+
+In this example, note these three parts:
+
+1. __Entity__ (`'domain'`): This is a `domain`-level setting. The vast majority of settings are `domain`-level. A handful of settings are `contact`-level.
+   (*Note: In CiviCRM <=4.6, this field used longer expressions like `Directory Preferences` or `URL Preferences`. For backward compatibility, these are treated as aliases for `domain`.*)
+2. __Name__ (`'customFileUploadDir'`): This is the name of the setting.
+3. __Value__ (`'/var/www/testing/sites/default/files/civicrm/upload'`): This is the new value of the setting.
 
 ## List of Additional Settings
 
