@@ -28,9 +28,11 @@ global $civicrm_setting;
 
 To override the Temporary Files directory for a test site, add these lines to _civicrm.settings.php_:
 
+Note the array key 'domain' is purely a placeholder and could be anything. The key value is no longer meaningful.
+
 ```
 // Override the Temporary Files directory
-$civicrm_setting['Directory Preferences']['customFileUploadDir'] = '/var/www/testing/sites/default/files/civicrm/upload';
+$civicrm_setting['domain']['customFileUploadDir'] = '/var/www/testing/sites/default/files/civicrm/upload';
 ```
 
 ## List of Additional Settings
@@ -39,21 +41,21 @@ The table below shows some of the settings file "constants" which will override 
 
 | Admin Field (Form) | Settings File Override Example |
 | --- | --- |
-| **Temporary Files** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['uploadDir'] = '/path/to/upload-dir'l=;` |
-| **Images** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['imageUploadDir'] = '/path/to/image-upload-dir';` |
-| **Custom Files** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['customFileUploadDir'] = '/path/to/file-upload-dir';` |
-| **Custom Templates** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['customTemplateDir'] = '/path/to/template-dir';` |
-| **Custom PHP Path Directory** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['customPHPPathDir'] = '/path/to/custom-php-dir';` |
-| **Extensions Directory** (System Settings > Directories) | `$civicrm_setting['Directory Preferences']['extensionsDir'] = '/path/to/extensions-dir';` |
-| **CiviCRM Resource URL** (System Settings > Resource URLs) | `$civicrm_setting['URL Preferences']['userFrameworkResourceURL'] = 'http://example.com/example-resource-url/';` |
-| **Image Upload URL** (System Settings > Resource URLs) | `$civicrm_setting['URL Preferences']['imageUploadURL'] = 'http://example.com/example-image-upload-url';` |
-| **Custom CiviCRM CSS URL** (System Settings > Resource URLs) | `$civicrm_setting['URL Preferences']['customCSSURL'] = 'http://example.com/example-css-url';` |
-| **Extensions Resource URL** (System Settings > Resource URLs) | `$civicrm_setting['URL Preferences']['extensionsURL'] = 'http://example.com/pathtoextensiondir';` |
-| **Disable display of Community Messages on home dashboard** | `$civicrm_setting['CiviCRM Preferences']['communityMessagesUrl'] = false;` |
-| **Disable automatic download / installation of extensions** | `$civicrm_setting['Extension Preferences']['ext_repo_url'] = false;` |
-| **Set How long HTTP Requests could last for before timing out** | `$civicrm_setting['CiviCRM Preferences']['http_timeout'] = '0.5';` |
-| **Enable SSL** | `$civicrm_setting['CiviCRM Preferences']['enableSSL'] = false;` |
-| **Verify SSL** | `$civicrm_setting['CiviCRM Preferences']['verifySSL'] = false;` |
+| **Temporary Files** (System Settings > Directories) | `$civicrm_setting['domain']['uploadDir'] = '/path/to/upload-dir'l=;` |
+| **Images** (System Settings > Directories) | `$civicrm_setting['domain']['imageUploadDir'] = '/path/to/image-upload-dir';` |
+| **Custom Files** (System Settings > Directories) | `$civicrm_setting['domain']['customFileUploadDir'] = '/path/to/file-upload-dir';` |
+| **Custom Templates** (System Settings > Directories) | `$civicrm_setting['domain']['customTemplateDir'] = '/path/to/template-dir';` |
+| **Custom PHP Path Directory** (System Settings > Directories) | `$civicrm_setting['domain']['customPHPPathDir'] = '/path/to/custom-php-dir';` |
+| **Extensions Directory** (System Settings > Directories) | `$civicrm_setting['domain']['extensionsDir'] = '/path/to/extensions-dir';` |
+| **CiviCRM Resource URL** (System Settings > Resource URLs) | `$civicrm_setting['domain']['userFrameworkResourceURL'] = 'http://example.com/example-resource-url/';` |
+| **Image Upload URL** (System Settings > Resource URLs) | `$civicrm_setting['domain']['imageUploadURL'] = 'http://example.com/example-image-upload-url';` |
+| **Custom CiviCRM CSS URL** (System Settings > Resource URLs) | `$civicrm_setting['domain']['customCSSURL'] = 'http://example.com/example-css-url';` |
+| **Extensions Resource URL** (System Settings > Resource URLs) | `$civicrm_setting['domain']['extensionsURL'] = 'http://example.com/pathtoextensiondir';` |
+| **Disable display of Community Messages on home dashboard** | `$civicrm_setting['domain']['communityMessagesUrl'] = false;` |
+| **Disable automatic download / installation of extensions** | `$civicrm_setting['domain']['ext_repo_url'] = false;` |
+| **Set How long HTTP Requests could last for before timing out** | `$civicrm_setting['domain']['http_timeout'] = '0.5';` |
+| **Enable SSL** | `$civicrm_setting['domain']['enableSSL'] = false;` |
+| **Verify SSL** | `$civicrm_setting['domain']['verifySSL'] = false;` |
 
 For a full list of settings, see [the master settings PHP files](https://github.com/civicrm/civicrm-core/tree/master/settings)
 
