@@ -50,6 +50,7 @@ It is also important to ensure that the same PHP extensions/modules are loaded o
 
 |  | CiviCRM 5.21 ESR | CiviCRM 5.13 ESR | CiviCRM 5.x.x stable |
 | -- | -- | -- | -- |
+| PHP 7.4 | **incompatible** | **incompatible** | Testing has shown that as of CiviCRM 5.28 can be run but issues are still being worked on in this [lab issue](https://lab.civicrm.org/dev/core/-/issues/1496) |
 | PHP 7.3 | compatible and **recommended** | testing incomplete but preliminary testing did not find any issues | compatible and **recommended** |
 | PHP 7.2 | compatible and **recommended** - but see note below about resaving the SMTP password | compatible and **recommended** - but see note below about resaving the SMTP password| compatible and **recommended** but see note below about resaving the SMTP password |
 | PHP 7.1 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 |  compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 | compatible but **not recommended** due to to [PHP end-of life](http://php.net/eol.php) in Dec 2019 |
@@ -66,10 +67,11 @@ To install these extensions, you will typically install a separate package withi
 #### Required for CiviCRM Core
 
 * [PHP BCMath](https://www.php.net/bcmath) - required for calculating financial values in CiviCRM Core.
-* [PHP Curl](http://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet.
-* [PHP DOM XML](http://www.php.net/manual/en/dom.setup.php) - required by CiviCase.
-* [PHP Multibyte](http://php.net/manual/en/ref.mbstring.php) - required for internationalisation and proper encoding of fields.
-* [PHP Zip](http://php.net/manual/en/book.zip.php) - required for unzipping auto-downloaded extensions so they can be installed from the browser.
+* [PHP Curl](https://www.php.net/curl) - required for many payment processors, the extension manager, and the CiviCRM News dashlet.
+* [PHP DOM XML](https://www.php.net/manual/en/dom.setup.php) - required by CiviCase.
+* [PHP Multibyte](https://php.net/manual/en/ref.mbstring.php) - required for internationalisation and proper encoding of fields.
+* [PHP Zip](https://php.net/manual/en/book.zip.php) - required for unzipping auto-downloaded extensions so they can be installed from the browser.
+* [PHP INTL](https://www.php.net/intl) - required for outputting localized formatted number strings from CiviCRM 5.28 onwards
 
 #### Required for Third-Party Functionality or CiviCRM Extensions
 
@@ -77,7 +79,7 @@ To install these extensions, you will typically install a separate package withi
 
 #### PHP 7.1 and the MCrypt library
 
-* [PHP MCrypt](http://php.net/manual/en/intro.mcrypt.php) - the MCrypt extension is no longer recommended for new installations.
+* [PHP MCrypt](https://php.net/manual/en/intro.mcrypt.php) - the MCrypt extension is no longer recommended for new installations.
 
     !!! warning "PHP 7.2 Compatibility"
         7.2 upgrade warning - 7.2 does not support MCrypt and if MCrypt is not installed the SMTP password (if entered) will need to be re-saved once you update your PHP version to 7.2.
