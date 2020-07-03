@@ -8,7 +8,7 @@ In general:
 * The upgrade steps are the same no matter which versions of CiviCRM you are moving _from_ and _to_ ([with some exceptions](version-specific.md))
 * The upgrade steps are the same for small upgrades (e.g. 4.7.10 to 4.7.11) as they are for large upgrades (4.6.7 to 4.7.12).
 * You can make big jumps in one upgrade (e.g. 4.5.2 to 4.7.20) without needing to apply all the upgrades in between.
-* If you are starting from a version prior to 4.2.9 you should upgrade to the [latest 4.2 version](https://sourceforge.net/projects/civicrm/files/civicrm-stable/4.2.19/) as an interim step, as the latest version does not contain upgrade code going back that far.
+* If you are starting from a version prior to 4.4.7 you should upgrade to the [latest 4.4 version](https://sourceforge.net/projects/civicrm/files/civicrm-stable/4.4.21/) as an interim step, as the latest version does not contain upgrade code going back that far.
 
 This page provides some of the steps to do before and after an upgrade, but leaves the bulk of the steps up to the CMS specific pages in this chapter.
 
