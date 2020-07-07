@@ -99,7 +99,7 @@ nav:
   - Drupal integration:
     - Drupal Users, Roles and Groups integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
-    - Webform: integration/drupal/webform.md
+    - Webform (Drupal 7): integration/drupal/webform.md
     - WYSIWYG integration: integration/drupal/wysiwyg.md
     - Bootstrap CSS: integration/drupal/bootstrap-css.md
     - Mailhandler: integration/drupal/mailhandler.md
