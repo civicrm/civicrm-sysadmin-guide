@@ -8,7 +8,7 @@ For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you shou
 
 ## CiviCRM 5.29
 
-### WordPress and "wp-content/plugins/files/civicrm"
+### WordPress and `[civicrm.files]`
 
 The CiviCRM "files" folder (a.k.a.  `[civicrm.files]`) stores runtime data, such as uploaded images, log files, and
 certain caches.  The folder is created automatically during installation.  However, the default location of this folder
@@ -16,27 +16,33 @@ has evolved, and some systems require a manual update.
 
 !!! note "How has the folder changed?"
 
-    The location of `[civicrm.files]` on WordPress has evolved in the *de facto* typical location:
+    During CiviCRM 4.x, the *de facto*, typical location changed:
 
     | Version | Typical location |
     | -- | -- |
-    | CiviCRM 4.x | `{webroot}/wp-content/plugins/files/civicrm` |
-    | CiviCRM 5.x | `{webroot}/wp-content/uploads/civicrm` |
+    | CiviCRM <=4.6 | `{WEB_ROOT}/wp-content/plugins/files/civicrm/` |
+    | CiviCRM >=4.7 | `{WEB_ROOT}/wp-content/uploads/civicrm/` |
 
-    Additionally, there is an evolution in *how* the location is typically calculated:
+    Additionally, in Civi 5.29, the technical rule for calculating the location changed subtly:
 
-    | Version | How the location is typically calculated |
+    | Version | Technical rule to determine default location |
     | -- | -- |
-    | CiviCRM 4.x | Start from `CIVICRM_TEMPLATE_COMPILEDIR` and go to the parent folder |
-    | CiviCRM 5.x (before 5.29) | Start from `CIVICRM_TEMPLATE_COMPILEDIR` and go to the parent folder|
-    | CiviCRM 5.x (after 5.29) | Start from `wp_get_upload_dir()` and go to child folder, `civicrm/` |
+    | CiviCRM <=5.28 | Start from `CIVICRM_TEMPLATE_COMPILEDIR` and go to the parent folder |
+    | CiviCRM >=5.29 | Start from `wp_get_upload_dir()` and go to child folder, `civicrm/` |
+
+!!! note "Which systems are OK? Which systems have a problem?"
+
+    On many CiviCRM-WordPress deployments, the new rule and the old rule agree - they both output
+    `...uploads/civicrm/`.  These deployments are OK.
+
+    However, on some deployments, the new rule and old rule may not agree. This is likely to happen if the site
+    originated on v4.6 or if the path has `...plugins/files/civicrm/`. These sites require some extra maintenance.
 
 !!! note "Why has the location evolved?"
 
-    The original location did not match the WordPress convention for runtime data-storage.  This can create
-    compatibility and installation problems for some hosting environments that depend on the WordPress conventions. 
-    Using a more standardized location (and more standardized calculation) ultimately simplifies administration and
-    improves compatibility.
+    The original location did not match the WordPress convention for runtime data-storage.  For some environments and
+    configurations, this created compatibility or installation problems.  With the changes in 4.7 and 5.29, CiviCRM is
+    better aligned with the convention - leading to better compatibility.
 
 !!! note "How do I know what my current location is?"
 
@@ -48,41 +54,46 @@ has evolved, and some systems require a manual update.
       top; a dialog will define `[civirm.files]`.  Similarly, navigate to `Administer => System Settings => Resource
       URLs`.  Click on the help ("?") icon; a dialog will define `[civicrm.files]`.
 
-If a site currently uses `wp-content/plugins/files/civicrm`, then you should prepare in advance for 5.29 -- either by
-(1) configuring the folder explicitly or (2) migrating the folder.  Below, we describe each approach and some trade-offs.
+If a site currently uses `{WEB_ROOT}/wp-content/plugins/files/civicrm`, then you should prepare in advance for 5.29. 
+The most clear-cut resolution is to configure the folder explicitly.  Alternatively, you may migrate the folder to the
+newer location.  Below, we describe each approach and some trade-offs.
 
 !!! tip "Approach 1: Configure the folder explicitly"
 
-    By default, CiviCRM calculates the location of `[civicrm.files]` automatically.  However, you
-    can [explicitly set the location of `[civicrm.files]`](../customize/paths.md) to match your
-    actual, current location.  Any future changes in the defaults will not affect your configuration.
+    The aim of this approach is to preserve the original location of `[civicrm.files]`.  If there are any external
+    references to the original location (such as hyperlinks or backup tools), they will continue to work.  We can
+    achive this by [explicitly setting the location in `civicrm.settings.php`](../customize/paths.md).  It will not
+    matter if the default values change.
 
     Steps:
 
-    1. Determine the local path of the current folder (ex: `/var/www/wp-content/plugins/files/civicrm`)
-    2. Determine the public URL of the current folder (ex: `https://example.com/wp-content/plugins/files/civicrm`)
-    3. Find and edit the file `civicrm.settings.php`. Add these options:
+    1. Determine the correct, local path of the current folder (ex: `/var/www/wp-content/plugins/files/civicrm`)
+    2. Determine the correct, public URL of the current folder (ex: `https://example.com/wp-content/plugins/files/civicrm`)
+    3. Find and edit the file `civicrm.settings.php`. Add the correct path and URL:
 
        ```php
        $civicrm_paths['civicrm.files']['path'] = '/var/www/wp-content/plugins/files/civicrm';
        $civicrm_paths['civicrm.files']['url'] = 'https://example.com/wp-content/plugins/files/civicrm';
        ```
 
-    The advantage of this approach is that the change is relatively safe, clear-cut, and easy to undo.
+    The advantage of this approach is that the change is relatively narrow, clear-cut, and easy to undo.
 
     The disadvantage: if you ever migrate the site to a different hosting environment (or if you use a staging<=>production
-    process), you will need to update `civicrm.settings.php` to use the new paths and new URLs.
+    process), you will need to update `civicrm.settings.php` again.
 
 !!! tip "Approach 2: Migrate the folder"
 
-    You may reorganize the files to match the newer defaults. Initial steps:
+    The aim of this approach is to re-arrange your filesystem to match the new defaults.  This makes the configuration
+    "thinner" or "more portable", but it may require more expertise and attention.
+
+    The initial steps are:
 
     1. Rename the folder `wp-content/plugins/files/civicrm` to `wp-content/uploads/civicrm`.
     2. In CiviCRM, navigate to `Administer => System Settings => Directories`. If there are any explicit
        references to the old folder, change them.
     3. In CiviCRM, navigate to `Administer => System Settings => Resource URLs`. If there are any explicit
        references to the old folder, change them.
-    4. Find and edit the `civicrm.settings.php`. Search for any references to `plugins/files/civicrm`
+    4. Find and edit the file `civicrm.settings.php`. Search for any references to `plugins/files/civicrm`
        and change them to `uploads/civicrm`.
 
     At this point, the folder has been formally moved - but we may not be done yet. There may still be
@@ -95,12 +106,9 @@ If a site currently uses `wp-content/plugins/files/civicrm`, then you should pre
 
     How to address old references?  If your hosting environment supports "symlinks", you might create a symlink from
     the old folder to the new folder.  Alternatively, you might configure the HTTP server to do redirects, or you might
-    do a global search/replace on MySQL content. Alas, the prognosis and details of these measures will depend
+    do a global search/replace on URLs that appear in MySQL content. Alas, the prognosis and details of these measures will depend
     on the specific deployment (*e.g.  Does it run on Linux or Windows?  Apache or nginx?  etc*) and on how the
     system was used (*e.g. Have users uploaded any images? Where are the old references?*)
-
-    The advantage of this approach is that the configuration will be more "portable" - e.g.  you can more easily
-    migrate, reproduce, or reconfigure the site for different environments.
 
 ## CiviCRM 5.0
 
