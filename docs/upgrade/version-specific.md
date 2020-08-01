@@ -33,10 +33,10 @@ has evolved, and some systems require a manual update.
 !!! note "Which systems are OK? Which systems have a problem?"
 
     On many CiviCRM-WordPress deployments, the new rule and the old rule agree - they both output
-    `...uploads/civicrm/`.  These deployments are OK.
+    `wp-content/uploads/civicrm/`.  These deployments are OK.
 
     However, on some deployments, the new rule and old rule may not agree. This is likely to happen if the site
-    originated on v4.6 or if the path has `...plugins/files/civicrm/`. These sites require some extra maintenance.
+    originated on v4.6 or if the path has `wp-content/plugins/files/civicrm/`. These sites require some extra maintenance.
 
 !!! note "Why has the location evolved?"
 
@@ -44,25 +44,42 @@ has evolved, and some systems require a manual update.
     configurations, this created compatibility or installation problems.  With the changes in 4.7 and 5.29, CiviCRM is
     better aligned with the convention - leading to better compatibility.
 
-!!! note "How do I know what my current location is?"
+!!! note "How do I know what the true location is?"
 
-    There are a few techniques:
+    Look in the filesystem to determine where there is actual data. In particular, look at both:
 
-    * Look in your web filesystem for the folder (ie `wp-content/plugins/files/civicrm` or `wp-content/uploads/civicrm`).
-      One or the other should exist.
-    * Login to CiviCRM and navigate to `Administer => System Settings => Directories`. Click on the help ("?") icon at the
-      top; a dialog will define `[civirm.files]`.  Similarly, navigate to `Administer => System Settings => Resource
-      URLs`.  Click on the help ("?") icon; a dialog will define `[civicrm.files]`.
+    * `wp-content/plugins/files/civicrm`
+    * `wp-content/uploads/civicrm`
 
-If a site currently uses `{WEB_ROOT}/wp-content/plugins/files/civicrm`, then you should prepare in advance for 5.29. 
-The most clear-cut resolution is to configure the folder explicitly.  Alternatively, you may migrate the folder to the
-newer location.  Below, we describe each approach and some trade-offs.
+    If only one folder exists, then that's it.
+
+!!! note "What if both folders exist?"
+
+    This has been observed in some scenarios - e.g.  if you attempted an upgrade to certain versions of CiviCRM without
+    laying groundwork from this guide, then CiviCRM may have auto-created a second set of placeholder folders.
+
+    The best thing is to dig into the filesystem and confirm whether *real content* exists in the subfolders.
+
+    * Important content can live in the subfolders `custom/`, `ext/`, `persist/contribute/`, and `upload/`.
+    * You can disregard any empty folders or any placeholder files (`.htaccess`, `index.html`).
+    * You can disregard `templates_c` or `dyn`. These are auto-generated and disposable.
+    * On the command-line, the commands `find`, `find -type f`, and `du` can help to locate content.
+
+    If the only genuine content is in `wp-content/plugins/files/civicrm`, then proceed with that.
+
+    If you cannot determine the one true location, then you may wish to discuss the details on Mattermost (`WordPress`) or StackExchange.
+
+Manual intervention is appropriate if the true content lives in `{WEB_ROOT}/wp-content/plugins/files/civicrm`. These
+steps will ensure that the content continues to be available in 5.29.
+
+The most clear-cut resolution is to configure the folder explicitly.  Alternatively, you may migrate or merge the
+folder into the newer location.  Below, we describe each approach and some trade-offs.
 
 !!! tip "Approach 1: Configure the folder explicitly"
 
     The aim of this approach is to preserve the original location of `[civicrm.files]`.  If there are any external
     references to the original location (such as hyperlinks or backup tools), they will continue to work.  We can
-    achive this by [explicitly setting the location in `civicrm.settings.php`](../customize/paths.md).  It will not
+    achieve this by [explicitly setting the location in `civicrm.settings.php`](../customize/paths.md).  It will not
     matter if the default values change.
 
     Steps:
