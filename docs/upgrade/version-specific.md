@@ -16,71 +16,69 @@ has evolved, and some systems require a manual update.
 
 !!! note "How has the folder changed?"
 
-    During CiviCRM 4.x, the *de facto*, typical location changed:
+    The *de facto* typical location changed:
 
-    | Version | Typical location |
+    | Installer version | Typical location |
     | -- | -- |
     | CiviCRM <=4.6 | `{WEB_ROOT}/wp-content/plugins/files/civicrm/` |
     | CiviCRM >=4.7 | `{WEB_ROOT}/wp-content/uploads/civicrm/` |
 
-    Additionally, in Civi 5.29, the technical rule for calculating the location changed subtly:
+    Additionally, the technical rule for calculating the location changed subtly:
 
     | Version | Technical rule to determine default location |
     | -- | -- |
     | CiviCRM <=5.28 | Start from `CIVICRM_TEMPLATE_COMPILEDIR` and go to the parent folder |
     | CiviCRM >=5.29 | Start from `wp_get_upload_dir()` and go to child folder, `civicrm/` |
 
-!!! note "Which systems are OK? Which systems have a problem?"
+    For many deployments, the change in the technical rule will still give the same outcome. However,
+    if a site originated on <=4.6, then the `wp_get_upload_dir()` rule may cause breakage.
 
-    On many CiviCRM-WordPress deployments, the new rule and the old rule agree - they both output
-    `wp-content/uploads/civicrm/`.  These deployments are OK.
-
-    However, on some deployments, the new rule and old rule may not agree. This is likely to happen if the site
-    originated on v4.6 or if the path has `wp-content/plugins/files/civicrm/`. These sites require some extra maintenance.
+    __Special aside__: Early revisions of 5.27 (5.27.0-5.27.3) included an update to use `wp_get_upload_dir()`;
+    however, this did not provide adequate documentation/support for the migration.  It was rolled back in 5.27.4 and
+    deferred to 5.29.
 
 !!! note "Why has the location evolved?"
 
     The original location did not match the WordPress convention for runtime data-storage.  For some environments and
     configurations, this created compatibility or installation problems.  With the changes in 4.7 and 5.29, CiviCRM is
-    better aligned with the convention - leading to better compatibility.
+    better aligned with the convention - leading to better long-term compatibility.
 
-!!! note "How do I know what the true location is?"
+!!! note "How do I know what the real location is?"
 
-    Look in the filesystem to determine where there is actual data. In particular, look at both:
+    Use a shell or file-manager to examine the filesystem and determine where there is actual data.  In particular,
+    look at both:
 
     * `wp-content/plugins/files/civicrm`
     * `wp-content/uploads/civicrm`
 
     If only one folder exists, then that's it.
 
-!!! note "What if both folders exist?"
+    It is possible that both folders exist.  This may happen if (a) an older site was upgraded to 5.27.0/5.29.0
+    without preparation, or (b) a site previously did a partial migration.
 
-    This has been observed in some scenarios - e.g.  if you attempted an upgrade to certain versions of CiviCRM without
-    laying groundwork from this guide, then CiviCRM may have auto-created a second set of placeholder folders.
+    The existence of two folders may indicate a split in the real data - or there may simply be extraneous placeholders.  You need to
+    examine to the subfolders to find any important content. Note:
 
-    The best thing is to dig into the filesystem and confirm whether *real content* exists in the subfolders.
+    * Important content can often live in the subfolders `custom/`, `ext/`, `persist/contribute/`, and `upload/`.
+    * Empty folders or any placeholder files (`.htaccess`, `index.html`) are disposable.
+    * `templates_c` or `dyn` are auto-generated and disposable.
 
-    * Important content can live in the subfolders `custom/`, `ext/`, `persist/contribute/`, and `upload/`.
-    * You can disregard any empty folders or any placeholder files (`.htaccess`, `index.html`).
-    * You can disregard `templates_c` or `dyn`. These are auto-generated and disposable.
-    * On the command-line, the commands `find`, `find -type f`, and `du` can help to locate content.
+    If using a command-line, the commands `find`, `find -type f`, and `du` can help to skim or measure content.
 
-    If the only genuine content is in `wp-content/plugins/files/civicrm`, then proceed with that.
+After determining where the data currently lives, we can suggest a course of action:
 
-    If you cannot determine the one true location, then you may wish to discuss the details on Mattermost (`WordPress`) or StackExchange.
+| Current data location | Recommended action |
+| -- | -- |
+| Only `wp-content/uploads/civicrm` has real data | No change needed |
+| Only `wp-content/plugins/files/civicrm` has real data | See "How To: Configure the folder explicitly" |
+| Both folders have real data | See "How To: Merge or migrate the folder" |
+| Neither folder has real data | It doesn't matter what you do |
 
-Manual intervention is appropriate if the true content lives in `{WEB_ROOT}/wp-content/plugins/files/civicrm`. These
-steps will ensure that the content continues to be available in 5.29.
-
-The most clear-cut resolution is to configure the folder explicitly.  Alternatively, you may migrate or merge the
-folder into the newer location.  Below, we describe each approach and some trade-offs.
-
-!!! tip "Approach 1: Configure the folder explicitly"
+!!! tip "How To: Configure the folder explicitly"
 
     The aim of this approach is to preserve the original location of `[civicrm.files]`.  If there are any external
     references to the original location (such as hyperlinks or backup tools), they will continue to work.  We can
-    achieve this by [explicitly setting the location in `civicrm.settings.php`](../customize/paths.md).  It will not
-    matter if the default values change.
+    achieve this by [explicitly setting the location in `civicrm.settings.php`](../customize/paths.md).
 
     Steps:
 
@@ -93,39 +91,51 @@ folder into the newer location.  Below, we describe each approach and some trade
        $civicrm_paths['civicrm.files']['url'] = 'https://example.com/wp-content/plugins/files/civicrm';
        ```
 
-    The advantage of this approach is that the change is relatively narrow, clear-cut, and easy to undo.
+!!! tip "How To: Merge or migrate the folder"
 
-    The disadvantage: if you ever migrate the site to a different hosting environment (or if you use a staging<=>production
-    process), you will need to update `civicrm.settings.php` again.
+    The aim of this approach is to re-arrange your filesystem to match the new defaults.  This makes the configuration "thinner" or "more
+    portable", and it can resolve a split, but it may require more expertise and attention.  Be sure to read the full instructions first.
 
-!!! tip "Approach 2: Migrate the folder"
+    First, make sure you have a current backup of the files and the database.  (If there's a problem, you may want to rollback.)
 
-    The aim of this approach is to re-arrange your filesystem to match the new defaults.  This makes the configuration
-    "thinner" or "more portable", but it may require more expertise and attention.
+    Second, migrate the folder `wp-content/plugins/files/civicrm` to `wp-content/uploads/civicrm`.  This may be as simple as renaming the
+    folder.  However, if the target folder already exists, then you'll need to move files on a per-sub-folder basis.  Alternatively, in a
+    Unix shell, you can use the `rsync` command, e.g.
 
-    The initial steps are:
+    ```bash
+    ## Dry run - Preview the files to sync/merge
+    rsync --dry-run -uva wp-content/plugins/files/civicrm/./ wp-content/uploads/civicrm/./
 
-    1. Rename the folder `wp-content/plugins/files/civicrm` to `wp-content/uploads/civicrm`.
+    ## Actual run
+    rsync -uva wp-content/plugins/files/civicrm/./ wp-content/uploads/civicrm/./
+
+    ## Remove the old folder
+    mv wp-content/plugins/files/civicrm /tmp/removed-files
+    ```
+
+    Third, with the files in place, you should update any CiviCRM settings which reference these paths:
+
+    1. Find and edit the file `civicrm.settings.php`. Search for any references to `plugins/files/civicrm`
+       and change them to `uploads/civicrm`.
     2. In CiviCRM, navigate to `Administer => System Settings => Directories`. If there are any explicit
        references to the old folder, change them.
     3. In CiviCRM, navigate to `Administer => System Settings => Resource URLs`. If there are any explicit
        references to the old folder, change them.
-    4. Find and edit the file `civicrm.settings.php`. Search for any references to `plugins/files/civicrm`
-       and change them to `uploads/civicrm`.
 
-    At this point, the folder has been formally moved - but we may not be done yet. There may still be
-    external references to the old URLs or the old paths, such as:
+    Finally, we come to the most open-ended step.  There may still be external references to the old URLs or the old paths, and they should
+    be transitioned.  For example, references may be found in:
 
     * Email templates which use images that were previously uploaded
     * Contact records with photo attachments
     * External links to assets in downloaded extensions
     * Backup tools and logging tools which collect information from the old folder
 
-    How to address old references?  If your hosting environment supports "symlinks", you might create a symlink from
-    the old folder to the new folder.  Alternatively, you might configure the HTTP server to do redirects, or you might
-    do a global search/replace on URLs that appear in MySQL content. Alas, the prognosis and details of these measures will depend
-    on the specific deployment (*e.g.  Does it run on Linux or Windows?  Apache or nginx?  etc*) and on how the
-    system was used (*e.g. Have users uploaded any images? Where are the old references?*)
+    How to address external references?  Alas, the prognosis and details will depend on the specific deployment.
+    However, here a few ideas to consider:
+
+    * Create a sym-link or hard-link from the old folder to the new folder (if your hosting environment supports sym-links or hard-links).
+    * Configure the HTTP server to redirect old URLs to new URLs.
+    * Perform aggressive search/replace operations (in the filesystem and the database).
 
 ## CiviCRM 5.0
 
