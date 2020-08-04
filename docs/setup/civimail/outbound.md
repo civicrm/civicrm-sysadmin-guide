@@ -55,6 +55,10 @@ These settings are used to configure mailer properties for the optional CiviMail
 
 **VERP Separator** - Separator character used when CiviMail generates VERP (variable envelope return path) Mail-From addresses.
 
+**Database Sync Interval** - This governs how often CiviMail records which mail it has sent successfully. A value of 1 means it records every mail, whilst a value of 10 means it writes to the database every tenth email. 
+A value greater than 1 has possible performance benefits, but if the batch job dies silently, CiviCRM will resend the emails that were not recorded in the database. This means that the mail batch job can get caught in
+an infinite loop if a batch never completes.
+
 Click **Save** to save your action or **Cancel** to cancel it.
 
 If successful you will see the message "Your changes have been saved."
