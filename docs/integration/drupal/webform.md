@@ -46,7 +46,6 @@ Conversely, webform_civicrm forms have a few limitations:
 
 Contribution Pages offer:
 
-* Recurring Payments
 * A "Sharing" Block
 * Other Amounts in Select options
 * Pledges (I haven't used this)
