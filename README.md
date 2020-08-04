@@ -1,6 +1,6 @@
 # System Administrator Guide
 
-**From the 1st August 2020 the canonical home for this repository will move to https://lab.civicrm.org/documentation/docs/sysadmin this repository will then function as a copy.**
+**From the 1st September 2020 the canonical home for this repository will move to https://lab.civicrm.org/documentation/docs/sysadmin this repository will then function as a copy.**
 
 A documentation guide for people who install, upgrade, and maintain [CiviCRM](https://civicrm.org) for an organization.
 
