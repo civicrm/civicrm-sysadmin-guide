@@ -87,6 +87,7 @@ After determining where the data currently lives, we can suggest a course of act
     3. Find and edit the file `civicrm.settings.php`. Add the correct path and URL:
 
        ```php
+       global $civicrm_paths;
        $civicrm_paths['civicrm.files']['path'] = '/var/www/wp-content/plugins/files/civicrm';
        $civicrm_paths['civicrm.files']['url'] = 'https://example.com/wp-content/plugins/files/civicrm';
        ```
