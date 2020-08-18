@@ -139,14 +139,17 @@ Should an upgrade fail, you will need this backup copy to restore your site.
 
 ## Enabling Cleaner URLs for WordPress
 
-* Starting in Version 5.13.x CiviCRM now can support "Clean URLs" for WordPress front-end (user-facing) pages.
-* By default CiviCRM URLs are in the format of https://example.org/civicrm?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1 for a Contribution Page.  Enabling Cleaner URLs will enable URLs in the format of
-  * A Contribution Page will have the format of https://example.org/civicrm/contribute/transact/?reset=1&id=1 
-  * Profile Pages can be accessed at https://example.org/civicrm/profile/edit/?gid=1&reset=1 or https://wpcvrc.tadpole.cc/civicrm/profile/create/?gid=1&reset=1
-  * Listings would be at https://example.org/civicrm/profile/?gid=1&reset=1
-  * The User's Contact Dashboard can be accessed at https://example.org/civicrm/user/?reset=1
-* To Enable Cleaner URLs , start by backing up your `Civicrm.settings.php` file as detailed in the "Locate and Backup the CiviCRM settings file" section above.
-* Then find this section of code in `civicrm.settings.php` On a default install it should be around line 480
+Starting in Version 5.13.x CiviCRM now can support "Clean URLs" for WordPress front-end (user-facing) pages. By default CiviCRM URLs are in the format of https://example.org/civicrm?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=1 for a Contribution Page.  
+
+### Enabling Cleaner URLs will enable URLs in the format of ###
+  * A Contribution Page will have the format of http://example.org/civicrm/contribute/transact/?reset=1&id=1 
+  * Profile Pages can be accessed at http://example.org/civicrm/profile/edit/?gid=1&reset=1 or http://example.org/civicrm/profile/create/?gid=1&reset=1
+  * Listings would be at http://example.org/civicrm/profile/?gid=1&reset=1
+  * The User's Contact Dashboard can be accessed at http://example.org/civicrm/user/?reset=1
+
+### Enabling Cleaner URLs ###
+1. To Enable Cleaner URLs , start by backing up your `civicrm.settings.php` file as detailed in the "Locate and Backup the CiviCRM settings file" section above.
+ Then find this section of code in `civicrm.settings.php` On a default install it should be around line 480
 
 ```php
 if (!defined('CIVICRM_CLEANURL')) {
@@ -161,10 +164,7 @@ if (!defined('CIVICRM_CLEANURL')) {
   }
 }
 ```
-
-
-
-* Replace the above code with:
+2. Replace the above code with:
 
 ```php
 if (!defined('CIVICRM_CLEANURL')) {
@@ -184,13 +184,15 @@ if (!defined('CIVICRM_CLEANURL')) {
   }
 }
 ```
-* You will need to go to https://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1Go and make sure the base page points to an existing WP page (usually /civicrm)
+3. Modify your `wp-config.php` file and add `define( 'CIVICRM_CLEANURL', 1 );` somewhere above the `/* That's all, stop editing! Happy publishing. */`
 
-* You will need  to flush rewrite rules in WordPress for clean URLs to work. Visit the Permalinks settings page to trigger this Go to Settings —> permalinks The URL will be  https://example.org/wp-admin/options-permalink.php
+4. You will need to go to http://example.org/wp-admin/admin.php?page=CiviCRM&q=civicrm/admin/setting/uf&reset=1Go and make sure the base page points to an existing WP page (usually /civicrm)
+
+5. You will need  to flush rewrite rules in WordPress for clean URLs to work. Visit the Permalinks settings page to trigger this Go to Settings —> permalinks The URL will be  https://example.org/wp-admin/options-permalink.php
 
   . ![image-20190611073243671](../img/wp-permalinks.png)
 
-* Now Cleaner URLs will be enabled.  Enabling Cleaner URLs does not change how Shortcodes work in CiviCRM and existing "Old" style URLs will still work
+6. Now Cleaner URLs will be enabled.  Enabling Cleaner URLs does not change how Shortcodes work in CiviCRM and existing "Old" style URLs will still work
 
 ## Create CiviCRM Contacts for Existing WordPress Users
 
