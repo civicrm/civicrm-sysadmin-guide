@@ -79,6 +79,7 @@ Notes:
 ```example
 /full/path/to/php /full/path/to/cv api job.execute --user=cronuser --cwd=/var/www/example.org
 ```
+
 * Replace ```cronuser``` with the CMS user you chose in the previous step.
 * Once you have it working, add the `--quiet` flag to silence non-error output.
 
