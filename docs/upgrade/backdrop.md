@@ -20,13 +20,11 @@ If using localization, also download the latest version of the localization file
 
 ### Take the site offline
 
-When upgrading a production site, it is recommended that you take your site offline during the upgrade process.
-**Administration » Configuration » Development » Maintenance mode**
+When upgrading a production site, it is recommended that you take your site offline during the upgrade process. From the BackDrop menu bar, go to **Configuration » Development » Maintenance mode**
 
 ### Ensure that CiviCRM is not your Backdrop homepage
 
-Due to changes in Dashboard files from 3.0 to 3.1, you need to ensure that your Backdrop homepage is not the CiviCRM homepage. If your site does use CiviCRM as its front page, change it by clicking on:
-**Administration » Configuration » System » Site Information**
+Due to changes in Dashboard files from 3.0 to 3.1, you need to ensure that your Backdrop homepage is not the CiviCRM homepage. If your site does use CiviCRM as its front page, change it from the BackDrop menu bar, by going to: **Configuration » System » Site Information**
  Then ensure that the "Default front page" value is not civicrm (change it to node if necessary). If you made a change, click Save configuration
 
 !!! warning
@@ -36,7 +34,7 @@ Due to changes in Dashboard files from 3.0 to 3.1, you need to ensure that your 
 
 If you have Backdrop modules installed in your site that integrate with or extend CiviCRM's functionality, you should disable them prior to running the upgrade script. This will prevent modules that are not compatible with the new version from triggering errors in the upgrade process.
 
-1. In Backdrop, go to **Administration » Functionality**
+1. From the Backdrop menu bar, go to **Functionality » List Modules**
 
 1. Note which modules in the CiviCRM section of the modules listing are currently enabled (taking a screenshot is one easy way to do this). Now un-check the Enabled box for ALL modules in the CiviCRM section of the modules listing _except_ for CiviCRM itself. Click Save.
 
@@ -109,7 +107,7 @@ Choose one of the following methods:
 
 ### Re-enable compatible CiviCRM integration modules
 
-1. In Backdrop, go to **Administration » Functionality**
+1. From the BackDrop menu bar, go to **Functionality » List Modules**
 
 1. Go through your list of CiviCRM integration modules and confirm compatibility with the new release if applicable. (If you've downloaded the module from backdropcms.org - check the module's page for compatibility information.)
 
@@ -119,23 +117,20 @@ Choose one of the following methods:
 
 ### Review and update Backdrop permissions settings
 
-It's a good idea to verify Backdrop role-based permissions which were added in recent releases. You can review and update these at **Administer CiviCRM » Users and Permissions » Permissions (Access Control) » Backdrop Access Control**:
+It's a good idea to verify Backdrop role-based permissions which were added in recent releases. You can review and update from the CiviCRM menu bar, go to **Administer » Users and Permissions » Permissions (Access Control) » Backdrop Access Control**:
 
 ### Clear the views cache
 
-If you were using Views integration prior to this upgrade, you will need to go to **Administration » Structure » Views » Settings » Advanced** and press "Clear Views cache" for Views to capture changes in the CiviCRM Views integration code.
+If you were using Views integration prior to this upgrade, from the BackDrop menu bar, go to **Structure » Views » Settings » Advanced** and press "Clear Views cache" for Views to capture changes in the CiviCRM Views integration code.
 
 ### Restore CiviCRM as the Backdrop homepage if appropriate
 
-If you changed the default Backdrop homepage from CiviCRM, now is the time to restore it. You can do this by navigating to:
-**Administration » Configuration » System » Site Information**
+If you changed the default Backdrop homepage from CiviCRM, now is the time to restore it. From the BackDrop menu bar, go to: **Configuration » System » Site Information**
  then change the Default front page to civicrm, and click Save configuration.
 
 ### Put the site online
 
-Toggle the following feature, and put your site back online:
-
-**Administration » Configuration » Development » Site Maintenance**
+Toggle the following feature, and put your site back online. From the BackDrop menu bar, go to: **Configuration » Development » Site Maintenance**
 
 ## Post upgrade
 
