@@ -40,21 +40,6 @@ Because of the huge number and ever-changing nature of community contributed Wor
 * Workaround:  
 * Other comments:  
 
-## Yoast SEO
-
-* Version: < 1.5.2.5
-* Information last updated on: 2014-03-31
-* Reporter: krypto/aglozier
-* Problem:
-
-    (Reported fixed in latest version 1.5.2.5) Breaks front-end pages when Open Graph meta data added to pages.
-    
-* Workaround:
-
-    Disable "Add Open Graph meta data" under the Social Media Facebook tab.
-    
-* Other comments: This appears to be fixed in 1.5.2.7
-
 ## UberMenu Sticky
 
 * Version:  
