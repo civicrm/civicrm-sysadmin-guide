@@ -29,6 +29,7 @@ See below for the full address to add to the endpoint (replace NN with your actu
 
 * For Drupal and Backdrop:  `https://example.com/civicrm/payment/ipn/NN`
 * For Joomla:  `https://example.com/?option=com_civicrm&task=civicrm/payment/ipn/NN`
-* For WordPress:  `https://example.com/?page=CiviCRM&q=civicrm/payment/ipn/NN`
+* For WordPress with CiviCRM 5.26+:  `https://example.com/?civiwp=CiviCRM&q=civicrm/payment/ipn/NN`
+* For WordPress with CiviCRM 5.25 and earlier:  `https://example.com/?page=CiviCRM&q=civicrm/payment/ipn/NN`
 
 Typically, you only need to configure the end point to send live transactions and you want it to send all events.
