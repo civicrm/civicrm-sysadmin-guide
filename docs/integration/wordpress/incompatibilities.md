@@ -2,19 +2,6 @@
 
 Because of the huge number and ever-changing nature of community contributed WordPress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts, Please add to/edit this information as applicable.
 
-
-## JetPack
-
-* Version: all
-* Information last updated on:  
-* Reporter: Workaround - themak
-* Problem: Causes conflict with Backbone JQuery calls
-* Workaround:
-
-    Instead of deactivating Jetpack every time you need to access a profile for a contribution page or edit a date, simply disable the Notifications Module at `http://example.org/wp-admin/admin.php?page=jetpack_modules`
-    
-* Other comments:  
-
 ## Slider Revolution
 
 * Information last updated on: 2018-05-17
