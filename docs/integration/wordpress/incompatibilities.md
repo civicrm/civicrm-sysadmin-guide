@@ -1,18 +1,6 @@
 # WordPress plugins and themes incompatible with CiviCRM
 
 Because of the huge number and ever-changing nature of community contributed WordPress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts, Please add to/edit this information as applicable.
-
-## Slider Revolution
-
-* Information last updated on: 2018-05-17
-* Reporter: samuelsov
-* Problem:
-
-    CSS z-index problem - see also https://civicrm.stackexchange.com/questions/16560/civicrm-select-box-items-cant-be-selected-in-wordpress-page-create/18673?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    
-* Workaround:
-
-    See https://civicrm.stackexchange.com/a/24991/72
     
 ## Elementor
 
