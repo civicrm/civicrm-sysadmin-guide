@@ -9,7 +9,6 @@ setup/message-templates https://docs.civicrm.org/user/en/latest/email/message-te
 config/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
 misc/switch-cms misc/switching-cms/switch-cms
 requirements https://docs.civicrm.org/installation/en/latest/general/requirements
-troubleshooting https://docs.civicrm.org/installation/en/latest/general/troubleshooting
 install/backdrop https://docs.civicrm.org/installation/en/latest/backdrop/
 install/drupal7 https://docs.civicrm.org/installation/en/latest/drupal7/
 install/joomla https://docs.civicrm.org/installation/en/latest/joomla/
