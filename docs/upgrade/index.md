@@ -16,7 +16,7 @@ This page provides some of the steps to do before and after an upgrade, but leav
 
 Before upgrading CiviCRM, follow these steps to ensure the process goes a smoothly as possible.
 
-1. Ensure that your system meets all the [requirements](../requirements.md) for the CiviCRM version to which you are upgrading.
+1. Ensure that your system meets all the [requirements](https://docs.civicrm.org/installation/en/latest/general/requirements/) for the CiviCRM version to which you are upgrading.
 
 1. Check for any [version-specific upgrade instructions](version-specific.md).
 

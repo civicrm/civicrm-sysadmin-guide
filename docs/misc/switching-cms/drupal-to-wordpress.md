@@ -13,9 +13,8 @@
 
     !!! tip
         When downloading the CiviCRM package get the same version of the CiviCRM package for WordPress as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
-    
-     Refer to the [WordPress Installation Guide](../../install/wordpress.md) for details on obtaining and setting up CiviCRM for WordPress.
 
+    Refer to the [WordPress Installation Guide](https://docs.civicrm.org/installation/en/latest/wordpress/) for details on obtaining and setting up CiviCRM for WordPress.
 
 !!! tip "WordPress Admin Account"
     When you set up WordPress, make sure you use the same Administrator account name as the Drupal Administrator account. Otherwise, you  might encounter DB errors and/or Foreign Constraint issues due to the WordPress account not being associated with the CRM Accounts. If you have no choice, make sure you synchronize your accounts prior to trying to edit anything else.
@@ -47,7 +46,7 @@
 
 This table is used for mapping your CMS users with CiviCRM contacts. At this stage those mappings will be according to users from your Drupal site. You will need to delete these mappings so that WordPress can then automatically rebuild them from the new users table.
 
-``` sql
+```sql
 TRUNCATE TABLE `<civicrm_database>`.`civicrm_uf_match`;
 ```
 

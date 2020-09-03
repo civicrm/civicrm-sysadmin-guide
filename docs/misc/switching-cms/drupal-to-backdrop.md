@@ -14,7 +14,7 @@ For some use cases, instead of a Drupal 7 to Drupal 8 migration, a migration fro
     !!! check
             When downloading the CiviCRM package get the same version of the CiviCRM package for Backdrop as the version you used in Drupal. If you want to upgrade to a newer version of CiviCRM, upgrade it before or after – not during – the migration.
 
-    Refer to the [Backdrop Installation Guide](../../install/backdrop.md) for details on obtaining and setting up CiviCRM for Backdrop.
+    Refer to the [Backdrop Installation Guide](https://docs.civicrm.org/installation/en/latest/backdrop/) for details on obtaining and setting up CiviCRM for Backdrop.
 
 ## Relocate Custom Files
 
