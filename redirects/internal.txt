@@ -8,3 +8,14 @@ config/directories setup/directories
 setup/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
 config/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
 misc/switch-cms misc/switching-cms/switch-cms
+requirements https://docs.civicrm.org/installation/en/latest/general/requirements
+troubleshooting https://docs.civicrm.org/installation/en/latest/general/troubleshooting
+install/backdrop https://docs.civicrm.org/installation/en/latest/backdrop/
+install/drupal7 https://docs.civicrm.org/installation/en/latest/drupal7/
+install/joomla https://docs.civicrm.org/installation/en/latest/joomla/
+install/wordpress https://docs.civicrm.org/installation/en/latest/wordpress/
+planning https://docs.civicrm.org/installation/en/latest/planning/
+planning/cms https://docs.civicrm.org/installation/en/latest/planning/cms/
+planning/demo https://docs.civicrm.org/installation/en/latest/planning/demo/
+planning/hosting https://docs.civicrm.org/installation/en/latest/planning/hosting/
+planning/transition https://docs.civicrm.org/installation/en/latest/planning/transition/
