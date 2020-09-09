@@ -245,19 +245,20 @@ In order for the scheduled jobs configured within the CiviCRM UI to run automati
 1. Make sure you have chosen (and tested) one of the [commands to call `Job.execute`](#commands). In the following examples, we will refer to your command as `<command>`.
 1. You need to edit the crontab of the OS User you determined earlier.
 
-   a. If you are logged in as that user, run:
+    a. If you are logged in as that user, run:
 
     ```bash
     crontab -e
     ```
     
-   b. Alternatively, run:
+    b. Alternatively, run:
 
     ```bash
     sudo crontab -e -u os_user
     ```
 
     and substitute the chosen OS user for os_user (eg 'www-data')
+
 1. Place the following line in your crontab to run your command every 5 minutes.
 
     ```
